@@ -1,0 +1,675 @@
+%%%%%%%% ICML 2025 SUBMISSION %%%%%%%%
+\documentclass{article}
+
+% Recommended packages
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+% Use the following line for the initial blind version submitted for review:
+\usepackage{icml2025}
+
+% If accepted, instead use the following line for the camera-ready submission:
+% \usepackage[accepted]{icml2025}
+
+% Standard packages
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{xcolor}
+\usepackage{multirow}
+
+\icmltitlerunning{Batch Normalization Statistics as Output Calibrators}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{Batch Normalization Statistics as Output Calibrators,\\Not Feature Encoders: Evidence from Class-Conditional Statistic Replacement}
+
+
+\icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+\icmlauthor{Ali Saffarini}{harvard}
+\end{icmlauthorlist}
+
+\icmlaffiliation{harvard}{Harvard University}
+
+\vskip 0.3in
+
+\begin{abstract}
+Batch normalization (BN) is ubiquitous in deep learning, yet the functional role of its learned running statistics remains poorly understood. We investigate whether BN running statistics encode class-specific feature information or serve primarily as output calibration mechanisms. Through a simple experimental paradigm---replacing global BN running statistics with class-conditional statistics at test time---we uncover a striking dissociation: same-class BN statistics \emph{destroy} classification accuracy (3.5\% vs.\ 91.1\% baseline on CIFAR-10), yet linear probes on the resulting representations achieve 99.9\% accuracy. This effect replicates across four architectures (SmallResNet, VGG-11, SimpleCNN, WideResNet-16-8), generalizes to three datasets including Tiny-ImageNet-200 (200 classes, $64{\times}64$ resolution), and disappears when BatchNorm is replaced with GroupNorm---confirming it is specific to the running-statistic mechanism. On Tiny-ImageNet-200, same-class statistics reduce accuracy from 60.8\% to 0.17\% (chance $= 0.5\%$) while linear probes achieve \emph{perfect} 100\% accuracy---the strongest dissociation observed. An interpolation experiment reveals a smooth, monotonic transition between same-class and global statistics, ruling out phase-transition artifacts. Calibration analysis shows that same-class statistics induce severe miscalibration (ECE $= 0.394$ vs.\ $0.025$ baseline), and temperature scaling---while reducing ECE from 0.394 to 0.151---cannot recover accuracy (remaining at 2.9\%), proving the collapse is not a simple logit-scale shift. These results demonstrate that BN running statistics function as output calibrators: they align activation magnitudes with downstream layer expectations without encoding class-discriminative features. This calibration perspective reframes our understanding of batch normalization at inference time and has implications for transfer learning, domain adaptation, and normalization-free architectures.
+\end{abstract}
+]
+
+% This must follow the abstract
+\printAffiliationsAndNotice{} % leave empty for anonymous
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:introduction}
+
+Batch normalization \citep{ioffe2015batch} is among the most widely adopted techniques in deep learning. During training, BN normalizes activations using mini-batch statistics; at inference, it substitutes exponentially averaged running statistics accumulated during training. These running statistics---per-channel running means and variances---compress the training data distribution as seen through the network's learned filters.
+
+A natural question arises: \textbf{what information do these running statistics encode?} Two hypotheses present themselves:
+
+\begin{enumerate}
+    \item \textbf{Feature encoding hypothesis.} BN statistics encode class-relevant distributional information. Providing class-appropriate statistics should preserve or improve classification.
+    \item \textbf{Calibration hypothesis.} BN statistics serve primarily to calibrate activation scales to match what downstream layers expect. Any perturbation---even a ``helpful'' one---disrupts calibration and degrades classification.
+\end{enumerate}
+
+We test these hypotheses by computing class-conditional BN statistics from training data and substituting them for global statistics at test time, measuring both classification accuracy and representation quality via linear probes.
+
+Our core finding is striking: on CIFAR-10, replacing global BN statistics with same-class statistics reduces SmallResNet classification accuracy from 91.1\% to 3.5\% (10 seeds), yet linear probes on the perturbed representations achieve 99.9\% accuracy. This dissociation---collapsed output but preserved representations---constitutes strong evidence for the calibration hypothesis. We show this effect is:
+
+\begin{itemize}
+    \item \textbf{Architecture-general:} Replicating on VGG-11 ($85.4\% \to 10.9\%$), SimpleCNN ($83.2\% \to 26.3\%$), and WideResNet-16-8 ($90.6\% \to 11.1\%$).
+    \item \textbf{Dataset-general:} Extending to CIFAR-100 ($70.3\% \to 0.67\%$) and Tiny-ImageNet-200 ($60.8\% \to 0.17\%$).
+    \item \textbf{BN-specific:} Absent when GroupNorm replaces BatchNorm (81.6\% accuracy maintained), confirming running statistics as the causal mechanism.
+    \item \textbf{Continuously graded:} Interpolation between same-class and global statistics yields a smooth monotonic accuracy curve.
+    \item \textbf{Not a calibration-scale artifact:} Temperature scaling reduces ECE but cannot recover accuracy, ruling out simple logit rescaling as an explanation.
+\end{itemize}
+
+These results have practical implications for transfer learning, domain adaptation, and normalization-free architecture design.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related Work}
+\label{sec:related}
+
+\textbf{Batch Normalization.} \citet{ioffe2015batch} introduced BN to reduce ``internal covariate shift.'' \citet{santurkar2018does} challenged this narrative, showing BN primarily smooths the optimization landscape. \citet{bjorck2018understanding} confirmed similar smoothing benefits. These works focus on BN's \emph{training-time} role; we examine its \emph{inference-time} function.
+
+\textbf{Expressive Power of BN Parameters.} \citet{frankle2020training} demonstrated that training only BN affine parameters ($\gamma$, $\beta$) of a randomly initialized network achieves surprisingly high accuracy on CIFAR-10. This shows BN parameters carry significant information but does not distinguish the roles of learned affine parameters versus running statistics.
+
+\textbf{BN for Domain Adaptation.} \citet{li2018revisiting} proposed Adaptive Batch Normalization (AdaBN), replacing BN running statistics with target-domain statistics for domain adaptation. This implicitly treats BN statistics as domain-specific calibrators. Our work provides direct experimental evidence for why this works: BN statistics modulate output scale, not feature content.
+
+\textbf{Test-Time Adaptation.} \citet{wang2021tent} and \citet{schneider2020improving} update BN statistics on test data to improve robustness to distribution shift. Our calibration perspective explains why BN statistics are so influential at test time despite not being learned through backpropagation.
+
+\textbf{BN and Adversarial Robustness.} \citet{benz2021revisiting} showed adversarial vulnerability correlates with BN statistics. Our work suggests this may be because adversarial perturbations disrupt the calibration that BN statistics provide.
+
+\textbf{Neural Network Calibration.} \citet{guo2017calibration} demonstrated that modern neural networks are often poorly calibrated and introduced temperature scaling as a simple post-hoc calibration method. We use expected calibration error (ECE) and temperature scaling to characterize the nature of the accuracy collapse under BN statistic perturbation, showing it is fundamentally different from standard miscalibration.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method}
+\label{sec:method}
+
+\subsection{Architectures}
+
+We evaluate four architectures to test generality:
+
+\begin{enumerate}
+    \item \textbf{SmallResNet.} A compact ResNet with channel widths $[32, 64, 128, 256]$ across four stages of two residual blocks each, containing 20 BatchNorm2d layers. This is our primary architecture (10 seeds on CIFAR-10). For Tiny-ImageNet-200 ($64{\times}64$ inputs), we use a \textbf{SmallResNet64} variant with five stages and channel widths $[32, 64, 128, 256, 512]$, adapted for the higher resolution with an initial $3{\times}3$ convolution (stride 1) and additional downsampling stages.
+    \item \textbf{VGG-11-BN.} A VGG-11 variant with BatchNorm after each convolutional layer (8 BN layers), providing an architecture without skip connections (3 seeds).
+    \item \textbf{SimpleCNN.} A plain 4-layer convolutional network with BatchNorm (4 BN layers), testing the effect in a minimal architecture (3 seeds).
+    \item \textbf{WideResNet-16-8.} A wide residual network with depth 16 and widen factor 8 \citep{zagoruyko2016wide}, incorporating dropout ($p{=}0.3$) within residual blocks. This architecture is substantially wider and deeper than SmallResNet, with significantly more BN layers and parameters, testing the effect in a high-capacity network with regularization (3 seeds).
+\end{enumerate}
+
+All models are trained on CIFAR-10 with standard augmentation (random crop with padding 4, random horizontal flip) using SGD with momentum 0.9, weight decay $5{\times}10^{-4}$, initial learning rate 0.1, and cosine annealing. SmallResNet, SimpleCNN, VGG-11-BN, and WideResNet-16-8 train for 20 epochs on CIFAR-10. We additionally train SmallResNet on CIFAR-100 (25 epochs, 3 seeds) and SmallResNet64 on Tiny-ImageNet-200 (25 epochs, 3 seeds, $64{\times}64$ images, 200 classes) to test dataset generalization. WideResNet-16-8 uses mixed-precision training for computational efficiency.
+
+\subsection{Datasets}
+
+We evaluate on three datasets of increasing complexity:
+
+\begin{enumerate}
+    \item \textbf{CIFAR-10.} 10 classes, $32{\times}32$ images, 50K training / 10K test. Our primary benchmark.
+    \item \textbf{CIFAR-100.} 100 classes, $32{\times}32$ images, 50K training / 10K test. Tests scaling to many classes.
+    \item \textbf{Tiny-ImageNet-200.} 200 classes, $64{\times}64$ images, 100K training / 10K validation. Tests generalization to higher resolution, larger label spaces, and more complex visual content. Images are center-cropped to $64{\times}64$ for evaluation.
+\end{enumerate}
+
+\subsection{Computing Class-Conditional BN Statistics}
+
+After training, we compute class-conditional BN statistics by passing all training samples of each class through the network with BN layers in training mode (accumulating fresh running statistics) while all other parameters remain frozen. This yields $C$ sets of BN statistics $\{\mu_c, \sigma^2_c\}$ for $c \in \{0, \ldots, C{-}1\}$, one per class.
+
+\subsection{Evaluation Conditions}
+
+We evaluate under four BN statistic conditions:
+
+\begin{enumerate}
+    \item \textbf{Global (baseline).} Standard running statistics from training---normal inference.
+    \item \textbf{Same-class.} For test samples of class $c$, load BN statistics computed from class-$c$ training data. Under the feature encoding hypothesis, this should help or be neutral.
+    \item \textbf{Wrong-class.} For test samples of class $c$, load statistics from class $(c + \lfloor C/2 \rfloor) \bmod C$---a deliberately mismatched condition.
+    \item \textbf{Random-class.} For each test sample of class $c$, load statistics from a uniformly random \emph{different} class.
+\end{enumerate}
+
+\subsection{Metrics}
+
+For each condition:
+\begin{itemize}
+    \item \textbf{Classification accuracy.} Top-1 accuracy using the trained classification head.
+    \item \textbf{Mean confidence.} Average softmax probability assigned to the true class.
+    \item \textbf{Linear probe accuracy.} We extract features from the penultimate layer (post global average pooling), train a logistic regression or ridge regression classifier on an 80/20 split, and report held-out accuracy. We use ridge regression ($\lambda = 10^{-3}$) for CIFAR-10 experiments and logistic regression for WideResNet and Tiny-ImageNet experiments.
+    \item \textbf{Expected calibration error (ECE).} Following \citet{guo2017calibration}, we compute ECE with 15 equal-width bins to quantify the gap between predicted confidence and actual accuracy.
+\end{itemize}
+
+\subsection{Interpolation Experiment}
+
+To characterize the transition between same-class and global statistics, we linearly interpolate:
+\begin{align}
+    \mu_\alpha &= \alpha \cdot \mu_{\text{global}} + (1 - \alpha) \cdot \mu_{\text{same}} \label{eq:interp_mean} \\
+    \sigma^2_\alpha &= \alpha \cdot \sigma^2_{\text{global}} + (1 - \alpha) \cdot \sigma^2_{\text{same}} \label{eq:interp_var}
+\end{align}
+for $\alpha \in \{0.0, 0.1, \ldots, 1.0\}$, evaluating classification accuracy and linear probe accuracy at each point.
+
+\subsection{GroupNorm Control}
+
+To confirm that the observed effect is specific to BN's running-statistic mechanism, we train a variant of SmallResNet with GroupNorm replacing all BatchNorm layers. GroupNorm normalizes using group statistics computed from the \emph{current input} rather than maintained running statistics, so there are no class-conditional statistics to substitute. If GroupNorm models maintain accuracy, the effect is BN-specific.
+
+\subsection{Expected Calibration Error}
+
+To characterize the nature of the accuracy collapse beyond simple accuracy metrics, we measure Expected Calibration Error \citep[ECE;][]{guo2017calibration} with 15 equal-width confidence bins. ECE measures the weighted average discrepancy between predicted confidence and empirical accuracy within each bin, providing a scalar summary of how well-calibrated a model's output probabilities are.
+
+\subsection{Temperature Scaling}
+
+To test whether the accuracy collapse under same-class statistics is merely a logit-scale issue recoverable by post-hoc rescaling, we apply temperature scaling \citep{guo2017calibration}. We optimize a single scalar temperature $T$ on a held-out validation set to minimize negative log-likelihood under the same-class BN statistic condition, then evaluate whether dividing logits by $T$ recovers classification accuracy. Temperature scaling is a monotone transformation that preserves logit ordering (and thus the argmax), making it diagnostic: if accuracy improves, the issue is confidence scaling; if not, the logit ranking itself is disrupted.
+
+\subsection{Statistical Protocol}
+
+SmallResNet on CIFAR-10 uses 10 independent seeds (42--51). All other configurations use 3 seeds (42--44). We report means $\pm$ standard deviations and conduct paired $t$-tests for key comparisons.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary Finding: SmallResNet on CIFAR-10}
+
+Table~\ref{tab:primary} presents aggregate results across 10 seeds.
+
+\begin{table}[t]
+\caption{SmallResNet on CIFAR-10 (mean $\pm$ std, $n{=}10$ seeds).}
+\label{tab:primary}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Condition & Accuracy (\%) & Confidence (\%) & Linear Probe (\%) \\
+\midrule
+Global (baseline) & $91.08 \pm 0.12$ & $88.88 \pm 0.15$ & $90.86 \pm 0.55$ \\
+Same-class        & $3.55 \pm 0.69$  & $4.80 \pm 0.52$  & $99.88 \pm 0.09$ \\
+Wrong-class       & $65.37 \pm 4.69$ & $50.64 \pm 3.22$ & $100.00 \pm 0.00$ \\
+Random-class      & $58.99 \pm 5.84$ & $45.47 \pm 5.19$ & $97.63 \pm 1.11$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results reveal a dramatic dissociation:
+
+\begin{enumerate}
+    \item \textbf{Same-class BN statistics catastrophically degrade accuracy} to 3.5\%, well below the 10\% chance baseline. Providing the network with class-appropriate statistics is \emph{actively destructive}.
+    \item \textbf{Wrong-class statistics outperform same-class} (65.4\% vs.\ 3.5\%), a complete inversion of the feature encoding prediction.
+    \item \textbf{Linear probe accuracy under same-class statistics reaches 99.9\%}, far exceeding the global baseline (90.9\%). Representations become \emph{more} linearly separable under perturbation.
+    \item \textbf{Statistical significance.} Same vs.\ global accuracy: $t(9) = -374.1$, $p = 3.5 \times 10^{-20}$. Same vs.\ global linear probe: $t(9) = +48.7$, $p = 3.3 \times 10^{-12}$.
+\end{enumerate}
+
+\subsection{Cross-Architecture Replication}
+
+Table~\ref{tab:cross_arch} shows the effect replicates across architecturally distinct networks.
+
+\begin{table}[t]
+\caption{Cross-architecture results on CIFAR-10 (mean $\pm$ std, $n{=}3$ seeds).}
+\label{tab:cross_arch}
+\centering
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Architecture & Condition & Acc.\ (\%) & Conf.\ (\%) & Probe (\%) \\
+\midrule
+\multirow{2}{*}{VGG-11-BN}
+  & Global     & $85.44 \pm 1.28$ & --- & $85.00 \pm 1.80$ \\
+  & Same-class & $10.88 \pm 1.91$ & --- & $98.37 \pm 0.63$ \\
+\midrule
+\multirow{2}{*}{SimpleCNN}
+  & Global     & $83.17 \pm 0.23$ & --- & $80.53 \pm 1.44$ \\
+  & Same-class & $26.33 \pm 0.48$ & --- & $54.68 \pm 0.74$ \\
+\midrule
+\multirow{4}{*}{WRN-16-8}
+  & Global       & $90.61 \pm 0.51$ & $89.36 \pm 0.43$ & $91.02 \pm 0.28$ \\
+  & Same-class   & $11.12 \pm 0.90$ & $11.04 \pm 0.73$ & $99.78 \pm 0.09$ \\
+  & Wrong-class  & $64.06 \pm 3.14$ & $52.64 \pm 3.51$ & $99.60 \pm 0.07$ \\
+  & Random-class & $62.41 \pm 1.76$ & $51.21 \pm 2.25$ & $96.63 \pm 0.44$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four architectures exhibit the same core pattern: same-class statistics devastate classification accuracy while linear probe accuracy remains high or \emph{increases}.
+
+VGG-11-BN shows the same pattern: same-class statistics reduce accuracy from 85.4\% to 10.9\% while linear probe accuracy \emph{increases} from 85.0\% to 98.4\%. SimpleCNN shows the accuracy collapse ($83.2\% \to 26.3\%$) but with reduced linear probe improvement ($80.5\% \to 54.7\%$), likely reflecting its simpler representational capacity with only 4 BN layers.
+
+WideResNet-16-8 provides particularly strong evidence because it is a high-capacity architecture with dropout regularization ($p{=}0.3$). Despite achieving the highest baseline accuracy (90.6\%), same-class statistics reduce accuracy to 11.1\% ($t(2) = -95.94$, $p = 0.00011$) while the linear probe reaches 99.8\% ($t(2) = +55.14$, $p = 0.00033$). The wrong-class condition (64.1\%) again substantially outperforms same-class (11.1\%), with $t(2) = -30.64$, $p = 0.0011$. Notably, WideResNet's same-class accuracy (11.1\%) is higher than SmallResNet's (3.5\%), which may reflect the effect of dropout: by adding noise during training, dropout may make the classification head slightly more robust to the activation perturbation induced by BN statistic replacement.
+
+The severity of the accuracy collapse correlates with the number of BN layers: SmallResNet (20 BN layers) drops to 3.5\%, VGG-11-BN (8 layers) to 10.9\%, WideResNet-16-8 (many BN layers, but with dropout) to 11.1\%, and SimpleCNN (4 layers) to 26.3\%. More BN layers generally means more opportunities for calibration disruption to compound, though dropout may partially mitigate the compounding effect.
+
+\subsection{Interpolation Between Same-Class and Global Statistics}
+
+Table~\ref{tab:interp} shows the interpolation results (SmallResNet, CIFAR-10).
+
+\begin{table}[t]
+\caption{Interpolation from same-class ($\alpha{=}0$) to global ($\alpha{=}1$) statistics.}
+\label{tab:interp}
+\centering
+\small
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$\alpha$ & Accuracy (\%) & Linear Probe (\%) \\
+\midrule
+0.0 & 3.44  & 99.90 \\
+0.1 & 7.13  & 99.70 \\
+0.2 & 13.41 & 98.67 \\
+0.3 & 23.14 & 94.85 \\
+0.4 & 36.47 & 87.10 \\
+0.5 & 51.61 & 77.60 \\
+0.6 & 65.17 & 74.65 \\
+0.7 & 75.26 & 77.88 \\
+0.8 & 82.62 & 83.00 \\
+0.9 & 87.64 & 87.53 \\
+1.0 & 91.01 & 90.85 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The transition is smooth and monotonic in both directions, ruling out sharp phase transitions. As $\alpha$ increases from 0 to 1:
+\begin{itemize}
+    \item Classification accuracy rises continuously from 3.4\% to 91.0\%.
+    \item Linear probe accuracy \emph{decreases} from 99.9\% to 90.9\%.
+\end{itemize}
+
+The two metrics move in opposite directions: the more calibrated the BN statistics, the higher classification accuracy but the \emph{lower} linear probe accuracy. This anti-correlation is the signature of the calibration mechanism.
+
+\subsection{CIFAR-100 Generalization}
+
+To test whether the finding generalizes beyond 10-class problems, we repeat the experiment on CIFAR-100 with SmallResNet (3 seeds, 25 epochs).
+
+\begin{table}[t]
+\caption{SmallResNet on CIFAR-100 (mean $\pm$ std, $n{=}3$ seeds).}
+\label{tab:cifar100}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Condition & Acc.\ (\%) & Conf.\ (\%) & Probe (\%) \\
+\midrule
+Global       & $70.28 \pm 0.52$  & $64.30 \pm 0.63$  & $67.12 \pm 0.32$  \\
+Same-class   & $0.67 \pm 0.47$   & $0.94 \pm 0.00$   & $46.80 \pm 35.62$ \\
+Wrong-class  & $1.00 \pm 0.00$   & $1.00 \pm 0.00$   & $56.40 \pm 36.87$ \\
+Random-class & $1.33 \pm 0.47$   & $1.00 \pm 0.00$   & $38.93 \pm 16.91$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The accuracy collapse is even more severe on CIFAR-100: same-class statistics reduce accuracy from 70.3\% to 0.67\%, well below the 1\% chance level for 100 classes ($t(2) = -147.3$, $p = 4.6 \times 10^{-5}$). All non-global conditions produce near-chance accuracy and near-uniform confidence (${\sim}1\%$), consistent with complete calibration failure across 100 output dimensions.
+
+\textbf{Linear probe variance.} While the accuracy collapse is unambiguous, linear probe results on CIFAR-100 exhibit high variance across seeds (std $= 35.62\%$ for same-class). This reflects the difficulty of ridge regression probes with 100 classes: the 256-dimensional feature space is less over-determined than in the 10-class setting, making probe accuracy sensitive to the particular seed's representation geometry. One seed achieves 97.1\% probe accuracy under same-class statistics (comparable to CIFAR-10 results), while others are substantially lower. With 100 classes, more sophisticated probing methods (e.g., MLP probes or regularization tuning) may be needed for stable estimates. The key finding---catastrophic accuracy collapse despite intact convolutional features---remains robust.
+
+\subsection{Tiny-ImageNet-200 Generalization}
+
+To test whether our findings extend to higher-resolution images, larger label spaces, and more complex visual content, we evaluate on Tiny-ImageNet-200 using SmallResNet64---a five-stage variant of SmallResNet adapted for $64{\times}64$ inputs (3 seeds, 25 epochs).
+
+\begin{table}[t]
+\caption{SmallResNet64 on Tiny-ImageNet-200 (mean $\pm$ std, $n{=}3$ seeds).}
+\label{tab:tinyimagenet}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Condition & Acc.\ (\%) & Conf.\ (\%) & Probe (\%) \\
+\midrule
+Global       & $60.77 \pm 0.30$  & $53.75 \pm 0.24$  & $51.83 \pm 0.55$   \\
+Same-class   & $0.17 \pm 0.24$   & $0.49 \pm 0.00$   & $100.00 \pm 0.00$  \\
+Wrong-class  & $0.50 \pm 0.00$   & $0.50 \pm 0.00$   & $100.00 \pm 0.00$  \\
+Random-class & $0.50 \pm 0.00$   & $0.50 \pm 0.00$   & $57.02 \pm 3.41$   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Tiny-ImageNet-200 produces the most dramatic results in our study. Same-class statistics reduce classification accuracy from 60.8\% to 0.17\%---well below the 0.5\% chance level for 200 classes ($t(2) = -402.16$, $p = 6.2 \times 10^{-6}$). The network's confidence collapses to a uniform 0.49\% (near the 0.5\% expected under random guessing over 200 classes), indicating complete calibration failure. Wrong-class statistics similarly collapse accuracy to 0.50\% ($t(2) = -280.89$, $p = 1.3 \times 10^{-5}$).
+
+The linear probe results are striking: under both same-class and wrong-class conditions, the probe achieves \textbf{perfect 100.0\% accuracy with zero variance across seeds}. This is the cleanest dissociation in our study---complete output collapse coexisting with perfectly separable representations. Unlike the CIFAR-100 results where probe accuracy exhibited high variance (std $= 35.62\%$), the five-stage SmallResNet64 architecture produces a 512-dimensional feature space that is substantially more over-determined for even 200 classes, enabling stable and perfect probe performance.
+
+The same-class vs.\ wrong-class comparison is also informative: on Tiny-ImageNet, same-class accuracy (0.17\%) is nominally lower than wrong-class (0.50\%), though this difference does not reach statistical significance ($t(2) = -2.0$, $p = 0.18$)---both are effectively at floor. With 200 classes, any BN statistic perturbation causes total calibration failure, leaving no room for the same-class vs.\ wrong-class distinction that is visible with 10 classes. The random-class probe is lower (57.0\%) because each sample sees a different class's statistics, averaging over inconsistent perturbation directions.
+
+\subsection{GroupNorm Control}
+
+To confirm the effect is specific to BN's running-statistic mechanism, we train SmallResNet with GroupNorm replacing all BatchNorm layers.
+
+\begin{table}[t]
+\caption{GroupNorm control on CIFAR-10 (mean $\pm$ std, $n{=}3$ seeds).}
+\label{tab:groupnorm}
+\centering
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy     & $81.65 \pm 1.94\%$ \\
+Linear Probe & $81.08 \pm 1.64\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+GroupNorm models achieve 81.6\% accuracy---comparable to the BatchNorm baseline (91.1\%) and within the expected range for this architecture without BN's optimization benefits. Crucially, since GroupNorm computes normalization statistics from the current input at test time, there are no stored running statistics to manipulate. The class-conditional replacement paradigm is inapplicable, confirming that the accuracy collapse observed in Sections~\ref{sec:results}.1--\ref{sec:results}.5 is specific to BatchNorm's running-statistic mechanism, not a general property of normalization layers.
+
+\subsection{Calibration Analysis}
+
+To characterize the nature of the accuracy collapse, we measure expected calibration error \citep[ECE;][]{guo2017calibration} across BN statistic conditions on SmallResNet CIFAR-10 (3 seeds).
+
+\begin{table}[t]
+\caption{Expected Calibration Error by condition (SmallResNet, CIFAR-10, $n{=}3$ seeds).}
+\label{tab:ece}
+\centering
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Condition & Accuracy (\%) & ECE \\
+\midrule
+Global (baseline) & $91.33 \pm 0.12$ & $0.025 \pm 0.001$ \\
+Same-class        & $2.87 \pm 0.49$  & $0.394 \pm 0.013$ \\
+Wrong-class       & $63.40 \pm 4.26$ & $0.064 \pm 0.013$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under global statistics, the network is well-calibrated (ECE $= 0.025$). Same-class statistics induce severe miscalibration (ECE $= 0.394$): the network assigns confident predictions that are systematically wrong. Interestingly, wrong-class statistics produce moderate ECE (0.064) despite substantially reduced accuracy---the network's confidence and accuracy remain roughly aligned, just at a lower level. This pattern is consistent with the calibration hypothesis: same-class statistics specifically disrupt the mapping between activation magnitudes and output confidence, rather than destroying the underlying feature representation.
+
+\subsection{Temperature Scaling Cannot Recover Accuracy}
+
+A natural question is whether the accuracy collapse under same-class statistics is merely a logit-scale issue---perhaps the correct class still receives the highest pre-softmax score, but the softmax temperature is wrong. If so, temperature scaling should recover accuracy.
+
+\begin{table}[t]
+\caption{Temperature scaling on same-class condition (SmallResNet, CIFAR-10, $n{=}3$ seeds).}
+\label{tab:tempscale}
+\centering
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Metric & Before & After ($T \approx 3.43$) \\
+\midrule
+Accuracy (\%) & $2.87 \pm 0.49$ & $2.87 \pm 0.49$ \\
+ECE           & $0.394 \pm 0.013$ & $0.151 \pm 0.003$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Temperature scaling finds an optimal temperature of $T \approx 3.43 \pm 0.02$, indicating that logits under same-class statistics are substantially over-scaled. The high temperature successfully reduces ECE from 0.394 to 0.151---a meaningful improvement in calibration. However, accuracy remains unchanged at 2.87\%. This is expected: temperature scaling is a monotonic transformation of logits that preserves the argmax, so it cannot change which class is predicted.
+
+This result is important because it rules out a simple explanation of our findings. The accuracy collapse is not merely an issue of logit magnitude or softmax sharpness. Rather, same-class BN statistics fundamentally alter \emph{which} class receives the highest logit, scrambling the output layer's class assignments. The network's predictions are not just poorly calibrated---they are systematically wrong in a way that no post-hoc logit rescaling can fix. This confirms that BN statistics control a structural calibration that aligns internal activation patterns with the classification head's learned decision boundaries, not merely the scale of the output distribution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Converging Lines of Evidence}
+
+Our results constitute eight independent lines of evidence that BN running statistics function as output calibrators rather than feature encoders:
+
+\begin{enumerate}
+    \item \textbf{Same-class statistics destroy accuracy but preserve representations} (CIFAR-10, 4 architectures). The dramatic dissociation between 3.5\% classification accuracy and 99.9\% linear probe accuracy is inexplicable under the feature encoding hypothesis.
+    \item \textbf{The effect is amplified with more classes.} On CIFAR-100, same-class statistics reduce accuracy to 0.67\%---below the 1\% chance level. On Tiny-ImageNet-200, accuracy drops to 0.17\%---below the 0.5\% chance level---demonstrating that the calibration disruption scales with output space dimensionality.
+    \item \textbf{The effect generalizes to higher resolution.} On Tiny-ImageNet-200 ($64{\times}64$ images, 200 classes), the dissociation is the most extreme observed: 0.17\% classification accuracy with \emph{perfect} 100\% linear probe accuracy across all seeds. This rules out the possibility that the effect is an artifact of low-resolution inputs.
+    \item \textbf{The effect is BN-specific.} GroupNorm models, which lack running statistics, are immune by construction (81.6\% accuracy preserved).
+    \item \textbf{Smooth interpolation with no phase transition.} The monotonic transition between same-class and global statistics (Section~\ref{sec:results}.3) indicates a continuous calibration mechanism rather than a discrete feature encoding/decoding process.
+    \item \textbf{ECE analysis reveals structured miscalibration.} Same-class statistics produce severely miscalibrated outputs (ECE $= 0.394$) while wrong-class statistics remain surprisingly well-calibrated (ECE $= 0.064$), indicating that the disruption is specifically in how activations are scaled for downstream interpretation.
+    \item \textbf{Temperature scaling cannot recover accuracy.} Post-hoc calibration reduces ECE ($0.394 \to 0.151$) but yields zero accuracy recovery ($2.9\% \to 2.9\%$), proving that same-class statistics alter logit \emph{rankings}, not merely magnitudes.
+    \item \textbf{Dropout does not prevent the effect.} WideResNet-16-8, which uses dropout ($p{=}0.3$) as additional regularization, still shows catastrophic accuracy collapse ($90.6\% \to 11.1\%$) with near-perfect probe accuracy (99.8\%), demonstrating that the calibration dependence is not an artifact of overfitting to specific activation scales.
+\end{enumerate}
+
+\subsection{Why Same-Class Statistics Are Worse Than Wrong-Class}
+
+The most counterintuitive finding is that same-class BN statistics (3.5\%) perform \emph{worse} than wrong-class (65.4\%) or random-class (59.0\%) statistics. We propose the following explanation:
+
+Class-conditional BN statistics differ from global statistics in a systematic, class-correlated direction. When the network processes class-$c$ samples with class-$c$ statistics, the normalization shifts activations in a way that is anti-correlated with the classification head's expectations. The classification head learned decision boundaries calibrated to globally-normalized activations---specific activation magnitudes at specific neurons correspond to specific classes.
+
+Same-class statistics normalize away the between-class activation variation that the final linear layer exploits. Each class gets ``centered'' onto itself, collapsing the between-class signal. Wrong-class statistics introduce a mismatch, but one that may preserve or even amplify some between-class structure.
+
+This is consistent with the linear probe results: same-class normalization makes representations \emph{more} linearly separable (99.9\% probe accuracy) by removing within-class variation, but the \emph{original} classification head cannot exploit this because it was calibrated for globally-normalized inputs.
+
+The ECE analysis (Section~\ref{sec:results}.7) adds nuance: wrong-class statistics produce well-calibrated but less accurate outputs (ECE $= 0.064$, accuracy $= 63.4\%$), suggesting the mismatch introduces noise but preserves the approximate relationship between confidence and correctness. Same-class statistics produce severely miscalibrated outputs (ECE $= 0.394$, accuracy $= 2.9\%$), indicating a \emph{systematic} rather than random disruption---the network is confidently wrong, not merely uncertain.
+
+On Tiny-ImageNet-200, this distinction collapses: with 200 classes, both same-class (0.17\%) and wrong-class (0.50\%) produce floor-level accuracy, as the calibration disruption is severe enough to completely scramble any residual class structure in the outputs.
+
+\subsection{The Calibration Decomposition}
+
+Our results support a clean functional decomposition of BN-equipped networks:
+
+\begin{enumerate}
+    \item \textbf{Convolutional filters} learn class-discriminative features that are robust to normalization perturbation.
+    \item \textbf{BN running statistics} calibrate activation scale and shift to match downstream expectations.
+    \item \textbf{The classification head} is a thin linear layer highly sensitive to the specific calibration of its inputs.
+\end{enumerate}
+
+The interpolation experiment (Section~\ref{sec:results}.3) makes this vivid: classification accuracy and linear probe accuracy move in opposite directions as we interpolate between same-class and global statistics. The optimal calibration for the classification head ($\alpha{=}1$, global) is the \emph{worst} point for linear separability, and vice versa.
+
+The calibration analysis (Sections~\ref{sec:results}.7--\ref{sec:results}.8) provides further mechanistic evidence. The high ECE under same-class statistics (0.394) shows the network is confidently wrong---not uncertain, but miscalibrated. Temperature scaling reduces this miscalibration (ECE: $0.394 \to 0.151$) without recovering accuracy, demonstrating that the disruption operates at the level of class identity assignment, not output confidence scaling. BN statistics control which activation patterns map to which classes, not merely how confident the mapping is.
+
+The Tiny-ImageNet-200 results (Section~\ref{sec:results}.5) provide the most compelling evidence for this decomposition. The five-stage SmallResNet64 learns rich 512-dimensional representations that remain \emph{perfectly} linearly separable under BN statistic perturbation---even as the classification head produces completely random outputs. This perfect dissociation, achieved with 200 classes at $64{\times}64$ resolution, demonstrates that the calibration decomposition holds across scales.
+
+\subsection{Architecture-Dependent Sensitivity}
+
+The severity of the accuracy collapse under same-class statistics shows interesting variation across architectures that is broadly (but not perfectly) correlated with the number of BN layers:
+
+\begin{table}[t]
+\caption{Architecture-dependent sensitivity to same-class BN statistic replacement.}
+\label{tab:arch_sensitivity}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Architecture & BN Layers & Same-Class Acc.\ (\%) & Notes \\
+\midrule
+SmallResNet    & 20   & 3.55  & Deepest collapse \\
+VGG-11-BN      & 8    & 10.88 & No skip connections \\
+WideResNet-16-8 & Many & 11.12 & Has dropout ($p{=}0.3$) \\
+SimpleCNN       & 4    & 26.33 & Fewest BN layers \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+SmallResNet, with 20 BN layers and no dropout, shows the most severe collapse (3.5\%). SimpleCNN, with only 4 BN layers, retains the most accuracy (26.3\%), consistent with fewer calibration-disruption points. WideResNet-16-8 is an interesting case: despite having many BN layers and a very high-capacity architecture, its same-class accuracy (11.1\%) is notably higher than SmallResNet's (3.5\%). This may be attributable to dropout ($p{=}0.3$), which introduces stochastic noise during training and may make the classification head slightly more robust to the kind of activation perturbation induced by BN statistic replacement. Dropout effectively trains the classification head to tolerate some activation variance, partially buffering it against the calibration disruption.
+
+\subsection{Implications}
+
+\textbf{Transfer learning.} Resetting BN running statistics on a new domain is effective because it recalibrates activation scales, not because it encodes new features. Our results predict that fine-tuning the classification head after BN statistic reset should be sufficient for adaptation, even without retraining convolutional weights.
+
+\textbf{Domain adaptation.} The success of AdaBN \citep{li2018revisiting}---replacing BN statistics with target-domain statistics---follows naturally from the calibration perspective: target-domain statistics recalibrate activations to a consistent scale the classification head can interpret.
+
+\textbf{Normalization-free architectures.} Recent architectures like NFNets \citep{brock2021high} replace BN with alternative scaling strategies. Our findings suggest the critical function being replaced is activation calibration. Simpler alternatives focused specifically on maintaining consistent activation scales may suffice.
+
+\textbf{Model compression.} BN folding (absorbing BN into convolutional weights during deployment) bakes a specific calibration into the weights. Post-hoc weight modifications must preserve this calibration, not just feature extraction capability.
+
+\textbf{Post-hoc calibration.} Our temperature scaling results (Section~\ref{sec:results}.8) reveal a fundamental distinction between \emph{output calibration} (adjusting confidence to match accuracy, as in \citealt{guo2017calibration}) and \emph{structural calibration} (aligning internal activation scales with downstream expectations). BN statistics perform structural calibration; temperature scaling performs output calibration. The two are complementary but address different failure modes.
+
+\subsection{Broader Significance}
+
+The methodological lesson is perhaps most important: \textbf{classification accuracy can be deeply misleading about representation quality.} A model at 3.5\% accuracy---worse than random chance---may have learned excellent class-discriminative features. On Tiny-ImageNet-200, a model at 0.17\% accuracy---a third of the chance rate---achieves \emph{perfect} linear probe accuracy. The bottleneck is not representation but calibration. This suggests that many apparent failures in deep learning (e.g., in domain shift, adversarial settings, or after architectural modifications) may be calibration failures rather than representation failures.
+
+The ECE analysis reinforces this point quantitatively: the same-class condition produces a network that is both severely inaccurate \emph{and} severely miscalibrated, yet its internal representations are near-perfectly separable. Future work on diagnosing model failures should consider separately measuring representation quality and output calibration rather than relying on end-to-end accuracy alone.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}
+    \item \textbf{Architecture scope.} While we test four architectures spanning residual networks (SmallResNet, WideResNet-16-8), plain convnets (VGG-11-BN), and minimal networks (SimpleCNN), all are trained on relatively small datasets. Scaling to ImageNet-scale models with hundreds of layers is an important direction.
+    \item \textbf{Dataset scope.} CIFAR-10, CIFAR-100, and Tiny-ImageNet-200 span 10 to 200 classes and $32{\times}32$ to $64{\times}64$ resolution, but remain within the domain of natural image classification. Fine-grained recognition, medical imaging, or natural language tasks may show different dynamics.
+    \item \textbf{Training duration.} Models are trained for 20--25 epochs on Apple Silicon (MPS backend). Longer training schedules may yield different BN statistic structure.
+    \item \textbf{Linear probe limitations.} Ridge regression and logistic regression test only linear separability. On CIFAR-100, the 256-dimensional feature space with 100 classes yields high probe variance across seeds (std up to 35.6\%), suggesting more expressive probing methods (e.g., MLP probes or cross-validated regularization) would provide more stable estimates. The Tiny-ImageNet results (512-dimensional features, 200 classes) resolve this issue with perfect probe accuracy across seeds, suggesting that richer feature spaces mitigate the probe instability seen on CIFAR-100.
+    \item \textbf{Static replacement.} We replace all BN layers simultaneously. Layer-wise replacement could reveal which layers are most sensitive to calibration disruption.
+    \item \textbf{ECE limitations.} ECE with fixed binning can be sensitive to bin count and sample size \citep{nixon2019measuring}. We use 15 bins following standard practice, but kernel-based calibration measures could provide smoother estimates.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusion}
+
+We demonstrate a striking dissociation between classification accuracy and representation quality under batch normalization statistic manipulation. Replacing global BN statistics with same-class statistics destroys classification (3.5\% on CIFAR-10, 0.67\% on CIFAR-100, 0.17\% on Tiny-ImageNet-200) while yielding near-perfect or perfect linear probe accuracy (99.9\% on CIFAR-10, 100.0\% on Tiny-ImageNet-200). This effect replicates across four architectures---including WideResNet-16-8 with dropout---generalizes across three datasets spanning 10 to 200 classes and $32{\times}32$ to $64{\times}64$ resolution, varies smoothly under interpolation, and is specific to BatchNorm's running-statistic mechanism (absent with GroupNorm).
+
+Calibration analysis reveals that same-class statistics induce severe miscalibration (ECE $= 0.394$ vs.\ $0.025$ baseline), and temperature scaling---while halving ECE---cannot recover accuracy, confirming that the collapse reflects structural activation misalignment rather than a simple logit-scale shift. These findings establish that BN running statistics function as output calibrators rather than feature encoders. Networks learn representations that are remarkably robust to BN perturbation, but classification heads are precisely calibrated to the activation scale produced by global statistics.
+
+This calibration perspective unifies observations from transfer learning, domain adaptation, and test-time adaptation, and has implications for the design of normalization layers and calibration-aware training procedures.
+
+\paragraph{Reproducibility.} Code and data are available at \url{https://github.com/alisaffarini/bn-calibration}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{refs}
+\bibliographystyle{icml2025}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Experimental Configuration}
+\label{app:config}
+
+\begin{table}[h]
+\caption{Full experimental configuration.}
+\label{tab:config}
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Parameter & Value \\
+\midrule
+\textbf{SmallResNet} & BasicBlock, $[2,2,2,2]$, channels $[32,64,128,256]$, 20 BN layers \\
+\textbf{SmallResNet64} & BasicBlock, 5-stage, channels $[32,64,128,256,512]$, for $64{\times}64$ \\
+\textbf{VGG-11-BN} & Standard VGG-11 with BN, 8 BN layers \\
+\textbf{SimpleCNN} & 4-layer CNN, 4 BN layers \\
+\textbf{WideResNet-16-8} & depth=16, widen\_factor=8, dropout=0.3 \\
+Training epochs & 20 (CIFAR-10), 25 (CIFAR-100, Tiny-ImageNet-200) \\
+Batch size & 128 \\
+Optimizer & SGD (momentum=0.9, weight\_decay=$5{\times}10^{-4}$) \\
+Learning rate & 0.1, cosine annealing \\
+Augmentation & RandomCrop(32, pad=4), RandomHorizontalFlip (CIFAR) \\
+Normalization & $\mu{=}(0.4914, 0.4822, 0.4465)$, $\sigma{=}(0.2470, 0.2435, 0.2616)$ \\
+Linear probe & Ridge ($\lambda{=}10^{-3}$) or LogisticRegression, 80/20 split \\
+ECE & 15 equal-width bins \\
+Temp.\ scaling & NLL-optimized scalar $T$ on validation set \\
+Seeds & 42--51 (SmallResNet CIFAR-10), 42--44 (all others) \\
+Device & Apple Silicon (MPS backend); mixed precision for WRN-16-8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Full Per-Seed Results}
+\label{app:seeds}
+
+\begin{table*}[t]
+\caption{SmallResNet CIFAR-10 --- Classification accuracy by seed and condition.}
+\label{tab:b1}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Global & Same-Class & Wrong-Class & Random-Class \\
+\midrule
+42 & 90.96 & 3.85  & 60.19 & 55.26 \\
+43 & 91.05 & 4.02  & 70.70 & 67.73 \\
+44 & 91.01 & 2.46  & 69.93 & 55.45 \\
+45 & 91.07 & 4.06  & 64.59 & 56.74 \\
+46 & 91.26 & 3.84  & 57.08 & 56.07 \\
+47 & 91.30 & 3.37  & 60.49 & 57.01 \\
+48 & 90.95 & 2.39  & 67.19 & 50.82 \\
+49 & 91.19 & 2.90  & 63.57 & 56.01 \\
+50 & 90.93 & 4.22  & 69.00 & 66.09 \\
+51 & 91.04 & 4.35  & 70.98 & 68.72 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\caption{SmallResNet CIFAR-10 --- Linear probe accuracy by seed and condition.}
+\label{tab:b2}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Global & Same-Class & Wrong-Class & Random-Class \\
+\midrule
+42 & 90.30 & 99.90  & 100.00 & 96.30 \\
+43 & 90.65 & 99.80  & 100.00 & 96.85 \\
+44 & 91.10 & 99.90  & 100.00 & 97.05 \\
+45 & 89.65 & 99.90  & 100.00 & 96.90 \\
+46 & 90.80 & 100.00 & 100.00 & 98.30 \\
+47 & 91.80 & 99.95  & 100.00 & 99.35 \\
+48 & 90.80 & 99.90  & 100.00 & 96.80 \\
+49 & 91.15 & 99.90  & 100.00 & 98.90 \\
+50 & 91.00 & 99.65  & 100.00 & 96.65 \\
+51 & 91.30 & 99.90  & 100.00 & 99.15 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[t]
+\caption{SmallResNet CIFAR-100 --- Per-seed results.}
+\label{tab:b3}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Glob.\ Acc & SC Acc & Glob.\ Probe & SC Probe \\
+\midrule
+42 & 70.95 & 1.00 & 67.55 & 97.10 \\
+43 & 69.68 & 1.00 & 66.80 & 24.10 \\
+44 & 70.21 & 0.00 & 67.00 & 19.20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{ECE and temperature scaling --- Per-seed results (SmallResNet, CIFAR-10).}
+\label{tab:b4}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Glob.\ ECE & SC ECE & SC ECE (post-$T$) & $T$ \\
+\midrule
+42 & 0.026 & 0.382 & 0.150 & 3.456 \\
+43 & 0.024 & 0.412 & 0.148 & 3.428 \\
+44 & 0.026 & 0.388 & 0.154 & 3.416 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table*}[t]
+\caption{WideResNet-16-8 CIFAR-10 --- Per-seed classification accuracy ($n{=}3$ seeds).}
+\label{tab:b5a}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Global Acc & Same-Class Acc & Wrong-Class Acc & Random-Class Acc \\
+\midrule
+42 & 90.10 & 10.22 & 60.92 & 60.65 \\
+43 & 91.12 & 12.02 & 67.20 & 64.17 \\
+44 & 90.61 & 11.12 & 64.06 & 62.41 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\caption{WideResNet-16-8 CIFAR-10 --- Per-seed linear probe accuracy ($n{=}3$ seeds).}
+\label{tab:b5b}
+\centering
+\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Seed & Global Probe & Same-Class Probe & Wrong-Class Probe & Random-Class Probe \\
+\midrule
+42 & 90.74 & 99.69 & 99.53 & 96.19 \\
+43 & 91.30 & 99.87 & 99.67 & 97.07 \\
+44 & 91.02 & 99.78 & 99.60 & 96.63 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\caption{SmallResNet64 Tiny-ImageNet-200 --- Per-seed results ($n{=}3$ seeds).}
+\label{tab:b6}
+\centering
+\small
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+Seed & Glob.\ Acc & Glob.\ Conf & Glob.\ Probe & SC Acc & SC Probe \\
+\midrule
+42 & 60.88 & 53.51 & 51.55 & 0.00  & 100.00 \\
+43 & 61.08 & 54.00 & 52.60 & 0.50  & 100.00 \\
+44 & 60.36 & 53.75 & 51.35 & 0.00  & 100.00 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\end{document}

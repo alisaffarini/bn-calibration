@@ -1,0 +1,105 @@
+{
+  "ece": {
+    "seed_42": {
+      "global": {
+        "accuracy": 0.9131249785423279,
+        "ece": 0.02626541629433632
+      },
+      "same_class": {
+        "accuracy": 0.024125000461935997,
+        "ece": 0.38234400749206543
+      },
+      "wrong_class": {
+        "accuracy": 0.6625000238418579,
+        "ece": 0.06891364604234695
+      }
+    },
+    "seed_43": {
+      "global": {
+        "accuracy": 0.9120000004768372,
+        "ece": 0.0235375314950943
+      },
+      "same_class": {
+        "accuracy": 0.03550000116229057,
+        "ece": 0.41241464018821716
+      },
+      "wrong_class": {
+        "accuracy": 0.5738750100135803,
+        "ece": 0.04650641977787018
+      }
+    },
+    "seed_44": {
+      "global": {
+        "accuracy": 0.9148749709129333,
+        "ece": 0.025670543313026428
+      },
+      "same_class": {
+        "accuracy": 0.026499999687075615,
+        "ece": 0.38798055052757263
+      },
+      "wrong_class": {
+        "accuracy": 0.6657500267028809,
+        "ece": 0.07598138600587845
+      }
+    },
+    "aggregate": {
+      "global": {
+        "accuracy_mean": 0.9133333166440328,
+        "accuracy_std": 0.0011829109083311632,
+        "ece_mean": 0.025157830367485683,
+        "ece_std": 0.0011711802573693825
+      },
+      "same_class": {
+        "accuracy_mean": 0.028708333770434063,
+        "accuracy_std": 0.004899334294987344,
+        "ece_mean": 0.3942463994026184,
+        "ece_std": 0.013051344356818873
+      },
+      "wrong_class": {
+        "accuracy_mean": 0.6340416868527731,
+        "accuracy_std": 0.04256494943849967,
+        "ece_mean": 0.06380048394203186,
+        "ece_std": 0.012564546112869364
+      }
+    }
+  },
+  "temp_scaling": {
+    "seed_42": {
+      "same_class": {
+        "temperature": 3.4558169841766357,
+        "accuracy_before": 0.024125000461935997,
+        "accuracy_after": 0.024125000461935997,
+        "ece_before": 0.38234400749206543,
+        "ece_after": 0.15017957985401154
+      }
+    },
+    "seed_43": {
+      "same_class": {
+        "temperature": 3.4276041984558105,
+        "accuracy_before": 0.03550000116229057,
+        "accuracy_after": 0.03550000116229057,
+        "ece_before": 0.41241464018821716,
+        "ece_after": 0.1482258141040802
+      }
+    },
+    "seed_44": {
+      "same_class": {
+        "temperature": 3.4155688285827637,
+        "accuracy_before": 0.026499999687075615,
+        "accuracy_after": 0.026499999687075615,
+        "ece_before": 0.38798055052757263,
+        "ece_after": 0.15447384119033813
+      }
+    },
+    "aggregate": {
+      "temperature_mean": 3.43299667040507,
+      "temperature_std": 0.016867870295718946,
+      "accuracy_before_mean": 0.028708333770434063,
+      "accuracy_after_mean": 0.028708333770434063,
+      "ece_before_mean": 0.3942463994026184,
+      "ece_after_mean": 0.15095974504947662,
+      "accuracy_recovery": 0.0
+    }
+  },
+  "total_time_seconds": 2395.4319479465485
+}
