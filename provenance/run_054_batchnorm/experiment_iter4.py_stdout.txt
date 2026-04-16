@@ -1,0 +1,22 @@
+Using device: cpu
+Running metric sanity checks...
+Sanity checks passed: Random MI=0.039, Correlated MI=0.582, Perfect MI=1.754
+METRIC_SANITY_PASSED
+Starting Full-Scale BN Class-Specificity Experiment
+================================================================================
+
+Running first seed as sanity check...
+
+============================================================
+Seed 0: BN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=2.5270, Train Acc=0.084, Val Loss=6.6156, Val Acc=0.019, LR=0.001000
+Epoch 10: Train Loss=2.1545, Train Acc=0.276, Val Loss=5.3399, Val Acc=0.137, LR=0.000500
+CONVERGED at epoch 13
+
+Seed 0 Summary:
+  Test Acc: 0.101
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+  Tracked batches: 0
+SANITY_ABORT: Both accuracy (0.101) and MI (0.0) are too low

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_054_batchnorm/dryrun_iter5.py", line 198, in <module>
+    sanity_check_mutual_information()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_054_batchnorm/dryrun_iter5.py", line 150, in sanity_check_mutual_information
+    assert mi_random < 0.1, f"Random MI too high: {mi_random}"
+           ^^^^^^^^^^^^^^^
+AssertionError: Random MI too high: 0.5037607304231762

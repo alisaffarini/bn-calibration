@@ -1,0 +1,52 @@
+Running metric sanity checks...
+✓ Evaluation function returns valid accuracy
+✓ Alpha interpolation works correctly
+METRIC_SANITY_PASSED
+
+=== First seed (sanity check) ===
+
+=== Seed 0 (cpu) ===
+  Epoch 1: Val Acc: 0.2469
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1562
+  Layer 1: 0.1719
+  Layer 2: 0.2188
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.2938
+  Class-cond: 0.0078
+  Hybrid: 0.0219
+  Reverse: 0.1469
+NO_SIGNAL
+Time: 6.6s
+Sanity passed! Continuing...
+
+=== Seed 1 (cpu) ===
+  Epoch 1: Val Acc: 0.1969
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1016
+  Layer 1: 0.1797
+  Layer 2: 0.2578
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.2906
+  Class-cond: 0.0391
+  Hybrid: 0.0672
+  Reverse: 0.1875
+SIGNAL_DETECTED
+Time: 6.7s
+
+=== SUMMARY (2 seeds) ===
+Mean importance: [0.12890625000000003, 0.17578125, 0.23828125000000006]
+Spearman ρ: 1.000 ± 0.000
+Global acc: 0.292 ± 0.002
+Hybrid acc: 0.045 ± 0.023
+p-value (hybrid vs global): 0.062059
+Total time: 13.3s
+
+RESULTS: {"per_seed_results": [{"seed": 0, "converged": false, "importance_scores": [0.15625, 0.17187499999999994, 0.21875000000000006], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.328125, "global": 0.29375, "class_cond": 0.0078125, "hybrid": 0.021875, "reverse": 0.146875}, "signal_detected": false, "time": 6.561391830444336}, {"seed": 1, "converged": false, "importance_scores": [0.10156250000000006, 0.17968750000000006, 0.25781250000000006], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.290625, "global": 0.290625, "class_cond": 0.0390625, "hybrid": 0.0671875, "reverse": 0.1875}, "signal_detected": true, "time": 6.72542405128479}], "mean": {"importance_scores": [0.12890625000000003, 0.17578125, 0.23828125000000006], "spearman_rho": 1.0, "accuracies": {"global": 0.29218750000000004, "hybrid": 0.044531249999999994, "reverse": 0.1671875}}, "std": {"importance_scores": [0.027343749999999972, 0.0039062500000000555, 0.01953125], "spearman_rho": 0.0, "accuracies": {"global": 0.0015624999999999944, "hybrid": 0.02265625}}, "p_values": {"hybrid_vs_global": 0.06205886638158762, "hybrid_vs_reverse": 0.012163228798367022}, "convergence_status": "0/2 converged", "signal_detection_rate": 0.5, "total_time_seconds": 13.296443223953247}
+DRY_RUN_OK: Full pipeline validated (train → analyze → output)

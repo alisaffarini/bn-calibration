@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_054_batchnorm/experiment_iter9.py", line 1101, in <module>
+    main()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_054_batchnorm/experiment_iter9.py", line 1070, in main
+    f"(p = {p_val:.6f if 'p_val' in locals() else 'N/A'})")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format specifier '.6f if 'p_val' in locals() else 'N/A'' for object of type 'float'

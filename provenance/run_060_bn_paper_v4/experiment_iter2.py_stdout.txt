@@ -1,0 +1,22 @@
+Using device: cpu
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+
+============================================================
+RUNNING SEED 0
+============================================================
+
+=== Training early_stopped model (seed 0) ===
+Epoch 1: Train Loss: 2.007, Train Acc: 0.240, Val Acc: 0.237, Val ECE: 0.199
+Epoch 2: Train Loss: 1.787, Train Acc: 0.311, Val Acc: 0.295, Val ECE: 0.162
+Epoch 3: Train Loss: 1.655, Train Acc: 0.374, Val Acc: 0.340, Val ECE: 0.023
+Epoch 4: Train Loss: 1.529, Train Acc: 0.418, Val Acc: 0.383, Val ECE: 0.110
+Epoch 5: Train Loss: 1.466, Train Acc: 0.452, Val Acc: 0.421, Val ECE: 0.054
+Epoch 6: Train Loss: 1.405, Train Acc: 0.489, Val Acc: 0.414, Val ECE: 0.157
+Epoch 7: Train Loss: 1.363, Train Acc: 0.491, Val Acc: 0.483, Val ECE: 0.023
+Epoch 8: Train Loss: 1.233, Train Acc: 0.553, Val Acc: 0.474, Val ECE: 0.085
+Epoch 9: Train Loss: 1.238, Train Acc: 0.550, Val Acc: 0.450, Val ECE: 0.103
+Epoch 10: Train Loss: 1.184, Train Acc: 0.568, Val Acc: 0.467, Val ECE: 0.129
+CONVERGED (early stopped)
+
+=== Applying diagnostic to early_stopped model ===

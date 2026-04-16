@@ -1,0 +1,186 @@
+{
+  "config": {
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "epochs": 25,
+    "model": "SmallResNet",
+    "dataset": "CIFAR-100",
+    "linear_probe": "LogisticRegression(max_iter=1000, C=1.0, solver=lbfgs, multi_class=multinomial)",
+    "note": "Fixed linear probe \u2014 replaces broken ridge regression for 100 classes"
+  },
+  "aggregate": {
+    "global": {
+      "accuracy_mean": 0.70114,
+      "accuracy_std": 0.00572104885488665,
+      "confidence_mean": 0.6398454165598021,
+      "confidence_std": 0.0073255002720426605,
+      "linear_probe_mean": 0.6423,
+      "linear_probe_std": 0.013448419981544299
+    },
+    "same_class": {
+      "accuracy_mean": 0.006,
+      "accuracy_std": 0.004898979485566356,
+      "confidence_mean": 0.009403219690071418,
+      "confidence_std": 3.402129871363404e-05,
+      "linear_probe_mean": 1.0,
+      "linear_probe_std": 0.0
+    },
+    "wrong_class": {
+      "accuracy_mean": 0.01,
+      "accuracy_std": 0.0,
+      "confidence_mean": 0.010030959347076714,
+      "confidence_std": 6.894120192355644e-06,
+      "linear_probe_mean": 1.0,
+      "linear_probe_std": 0.0
+    },
+    "random_class": {
+      "accuracy_mean": 0.01,
+      "accuracy_std": 0.006324555320336759,
+      "confidence_mean": 0.01000979513540864,
+      "confidence_std": 5.20050893664807e-06,
+      "linear_probe_mean": 0.6548999999999999,
+      "linear_probe_std": 0.08754564523721323
+    }
+  },
+  "statistical_tests": {
+    "same_vs_global_acc": {
+      "t": -162.93169169492714,
+      "p": 8.511770926532477e-09
+    },
+    "wrong_vs_global_acc": {
+      "t": -241.61303898310922,
+      "p": 1.7604357679025975e-09
+    },
+    "same_vs_wrong_acc": {
+      "t": -1.6329931618554523,
+      "p": 0.17780780835622123
+    },
+    "same_vs_global_probe": {
+      "t": 53.195840179126364,
+      "p": 7.475118922111213e-07
+    }
+  },
+  "per_seed": [
+    {
+      "global": {
+        "mean_acc": 0.7095,
+        "mean_conf": 0.6496238079961475,
+        "linear_probe_acc": 0.6565
+      },
+      "same_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.00945705368607305,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.01003139506583102,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010005591530399396,
+        "linear_probe_acc": 0.764
+      },
+      "seed": 42
+    },
+    {
+      "global": {
+        "mean_acc": 0.6968000000000001,
+        "mean_conf": 0.6345042107716922,
+        "linear_probe_acc": 0.6485
+      },
+      "same_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.009379350394010545,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010034359833225608,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010016419691964984,
+        "linear_probe_acc": 0.562
+      },
+      "seed": 43
+    },
+    {
+      "global": {
+        "mean_acc": 0.7021000000000001,
+        "mean_conf": 0.6448784412568047,
+        "linear_probe_acc": 0.65
+      },
+      "same_class": {
+        "mean_acc": 0.0,
+        "mean_conf": 0.009403556869365275,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010022703297436238,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.02,
+        "mean_conf": 0.010010403622873127,
+        "linear_probe_acc": 0.55
+      },
+      "seed": 44
+    },
+    {
+      "global": {
+        "mean_acc": 0.6931,
+        "mean_conf": 0.6290277307986093,
+        "linear_probe_acc": 0.618
+      },
+      "same_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.009357571326149628,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010024568064883353,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010002418999094516,
+        "linear_probe_acc": 0.737
+      },
+      "seed": 45
+    },
+    {
+      "global": {
+        "mean_acc": 0.7042,
+        "mean_conf": 0.6411928919757566,
+        "linear_probe_acc": 0.6385
+      },
+      "same_class": {
+        "mean_acc": 0.0,
+        "mean_conf": 0.009418566174758596,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.01,
+        "mean_conf": 0.010041770474007353,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.0,
+        "mean_conf": 0.010014141832711175,
+        "linear_probe_acc": 0.6615
+      },
+      "seed": 46
+    }
+  ],
+  "total_time_seconds": 4530.4619381427765
+}

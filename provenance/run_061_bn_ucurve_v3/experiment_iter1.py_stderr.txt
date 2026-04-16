@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_061_bn_ucurve_v3/experiment_iter1.py", line 50, in <module>
+    assert ece_perfect < 0.1, f"ECE for perfect calibration should be near 0, got {ece_perfect}"
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ECE for perfect calibration should be near 0, got 0.25

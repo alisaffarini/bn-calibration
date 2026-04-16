@@ -1,0 +1,139 @@
+{
+  "config": {
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 25,
+    "model": "SmallResNet64 (5-stage, adapted for 64x64)",
+    "dataset": "Tiny-ImageNet-200",
+    "num_classes": 200,
+    "image_size": 64,
+    "linear_probe": "LogisticRegression(max_iter=1000, C=1.0, solver=lbfgs, multi_class=multinomial)"
+  },
+  "aggregate": {
+    "global": {
+      "accuracy_mean": 0.6077333333333333,
+      "accuracy_std": 0.0030346151137976038,
+      "confidence_mean": 0.5375475264451239,
+      "confidence_std": 0.002440273708729081,
+      "linear_probe_mean": 0.5183333333333334,
+      "linear_probe_std": 0.005482294734466206
+    },
+    "same_class": {
+      "accuracy_mean": 0.0016666666666666668,
+      "accuracy_std": 0.0023570226039551583,
+      "confidence_mean": 0.004860935456429918,
+      "confidence_std": 6.4734691024866745e-06,
+      "linear_probe_mean": 1.0,
+      "linear_probe_std": 0.0
+    },
+    "wrong_class": {
+      "accuracy_mean": 0.005,
+      "accuracy_std": 0.0,
+      "confidence_mean": 0.005002246844427039,
+      "confidence_std": 3.5849493885436735e-07,
+      "linear_probe_mean": 1.0,
+      "linear_probe_std": 0.0
+    },
+    "random_class": {
+      "accuracy_mean": 0.005,
+      "accuracy_std": 0.0,
+      "confidence_mean": 0.005001331744715571,
+      "confidence_std": 1.2142185039807645e-06,
+      "linear_probe_mean": 0.5701666666666667,
+      "linear_probe_std": 0.03412070078738454
+    }
+  },
+  "statistical_tests": {
+    "same_vs_global_acc": {
+      "t": -402.16216267578386,
+      "p": 6.182918996651155e-06
+    },
+    "wrong_vs_global_acc": {
+      "t": -280.89020272084315,
+      "p": 1.2674141760172814e-05
+    },
+    "same_vs_wrong_acc": {
+      "t": -2.0,
+      "p": 0.18350341907227394
+    },
+    "same_vs_global_probe": {
+      "t": 124.25080473338782,
+      "p": 6.476783580999043e-05
+    }
+  },
+  "per_seed": [
+    {
+      "global": {
+        "mean_acc": 0.6088,
+        "mean_conf": 0.5377955376017023,
+        "linear_probe_acc": 0.5155
+      },
+      "same_class": {
+        "mean_acc": 0.0,
+        "mean_conf": 0.004852089115884155,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.005001796206925064,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.005001995681086555,
+        "linear_probe_acc": 0.5645
+      },
+      "seed": 42
+    },
+    {
+      "global": {
+        "mean_acc": 0.6108,
+        "mean_conf": 0.5404045058567217,
+        "linear_probe_acc": 0.526
+      },
+      "same_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.004863317696144804,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.005002673340495676,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.004999628324294463,
+        "linear_probe_acc": 0.5315
+      },
+      "seed": 43
+    },
+    {
+      "global": {
+        "mean_acc": 0.6036,
+        "mean_conf": 0.5344425358769479,
+        "linear_probe_acc": 0.5135
+      },
+      "same_class": {
+        "mean_acc": 0.0,
+        "mean_conf": 0.004867399557260796,
+        "linear_probe_acc": 1.0
+      },
+      "wrong_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.005002270985860377,
+        "linear_probe_acc": 1.0
+      },
+      "random_class": {
+        "mean_acc": 0.005,
+        "mean_conf": 0.005002371228765696,
+        "linear_probe_acc": 0.6145
+      },
+      "seed": 44
+    }
+  ],
+  "total_time_seconds": 22900.275491952896
+}

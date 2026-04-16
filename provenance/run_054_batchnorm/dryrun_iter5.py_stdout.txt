@@ -1,0 +1,8 @@
+Using device: cpu
+Running metric sanity checks...
+  Perfect separation MI: 2.303
+  Random MI: 0.504
+  Partial correlation MI: 0.869
+  Single class MI: 0.000
+DRY_RUN_WARNING: Pipeline completed but no RESULTS: line was printed!
+DRY_RUN_WARNING: The post-processing/output stage may be broken.

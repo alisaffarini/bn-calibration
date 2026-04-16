@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/dryrun_iter4.py", line 927, in <module>
+    main()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/dryrun_iter4.py", line 876, in main
+    first_result = run_single_seed(0, full_scale=full_scale)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/dryrun_iter4.py", line 518, in run_single_seed
+    _, test_acc, test_ece = evaluate(random_model, test_loader, device)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/dryrun_iter4.py", line 266, in evaluate
+    outputs = model(inputs)
+              ^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/dryrun_iter4.py", line 205, in forward
+    out = self.linear(out)
+          ^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (64x256 and 4096x10)

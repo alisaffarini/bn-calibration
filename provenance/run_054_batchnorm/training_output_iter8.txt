@@ -1,0 +1,470 @@
+Using device: cpu
+Running metric sanity checks...
+
+Test 1: Perfect class separation
+  Perfect separation MI: 2.072
+
+Test 2: Random baseline
+  Random MI: 0.032
+
+Test 3: Realistic BN stats
+  BN single-class MI: 1.989
+
+Test 4: Mixed batch BN stats
+  BN mixed-batch MI: 0.711
+
+METRIC_SANITY_PASSED
+================================================================================
+BN CLASS-SPECIFICITY EXPERIMENT (IMPROVED)
+================================================================================
+
+EARLY CHECK (Seed 0)
+------------------------------------------------------------
+
+[Seed 0] main: BN model, random sampling
+  Epoch 0: Train Acc=0.617, Val Acc=0.857, LR=0.000976
+  Epoch 10: Train Acc=0.753, Val Acc=0.881, LR=0.000994
+  Epoch 20: Train Acc=0.816, Val Acc=0.887, LR=0.000422
+  CONVERGED at epoch 25
+  Test Acc: 0.888, MI: 0.209
+
+[Seed 0] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.073, Val Acc=0.101, LR=0.009755
+  Epoch 10: Train Acc=0.145, Val Acc=0.135, LR=0.009938
+  Epoch 20: Train Acc=0.180, Val Acc=0.107, LR=0.004218
+  CONVERGED at epoch 28
+  Test Acc: 0.142, MI: 0.981
+
+Early check results:
+  BN Random: MI=0.209, Acc=0.888
+  BN Single: MI=0.981, Acc=0.142
+
+MAIN EXPERIMENTS
+------------------------------------------------------------
+
+[Seed 1] main: BN model, random sampling
+  Epoch 0: Train Acc=0.616, Val Acc=0.859, LR=0.000976
+  Epoch 10: Train Acc=0.758, Val Acc=0.881, LR=0.000994
+  Epoch 20: Train Acc=0.816, Val Acc=0.885, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.888, MI: 0.288
+
+[Seed 1] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.622, Val Acc=0.865, LR=0.000976
+  Epoch 10: Train Acc=0.768, Val Acc=0.874, LR=0.000994
+  Epoch 20: Train Acc=0.828, Val Acc=0.884, LR=0.000422
+  CONVERGED at epoch 22
+  Test Acc: 0.891, MI: 0.266
+
+[Seed 1] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.069, Val Acc=0.081, LR=0.009755
+  Epoch 10: Train Acc=0.204, Val Acc=0.103, LR=0.009938
+  Epoch 20: Train Acc=0.277, Val Acc=0.111, LR=0.004218
+  CONVERGED at epoch 28
+  Test Acc: 0.112, MI: 0.944
+
+[Seed 2] main: BN model, random sampling
+  Epoch 0: Train Acc=0.609, Val Acc=0.864, LR=0.000976
+  Epoch 10: Train Acc=0.752, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.810, Val Acc=0.891, LR=0.000422
+  CONVERGED at epoch 29
+  Test Acc: 0.894, MI: 0.178
+
+[Seed 2] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.622, Val Acc=0.857, LR=0.000976
+  Epoch 10: Train Acc=0.766, Val Acc=0.878, LR=0.000994
+  Epoch 20: Train Acc=0.823, Val Acc=0.886, LR=0.000422
+  Epoch 30: Train Acc=0.828, Val Acc=0.886, LR=0.000998
+  CONVERGED at epoch 31
+  Test Acc: 0.887, MI: 0.167
+
+[Seed 2] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.069, Val Acc=0.079, LR=0.009755
+  Epoch 10: Train Acc=0.163, Val Acc=0.103, LR=0.009938
+  Epoch 20: Train Acc=0.278, Val Acc=0.113, LR=0.004218
+  Epoch 30: Train Acc=0.269, Val Acc=0.110, LR=0.009985
+  Epoch 40: Train Acc=0.257, Val Acc=0.092, LR=0.008247
+  CONVERGED at epoch 42
+  Test Acc: 0.103, MI: 0.806
+
+[Seed 3] main: BN model, random sampling
+  Epoch 0: Train Acc=0.614, Val Acc=0.873, LR=0.000976
+  Epoch 10: Train Acc=0.750, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.817, Val Acc=0.890, LR=0.000422
+  CONVERGED at epoch 29
+  Test Acc: 0.892, MI: 0.169
+
+[Seed 3] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.629, Val Acc=0.860, LR=0.000976
+  Epoch 10: Train Acc=0.762, Val Acc=0.887, LR=0.000994
+  Epoch 20: Train Acc=0.822, Val Acc=0.890, LR=0.000422
+  Epoch 30: Train Acc=0.832, Val Acc=0.885, LR=0.000998
+  CONVERGED at epoch 35
+  Test Acc: 0.888, MI: 0.137
+
+[Seed 3] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.087, Val Acc=0.098, LR=0.009755
+  Epoch 10: Train Acc=0.128, Val Acc=0.139, LR=0.009938
+  Epoch 20: Train Acc=0.164, Val Acc=0.120, LR=0.004218
+  CONVERGED at epoch 27
+  Test Acc: 0.117, MI: 0.936
+
+[Seed 4] main: BN model, random sampling
+  Epoch 0: Train Acc=0.620, Val Acc=0.862, LR=0.000976
+  Epoch 10: Train Acc=0.748, Val Acc=0.884, LR=0.000994
+  Epoch 20: Train Acc=0.816, Val Acc=0.892, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.888, MI: 0.287
+
+[Seed 4] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.633, Val Acc=0.864, LR=0.000976
+  Epoch 10: Train Acc=0.766, Val Acc=0.878, LR=0.000994
+  Epoch 20: Train Acc=0.824, Val Acc=0.885, LR=0.000422
+  CONVERGED at epoch 25
+  Test Acc: 0.891, MI: 0.220
+
+[Seed 4] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.086, Val Acc=0.090, LR=0.009755
+  Epoch 10: Train Acc=0.198, Val Acc=0.126, LR=0.009938
+  Epoch 20: Train Acc=0.274, Val Acc=0.112, LR=0.004218
+  CONVERGED at epoch 26
+  Test Acc: 0.153, MI: 1.056
+
+[Seed 5] main: BN model, random sampling
+  Epoch 0: Train Acc=0.624, Val Acc=0.860, LR=0.000976
+  Epoch 10: Train Acc=0.757, Val Acc=0.884, LR=0.000994
+  Epoch 20: Train Acc=0.823, Val Acc=0.881, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.892, MI: 0.300
+
+[Seed 5] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.623, Val Acc=0.860, LR=0.000976
+  Epoch 10: Train Acc=0.763, Val Acc=0.885, LR=0.000994
+  Epoch 20: Train Acc=0.830, Val Acc=0.890, LR=0.000422
+  CONVERGED at epoch 25
+  Test Acc: 0.888, MI: 0.213
+
+[Seed 5] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.077, Val Acc=0.114, LR=0.009755
+  Epoch 10: Train Acc=0.148, Val Acc=0.101, LR=0.009938
+  Epoch 20: Train Acc=0.168, Val Acc=0.123, LR=0.004218
+  Epoch 30: Train Acc=0.167, Val Acc=0.104, LR=0.009985
+  Epoch 40: Train Acc=0.211, Val Acc=0.096, LR=0.008247
+  CONVERGED at epoch 42
+  Test Acc: 0.092, MI: 0.836
+
+[Seed 6] main: BN model, random sampling
+  Epoch 0: Train Acc=0.615, Val Acc=0.866, LR=0.000976
+  Epoch 10: Train Acc=0.747, Val Acc=0.879, LR=0.000994
+  Epoch 20: Train Acc=0.817, Val Acc=0.887, LR=0.000422
+  Epoch 30: Train Acc=0.815, Val Acc=0.875, LR=0.000998
+  CONVERGED at epoch 35
+  Test Acc: 0.881, MI: 0.141
+
+[Seed 6] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.623, Val Acc=0.857, LR=0.000976
+  Epoch 10: Train Acc=0.766, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.821, Val Acc=0.889, LR=0.000422
+  Epoch 30: Train Acc=0.827, Val Acc=0.879, LR=0.000998
+  CONVERGED at epoch 35
+  Test Acc: 0.882, MI: 0.141
+
+[Seed 6] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.078, Val Acc=0.093, LR=0.009755
+  Epoch 10: Train Acc=0.158, Val Acc=0.076, LR=0.009938
+  Epoch 20: Train Acc=0.269, Val Acc=0.110, LR=0.004218
+  CONVERGED at epoch 25
+  Test Acc: 0.133, MI: 0.952
+
+[Seed 7] main: BN model, random sampling
+  Epoch 0: Train Acc=0.616, Val Acc=0.862, LR=0.000976
+  Epoch 10: Train Acc=0.754, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.821, Val Acc=0.888, LR=0.000422
+  CONVERGED at epoch 29
+  Test Acc: 0.886, MI: 0.182
+
+[Seed 7] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.631, Val Acc=0.852, LR=0.000976
+  Epoch 10: Train Acc=0.764, Val Acc=0.882, LR=0.000994
+  Epoch 20: Train Acc=0.831, Val Acc=0.885, LR=0.000422
+  CONVERGED at epoch 28
+  Test Acc: 0.889, MI: 0.184
+
+[Seed 7] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.083, Val Acc=0.076, LR=0.009755
+  Epoch 10: Train Acc=0.162, Val Acc=0.108, LR=0.009938
+  Epoch 20: Train Acc=0.269, Val Acc=0.092, LR=0.004218
+  Epoch 30: Train Acc=0.229, Val Acc=0.088, LR=0.009985
+  CONVERGED at epoch 39
+  Test Acc: 0.102, MI: 0.897
+
+[Seed 8] main: BN model, random sampling
+  Epoch 0: Train Acc=0.614, Val Acc=0.856, LR=0.000976
+  Epoch 10: Train Acc=0.753, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.820, Val Acc=0.886, LR=0.000422
+  CONVERGED at epoch 29
+  Test Acc: 0.893, MI: 0.181
+
+[Seed 8] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.623, Val Acc=0.859, LR=0.000976
+  Epoch 10: Train Acc=0.763, Val Acc=0.888, LR=0.000994
+  Epoch 20: Train Acc=0.822, Val Acc=0.888, LR=0.000422
+  CONVERGED at epoch 24
+  Test Acc: 0.893, MI: 0.241
+
+[Seed 8] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.076, Val Acc=0.073, LR=0.009755
+  Epoch 10: Train Acc=0.186, Val Acc=0.064, LR=0.009938
+  Epoch 20: Train Acc=0.154, Val Acc=0.146, LR=0.004218
+  CONVERGED at epoch 24
+  Test Acc: 0.116, MI: 0.984
+
+[Seed 9] main: BN model, random sampling
+  Epoch 0: Train Acc=0.620, Val Acc=0.850, LR=0.000976
+  Epoch 10: Train Acc=0.748, Val Acc=0.887, LR=0.000994
+  Epoch 20: Train Acc=0.815, Val Acc=0.887, LR=0.000422
+  CONVERGED at epoch 28
+  Test Acc: 0.888, MI: 0.179
+
+[Seed 9] main: BN model, balanced sampling
+  Epoch 0: Train Acc=0.623, Val Acc=0.863, LR=0.000976
+  Epoch 10: Train Acc=0.766, Val Acc=0.880, LR=0.000994
+  Epoch 20: Train Acc=0.823, Val Acc=0.886, LR=0.000422
+  Epoch 30: Train Acc=0.829, Val Acc=0.885, LR=0.000998
+  CONVERGED at epoch 39
+  Test Acc: 0.889, MI: 0.123
+
+[Seed 9] main: BN model, single_class sampling
+  Epoch 0: Train Acc=0.108, Val Acc=0.091, LR=0.009755
+  Epoch 10: Train Acc=0.198, Val Acc=0.099, LR=0.009938
+  Epoch 20: Train Acc=0.233, Val Acc=0.083, LR=0.004218
+  CONVERGED at epoch 24
+  Test Acc: 0.097, MI: 0.951
+
+BASELINES
+------------------------------------------------------------
+
+[Seed 0] main: GN model, random sampling
+  Epoch 0: Train Acc=0.586, Val Acc=0.886, LR=0.000976
+  Epoch 10: Train Acc=0.789, Val Acc=0.895, LR=0.000994
+  Epoch 20: Train Acc=0.841, Val Acc=0.898, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.893, MI: 0.000
+
+[Seed 0] main: GN model, single_class sampling
+  Epoch 0: Train Acc=0.108, Val Acc=0.191, LR=0.009755
+  Epoch 10: Train Acc=0.659, Val Acc=0.639, LR=0.009938
+  Epoch 20: Train Acc=0.828, Val Acc=0.879, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.901, MI: 0.000
+
+[Seed 0] main: LN model, random sampling
+  Epoch 0: Train Acc=0.604, Val Acc=0.883, LR=0.000976
+  Epoch 10: Train Acc=0.800, Val Acc=0.896, LR=0.000994
+  Epoch 20: Train Acc=0.838, Val Acc=0.898, LR=0.000422
+  CONVERGED at epoch 22
+  Test Acc: 0.894, MI: 0.000
+
+[Seed 0] main: LN model, single_class sampling
+  Epoch 0: Train Acc=0.084, Val Acc=0.100, LR=0.009755
+  Epoch 10: Train Acc=0.665, Val Acc=0.744, LR=0.009938
+  Epoch 20: Train Acc=0.825, Val Acc=0.889, LR=0.004218
+  CONVERGED at epoch 28
+  Test Acc: 0.905, MI: 0.000
+
+[Seed 1] main: GN model, random sampling
+  Epoch 0: Train Acc=0.581, Val Acc=0.879, LR=0.000976
+  Epoch 10: Train Acc=0.795, Val Acc=0.901, LR=0.000994
+  Epoch 20: Train Acc=0.840, Val Acc=0.894, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.892, MI: 0.000
+
+[Seed 1] main: GN model, single_class sampling
+  Epoch 0: Train Acc=0.098, Val Acc=0.100, LR=0.009755
+  Epoch 10: Train Acc=0.705, Val Acc=0.864, LR=0.009938
+  Epoch 20: Train Acc=0.830, Val Acc=0.870, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.907, MI: 0.000
+
+[Seed 1] main: LN model, random sampling
+  Epoch 0: Train Acc=0.600, Val Acc=0.881, LR=0.000976
+  Epoch 10: Train Acc=0.802, Val Acc=0.901, LR=0.000994
+  Epoch 20: Train Acc=0.838, Val Acc=0.897, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.898, MI: 0.000
+
+[Seed 1] main: LN model, single_class sampling
+  Epoch 0: Train Acc=0.078, Val Acc=0.111, LR=0.009755
+  Epoch 10: Train Acc=0.706, Val Acc=0.859, LR=0.009938
+  Epoch 20: Train Acc=0.826, Val Acc=0.873, LR=0.004218
+  Epoch 30: Train Acc=0.694, Val Acc=0.839, LR=0.009985
+  Epoch 40: Train Acc=0.797, Val Acc=0.897, LR=0.008247
+  CONVERGED at epoch 44
+  Test Acc: 0.871, MI: 0.000
+
+[Seed 2] main: GN model, random sampling
+  Epoch 0: Train Acc=0.582, Val Acc=0.876, LR=0.000976
+  Epoch 10: Train Acc=0.785, Val Acc=0.897, LR=0.000994
+  Epoch 20: Train Acc=0.839, Val Acc=0.897, LR=0.000422
+  CONVERGED at epoch 21
+  Test Acc: 0.896, MI: 0.000
+
+[Seed 2] main: GN model, single_class sampling
+  Epoch 0: Train Acc=0.099, Val Acc=0.283, LR=0.009755
+  Epoch 10: Train Acc=0.577, Val Acc=0.778, LR=0.009938
+  Epoch 20: Train Acc=0.811, Val Acc=0.886, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.903, MI: 0.000
+
+[Seed 2] main: LN model, random sampling
+  Epoch 0: Train Acc=0.602, Val Acc=0.888, LR=0.000976
+  Epoch 10: Train Acc=0.796, Val Acc=0.904, LR=0.000994
+  Epoch 20: Train Acc=0.839, Val Acc=0.904, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.899, MI: 0.000
+
+[Seed 2] main: LN model, single_class sampling
+  Epoch 0: Train Acc=0.106, Val Acc=0.228, LR=0.009755
+  Epoch 10: Train Acc=0.589, Val Acc=0.837, LR=0.009938
+  Epoch 20: Train Acc=0.811, Val Acc=0.890, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.905, MI: 0.000
+
+[Seed 3] main: GN model, random sampling
+  Epoch 0: Train Acc=0.583, Val Acc=0.879, LR=0.000976
+  Epoch 10: Train Acc=0.788, Val Acc=0.897, LR=0.000994
+  Epoch 20: Train Acc=0.840, Val Acc=0.897, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.902, MI: 0.000
+
+[Seed 3] main: GN model, single_class sampling
+  Epoch 0: Train Acc=0.126, Val Acc=0.194, LR=0.009755
+  Epoch 10: Train Acc=0.627, Val Acc=0.858, LR=0.009938
+  Epoch 20: Train Acc=0.814, Val Acc=0.891, LR=0.004218
+  CONVERGED at epoch 28
+  Test Acc: 0.901, MI: 0.000
+
+[Seed 3] main: LN model, random sampling
+  Epoch 0: Train Acc=0.595, Val Acc=0.881, LR=0.000976
+  Epoch 10: Train Acc=0.801, Val Acc=0.896, LR=0.000994
+  Epoch 20: Train Acc=0.841, Val Acc=0.897, LR=0.000422
+  CONVERGED at epoch 24
+  Test Acc: 0.903, MI: 0.000
+
+[Seed 3] main: LN model, single_class sampling
+  Epoch 0: Train Acc=0.128, Val Acc=0.205, LR=0.009755
+  Epoch 10: Train Acc=0.647, Val Acc=0.857, LR=0.009938
+  Epoch 20: Train Acc=0.811, Val Acc=0.897, LR=0.004218
+  CONVERGED at epoch 27
+  Test Acc: 0.903, MI: 0.000
+
+[Seed 4] main: GN model, random sampling
+  Epoch 0: Train Acc=0.586, Val Acc=0.879, LR=0.000976
+  Epoch 10: Train Acc=0.789, Val Acc=0.899, LR=0.000994
+  Epoch 20: Train Acc=0.839, Val Acc=0.890, LR=0.000422
+  CONVERGED at epoch 28
+  Test Acc: 0.898, MI: 0.000
+
+[Seed 4] main: GN model, single_class sampling
+  Epoch 0: Train Acc=0.090, Val Acc=0.206, LR=0.009755
+  Epoch 10: Train Acc=0.673, Val Acc=0.825, LR=0.009938
+  Epoch 20: Train Acc=0.798, Val Acc=0.897, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.904, MI: 0.000
+
+[Seed 4] main: LN model, random sampling
+  Epoch 0: Train Acc=0.600, Val Acc=0.875, LR=0.000976
+  Epoch 10: Train Acc=0.798, Val Acc=0.902, LR=0.000994
+  Epoch 20: Train Acc=0.842, Val Acc=0.897, LR=0.000422
+  CONVERGED at epoch 20
+  Test Acc: 0.895, MI: 0.000
+
+[Seed 4] main: LN model, single_class sampling
+  Epoch 0: Train Acc=0.101, Val Acc=0.205, LR=0.009755
+  Epoch 10: Train Acc=0.671, Val Acc=0.829, LR=0.009938
+  Epoch 20: Train Acc=0.796, Val Acc=0.895, LR=0.004218
+  CONVERGED at epoch 29
+  Test Acc: 0.904, MI: 0.000
+
+============================================================
+RESULTS
+============================================================
+
+Summary (mean ± std):
+--------------------------------------------------------------------------------
+Method                         Test Acc                  MI                       
+--------------------------------------------------------------------------------
+bn_balanced                    0.889±0.003              0.188±0.047
+bn_random                      0.889±0.004              0.211±0.055
+bn_single_class                0.117±0.019              0.934±0.069
+gn_random                      0.896±0.003              0.000±0.000
+gn_single_class                0.903±0.002              0.000±0.000
+ln_random                      0.898±0.003              0.000±0.000
+ln_single_class                0.898±0.013              0.000±0.000
+
+Statistical Tests:
+--------------------------------------------------
+BN single vs random MI: p=0.000000
+MI difference: 0.723 ± 0.084
+
+RESULTS: {
+  "experiment": "bn_class_specificity_improved",
+  "runtime_minutes": 5.551346866289775,
+  "n_experiments": 49,
+  "summary_stats": {
+    "bn_balanced": {
+      "test_acc_mean": 0.8889444444444443,
+      "test_acc_std": 0.0029481109247603563,
+      "mi_mean": 0.18795855009822995,
+      "mi_std": 0.04708871473465754,
+      "n": 9
+    },
+    "bn_random": {
+      "test_acc_mean": 0.8892999999999999,
+      "test_acc_std": 0.0036414282912066325,
+      "mi_mean": 0.211363523963835,
+      "mi_std": 0.05487033454065266,
+      "n": 10
+    },
+    "bn_single_class": {
+      "test_acc_mean": 0.1167,
+      "test_acc_std": 0.019034442466224218,
+      "mi_mean": 0.9342391744092853,
+      "mi_std": 0.06922818849178113,
+      "n": 10
+    },
+    "gn_random": {
+      "test_acc_mean": 0.8964000000000001,
+      "test_acc_std": 0.0034842502780368842,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "n": 5
+    },
+    "gn_single_class": {
+      "test_acc_mean": 0.9032,
+      "test_acc_std": 0.002227105745132011,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "n": 5
+    },
+    "ln_random": {
+      "test_acc_mean": 0.8981,
+      "test_acc_std": 0.003152776554086895,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "n": 5
+    },
+    "ln_single_class": {
+      "test_acc_mean": 0.8977,
+      "test_acc_std": 0.01337011593068662,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "n": 5
+    }
+  },
+  "key_findings": {
+    "bn_single_mi_mean": 0.9342391744092853,
+    "bn_random_mi_mean": 0.211363523963835,
+    "mi_lift": 4.420058450428524
+  }
+}

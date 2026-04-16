@@ -1,0 +1,1143 @@
+Using device: cpu
+Running metric sanity checks...
+
+Test 1: Perfect class separation
+  Perfect separation MI: 2.072
+
+Test 2: Random baseline
+  Random MI: 0.032
+
+Test 3: Realistic BN stats
+  BN single-class MI: 2.008
+
+Test 4: Mixed batch BN stats
+  BN mixed-batch MI: 0.728
+
+METRIC_SANITY_PASSED
+================================================================================
+PUBLICATION-QUALITY BN CLASS-SPECIFICITY EXPERIMENT
+================================================================================
+
+============================================================
+EARLY ABORT CHECK (Seed 0)
+============================================================
+
+[Seed 0] main: BN, random sampling
+    Epoch 0: Train Loss=5.5143, Train Acc=0.235, Val Loss=0.0199, Val Acc=0.428, LR=0.001000
+    Epoch 1: Train Loss=3.9545, Train Acc=0.303, Val Loss=0.0180, Val Acc=0.441, LR=0.001000
+    Epoch 2: Train Loss=3.4078, Train Acc=0.323, Val Loss=0.0167, Val Acc=0.442, LR=0.001000
+    Epoch 3: Train Loss=3.0013, Train Acc=0.345, Val Loss=0.0155, Val Acc=0.456, LR=0.001000
+    Epoch 4: Train Loss=2.6857, Train Acc=0.367, Val Loss=0.0152, Val Acc=0.459, LR=0.001000
+    Epoch 10: Train Loss=1.8644, Train Acc=0.444, Val Loss=0.0131, Val Acc=0.487, LR=0.001000
+    Epoch 20: Train Loss=1.4192, Train Acc=0.528, Val Loss=0.0125, Val Acc=0.500, LR=0.001000
+    Epoch 30: Train Loss=1.2208, Train Acc=0.587, Val Loss=0.0125, Val Acc=0.494, LR=0.000250
+    CONVERGED at epoch 33
+  Test Acc: 0.493, MI: 0.099, Batch Type Pred: 0.000, Time: 11.8s
+
+[Seed 0] main: BN, single_class sampling
+    Epoch 0: Train Loss=10.4486, Train Acc=0.102, Val Loss=0.0316, Val Acc=0.091, LR=0.000800
+    Epoch 1: Train Loss=7.9229, Train Acc=0.114, Val Loss=0.0269, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=7.0675, Train Acc=0.123, Val Loss=0.0254, Val Acc=0.099, LR=0.000800
+    Epoch 3: Train Loss=6.5042, Train Acc=0.130, Val Loss=0.0235, Val Acc=0.105, LR=0.000800
+    Epoch 4: Train Loss=5.9844, Train Acc=0.136, Val Loss=0.0230, Val Acc=0.099, LR=0.000800
+    Epoch 10: Train Loss=4.7346, Train Acc=0.161, Val Loss=0.0206, Val Acc=0.100, LR=0.000800
+    Epoch 20: Train Loss=3.9223, Train Acc=0.271, Val Loss=0.0205, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=3.0196, Train Acc=0.506, Val Loss=0.0211, Val Acc=0.108, LR=0.000800
+    Epoch 40: Train Loss=2.0973, Train Acc=0.687, Val Loss=0.0204, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.097, MI: 0.739, Batch Type Pred: 0.000, Time: 20.0s
+
+Early abort check:
+  BN Random: MI=0.099, Acc=0.493
+  BN Single: MI=0.739, Acc=0.097
+  MI Lift: 7.47x
+  Accuracy difference: 39.6%
+Early abort check PASSED
+
+============================================================
+MAIN EXPERIMENTS
+============================================================
+
+1. Core experiments (10 seeds)
+
+[Seed 1] main: BN, random sampling
+    Epoch 0: Train Loss=5.4551, Train Acc=0.241, Val Loss=0.0199, Val Acc=0.425, LR=0.001000
+    Epoch 1: Train Loss=3.8858, Train Acc=0.308, Val Loss=0.0175, Val Acc=0.434, LR=0.001000
+    Epoch 2: Train Loss=3.3141, Train Acc=0.322, Val Loss=0.0165, Val Acc=0.457, LR=0.001000
+    Epoch 3: Train Loss=3.0039, Train Acc=0.342, Val Loss=0.0152, Val Acc=0.457, LR=0.001000
+    Epoch 4: Train Loss=2.6824, Train Acc=0.365, Val Loss=0.0148, Val Acc=0.469, LR=0.001000
+    Epoch 10: Train Loss=1.8355, Train Acc=0.435, Val Loss=0.0128, Val Acc=0.493, LR=0.001000
+    Epoch 20: Train Loss=1.3994, Train Acc=0.536, Val Loss=0.0123, Val Acc=0.502, LR=0.001000
+    Epoch 30: Train Loss=1.2041, Train Acc=0.595, Val Loss=0.0123, Val Acc=0.495, LR=0.000250
+    CONVERGED at epoch 32
+  Test Acc: 0.469, MI: 0.106, Batch Type Pred: 0.000, Time: 12.1s
+
+[Seed 1] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.4078, Train Acc=0.245, Val Loss=0.0200, Val Acc=0.427, LR=0.001000
+    Epoch 1: Train Loss=3.8610, Train Acc=0.309, Val Loss=0.0175, Val Acc=0.441, LR=0.001000
+    Epoch 2: Train Loss=3.3040, Train Acc=0.330, Val Loss=0.0161, Val Acc=0.445, LR=0.001000
+    Epoch 3: Train Loss=2.8732, Train Acc=0.361, Val Loss=0.0155, Val Acc=0.459, LR=0.001000
+    Epoch 4: Train Loss=2.6432, Train Acc=0.366, Val Loss=0.0147, Val Acc=0.464, LR=0.001000
+    Epoch 10: Train Loss=1.7691, Train Acc=0.452, Val Loss=0.0125, Val Acc=0.485, LR=0.001000
+    Epoch 20: Train Loss=1.3583, Train Acc=0.548, Val Loss=0.0121, Val Acc=0.490, LR=0.000500
+    CONVERGED at epoch 29
+  Test Acc: 0.477, MI: 0.000, Batch Type Pred: 0.000, Time: 10.8s
+
+[Seed 1] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.9127, Train Acc=0.107, Val Loss=0.0304, Val Acc=0.110, LR=0.000800
+    Epoch 1: Train Loss=7.8441, Train Acc=0.117, Val Loss=0.0278, Val Acc=0.092, LR=0.000800
+    Epoch 2: Train Loss=6.9506, Train Acc=0.126, Val Loss=0.0254, Val Acc=0.102, LR=0.000800
+    Epoch 3: Train Loss=6.3519, Train Acc=0.131, Val Loss=0.0238, Val Acc=0.101, LR=0.000800
+    Epoch 4: Train Loss=5.8516, Train Acc=0.132, Val Loss=0.0221, Val Acc=0.109, LR=0.000800
+    Epoch 10: Train Loss=4.6533, Train Acc=0.147, Val Loss=0.0199, Val Acc=0.110, LR=0.000800
+    Epoch 20: Train Loss=3.8411, Train Acc=0.257, Val Loss=0.0203, Val Acc=0.103, LR=0.000800
+    Epoch 30: Train Loss=2.8286, Train Acc=0.516, Val Loss=0.0205, Val Acc=0.111, LR=0.000800
+    Epoch 40: Train Loss=1.8483, Train Acc=0.732, Val Loss=0.0200, Val Acc=0.088, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.815, Batch Type Pred: 0.000, Time: 20.6s
+
+[Seed 2] main: BN, random sampling
+    Epoch 0: Train Loss=5.4305, Train Acc=0.239, Val Loss=0.0194, Val Acc=0.415, LR=0.001000
+    Epoch 1: Train Loss=3.8821, Train Acc=0.311, Val Loss=0.0172, Val Acc=0.435, LR=0.001000
+    Epoch 2: Train Loss=3.3265, Train Acc=0.326, Val Loss=0.0160, Val Acc=0.442, LR=0.001000
+    Epoch 3: Train Loss=2.9511, Train Acc=0.346, Val Loss=0.0152, Val Acc=0.456, LR=0.001000
+    Epoch 4: Train Loss=2.6665, Train Acc=0.367, Val Loss=0.0147, Val Acc=0.472, LR=0.001000
+    Epoch 10: Train Loss=1.8387, Train Acc=0.448, Val Loss=0.0126, Val Acc=0.502, LR=0.001000
+    Epoch 20: Train Loss=1.4046, Train Acc=0.528, Val Loss=0.0121, Val Acc=0.504, LR=0.000500
+    CONVERGED at epoch 28
+  Test Acc: 0.484, MI: 0.130, Batch Type Pred: 0.000, Time: 10.1s
+
+[Seed 2] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.3298, Train Acc=0.248, Val Loss=0.0198, Val Acc=0.423, LR=0.001000
+    Epoch 1: Train Loss=3.8754, Train Acc=0.311, Val Loss=0.0170, Val Acc=0.438, LR=0.001000
+    Epoch 2: Train Loss=3.2947, Train Acc=0.326, Val Loss=0.0158, Val Acc=0.455, LR=0.001000
+    Epoch 3: Train Loss=2.8707, Train Acc=0.359, Val Loss=0.0149, Val Acc=0.461, LR=0.001000
+    Epoch 4: Train Loss=2.6454, Train Acc=0.368, Val Loss=0.0146, Val Acc=0.464, LR=0.001000
+    Epoch 10: Train Loss=1.7549, Train Acc=0.455, Val Loss=0.0127, Val Acc=0.486, LR=0.001000
+    Epoch 20: Train Loss=1.3751, Train Acc=0.538, Val Loss=0.0121, Val Acc=0.494, LR=0.000500
+    CONVERGED at epoch 29
+  Test Acc: 0.491, MI: 0.000, Batch Type Pred: 0.000, Time: 11.7s
+
+[Seed 2] main: BN, single_class sampling
+    Epoch 0: Train Loss=10.1093, Train Acc=0.106, Val Loss=0.0309, Val Acc=0.090, LR=0.000800
+    Epoch 1: Train Loss=7.7909, Train Acc=0.121, Val Loss=0.0271, Val Acc=0.096, LR=0.000800
+    Epoch 2: Train Loss=7.0638, Train Acc=0.121, Val Loss=0.0248, Val Acc=0.107, LR=0.000800
+    Epoch 3: Train Loss=6.5051, Train Acc=0.135, Val Loss=0.0238, Val Acc=0.094, LR=0.000800
+    Epoch 4: Train Loss=6.0178, Train Acc=0.141, Val Loss=0.0233, Val Acc=0.093, LR=0.000800
+    Epoch 10: Train Loss=4.7644, Train Acc=0.159, Val Loss=0.0201, Val Acc=0.103, LR=0.000800
+    Epoch 20: Train Loss=3.9466, Train Acc=0.273, Val Loss=0.0204, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=3.0793, Train Acc=0.493, Val Loss=0.0210, Val Acc=0.094, LR=0.000800
+    Epoch 40: Train Loss=2.2469, Train Acc=0.659, Val Loss=0.0209, Val Acc=0.102, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.102, MI: 0.772, Batch Type Pred: 0.000, Time: 20.3s
+
+[Seed 3] main: BN, random sampling
+    Epoch 0: Train Loss=5.4020, Train Acc=0.243, Val Loss=0.0209, Val Acc=0.409, LR=0.001000
+    Epoch 1: Train Loss=3.9516, Train Acc=0.295, Val Loss=0.0179, Val Acc=0.438, LR=0.001000
+    Epoch 2: Train Loss=3.3594, Train Acc=0.324, Val Loss=0.0171, Val Acc=0.442, LR=0.001000
+    Epoch 3: Train Loss=2.9930, Train Acc=0.346, Val Loss=0.0159, Val Acc=0.446, LR=0.001000
+    Epoch 4: Train Loss=2.6901, Train Acc=0.357, Val Loss=0.0154, Val Acc=0.458, LR=0.001000
+    Epoch 10: Train Loss=1.8033, Train Acc=0.447, Val Loss=0.0129, Val Acc=0.475, LR=0.001000
+    Epoch 20: Train Loss=1.3960, Train Acc=0.533, Val Loss=0.0122, Val Acc=0.499, LR=0.001000
+    Epoch 30: Train Loss=1.2200, Train Acc=0.585, Val Loss=0.0124, Val Acc=0.499, LR=0.000500
+    CONVERGED at epoch 36
+  Test Acc: 0.480, MI: 0.082, Batch Type Pred: 0.000, Time: 13.0s
+
+[Seed 3] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.3829, Train Acc=0.239, Val Loss=0.0206, Val Acc=0.424, LR=0.001000
+    Epoch 1: Train Loss=3.8715, Train Acc=0.305, Val Loss=0.0180, Val Acc=0.433, LR=0.001000
+    Epoch 2: Train Loss=3.3158, Train Acc=0.331, Val Loss=0.0167, Val Acc=0.452, LR=0.001000
+    Epoch 3: Train Loss=2.8969, Train Acc=0.357, Val Loss=0.0160, Val Acc=0.462, LR=0.001000
+    Epoch 4: Train Loss=2.6069, Train Acc=0.375, Val Loss=0.0146, Val Acc=0.468, LR=0.001000
+    Epoch 10: Train Loss=1.7772, Train Acc=0.451, Val Loss=0.0128, Val Acc=0.496, LR=0.001000
+    Epoch 20: Train Loss=1.3676, Train Acc=0.540, Val Loss=0.0123, Val Acc=0.502, LR=0.001000
+    Epoch 30: Train Loss=1.1957, Train Acc=0.597, Val Loss=0.0123, Val Acc=0.499, LR=0.000250
+    CONVERGED at epoch 32
+  Test Acc: 0.491, MI: 0.000, Batch Type Pred: 0.000, Time: 12.2s
+
+[Seed 3] main: BN, single_class sampling
+    Epoch 0: Train Loss=10.0295, Train Acc=0.100, Val Loss=0.0305, Val Acc=0.103, LR=0.000800
+    Epoch 1: Train Loss=7.8030, Train Acc=0.114, Val Loss=0.0272, Val Acc=0.103, LR=0.000800
+    Epoch 2: Train Loss=6.9598, Train Acc=0.124, Val Loss=0.0250, Val Acc=0.100, LR=0.000800
+    Epoch 3: Train Loss=6.3688, Train Acc=0.131, Val Loss=0.0236, Val Acc=0.107, LR=0.000800
+    Epoch 4: Train Loss=5.8371, Train Acc=0.137, Val Loss=0.0225, Val Acc=0.096, LR=0.000800
+    Epoch 10: Train Loss=4.6528, Train Acc=0.151, Val Loss=0.0199, Val Acc=0.111, LR=0.000800
+    Epoch 20: Train Loss=3.8055, Train Acc=0.271, Val Loss=0.0205, Val Acc=0.113, LR=0.000800
+    Epoch 30: Train Loss=2.7885, Train Acc=0.533, Val Loss=0.0204, Val Acc=0.112, LR=0.000800
+    Epoch 40: Train Loss=1.9891, Train Acc=0.695, Val Loss=0.0206, Val Acc=0.085, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.090, MI: 0.713, Batch Type Pred: 0.000, Time: 21.4s
+
+[Seed 4] main: BN, random sampling
+    Epoch 0: Train Loss=5.2030, Train Acc=0.246, Val Loss=0.0186, Val Acc=0.424, LR=0.001000
+    Epoch 1: Train Loss=3.7738, Train Acc=0.304, Val Loss=0.0169, Val Acc=0.441, LR=0.001000
+    Epoch 2: Train Loss=3.2769, Train Acc=0.317, Val Loss=0.0159, Val Acc=0.445, LR=0.001000
+    Epoch 3: Train Loss=2.8942, Train Acc=0.342, Val Loss=0.0153, Val Acc=0.460, LR=0.001000
+    Epoch 4: Train Loss=2.6273, Train Acc=0.364, Val Loss=0.0145, Val Acc=0.467, LR=0.001000
+    Epoch 10: Train Loss=1.7960, Train Acc=0.449, Val Loss=0.0130, Val Acc=0.479, LR=0.001000
+    Epoch 20: Train Loss=1.3970, Train Acc=0.538, Val Loss=0.0125, Val Acc=0.494, LR=0.001000
+    Epoch 30: Train Loss=1.2031, Train Acc=0.596, Val Loss=0.0126, Val Acc=0.495, LR=0.000500
+    CONVERGED at epoch 34
+  Test Acc: 0.476, MI: 0.090, Batch Type Pred: 0.000, Time: 12.4s
+
+[Seed 4] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.1959, Train Acc=0.241, Val Loss=0.0190, Val Acc=0.427, LR=0.001000
+    Epoch 1: Train Loss=3.7959, Train Acc=0.297, Val Loss=0.0172, Val Acc=0.434, LR=0.001000
+    Epoch 2: Train Loss=3.2154, Train Acc=0.330, Val Loss=0.0161, Val Acc=0.463, LR=0.001000
+    Epoch 3: Train Loss=2.8274, Train Acc=0.360, Val Loss=0.0152, Val Acc=0.465, LR=0.001000
+    Epoch 4: Train Loss=2.6095, Train Acc=0.362, Val Loss=0.0144, Val Acc=0.470, LR=0.001000
+    Epoch 10: Train Loss=1.7549, Train Acc=0.459, Val Loss=0.0127, Val Acc=0.491, LR=0.001000
+    Epoch 20: Train Loss=1.3791, Train Acc=0.540, Val Loss=0.0123, Val Acc=0.500, LR=0.000500
+    Epoch 30: Train Loss=1.2781, Train Acc=0.567, Val Loss=0.0123, Val Acc=0.495, LR=0.000125
+    CONVERGED at epoch 31
+  Test Acc: 0.489, MI: 0.000, Batch Type Pred: 0.000, Time: 11.8s
+
+[Seed 4] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.6735, Train Acc=0.102, Val Loss=0.0301, Val Acc=0.099, LR=0.000800
+    Epoch 1: Train Loss=7.6423, Train Acc=0.115, Val Loss=0.0266, Val Acc=0.102, LR=0.000800
+    Epoch 2: Train Loss=6.8015, Train Acc=0.132, Val Loss=0.0252, Val Acc=0.104, LR=0.000800
+    Epoch 3: Train Loss=6.2901, Train Acc=0.131, Val Loss=0.0236, Val Acc=0.093, LR=0.000800
+    Epoch 4: Train Loss=5.8791, Train Acc=0.132, Val Loss=0.0224, Val Acc=0.101, LR=0.000800
+    Epoch 10: Train Loss=4.6223, Train Acc=0.159, Val Loss=0.0201, Val Acc=0.102, LR=0.000800
+    Epoch 20: Train Loss=3.8459, Train Acc=0.283, Val Loss=0.0203, Val Acc=0.093, LR=0.000800
+    Epoch 30: Train Loss=2.8442, Train Acc=0.534, Val Loss=0.0203, Val Acc=0.091, LR=0.000800
+    Epoch 40: Train Loss=2.0420, Train Acc=0.694, Val Loss=0.0199, Val Acc=0.085, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.096, MI: 0.749, Batch Type Pred: 0.000, Time: 21.4s
+
+[Seed 5] main: BN, random sampling
+    Epoch 0: Train Loss=5.1517, Train Acc=0.244, Val Loss=0.0189, Val Acc=0.429, LR=0.001000
+    Epoch 1: Train Loss=3.7885, Train Acc=0.306, Val Loss=0.0173, Val Acc=0.446, LR=0.001000
+    Epoch 2: Train Loss=3.2558, Train Acc=0.329, Val Loss=0.0159, Val Acc=0.459, LR=0.001000
+    Epoch 3: Train Loss=2.8968, Train Acc=0.351, Val Loss=0.0150, Val Acc=0.480, LR=0.001000
+    Epoch 4: Train Loss=2.5893, Train Acc=0.368, Val Loss=0.0144, Val Acc=0.478, LR=0.001000
+    Epoch 10: Train Loss=1.7862, Train Acc=0.454, Val Loss=0.0128, Val Acc=0.488, LR=0.001000
+    Epoch 20: Train Loss=1.3973, Train Acc=0.533, Val Loss=0.0123, Val Acc=0.498, LR=0.001000
+    Epoch 30: Train Loss=1.2163, Train Acc=0.588, Val Loss=0.0124, Val Acc=0.501, LR=0.000250
+    CONVERGED at epoch 31
+  Test Acc: 0.485, MI: 0.110, Batch Type Pred: 0.000, Time: 13.5s
+
+[Seed 5] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.0554, Train Acc=0.247, Val Loss=0.0192, Val Acc=0.428, LR=0.001000
+    Epoch 1: Train Loss=3.7645, Train Acc=0.308, Val Loss=0.0174, Val Acc=0.446, LR=0.001000
+    Epoch 2: Train Loss=3.2454, Train Acc=0.344, Val Loss=0.0158, Val Acc=0.472, LR=0.001000
+    Epoch 3: Train Loss=2.8374, Train Acc=0.353, Val Loss=0.0155, Val Acc=0.479, LR=0.001000
+    Epoch 4: Train Loss=2.5588, Train Acc=0.373, Val Loss=0.0150, Val Acc=0.469, LR=0.001000
+    Epoch 10: Train Loss=1.7579, Train Acc=0.456, Val Loss=0.0129, Val Acc=0.485, LR=0.001000
+    Epoch 20: Train Loss=1.3684, Train Acc=0.538, Val Loss=0.0123, Val Acc=0.498, LR=0.001000
+    Epoch 30: Train Loss=1.1904, Train Acc=0.596, Val Loss=0.0124, Val Acc=0.499, LR=0.000250
+    Epoch 40: Train Loss=1.1033, Train Acc=0.630, Val Loss=0.0125, Val Acc=0.497, LR=0.000125
+    CONVERGED at epoch 46
+  Test Acc: 0.480, MI: 0.000, Batch Type Pred: 0.000, Time: 18.0s
+
+[Seed 5] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.4075, Train Acc=0.103, Val Loss=0.0285, Val Acc=0.108, LR=0.000800
+    Epoch 1: Train Loss=7.7163, Train Acc=0.118, Val Loss=0.0267, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=6.9143, Train Acc=0.119, Val Loss=0.0254, Val Acc=0.097, LR=0.000800
+    Epoch 3: Train Loss=6.3755, Train Acc=0.129, Val Loss=0.0236, Val Acc=0.108, LR=0.000800
+    Epoch 4: Train Loss=5.8606, Train Acc=0.139, Val Loss=0.0222, Val Acc=0.112, LR=0.000800
+    Epoch 10: Train Loss=4.6616, Train Acc=0.158, Val Loss=0.0202, Val Acc=0.102, LR=0.000800
+    Epoch 20: Train Loss=3.8087, Train Acc=0.277, Val Loss=0.0205, Val Acc=0.109, LR=0.000800
+    Epoch 30: Train Loss=2.8137, Train Acc=0.546, Val Loss=0.0205, Val Acc=0.098, LR=0.000800
+    Epoch 40: Train Loss=1.9284, Train Acc=0.725, Val Loss=0.0203, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.749, Batch Type Pred: 0.000, Time: 21.6s
+
+[Seed 6] main: BN, random sampling
+    Epoch 0: Train Loss=5.4634, Train Acc=0.239, Val Loss=0.0201, Val Acc=0.431, LR=0.001000
+    Epoch 1: Train Loss=3.9992, Train Acc=0.296, Val Loss=0.0180, Val Acc=0.436, LR=0.001000
+    Epoch 2: Train Loss=3.3769, Train Acc=0.328, Val Loss=0.0168, Val Acc=0.440, LR=0.001000
+    Epoch 3: Train Loss=3.0059, Train Acc=0.347, Val Loss=0.0156, Val Acc=0.461, LR=0.001000
+    Epoch 4: Train Loss=2.6820, Train Acc=0.367, Val Loss=0.0150, Val Acc=0.461, LR=0.001000
+    Epoch 10: Train Loss=1.8427, Train Acc=0.443, Val Loss=0.0129, Val Acc=0.486, LR=0.001000
+    Epoch 20: Train Loss=1.4015, Train Acc=0.528, Val Loss=0.0124, Val Acc=0.495, LR=0.001000
+    Epoch 30: Train Loss=1.2152, Train Acc=0.590, Val Loss=0.0124, Val Acc=0.496, LR=0.000250
+    CONVERGED at epoch 32
+  Test Acc: 0.476, MI: 0.102, Batch Type Pred: 0.000, Time: 11.8s
+
+[Seed 6] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.3731, Train Acc=0.244, Val Loss=0.0206, Val Acc=0.431, LR=0.001000
+    Epoch 1: Train Loss=3.8282, Train Acc=0.315, Val Loss=0.0181, Val Acc=0.441, LR=0.001000
+    Epoch 2: Train Loss=3.2846, Train Acc=0.329, Val Loss=0.0168, Val Acc=0.446, LR=0.001000
+    Epoch 3: Train Loss=2.8596, Train Acc=0.363, Val Loss=0.0154, Val Acc=0.462, LR=0.001000
+    Epoch 4: Train Loss=2.6077, Train Acc=0.372, Val Loss=0.0149, Val Acc=0.465, LR=0.001000
+    Epoch 10: Train Loss=1.7788, Train Acc=0.457, Val Loss=0.0130, Val Acc=0.491, LR=0.001000
+    Epoch 20: Train Loss=1.4005, Train Acc=0.530, Val Loss=0.0122, Val Acc=0.503, LR=0.001000
+    Epoch 30: Train Loss=1.2044, Train Acc=0.592, Val Loss=0.0124, Val Acc=0.496, LR=0.000250
+    CONVERGED at epoch 33
+  Test Acc: 0.489, MI: 0.000, Batch Type Pred: 0.000, Time: 13.4s
+
+[Seed 6] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.7822, Train Acc=0.112, Val Loss=0.0313, Val Acc=0.102, LR=0.000800
+    Epoch 1: Train Loss=7.9544, Train Acc=0.118, Val Loss=0.0279, Val Acc=0.099, LR=0.000800
+    Epoch 2: Train Loss=7.0645, Train Acc=0.124, Val Loss=0.0259, Val Acc=0.089, LR=0.000800
+    Epoch 3: Train Loss=6.4975, Train Acc=0.132, Val Loss=0.0241, Val Acc=0.103, LR=0.000800
+    Epoch 4: Train Loss=6.0191, Train Acc=0.133, Val Loss=0.0223, Val Acc=0.111, LR=0.000800
+    Epoch 10: Train Loss=4.7177, Train Acc=0.159, Val Loss=0.0201, Val Acc=0.099, LR=0.000800
+    Epoch 20: Train Loss=3.8664, Train Acc=0.271, Val Loss=0.0203, Val Acc=0.104, LR=0.000800
+    Epoch 30: Train Loss=2.9668, Train Acc=0.515, Val Loss=0.0209, Val Acc=0.098, LR=0.000800
+    Epoch 40: Train Loss=1.9805, Train Acc=0.715, Val Loss=0.0200, Val Acc=0.094, LR=0.000800
+    Epoch 50: Train Loss=1.2278, Train Acc=0.860, Val Loss=0.0205, Val Acc=0.100, LR=0.000800
+    CONVERGED at epoch 54
+  Test Acc: 0.102, MI: 0.714, Batch Type Pred: 0.000, Time: 29.3s
+
+[Seed 7] main: BN, random sampling
+    Epoch 0: Train Loss=5.3340, Train Acc=0.240, Val Loss=0.0201, Val Acc=0.419, LR=0.001000
+    Epoch 1: Train Loss=3.8752, Train Acc=0.301, Val Loss=0.0174, Val Acc=0.444, LR=0.001000
+    Epoch 2: Train Loss=3.3139, Train Acc=0.327, Val Loss=0.0161, Val Acc=0.461, LR=0.001000
+    Epoch 3: Train Loss=2.9369, Train Acc=0.349, Val Loss=0.0151, Val Acc=0.468, LR=0.001000
+    Epoch 4: Train Loss=2.6283, Train Acc=0.369, Val Loss=0.0146, Val Acc=0.462, LR=0.001000
+    Epoch 10: Train Loss=1.7876, Train Acc=0.448, Val Loss=0.0124, Val Acc=0.484, LR=0.001000
+    Epoch 20: Train Loss=1.3929, Train Acc=0.536, Val Loss=0.0120, Val Acc=0.503, LR=0.001000
+    Epoch 30: Train Loss=1.2163, Train Acc=0.580, Val Loss=0.0122, Val Acc=0.501, LR=0.000500
+    CONVERGED at epoch 35
+  Test Acc: 0.485, MI: 0.089, Batch Type Pred: 0.000, Time: 13.4s
+
+[Seed 7] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.3462, Train Acc=0.238, Val Loss=0.0200, Val Acc=0.409, LR=0.001000
+    Epoch 1: Train Loss=3.8537, Train Acc=0.308, Val Loss=0.0178, Val Acc=0.427, LR=0.001000
+    Epoch 2: Train Loss=3.2189, Train Acc=0.341, Val Loss=0.0164, Val Acc=0.445, LR=0.001000
+    Epoch 3: Train Loss=2.8846, Train Acc=0.353, Val Loss=0.0155, Val Acc=0.442, LR=0.001000
+    Epoch 4: Train Loss=2.6011, Train Acc=0.363, Val Loss=0.0148, Val Acc=0.458, LR=0.001000
+    Epoch 10: Train Loss=1.7492, Train Acc=0.458, Val Loss=0.0125, Val Acc=0.481, LR=0.001000
+    Epoch 20: Train Loss=1.3711, Train Acc=0.538, Val Loss=0.0122, Val Acc=0.489, LR=0.000500
+    CONVERGED at epoch 29
+  Test Acc: 0.494, MI: 0.000, Batch Type Pred: 0.000, Time: 11.1s
+
+[Seed 7] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.7350, Train Acc=0.118, Val Loss=0.0322, Val Acc=0.085, LR=0.000800
+    Epoch 1: Train Loss=7.7869, Train Acc=0.119, Val Loss=0.0279, Val Acc=0.090, LR=0.000800
+    Epoch 2: Train Loss=6.9713, Train Acc=0.122, Val Loss=0.0253, Val Acc=0.105, LR=0.000800
+    Epoch 3: Train Loss=6.2815, Train Acc=0.131, Val Loss=0.0240, Val Acc=0.098, LR=0.000800
+    Epoch 4: Train Loss=5.7816, Train Acc=0.143, Val Loss=0.0228, Val Acc=0.090, LR=0.000800
+    Epoch 10: Train Loss=4.4838, Train Acc=0.154, Val Loss=0.0201, Val Acc=0.112, LR=0.000800
+    Epoch 20: Train Loss=3.6950, Train Acc=0.265, Val Loss=0.0202, Val Acc=0.111, LR=0.000800
+    Epoch 30: Train Loss=2.6582, Train Acc=0.522, Val Loss=0.0206, Val Acc=0.107, LR=0.000800
+    Epoch 40: Train Loss=1.7230, Train Acc=0.745, Val Loss=0.0203, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.091, MI: 0.762, Batch Type Pred: 0.000, Time: 21.7s
+
+[Seed 8] main: BN, random sampling
+    Epoch 0: Train Loss=5.2904, Train Acc=0.232, Val Loss=0.0189, Val Acc=0.407, LR=0.001000
+    Epoch 1: Train Loss=3.8777, Train Acc=0.297, Val Loss=0.0170, Val Acc=0.423, LR=0.001000
+    Epoch 2: Train Loss=3.2994, Train Acc=0.323, Val Loss=0.0161, Val Acc=0.446, LR=0.001000
+    Epoch 3: Train Loss=2.9609, Train Acc=0.343, Val Loss=0.0155, Val Acc=0.467, LR=0.001000
+    Epoch 4: Train Loss=2.6333, Train Acc=0.368, Val Loss=0.0146, Val Acc=0.459, LR=0.001000
+    Epoch 10: Train Loss=1.8190, Train Acc=0.440, Val Loss=0.0128, Val Acc=0.490, LR=0.001000
+    Epoch 20: Train Loss=1.4089, Train Acc=0.530, Val Loss=0.0123, Val Acc=0.503, LR=0.001000
+    Epoch 30: Train Loss=1.2383, Train Acc=0.579, Val Loss=0.0124, Val Acc=0.511, LR=0.000250
+    Epoch 40: Train Loss=1.1750, Train Acc=0.602, Val Loss=0.0125, Val Acc=0.502, LR=0.000125
+    CONVERGED at epoch 45
+  Test Acc: 0.475, MI: 0.058, Batch Type Pred: 0.000, Time: 17.3s
+
+[Seed 8] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.1852, Train Acc=0.247, Val Loss=0.0193, Val Acc=0.431, LR=0.001000
+    Epoch 1: Train Loss=3.8009, Train Acc=0.311, Val Loss=0.0169, Val Acc=0.455, LR=0.001000
+    Epoch 2: Train Loss=3.2306, Train Acc=0.341, Val Loss=0.0157, Val Acc=0.468, LR=0.001000
+    Epoch 3: Train Loss=2.8661, Train Acc=0.346, Val Loss=0.0149, Val Acc=0.477, LR=0.001000
+    Epoch 4: Train Loss=2.6015, Train Acc=0.373, Val Loss=0.0145, Val Acc=0.471, LR=0.001000
+    Epoch 10: Train Loss=1.7864, Train Acc=0.451, Val Loss=0.0125, Val Acc=0.504, LR=0.001000
+    Epoch 20: Train Loss=1.3725, Train Acc=0.544, Val Loss=0.0122, Val Acc=0.498, LR=0.001000
+    Epoch 30: Train Loss=1.2105, Train Acc=0.591, Val Loss=0.0124, Val Acc=0.501, LR=0.000250
+    CONVERGED at epoch 39
+  Test Acc: 0.486, MI: 0.000, Batch Type Pred: 0.000, Time: 15.1s
+
+[Seed 8] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.4242, Train Acc=0.113, Val Loss=0.0303, Val Acc=0.103, LR=0.000800
+    Epoch 1: Train Loss=7.9127, Train Acc=0.118, Val Loss=0.0274, Val Acc=0.102, LR=0.000800
+    Epoch 2: Train Loss=7.0766, Train Acc=0.124, Val Loss=0.0253, Val Acc=0.112, LR=0.000800
+    Epoch 3: Train Loss=6.5111, Train Acc=0.129, Val Loss=0.0238, Val Acc=0.113, LR=0.000800
+    Epoch 4: Train Loss=6.0536, Train Acc=0.137, Val Loss=0.0225, Val Acc=0.116, LR=0.000800
+    Epoch 10: Train Loss=4.6652, Train Acc=0.158, Val Loss=0.0199, Val Acc=0.120, LR=0.000800
+    Epoch 20: Train Loss=3.8769, Train Acc=0.272, Val Loss=0.0205, Val Acc=0.091, LR=0.000800
+    Epoch 30: Train Loss=2.9456, Train Acc=0.498, Val Loss=0.0210, Val Acc=0.090, LR=0.000800
+    Epoch 40: Train Loss=1.9252, Train Acc=0.712, Val Loss=0.0201, Val Acc=0.099, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.105, MI: 0.738, Batch Type Pred: 0.000, Time: 22.0s
+
+[Seed 9] main: BN, random sampling
+    Epoch 0: Train Loss=5.1926, Train Acc=0.239, Val Loss=0.0192, Val Acc=0.423, LR=0.001000
+    Epoch 1: Train Loss=3.8311, Train Acc=0.300, Val Loss=0.0179, Val Acc=0.430, LR=0.001000
+    Epoch 2: Train Loss=3.2758, Train Acc=0.338, Val Loss=0.0163, Val Acc=0.453, LR=0.001000
+    Epoch 3: Train Loss=2.9444, Train Acc=0.346, Val Loss=0.0150, Val Acc=0.468, LR=0.001000
+    Epoch 4: Train Loss=2.6435, Train Acc=0.364, Val Loss=0.0147, Val Acc=0.469, LR=0.001000
+    Epoch 10: Train Loss=1.8294, Train Acc=0.445, Val Loss=0.0127, Val Acc=0.487, LR=0.001000
+    Epoch 20: Train Loss=1.4045, Train Acc=0.529, Val Loss=0.0122, Val Acc=0.495, LR=0.001000
+    Epoch 30: Train Loss=1.2162, Train Acc=0.587, Val Loss=0.0124, Val Acc=0.499, LR=0.000250
+    CONVERGED at epoch 31
+  Test Acc: 0.490, MI: 0.108, Batch Type Pred: 0.000, Time: 11.6s
+
+[Seed 9] main: BN, balanced sampling
+    Epoch 0: Train Loss=5.0728, Train Acc=0.259, Val Loss=0.0187, Val Acc=0.445, LR=0.001000
+    Epoch 1: Train Loss=3.7702, Train Acc=0.310, Val Loss=0.0172, Val Acc=0.445, LR=0.001000
+    Epoch 2: Train Loss=3.2617, Train Acc=0.339, Val Loss=0.0159, Val Acc=0.460, LR=0.001000
+    Epoch 3: Train Loss=2.8187, Train Acc=0.360, Val Loss=0.0152, Val Acc=0.467, LR=0.001000
+    Epoch 4: Train Loss=2.5592, Train Acc=0.377, Val Loss=0.0144, Val Acc=0.472, LR=0.001000
+    Epoch 10: Train Loss=1.7587, Train Acc=0.455, Val Loss=0.0128, Val Acc=0.495, LR=0.001000
+    Epoch 20: Train Loss=1.3698, Train Acc=0.547, Val Loss=0.0122, Val Acc=0.494, LR=0.001000
+    Epoch 30: Train Loss=1.1928, Train Acc=0.604, Val Loss=0.0123, Val Acc=0.484, LR=0.000250
+    CONVERGED at epoch 30
+  Test Acc: 0.486, MI: 0.000, Batch Type Pred: 0.000, Time: 11.6s
+
+[Seed 9] main: BN, single_class sampling
+    Epoch 0: Train Loss=9.5336, Train Acc=0.102, Val Loss=0.0295, Val Acc=0.098, LR=0.000800
+    Epoch 1: Train Loss=7.6833, Train Acc=0.120, Val Loss=0.0272, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=6.9948, Train Acc=0.128, Val Loss=0.0252, Val Acc=0.098, LR=0.000800
+    Epoch 3: Train Loss=6.3482, Train Acc=0.132, Val Loss=0.0240, Val Acc=0.090, LR=0.000800
+    Epoch 4: Train Loss=5.9706, Train Acc=0.135, Val Loss=0.0225, Val Acc=0.101, LR=0.000800
+    Epoch 10: Train Loss=4.6054, Train Acc=0.158, Val Loss=0.0201, Val Acc=0.115, LR=0.000800
+    Epoch 20: Train Loss=3.7442, Train Acc=0.285, Val Loss=0.0207, Val Acc=0.100, LR=0.000800
+    Epoch 30: Train Loss=2.7142, Train Acc=0.539, Val Loss=0.0209, Val Acc=0.092, LR=0.000800
+    Epoch 40: Train Loss=1.8107, Train Acc=0.741, Val Loss=0.0201, Val Acc=0.098, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.095, MI: 0.809, Batch Type Pred: 0.000, Time: 21.4s
+
+2. Baseline comparisons (5 seeds)
+
+[Seed 0] main: GN, random sampling
+    Epoch 0: Train Loss=3.7425, Train Acc=0.213, Val Loss=0.0127, Val Acc=0.471, LR=0.001000
+    Epoch 1: Train Loss=2.4701, Train Acc=0.295, Val Loss=0.0118, Val Acc=0.508, LR=0.001000
+    Epoch 2: Train Loss=2.1636, Train Acc=0.335, Val Loss=0.0116, Val Acc=0.515, LR=0.001000
+    Epoch 3: Train Loss=1.9811, Train Acc=0.373, Val Loss=0.0114, Val Acc=0.531, LR=0.001000
+    Epoch 4: Train Loss=1.8943, Train Acc=0.391, Val Loss=0.0114, Val Acc=0.529, LR=0.001000
+    Epoch 10: Train Loss=1.6064, Train Acc=0.478, Val Loss=0.0113, Val Acc=0.534, LR=0.000500
+    Epoch 20: Train Loss=1.4688, Train Acc=0.520, Val Loss=0.0115, Val Acc=0.520, LR=0.000250
+    CONVERGED at epoch 25
+  Test Acc: 0.517, MI: 0.000, Batch Type Pred: 0.000, Time: 10.0s
+
+[Seed 0] main: GN, single_class sampling
+    Epoch 0: Train Loss=7.6424, Train Acc=0.178, Val Loss=0.0144, Val Acc=0.413, LR=0.000800
+    Epoch 1: Train Loss=4.3932, Train Acc=0.263, Val Loss=0.0131, Val Acc=0.458, LR=0.000800
+    Epoch 2: Train Loss=3.8490, Train Acc=0.295, Val Loss=0.0125, Val Acc=0.475, LR=0.000800
+    Epoch 3: Train Loss=3.5917, Train Acc=0.316, Val Loss=0.0120, Val Acc=0.498, LR=0.000800
+    Epoch 4: Train Loss=3.3350, Train Acc=0.346, Val Loss=0.0120, Val Acc=0.501, LR=0.000800
+    Epoch 10: Train Loss=2.7821, Train Acc=0.405, Val Loss=0.0117, Val Acc=0.505, LR=0.000800
+    Epoch 20: Train Loss=2.3737, Train Acc=0.487, Val Loss=0.0118, Val Acc=0.507, LR=0.000800
+    Epoch 30: Train Loss=2.1355, Train Acc=0.527, Val Loss=0.0121, Val Acc=0.496, LR=0.000800
+    Epoch 40: Train Loss=1.9009, Train Acc=0.574, Val Loss=0.0127, Val Acc=0.490, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.486, MI: 0.000, Batch Type Pred: 0.000, Time: 20.4s
+
+[Seed 0] main: LN, random sampling
+    Epoch 0: Train Loss=3.6245, Train Acc=0.232, Val Loss=0.0123, Val Acc=0.491, LR=0.001000
+    Epoch 1: Train Loss=2.3167, Train Acc=0.311, Val Loss=0.0117, Val Acc=0.517, LR=0.001000
+    Epoch 2: Train Loss=2.0637, Train Acc=0.347, Val Loss=0.0115, Val Acc=0.518, LR=0.001000
+    Epoch 3: Train Loss=1.9163, Train Acc=0.381, Val Loss=0.0114, Val Acc=0.531, LR=0.001000
+    Epoch 4: Train Loss=1.8401, Train Acc=0.404, Val Loss=0.0114, Val Acc=0.525, LR=0.001000
+    Epoch 10: Train Loss=1.6138, Train Acc=0.476, Val Loss=0.0113, Val Acc=0.528, LR=0.001000
+    Epoch 20: Train Loss=1.4243, Train Acc=0.532, Val Loss=0.0116, Val Acc=0.520, LR=0.000250
+    CONVERGED at epoch 21
+  Test Acc: 0.510, MI: 0.000, Batch Type Pred: 0.000, Time: 6.0s
+
+[Seed 0] main: LN, single_class sampling
+    Epoch 0: Train Loss=7.2234, Train Acc=0.182, Val Loss=0.0139, Val Acc=0.413, LR=0.000800
+    Epoch 1: Train Loss=3.8062, Train Acc=0.282, Val Loss=0.0128, Val Acc=0.460, LR=0.000800
+    Epoch 2: Train Loss=3.3429, Train Acc=0.315, Val Loss=0.0122, Val Acc=0.488, LR=0.000800
+    Epoch 3: Train Loss=3.1215, Train Acc=0.343, Val Loss=0.0119, Val Acc=0.505, LR=0.000800
+    Epoch 4: Train Loss=2.9520, Train Acc=0.374, Val Loss=0.0118, Val Acc=0.509, LR=0.000800
+    Epoch 10: Train Loss=2.6084, Train Acc=0.429, Val Loss=0.0116, Val Acc=0.511, LR=0.000800
+    Epoch 20: Train Loss=2.3019, Train Acc=0.496, Val Loss=0.0117, Val Acc=0.515, LR=0.000800
+    Epoch 30: Train Loss=2.0778, Train Acc=0.535, Val Loss=0.0122, Val Acc=0.502, LR=0.000800
+    Epoch 40: Train Loss=1.8052, Train Acc=0.600, Val Loss=0.0131, Val Acc=0.481, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.484, MI: 0.000, Batch Type Pred: 0.000, Time: 17.2s
+
+[Seed 0] main: NO_NORM, random sampling
+    Epoch 0: Train Loss=2.5385, Train Acc=0.233, Val Loss=0.0148, Val Acc=0.415, LR=0.001000
+    Epoch 1: Train Loss=1.9710, Train Acc=0.351, Val Loss=0.0136, Val Acc=0.479, LR=0.001000
+    Epoch 2: Train Loss=1.8596, Train Acc=0.396, Val Loss=0.0130, Val Acc=0.492, LR=0.001000
+    Epoch 3: Train Loss=1.7931, Train Acc=0.423, Val Loss=0.0129, Val Acc=0.499, LR=0.001000
+    Epoch 4: Train Loss=1.7439, Train Acc=0.438, Val Loss=0.0130, Val Acc=0.497, LR=0.001000
+    Epoch 10: Train Loss=1.5250, Train Acc=0.509, Val Loss=0.0125, Val Acc=0.492, LR=0.001000
+    Epoch 20: Train Loss=1.2265, Train Acc=0.588, Val Loss=0.0126, Val Acc=0.487, LR=0.000250
+    CONVERGED at epoch 21
+  Test Acc: 0.481, MI: 0.000, Batch Type Pred: 0.000, Time: 5.2s
+
+[Seed 0] main: NO_NORM, single_class sampling
+    Epoch 0: Train Loss=4.6038, Train Acc=0.192, Val Loss=0.0160, Val Acc=0.331, LR=0.000800
+    Epoch 1: Train Loss=3.0290, Train Acc=0.313, Val Loss=0.0147, Val Acc=0.409, LR=0.000800
+    Epoch 2: Train Loss=2.8386, Train Acc=0.365, Val Loss=0.0140, Val Acc=0.448, LR=0.000800
+    Epoch 3: Train Loss=2.7201, Train Acc=0.403, Val Loss=0.0137, Val Acc=0.476, LR=0.000800
+    Epoch 4: Train Loss=2.6174, Train Acc=0.427, Val Loss=0.0133, Val Acc=0.480, LR=0.000800
+    Epoch 10: Train Loss=2.3071, Train Acc=0.495, Val Loss=0.0128, Val Acc=0.499, LR=0.000800
+    Epoch 20: Train Loss=1.9256, Train Acc=0.577, Val Loss=0.0128, Val Acc=0.496, LR=0.000800
+    Epoch 30: Train Loss=1.6010, Train Acc=0.645, Val Loss=0.0133, Val Acc=0.480, LR=0.000800
+    Epoch 40: Train Loss=1.3471, Train Acc=0.699, Val Loss=0.0138, Val Acc=0.471, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.458, MI: 0.000, Batch Type Pred: 0.000, Time: 14.3s
+
+[Seed 1] main: GN, random sampling
+    Epoch 0: Train Loss=3.6399, Train Acc=0.218, Val Loss=0.0127, Val Acc=0.466, LR=0.001000
+    Epoch 1: Train Loss=2.4128, Train Acc=0.301, Val Loss=0.0120, Val Acc=0.500, LR=0.001000
+    Epoch 2: Train Loss=2.1192, Train Acc=0.344, Val Loss=0.0118, Val Acc=0.513, LR=0.001000
+    Epoch 3: Train Loss=1.9776, Train Acc=0.375, Val Loss=0.0114, Val Acc=0.526, LR=0.001000
+    Epoch 4: Train Loss=1.8867, Train Acc=0.393, Val Loss=0.0115, Val Acc=0.523, LR=0.001000
+    Epoch 10: Train Loss=1.6298, Train Acc=0.468, Val Loss=0.0114, Val Acc=0.530, LR=0.001000
+    Epoch 20: Train Loss=1.4052, Train Acc=0.542, Val Loss=0.0118, Val Acc=0.519, LR=0.000250
+    CONVERGED at epoch 23
+  Test Acc: 0.498, MI: 0.000, Batch Type Pred: 0.000, Time: 8.6s
+
+[Seed 1] main: GN, single_class sampling
+    Epoch 0: Train Loss=7.6695, Train Acc=0.165, Val Loss=0.0151, Val Acc=0.397, LR=0.000800
+    Epoch 1: Train Loss=4.4582, Train Acc=0.263, Val Loss=0.0129, Val Acc=0.464, LR=0.000800
+    Epoch 2: Train Loss=3.8966, Train Acc=0.299, Val Loss=0.0123, Val Acc=0.487, LR=0.000800
+    Epoch 3: Train Loss=3.6121, Train Acc=0.322, Val Loss=0.0122, Val Acc=0.496, LR=0.000800
+    Epoch 4: Train Loss=3.3646, Train Acc=0.347, Val Loss=0.0118, Val Acc=0.508, LR=0.000800
+    Epoch 10: Train Loss=2.8157, Train Acc=0.410, Val Loss=0.0116, Val Acc=0.521, LR=0.000800
+    Epoch 20: Train Loss=2.4151, Train Acc=0.475, Val Loss=0.0117, Val Acc=0.514, LR=0.000800
+    Epoch 30: Train Loss=2.1226, Train Acc=0.532, Val Loss=0.0121, Val Acc=0.506, LR=0.000800
+    Epoch 40: Train Loss=1.9076, Train Acc=0.577, Val Loss=0.0128, Val Acc=0.478, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.479, MI: 0.000, Batch Type Pred: 0.000, Time: 20.8s
+
+[Seed 1] main: LN, random sampling
+    Epoch 0: Train Loss=3.5279, Train Acc=0.233, Val Loss=0.0124, Val Acc=0.459, LR=0.001000
+    Epoch 1: Train Loss=2.2827, Train Acc=0.318, Val Loss=0.0120, Val Acc=0.491, LR=0.001000
+    Epoch 2: Train Loss=2.0341, Train Acc=0.358, Val Loss=0.0120, Val Acc=0.494, LR=0.001000
+    Epoch 3: Train Loss=1.9164, Train Acc=0.385, Val Loss=0.0115, Val Acc=0.516, LR=0.001000
+    Epoch 4: Train Loss=1.8261, Train Acc=0.415, Val Loss=0.0115, Val Acc=0.518, LR=0.001000
+    Epoch 10: Train Loss=1.6195, Train Acc=0.473, Val Loss=0.0114, Val Acc=0.529, LR=0.001000
+    Epoch 20: Train Loss=1.3841, Train Acc=0.547, Val Loss=0.0120, Val Acc=0.510, LR=0.000500
+    CONVERGED at epoch 21
+  Test Acc: 0.490, MI: 0.000, Batch Type Pred: 0.000, Time: 6.1s
+
+[Seed 1] main: LN, single_class sampling
+    Epoch 0: Train Loss=7.2347, Train Acc=0.179, Val Loss=0.0145, Val Acc=0.399, LR=0.000800
+    Epoch 1: Train Loss=3.8949, Train Acc=0.279, Val Loss=0.0127, Val Acc=0.466, LR=0.000800
+    Epoch 2: Train Loss=3.4079, Train Acc=0.319, Val Loss=0.0122, Val Acc=0.490, LR=0.000800
+    Epoch 3: Train Loss=3.1745, Train Acc=0.342, Val Loss=0.0120, Val Acc=0.497, LR=0.000800
+    Epoch 4: Train Loss=2.9815, Train Acc=0.373, Val Loss=0.0117, Val Acc=0.507, LR=0.000800
+    Epoch 10: Train Loss=2.5805, Train Acc=0.431, Val Loss=0.0115, Val Acc=0.525, LR=0.000800
+    Epoch 20: Train Loss=2.3079, Train Acc=0.489, Val Loss=0.0116, Val Acc=0.522, LR=0.000800
+    Epoch 30: Train Loss=2.0650, Train Acc=0.542, Val Loss=0.0122, Val Acc=0.499, LR=0.000800
+    Epoch 40: Train Loss=1.8066, Train Acc=0.602, Val Loss=0.0131, Val Acc=0.481, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.473, MI: 0.000, Batch Type Pred: 0.000, Time: 16.3s
+
+[Seed 1] main: NO_NORM, random sampling
+    Epoch 0: Train Loss=2.4947, Train Acc=0.228, Val Loss=0.0148, Val Acc=0.415, LR=0.001000
+    Epoch 1: Train Loss=1.9749, Train Acc=0.345, Val Loss=0.0138, Val Acc=0.469, LR=0.001000
+    Epoch 2: Train Loss=1.8718, Train Acc=0.388, Val Loss=0.0132, Val Acc=0.481, LR=0.001000
+    Epoch 3: Train Loss=1.8091, Train Acc=0.424, Val Loss=0.0132, Val Acc=0.488, LR=0.001000
+    Epoch 4: Train Loss=1.7428, Train Acc=0.442, Val Loss=0.0127, Val Acc=0.511, LR=0.001000
+    Epoch 10: Train Loss=1.5228, Train Acc=0.505, Val Loss=0.0126, Val Acc=0.498, LR=0.001000
+    Epoch 20: Train Loss=1.2025, Train Acc=0.603, Val Loss=0.0128, Val Acc=0.496, LR=0.000250
+    CONVERGED at epoch 20
+  Test Acc: 0.478, MI: 0.000, Batch Type Pred: 0.000, Time: 5.4s
+
+[Seed 1] main: NO_NORM, single_class sampling
+    Epoch 0: Train Loss=4.6390, Train Acc=0.180, Val Loss=0.0161, Val Acc=0.322, LR=0.000800
+    Epoch 1: Train Loss=3.0331, Train Acc=0.309, Val Loss=0.0148, Val Acc=0.410, LR=0.000800
+    Epoch 2: Train Loss=2.8415, Train Acc=0.369, Val Loss=0.0141, Val Acc=0.442, LR=0.000800
+    Epoch 3: Train Loss=2.7298, Train Acc=0.396, Val Loss=0.0137, Val Acc=0.463, LR=0.000800
+    Epoch 4: Train Loss=2.6212, Train Acc=0.425, Val Loss=0.0133, Val Acc=0.482, LR=0.000800
+    Epoch 10: Train Loss=2.3018, Train Acc=0.493, Val Loss=0.0129, Val Acc=0.501, LR=0.000800
+    Epoch 20: Train Loss=1.9045, Train Acc=0.583, Val Loss=0.0129, Val Acc=0.483, LR=0.000800
+    Epoch 30: Train Loss=1.5750, Train Acc=0.651, Val Loss=0.0134, Val Acc=0.470, LR=0.000800
+    Epoch 40: Train Loss=1.3393, Train Acc=0.700, Val Loss=0.0140, Val Acc=0.471, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.456, MI: 0.000, Batch Type Pred: 0.000, Time: 14.2s
+
+[Seed 2] main: GN, random sampling
+    Epoch 0: Train Loss=3.8742, Train Acc=0.217, Val Loss=0.0125, Val Acc=0.467, LR=0.001000
+    Epoch 1: Train Loss=2.4881, Train Acc=0.307, Val Loss=0.0120, Val Acc=0.496, LR=0.001000
+    Epoch 2: Train Loss=2.1703, Train Acc=0.333, Val Loss=0.0117, Val Acc=0.510, LR=0.001000
+    Epoch 3: Train Loss=2.0045, Train Acc=0.366, Val Loss=0.0115, Val Acc=0.522, LR=0.001000
+    Epoch 4: Train Loss=1.8938, Train Acc=0.387, Val Loss=0.0113, Val Acc=0.524, LR=0.001000
+    Epoch 10: Train Loss=1.6437, Train Acc=0.467, Val Loss=0.0114, Val Acc=0.522, LR=0.001000
+    Epoch 20: Train Loss=1.4097, Train Acc=0.537, Val Loss=0.0117, Val Acc=0.515, LR=0.000500
+    CONVERGED at epoch 26
+  Test Acc: 0.492, MI: 0.000, Batch Type Pred: 0.000, Time: 9.1s
+
+[Seed 2] main: GN, single_class sampling
+    Epoch 0: Train Loss=7.9025, Train Acc=0.180, Val Loss=0.0148, Val Acc=0.405, LR=0.000800
+    Epoch 1: Train Loss=4.5443, Train Acc=0.269, Val Loss=0.0129, Val Acc=0.468, LR=0.000800
+    Epoch 2: Train Loss=4.0288, Train Acc=0.295, Val Loss=0.0122, Val Acc=0.493, LR=0.000800
+    Epoch 3: Train Loss=3.6715, Train Acc=0.317, Val Loss=0.0122, Val Acc=0.488, LR=0.000800
+    Epoch 4: Train Loss=3.3874, Train Acc=0.341, Val Loss=0.0121, Val Acc=0.495, LR=0.000800
+    Epoch 10: Train Loss=2.7899, Train Acc=0.408, Val Loss=0.0117, Val Acc=0.499, LR=0.000800
+    Epoch 20: Train Loss=2.4148, Train Acc=0.470, Val Loss=0.0118, Val Acc=0.507, LR=0.000800
+    Epoch 30: Train Loss=2.1483, Train Acc=0.528, Val Loss=0.0121, Val Acc=0.506, LR=0.000800
+    Epoch 40: Train Loss=1.9044, Train Acc=0.576, Val Loss=0.0128, Val Acc=0.483, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.497, MI: 0.000, Batch Type Pred: 0.000, Time: 20.7s
+
+[Seed 2] main: LN, random sampling
+    Epoch 0: Train Loss=3.6749, Train Acc=0.226, Val Loss=0.0127, Val Acc=0.476, LR=0.001000
+    Epoch 1: Train Loss=2.3318, Train Acc=0.315, Val Loss=0.0119, Val Acc=0.495, LR=0.001000
+    Epoch 2: Train Loss=2.0669, Train Acc=0.347, Val Loss=0.0116, Val Acc=0.520, LR=0.001000
+    Epoch 3: Train Loss=1.9232, Train Acc=0.377, Val Loss=0.0115, Val Acc=0.515, LR=0.001000
+    Epoch 4: Train Loss=1.8340, Train Acc=0.406, Val Loss=0.0113, Val Acc=0.530, LR=0.001000
+    Epoch 10: Train Loss=1.6151, Train Acc=0.475, Val Loss=0.0114, Val Acc=0.522, LR=0.001000
+    Epoch 20: Train Loss=1.4224, Train Acc=0.535, Val Loss=0.0116, Val Acc=0.518, LR=0.000250
+    CONVERGED at epoch 22
+  Test Acc: 0.499, MI: 0.000, Batch Type Pred: 0.000, Time: 6.8s
+
+[Seed 2] main: LN, single_class sampling
+    Epoch 0: Train Loss=7.3445, Train Acc=0.185, Val Loss=0.0140, Val Acc=0.415, LR=0.000800
+    Epoch 1: Train Loss=3.8716, Train Acc=0.284, Val Loss=0.0127, Val Acc=0.464, LR=0.000800
+    Epoch 2: Train Loss=3.4243, Train Acc=0.316, Val Loss=0.0121, Val Acc=0.493, LR=0.000800
+    Epoch 3: Train Loss=3.2125, Train Acc=0.337, Val Loss=0.0120, Val Acc=0.491, LR=0.000800
+    Epoch 4: Train Loss=3.0304, Train Acc=0.365, Val Loss=0.0120, Val Acc=0.496, LR=0.000800
+    Epoch 10: Train Loss=2.6308, Train Acc=0.425, Val Loss=0.0115, Val Acc=0.509, LR=0.000800
+    Epoch 20: Train Loss=2.3235, Train Acc=0.484, Val Loss=0.0116, Val Acc=0.512, LR=0.000800
+    Epoch 30: Train Loss=2.0698, Train Acc=0.539, Val Loss=0.0121, Val Acc=0.488, LR=0.000800
+    Epoch 40: Train Loss=1.7862, Train Acc=0.601, Val Loss=0.0133, Val Acc=0.469, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.476, MI: 0.000, Batch Type Pred: 0.000, Time: 16.9s
+
+[Seed 2] main: NO_NORM, random sampling
+    Epoch 0: Train Loss=2.5894, Train Acc=0.226, Val Loss=0.0151, Val Acc=0.406, LR=0.001000
+    Epoch 1: Train Loss=1.9838, Train Acc=0.341, Val Loss=0.0138, Val Acc=0.476, LR=0.001000
+    Epoch 2: Train Loss=1.8763, Train Acc=0.395, Val Loss=0.0132, Val Acc=0.485, LR=0.001000
+    Epoch 3: Train Loss=1.7973, Train Acc=0.418, Val Loss=0.0132, Val Acc=0.481, LR=0.001000
+    Epoch 4: Train Loss=1.7361, Train Acc=0.441, Val Loss=0.0128, Val Acc=0.514, LR=0.001000
+    Epoch 10: Train Loss=1.5180, Train Acc=0.508, Val Loss=0.0123, Val Acc=0.515, LR=0.001000
+    Epoch 20: Train Loss=1.1889, Train Acc=0.603, Val Loss=0.0126, Val Acc=0.497, LR=0.000500
+    CONVERGED at epoch 20
+  Test Acc: 0.494, MI: 0.000, Batch Type Pred: 0.000, Time: 5.1s
+
+[Seed 2] main: NO_NORM, single_class sampling
+    Epoch 0: Train Loss=4.8425, Train Acc=0.191, Val Loss=0.0162, Val Acc=0.307, LR=0.000800
+    Epoch 1: Train Loss=3.0553, Train Acc=0.309, Val Loss=0.0147, Val Acc=0.405, LR=0.000800
+    Epoch 2: Train Loss=2.8629, Train Acc=0.360, Val Loss=0.0142, Val Acc=0.444, LR=0.000800
+    Epoch 3: Train Loss=2.7499, Train Acc=0.395, Val Loss=0.0137, Val Acc=0.459, LR=0.000800
+    Epoch 4: Train Loss=2.6444, Train Acc=0.419, Val Loss=0.0134, Val Acc=0.472, LR=0.000800
+    Epoch 10: Train Loss=2.3170, Train Acc=0.494, Val Loss=0.0128, Val Acc=0.500, LR=0.000800
+    Epoch 20: Train Loss=1.9428, Train Acc=0.569, Val Loss=0.0129, Val Acc=0.490, LR=0.000800
+    Epoch 30: Train Loss=1.6234, Train Acc=0.639, Val Loss=0.0132, Val Acc=0.483, LR=0.000800
+    Epoch 40: Train Loss=1.3662, Train Acc=0.701, Val Loss=0.0139, Val Acc=0.472, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.473, MI: 0.000, Batch Type Pred: 0.000, Time: 14.0s
+
+[Seed 3] main: GN, random sampling
+    Epoch 0: Train Loss=3.7737, Train Acc=0.224, Val Loss=0.0131, Val Acc=0.460, LR=0.001000
+    Epoch 1: Train Loss=2.4063, Train Acc=0.306, Val Loss=0.0121, Val Acc=0.486, LR=0.001000
+    Epoch 2: Train Loss=2.1199, Train Acc=0.340, Val Loss=0.0118, Val Acc=0.511, LR=0.001000
+    Epoch 3: Train Loss=1.9790, Train Acc=0.374, Val Loss=0.0115, Val Acc=0.520, LR=0.001000
+    Epoch 4: Train Loss=1.8870, Train Acc=0.391, Val Loss=0.0114, Val Acc=0.525, LR=0.001000
+    Epoch 10: Train Loss=1.6242, Train Acc=0.471, Val Loss=0.0114, Val Acc=0.526, LR=0.001000
+    Epoch 20: Train Loss=1.4413, Train Acc=0.528, Val Loss=0.0118, Val Acc=0.505, LR=0.000500
+    CONVERGED at epoch 20
+  Test Acc: 0.501, MI: 0.000, Batch Type Pred: 0.000, Time: 7.7s
+
+[Seed 3] main: GN, single_class sampling
+    Epoch 0: Train Loss=7.6514, Train Acc=0.178, Val Loss=0.0145, Val Acc=0.413, LR=0.000800
+    Epoch 1: Train Loss=4.3557, Train Acc=0.259, Val Loss=0.0131, Val Acc=0.463, LR=0.000800
+    Epoch 2: Train Loss=3.8531, Train Acc=0.298, Val Loss=0.0125, Val Acc=0.481, LR=0.000800
+    Epoch 3: Train Loss=3.5078, Train Acc=0.320, Val Loss=0.0123, Val Acc=0.496, LR=0.000800
+    Epoch 4: Train Loss=3.3019, Train Acc=0.340, Val Loss=0.0120, Val Acc=0.507, LR=0.000800
+    Epoch 10: Train Loss=2.7822, Train Acc=0.413, Val Loss=0.0115, Val Acc=0.517, LR=0.000800
+    Epoch 20: Train Loss=2.3732, Train Acc=0.482, Val Loss=0.0117, Val Acc=0.513, LR=0.000800
+    Epoch 30: Train Loss=2.1465, Train Acc=0.526, Val Loss=0.0121, Val Acc=0.517, LR=0.000800
+    Epoch 40: Train Loss=1.9093, Train Acc=0.574, Val Loss=0.0127, Val Acc=0.496, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.473, MI: 0.000, Batch Type Pred: 0.000, Time: 21.1s
+
+[Seed 3] main: LN, random sampling
+    Epoch 0: Train Loss=3.6292, Train Acc=0.238, Val Loss=0.0129, Val Acc=0.470, LR=0.001000
+    Epoch 1: Train Loss=2.2648, Train Acc=0.318, Val Loss=0.0120, Val Acc=0.491, LR=0.001000
+    Epoch 2: Train Loss=2.0333, Train Acc=0.359, Val Loss=0.0118, Val Acc=0.501, LR=0.001000
+    Epoch 3: Train Loss=1.9279, Train Acc=0.382, Val Loss=0.0115, Val Acc=0.514, LR=0.001000
+    Epoch 4: Train Loss=1.8449, Train Acc=0.397, Val Loss=0.0114, Val Acc=0.520, LR=0.001000
+    Epoch 10: Train Loss=1.6139, Train Acc=0.475, Val Loss=0.0114, Val Acc=0.521, LR=0.001000
+    Epoch 20: Train Loss=1.3970, Train Acc=0.541, Val Loss=0.0119, Val Acc=0.511, LR=0.000500
+    CONVERGED at epoch 23
+  Test Acc: 0.485, MI: 0.000, Batch Type Pred: 0.000, Time: 7.2s
+
+[Seed 3] main: LN, single_class sampling
+    Epoch 0: Train Loss=7.3051, Train Acc=0.187, Val Loss=0.0140, Val Acc=0.423, LR=0.000800
+    Epoch 1: Train Loss=3.8301, Train Acc=0.272, Val Loss=0.0129, Val Acc=0.455, LR=0.000800
+    Epoch 2: Train Loss=3.4051, Train Acc=0.313, Val Loss=0.0124, Val Acc=0.480, LR=0.000800
+    Epoch 3: Train Loss=3.1742, Train Acc=0.341, Val Loss=0.0121, Val Acc=0.491, LR=0.000800
+    Epoch 4: Train Loss=3.0107, Train Acc=0.364, Val Loss=0.0119, Val Acc=0.497, LR=0.000800
+    Epoch 10: Train Loss=2.6262, Train Acc=0.431, Val Loss=0.0116, Val Acc=0.514, LR=0.000800
+    Epoch 20: Train Loss=2.3140, Train Acc=0.496, Val Loss=0.0116, Val Acc=0.518, LR=0.000800
+    Epoch 30: Train Loss=2.0871, Train Acc=0.537, Val Loss=0.0121, Val Acc=0.501, LR=0.000800
+    Epoch 40: Train Loss=1.7995, Train Acc=0.601, Val Loss=0.0132, Val Acc=0.473, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.463, MI: 0.000, Batch Type Pred: 0.000, Time: 17.4s
+
+[Seed 3] main: NO_NORM, random sampling
+    Epoch 0: Train Loss=2.5812, Train Acc=0.224, Val Loss=0.0152, Val Acc=0.379, LR=0.001000
+    Epoch 1: Train Loss=1.9973, Train Acc=0.339, Val Loss=0.0138, Val Acc=0.462, LR=0.001000
+    Epoch 2: Train Loss=1.8756, Train Acc=0.391, Val Loss=0.0133, Val Acc=0.490, LR=0.001000
+    Epoch 3: Train Loss=1.8152, Train Acc=0.415, Val Loss=0.0133, Val Acc=0.490, LR=0.001000
+    Epoch 4: Train Loss=1.7491, Train Acc=0.434, Val Loss=0.0131, Val Acc=0.493, LR=0.001000
+    Epoch 10: Train Loss=1.5102, Train Acc=0.504, Val Loss=0.0128, Val Acc=0.498, LR=0.001000
+    Epoch 20: Train Loss=1.2096, Train Acc=0.602, Val Loss=0.0127, Val Acc=0.491, LR=0.000250
+    CONVERGED at epoch 21
+  Test Acc: 0.487, MI: 0.000, Batch Type Pred: 0.000, Time: 5.1s
+
+[Seed 3] main: NO_NORM, single_class sampling
+    Epoch 0: Train Loss=4.7440, Train Acc=0.190, Val Loss=0.0165, Val Acc=0.295, LR=0.000800
+    Epoch 1: Train Loss=3.0639, Train Acc=0.307, Val Loss=0.0151, Val Acc=0.391, LR=0.000800
+    Epoch 2: Train Loss=2.8586, Train Acc=0.365, Val Loss=0.0143, Val Acc=0.435, LR=0.000800
+    Epoch 3: Train Loss=2.7253, Train Acc=0.400, Val Loss=0.0138, Val Acc=0.453, LR=0.000800
+    Epoch 4: Train Loss=2.6306, Train Acc=0.425, Val Loss=0.0136, Val Acc=0.467, LR=0.000800
+    Epoch 10: Train Loss=2.2939, Train Acc=0.498, Val Loss=0.0130, Val Acc=0.498, LR=0.000800
+    Epoch 20: Train Loss=1.9152, Train Acc=0.579, Val Loss=0.0130, Val Acc=0.485, LR=0.000800
+    Epoch 30: Train Loss=1.6176, Train Acc=0.645, Val Loss=0.0132, Val Acc=0.482, LR=0.000800
+    Epoch 40: Train Loss=1.3586, Train Acc=0.702, Val Loss=0.0138, Val Acc=0.476, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.460, MI: 0.000, Batch Type Pred: 0.000, Time: 14.3s
+
+[Seed 4] main: GN, random sampling
+    Epoch 0: Train Loss=3.8626, Train Acc=0.220, Val Loss=0.0123, Val Acc=0.479, LR=0.001000
+    Epoch 1: Train Loss=2.4884, Train Acc=0.300, Val Loss=0.0118, Val Acc=0.499, LR=0.001000
+    Epoch 2: Train Loss=2.1693, Train Acc=0.329, Val Loss=0.0117, Val Acc=0.507, LR=0.001000
+    Epoch 3: Train Loss=1.9909, Train Acc=0.371, Val Loss=0.0117, Val Acc=0.508, LR=0.001000
+    Epoch 4: Train Loss=1.8758, Train Acc=0.395, Val Loss=0.0114, Val Acc=0.520, LR=0.001000
+    Epoch 10: Train Loss=1.6298, Train Acc=0.467, Val Loss=0.0113, Val Acc=0.527, LR=0.001000
+    Epoch 20: Train Loss=1.3902, Train Acc=0.545, Val Loss=0.0119, Val Acc=0.512, LR=0.000500
+    CONVERGED at epoch 27
+  Test Acc: 0.497, MI: 0.000, Batch Type Pred: 0.000, Time: 10.1s
+
+[Seed 4] main: GN, single_class sampling
+    Epoch 0: Train Loss=7.6394, Train Acc=0.172, Val Loss=0.0137, Val Acc=0.409, LR=0.000800
+    Epoch 1: Train Loss=4.5441, Train Acc=0.256, Val Loss=0.0129, Val Acc=0.456, LR=0.000800
+    Epoch 2: Train Loss=3.9113, Train Acc=0.305, Val Loss=0.0122, Val Acc=0.484, LR=0.000800
+    Epoch 3: Train Loss=3.5949, Train Acc=0.329, Val Loss=0.0121, Val Acc=0.486, LR=0.000800
+    Epoch 4: Train Loss=3.3793, Train Acc=0.341, Val Loss=0.0119, Val Acc=0.503, LR=0.000800
+    Epoch 10: Train Loss=2.7750, Train Acc=0.416, Val Loss=0.0117, Val Acc=0.516, LR=0.000800
+    Epoch 20: Train Loss=2.3826, Train Acc=0.486, Val Loss=0.0118, Val Acc=0.510, LR=0.000800
+    Epoch 30: Train Loss=2.1356, Train Acc=0.528, Val Loss=0.0124, Val Acc=0.498, LR=0.000800
+    Epoch 40: Train Loss=1.8914, Train Acc=0.578, Val Loss=0.0129, Val Acc=0.496, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.480, MI: 0.000, Batch Type Pred: 0.000, Time: 21.5s
+
+[Seed 4] main: LN, random sampling
+    Epoch 0: Train Loss=3.6333, Train Acc=0.226, Val Loss=0.0123, Val Acc=0.469, LR=0.001000
+    Epoch 1: Train Loss=2.2736, Train Acc=0.315, Val Loss=0.0119, Val Acc=0.502, LR=0.001000
+    Epoch 2: Train Loss=2.0132, Train Acc=0.356, Val Loss=0.0116, Val Acc=0.504, LR=0.001000
+    Epoch 3: Train Loss=1.8966, Train Acc=0.392, Val Loss=0.0116, Val Acc=0.507, LR=0.001000
+    Epoch 4: Train Loss=1.8072, Train Acc=0.412, Val Loss=0.0115, Val Acc=0.519, LR=0.001000
+    Epoch 10: Train Loss=1.6160, Train Acc=0.470, Val Loss=0.0113, Val Acc=0.522, LR=0.001000
+    Epoch 20: Train Loss=1.4107, Train Acc=0.537, Val Loss=0.0117, Val Acc=0.514, LR=0.000250
+    CONVERGED at epoch 22
+  Test Acc: 0.506, MI: 0.000, Batch Type Pred: 0.000, Time: 6.7s
+
+[Seed 4] main: LN, single_class sampling
+    Epoch 0: Train Loss=7.1700, Train Acc=0.175, Val Loss=0.0141, Val Acc=0.409, LR=0.000800
+    Epoch 1: Train Loss=3.8490, Train Acc=0.270, Val Loss=0.0127, Val Acc=0.452, LR=0.000800
+    Epoch 2: Train Loss=3.3752, Train Acc=0.317, Val Loss=0.0122, Val Acc=0.475, LR=0.000800
+    Epoch 3: Train Loss=3.1344, Train Acc=0.347, Val Loss=0.0121, Val Acc=0.482, LR=0.000800
+    Epoch 4: Train Loss=3.0057, Train Acc=0.364, Val Loss=0.0118, Val Acc=0.501, LR=0.000800
+    Epoch 10: Train Loss=2.6007, Train Acc=0.437, Val Loss=0.0115, Val Acc=0.507, LR=0.000800
+    Epoch 20: Train Loss=2.2889, Train Acc=0.496, Val Loss=0.0117, Val Acc=0.519, LR=0.000800
+    Epoch 30: Train Loss=2.0591, Train Acc=0.540, Val Loss=0.0123, Val Acc=0.495, LR=0.000800
+    Epoch 40: Train Loss=1.7949, Train Acc=0.599, Val Loss=0.0132, Val Acc=0.480, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.481, MI: 0.000, Batch Type Pred: 0.000, Time: 17.1s
+
+[Seed 4] main: NO_NORM, random sampling
+    Epoch 0: Train Loss=2.5792, Train Acc=0.223, Val Loss=0.0150, Val Acc=0.406, LR=0.001000
+    Epoch 1: Train Loss=1.9800, Train Acc=0.342, Val Loss=0.0138, Val Acc=0.464, LR=0.001000
+    Epoch 2: Train Loss=1.8876, Train Acc=0.385, Val Loss=0.0134, Val Acc=0.490, LR=0.001000
+    Epoch 3: Train Loss=1.8084, Train Acc=0.415, Val Loss=0.0131, Val Acc=0.509, LR=0.001000
+    Epoch 4: Train Loss=1.7530, Train Acc=0.439, Val Loss=0.0130, Val Acc=0.503, LR=0.001000
+    Epoch 10: Train Loss=1.5359, Train Acc=0.501, Val Loss=0.0126, Val Acc=0.497, LR=0.001000
+    Epoch 20: Train Loss=1.2203, Train Acc=0.596, Val Loss=0.0127, Val Acc=0.491, LR=0.000500
+    CONVERGED at epoch 24
+  Test Acc: 0.479, MI: 0.000, Batch Type Pred: 0.000, Time: 6.3s
+
+[Seed 4] main: NO_NORM, single_class sampling
+    Epoch 0: Train Loss=4.6911, Train Acc=0.179, Val Loss=0.0161, Val Acc=0.328, LR=0.000800
+    Epoch 1: Train Loss=3.0455, Train Acc=0.301, Val Loss=0.0147, Val Acc=0.408, LR=0.000800
+    Epoch 2: Train Loss=2.8537, Train Acc=0.362, Val Loss=0.0139, Val Acc=0.451, LR=0.000800
+    Epoch 3: Train Loss=2.7265, Train Acc=0.401, Val Loss=0.0135, Val Acc=0.469, LR=0.000800
+    Epoch 4: Train Loss=2.6344, Train Acc=0.425, Val Loss=0.0132, Val Acc=0.491, LR=0.000800
+    Epoch 10: Train Loss=2.2937, Train Acc=0.499, Val Loss=0.0128, Val Acc=0.508, LR=0.000800
+    Epoch 20: Train Loss=1.9232, Train Acc=0.574, Val Loss=0.0128, Val Acc=0.495, LR=0.000800
+    Epoch 30: Train Loss=1.6449, Train Acc=0.638, Val Loss=0.0133, Val Acc=0.481, LR=0.000800
+    Epoch 40: Train Loss=1.3811, Train Acc=0.694, Val Loss=0.0138, Val Acc=0.476, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.463, MI: 0.000, Batch Type Pred: 0.000, Time: 14.1s
+
+============================================================
+ABLATION STUDIES
+============================================================
+
+3a. Architecture depth ablation
+
+[Seed 0] ablation_shallow: BN, single_class sampling
+    Epoch 0: Train Loss=12.4927, Train Acc=0.110, Val Loss=0.0406, Val Acc=0.104, LR=0.000800
+    Epoch 1: Train Loss=9.7545, Train Acc=0.119, Val Loss=0.0362, Val Acc=0.096, LR=0.000800
+    Epoch 2: Train Loss=9.0831, Train Acc=0.130, Val Loss=0.0336, Val Acc=0.106, LR=0.000800
+    Epoch 3: Train Loss=8.6141, Train Acc=0.137, Val Loss=0.0330, Val Acc=0.101, LR=0.000800
+    Epoch 4: Train Loss=8.2474, Train Acc=0.140, Val Loss=0.0313, Val Acc=0.103, LR=0.000800
+    Epoch 10: Train Loss=6.9762, Train Acc=0.167, Val Loss=0.0283, Val Acc=0.107, LR=0.000800
+    Epoch 20: Train Loss=5.8202, Train Acc=0.194, Val Loss=0.0256, Val Acc=0.096, LR=0.000800
+    Epoch 30: Train Loss=5.1728, Train Acc=0.206, Val Loss=0.0247, Val Acc=0.087, LR=0.000800
+    Epoch 40: Train Loss=4.6181, Train Acc=0.221, Val Loss=0.0232, Val Acc=0.105, LR=0.000800
+    CONVERGED at epoch 49
+  Test Acc: 0.105, MI: 0.742, Batch Type Pred: 0.000, Time: 12.0s
+
+[Seed 0] ablation_deep: BN, single_class sampling
+    Epoch 0: Train Loss=7.0672, Train Acc=0.107, Val Loss=0.0229, Val Acc=0.103, LR=0.000800
+    Epoch 1: Train Loss=5.3065, Train Acc=0.117, Val Loss=0.0205, Val Acc=0.099, LR=0.000800
+    Epoch 2: Train Loss=4.5909, Train Acc=0.125, Val Loss=0.0195, Val Acc=0.102, LR=0.000800
+    Epoch 3: Train Loss=4.2980, Train Acc=0.124, Val Loss=0.0193, Val Acc=0.113, LR=0.000800
+    Epoch 4: Train Loss=4.1761, Train Acc=0.130, Val Loss=0.0192, Val Acc=0.093, LR=0.000800
+    Epoch 10: Train Loss=3.8738, Train Acc=0.151, Val Loss=0.0191, Val Acc=0.084, LR=0.000800
+    Epoch 20: Train Loss=3.2114, Train Acc=0.404, Val Loss=0.0195, Val Acc=0.091, LR=0.000800
+    Epoch 30: Train Loss=2.5776, Train Acc=0.547, Val Loss=0.0192, Val Acc=0.080, LR=0.000800
+    Epoch 40: Train Loss=2.0965, Train Acc=0.627, Val Loss=0.0190, Val Acc=0.096, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.735, Batch Type Pred: 0.000, Time: 27.1s
+
+[Seed 1] ablation_shallow: BN, single_class sampling
+    Epoch 0: Train Loss=12.1666, Train Acc=0.127, Val Loss=0.0412, Val Acc=0.117, LR=0.000800
+    Epoch 1: Train Loss=9.5849, Train Acc=0.129, Val Loss=0.0365, Val Acc=0.112, LR=0.000800
+    Epoch 2: Train Loss=8.9538, Train Acc=0.131, Val Loss=0.0345, Val Acc=0.099, LR=0.000800
+    Epoch 3: Train Loss=8.5341, Train Acc=0.131, Val Loss=0.0324, Val Acc=0.107, LR=0.000800
+    Epoch 4: Train Loss=8.1518, Train Acc=0.144, Val Loss=0.0317, Val Acc=0.101, LR=0.000800
+    Epoch 10: Train Loss=6.8188, Train Acc=0.167, Val Loss=0.0284, Val Acc=0.100, LR=0.000800
+    Epoch 20: Train Loss=5.8273, Train Acc=0.192, Val Loss=0.0257, Val Acc=0.100, LR=0.000800
+    Epoch 30: Train Loss=5.1565, Train Acc=0.207, Val Loss=0.0241, Val Acc=0.103, LR=0.000800
+    Epoch 40: Train Loss=4.5603, Train Acc=0.221, Val Loss=0.0235, Val Acc=0.095, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.096, MI: 0.806, Batch Type Pred: 0.000, Time: 9.6s
+
+[Seed 1] ablation_deep: BN, single_class sampling
+    Epoch 0: Train Loss=7.5546, Train Acc=0.107, Val Loss=0.0233, Val Acc=0.097, LR=0.000800
+    Epoch 1: Train Loss=5.4683, Train Acc=0.110, Val Loss=0.0203, Val Acc=0.103, LR=0.000800
+    Epoch 2: Train Loss=4.6241, Train Acc=0.125, Val Loss=0.0196, Val Acc=0.107, LR=0.000800
+    Epoch 3: Train Loss=4.3733, Train Acc=0.123, Val Loss=0.0195, Val Acc=0.095, LR=0.000800
+    Epoch 4: Train Loss=4.2165, Train Acc=0.129, Val Loss=0.0192, Val Acc=0.099, LR=0.000800
+    Epoch 10: Train Loss=3.9253, Train Acc=0.154, Val Loss=0.0194, Val Acc=0.096, LR=0.000800
+    Epoch 20: Train Loss=3.3042, Train Acc=0.371, Val Loss=0.0195, Val Acc=0.071, LR=0.000800
+    Epoch 30: Train Loss=2.8036, Train Acc=0.496, Val Loss=0.0193, Val Acc=0.101, LR=0.000800
+    Epoch 40: Train Loss=2.2189, Train Acc=0.617, Val Loss=0.0190, Val Acc=0.101, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.097, MI: 0.790, Batch Type Pred: 0.000, Time: 28.5s
+
+[Seed 2] ablation_shallow: BN, single_class sampling
+    Epoch 0: Train Loss=11.9158, Train Acc=0.098, Val Loss=0.0401, Val Acc=0.085, LR=0.000800
+    Epoch 1: Train Loss=9.5415, Train Acc=0.125, Val Loss=0.0366, Val Acc=0.089, LR=0.000800
+    Epoch 2: Train Loss=8.9064, Train Acc=0.129, Val Loss=0.0334, Val Acc=0.093, LR=0.000800
+    Epoch 3: Train Loss=8.5168, Train Acc=0.135, Val Loss=0.0325, Val Acc=0.085, LR=0.000800
+    Epoch 4: Train Loss=8.2147, Train Acc=0.143, Val Loss=0.0312, Val Acc=0.095, LR=0.000800
+    Epoch 10: Train Loss=6.9302, Train Acc=0.170, Val Loss=0.0272, Val Acc=0.097, LR=0.000800
+    Epoch 20: Train Loss=5.8428, Train Acc=0.189, Val Loss=0.0253, Val Acc=0.096, LR=0.000800
+    Epoch 30: Train Loss=5.0874, Train Acc=0.211, Val Loss=0.0238, Val Acc=0.103, LR=0.000800
+    Epoch 40: Train Loss=4.6185, Train Acc=0.217, Val Loss=0.0232, Val Acc=0.103, LR=0.000800
+    Epoch 50: Train Loss=4.1265, Train Acc=0.241, Val Loss=0.0227, Val Acc=0.103, LR=0.000800
+    CONVERGED at epoch 53
+  Test Acc: 0.101, MI: 0.773, Batch Type Pred: 0.000, Time: 12.4s
+
+[Seed 2] ablation_deep: BN, single_class sampling
+    Epoch 0: Train Loss=7.1354, Train Acc=0.116, Val Loss=0.0240, Val Acc=0.116, LR=0.000800
+    Epoch 1: Train Loss=5.3002, Train Acc=0.123, Val Loss=0.0216, Val Acc=0.094, LR=0.000800
+    Epoch 2: Train Loss=4.5925, Train Acc=0.119, Val Loss=0.0198, Val Acc=0.100, LR=0.000800
+    Epoch 3: Train Loss=4.3600, Train Acc=0.127, Val Loss=0.0195, Val Acc=0.096, LR=0.000800
+    Epoch 4: Train Loss=4.1841, Train Acc=0.126, Val Loss=0.0195, Val Acc=0.090, LR=0.000800
+    Epoch 10: Train Loss=3.8591, Train Acc=0.178, Val Loss=0.0193, Val Acc=0.105, LR=0.000800
+    Epoch 20: Train Loss=3.2477, Train Acc=0.386, Val Loss=0.0193, Val Acc=0.093, LR=0.000800
+    Epoch 30: Train Loss=2.5961, Train Acc=0.545, Val Loss=0.0192, Val Acc=0.099, LR=0.000800
+    Epoch 40: Train Loss=2.3088, Train Acc=0.576, Val Loss=0.0192, Val Acc=0.101, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.775, Batch Type Pred: 0.000, Time: 27.2s
+
+[Seed 3] ablation_shallow: BN, single_class sampling
+    Epoch 0: Train Loss=13.0644, Train Acc=0.111, Val Loss=0.0398, Val Acc=0.110, LR=0.000800
+    Epoch 1: Train Loss=9.4907, Train Acc=0.121, Val Loss=0.0362, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=8.7944, Train Acc=0.129, Val Loss=0.0339, Val Acc=0.099, LR=0.000800
+    Epoch 3: Train Loss=8.3070, Train Acc=0.138, Val Loss=0.0324, Val Acc=0.087, LR=0.000800
+    Epoch 4: Train Loss=8.0221, Train Acc=0.141, Val Loss=0.0306, Val Acc=0.098, LR=0.000800
+    Epoch 10: Train Loss=6.7633, Train Acc=0.167, Val Loss=0.0274, Val Acc=0.108, LR=0.000800
+    Epoch 20: Train Loss=5.7306, Train Acc=0.192, Val Loss=0.0256, Val Acc=0.096, LR=0.000800
+    Epoch 30: Train Loss=5.0485, Train Acc=0.210, Val Loss=0.0244, Val Acc=0.099, LR=0.000800
+    Epoch 40: Train Loss=4.5095, Train Acc=0.219, Val Loss=0.0230, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.119, MI: 0.833, Batch Type Pred: 0.000, Time: 8.8s
+
+[Seed 3] ablation_deep: BN, single_class sampling
+    Epoch 0: Train Loss=7.5544, Train Acc=0.085, Val Loss=0.0223, Val Acc=0.086, LR=0.000800
+    Epoch 1: Train Loss=5.2485, Train Acc=0.114, Val Loss=0.0200, Val Acc=0.110, LR=0.000800
+    Epoch 2: Train Loss=4.6240, Train Acc=0.120, Val Loss=0.0197, Val Acc=0.104, LR=0.000800
+    Epoch 3: Train Loss=4.3475, Train Acc=0.131, Val Loss=0.0196, Val Acc=0.101, LR=0.000800
+    Epoch 4: Train Loss=4.2384, Train Acc=0.125, Val Loss=0.0194, Val Acc=0.109, LR=0.000800
+    Epoch 10: Train Loss=3.9674, Train Acc=0.149, Val Loss=0.0194, Val Acc=0.105, LR=0.000800
+    Epoch 20: Train Loss=3.3549, Train Acc=0.370, Val Loss=0.0196, Val Acc=0.098, LR=0.000800
+    Epoch 30: Train Loss=2.8158, Train Acc=0.521, Val Loss=0.0195, Val Acc=0.088, LR=0.000800
+    Epoch 40: Train Loss=2.4887, Train Acc=0.556, Val Loss=0.0194, Val Acc=0.098, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.112, MI: 0.747, Batch Type Pred: 0.000, Time: 27.8s
+
+[Seed 4] ablation_shallow: BN, single_class sampling
+    Epoch 0: Train Loss=12.5198, Train Acc=0.116, Val Loss=0.0397, Val Acc=0.106, LR=0.000800
+    Epoch 1: Train Loss=9.6388, Train Acc=0.122, Val Loss=0.0354, Val Acc=0.112, LR=0.000800
+    Epoch 2: Train Loss=8.9100, Train Acc=0.129, Val Loss=0.0332, Val Acc=0.110, LR=0.000800
+    Epoch 3: Train Loss=8.5700, Train Acc=0.135, Val Loss=0.0327, Val Acc=0.096, LR=0.000800
+    Epoch 4: Train Loss=8.1285, Train Acc=0.144, Val Loss=0.0318, Val Acc=0.092, LR=0.000800
+    Epoch 10: Train Loss=6.8300, Train Acc=0.170, Val Loss=0.0281, Val Acc=0.099, LR=0.000800
+    Epoch 20: Train Loss=5.8319, Train Acc=0.187, Val Loss=0.0261, Val Acc=0.083, LR=0.000800
+    Epoch 30: Train Loss=5.0933, Train Acc=0.202, Val Loss=0.0246, Val Acc=0.096, LR=0.000800
+    Epoch 40: Train Loss=4.5550, Train Acc=0.224, Val Loss=0.0235, Val Acc=0.096, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.812, Batch Type Pred: 0.000, Time: 9.3s
+
+[Seed 4] ablation_deep: BN, single_class sampling
+    Epoch 0: Train Loss=7.5044, Train Acc=0.087, Val Loss=0.0223, Val Acc=0.098, LR=0.000800
+    Epoch 1: Train Loss=5.0802, Train Acc=0.111, Val Loss=0.0201, Val Acc=0.094, LR=0.000800
+    Epoch 2: Train Loss=4.3784, Train Acc=0.119, Val Loss=0.0199, Val Acc=0.097, LR=0.000800
+    Epoch 3: Train Loss=4.1873, Train Acc=0.127, Val Loss=0.0194, Val Acc=0.105, LR=0.000800
+    Epoch 4: Train Loss=4.0349, Train Acc=0.134, Val Loss=0.0192, Val Acc=0.110, LR=0.000800
+    Epoch 10: Train Loss=3.7828, Train Acc=0.169, Val Loss=0.0192, Val Acc=0.102, LR=0.000800
+    Epoch 20: Train Loss=3.0971, Train Acc=0.418, Val Loss=0.0193, Val Acc=0.111, LR=0.000800
+    Epoch 30: Train Loss=2.5981, Train Acc=0.514, Val Loss=0.0188, Val Acc=0.096, LR=0.000800
+    Epoch 40: Train Loss=1.9539, Train Acc=0.646, Val Loss=0.0189, Val Acc=0.100, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.096, MI: 0.754, Batch Type Pred: 0.000, Time: 26.9s
+
+3b. BN momentum ablation
+
+[Seed 0] ablation_momentum_0.01: BN, single_class sampling
+    Epoch 0: Train Loss=10.4486, Train Acc=0.102, Val Loss=0.0269, Val Acc=0.096, LR=0.000800
+    Epoch 1: Train Loss=7.9229, Train Acc=0.114, Val Loss=0.0270, Val Acc=0.111, LR=0.000800
+    Epoch 2: Train Loss=7.0675, Train Acc=0.123, Val Loss=0.0282, Val Acc=0.093, LR=0.000800
+    Epoch 3: Train Loss=6.5042, Train Acc=0.130, Val Loss=0.0263, Val Acc=0.097, LR=0.000800
+    Epoch 4: Train Loss=5.9844, Train Acc=0.136, Val Loss=0.0245, Val Acc=0.097, LR=0.000800
+    Epoch 10: Train Loss=4.7346, Train Acc=0.161, Val Loss=0.0209, Val Acc=0.106, LR=0.000800
+    Epoch 20: Train Loss=3.9223, Train Acc=0.271, Val Loss=0.0204, Val Acc=0.106, LR=0.000800
+    Epoch 30: Train Loss=3.0196, Train Acc=0.506, Val Loss=0.0207, Val Acc=0.104, LR=0.000800
+    Epoch 40: Train Loss=2.0973, Train Acc=0.687, Val Loss=0.0201, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.093, MI: 0.739, Batch Type Pred: 0.000, Time: 21.8s
+
+[Seed 0] ablation_momentum_0.5: BN, single_class sampling
+    Epoch 0: Train Loss=10.4486, Train Acc=0.102, Val Loss=0.0311, Val Acc=0.093, LR=0.000800
+    Epoch 1: Train Loss=7.9229, Train Acc=0.114, Val Loss=0.0264, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=7.0675, Train Acc=0.123, Val Loss=0.0255, Val Acc=0.103, LR=0.000800
+    Epoch 3: Train Loss=6.5042, Train Acc=0.130, Val Loss=0.0241, Val Acc=0.108, LR=0.000800
+    Epoch 4: Train Loss=5.9844, Train Acc=0.136, Val Loss=0.0228, Val Acc=0.107, LR=0.000800
+    Epoch 10: Train Loss=4.7346, Train Acc=0.161, Val Loss=0.0205, Val Acc=0.101, LR=0.000800
+    Epoch 20: Train Loss=3.9223, Train Acc=0.271, Val Loss=0.0205, Val Acc=0.105, LR=0.000800
+    Epoch 30: Train Loss=3.0196, Train Acc=0.506, Val Loss=0.0209, Val Acc=0.106, LR=0.000800
+    Epoch 40: Train Loss=2.0973, Train Acc=0.687, Val Loss=0.0210, Val Acc=0.102, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.091, MI: 0.739, Batch Type Pred: 0.000, Time: 21.6s
+
+[Seed 0] ablation_momentum_0.9: BN, single_class sampling
+    Epoch 0: Train Loss=10.4486, Train Acc=0.102, Val Loss=0.0316, Val Acc=0.096, LR=0.000800
+    Epoch 1: Train Loss=7.9229, Train Acc=0.114, Val Loss=0.0265, Val Acc=0.111, LR=0.000800
+    Epoch 2: Train Loss=7.0675, Train Acc=0.123, Val Loss=0.0258, Val Acc=0.102, LR=0.000800
+    Epoch 3: Train Loss=6.5042, Train Acc=0.130, Val Loss=0.0248, Val Acc=0.108, LR=0.000800
+    Epoch 4: Train Loss=5.9844, Train Acc=0.136, Val Loss=0.0227, Val Acc=0.100, LR=0.000800
+    Epoch 10: Train Loss=4.7346, Train Acc=0.161, Val Loss=0.0205, Val Acc=0.105, LR=0.000800
+    Epoch 20: Train Loss=3.9223, Train Acc=0.271, Val Loss=0.0206, Val Acc=0.104, LR=0.000800
+    Epoch 30: Train Loss=3.0196, Train Acc=0.506, Val Loss=0.0213, Val Acc=0.100, LR=0.000800
+    Epoch 40: Train Loss=2.0973, Train Acc=0.687, Val Loss=0.0218, Val Acc=0.098, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.102, MI: 0.739, Batch Type Pred: 0.000, Time: 30.6s
+
+[Seed 1] ablation_momentum_0.01: BN, single_class sampling
+    Epoch 0: Train Loss=9.9127, Train Acc=0.107, Val Loss=0.0267, Val Acc=0.102, LR=0.000800
+    Epoch 1: Train Loss=7.8441, Train Acc=0.117, Val Loss=0.0280, Val Acc=0.086, LR=0.000800
+    Epoch 2: Train Loss=6.9506, Train Acc=0.126, Val Loss=0.0278, Val Acc=0.088, LR=0.000800
+    Epoch 3: Train Loss=6.3519, Train Acc=0.131, Val Loss=0.0251, Val Acc=0.095, LR=0.000800
+    Epoch 4: Train Loss=5.8516, Train Acc=0.132, Val Loss=0.0235, Val Acc=0.100, LR=0.000800
+    Epoch 10: Train Loss=4.6533, Train Acc=0.147, Val Loss=0.0201, Val Acc=0.093, LR=0.000800
+    Epoch 20: Train Loss=3.8411, Train Acc=0.257, Val Loss=0.0200, Val Acc=0.097, LR=0.000800
+    Epoch 30: Train Loss=2.8286, Train Acc=0.516, Val Loss=0.0201, Val Acc=0.100, LR=0.000800
+    Epoch 40: Train Loss=1.8483, Train Acc=0.732, Val Loss=0.0199, Val Acc=0.086, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.086, MI: 0.815, Batch Type Pred: 0.000, Time: 28.0s
+
+[Seed 1] ablation_momentum_0.5: BN, single_class sampling
+    Epoch 0: Train Loss=9.9127, Train Acc=0.107, Val Loss=0.0304, Val Acc=0.110, LR=0.000800
+    Epoch 1: Train Loss=7.8441, Train Acc=0.117, Val Loss=0.0272, Val Acc=0.097, LR=0.000800
+    Epoch 2: Train Loss=6.9506, Train Acc=0.126, Val Loss=0.0255, Val Acc=0.093, LR=0.000800
+    Epoch 3: Train Loss=6.3519, Train Acc=0.131, Val Loss=0.0240, Val Acc=0.108, LR=0.000800
+    Epoch 4: Train Loss=5.8516, Train Acc=0.132, Val Loss=0.0221, Val Acc=0.116, LR=0.000800
+    Epoch 10: Train Loss=4.6533, Train Acc=0.147, Val Loss=0.0199, Val Acc=0.099, LR=0.000800
+    Epoch 20: Train Loss=3.8411, Train Acc=0.257, Val Loss=0.0202, Val Acc=0.107, LR=0.000800
+    Epoch 30: Train Loss=2.8286, Train Acc=0.516, Val Loss=0.0209, Val Acc=0.108, LR=0.000800
+    Epoch 40: Train Loss=1.8483, Train Acc=0.732, Val Loss=0.0218, Val Acc=0.108, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.102, MI: 0.815, Batch Type Pred: 0.000, Time: 24.2s
+
+[Seed 1] ablation_momentum_0.9: BN, single_class sampling
+    Epoch 0: Train Loss=9.9127, Train Acc=0.107, Val Loss=0.0308, Val Acc=0.106, LR=0.000800
+    Epoch 1: Train Loss=7.8441, Train Acc=0.117, Val Loss=0.0274, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=6.9506, Train Acc=0.126, Val Loss=0.0262, Val Acc=0.103, LR=0.000800
+    Epoch 3: Train Loss=6.3519, Train Acc=0.131, Val Loss=0.0243, Val Acc=0.111, LR=0.000800
+    Epoch 4: Train Loss=5.8516, Train Acc=0.132, Val Loss=0.0221, Val Acc=0.115, LR=0.000800
+    Epoch 10: Train Loss=4.6533, Train Acc=0.147, Val Loss=0.0202, Val Acc=0.098, LR=0.000800
+    Epoch 20: Train Loss=3.8411, Train Acc=0.257, Val Loss=0.0201, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=2.8286, Train Acc=0.516, Val Loss=0.0215, Val Acc=0.112, LR=0.000800
+    Epoch 40: Train Loss=1.8483, Train Acc=0.732, Val Loss=0.0238, Val Acc=0.118, LR=0.000800
+    CONVERGED at epoch 43
+  Test Acc: 0.106, MI: 0.805, Batch Type Pred: 0.000, Time: 36.1s
+
+[Seed 2] ablation_momentum_0.01: BN, single_class sampling
+    Epoch 0: Train Loss=10.1093, Train Acc=0.106, Val Loss=0.0270, Val Acc=0.095, LR=0.000800
+    Epoch 1: Train Loss=7.7909, Train Acc=0.121, Val Loss=0.0271, Val Acc=0.095, LR=0.000800
+    Epoch 2: Train Loss=7.0638, Train Acc=0.121, Val Loss=0.0266, Val Acc=0.093, LR=0.000800
+    Epoch 3: Train Loss=6.5051, Train Acc=0.135, Val Loss=0.0252, Val Acc=0.099, LR=0.000800
+    Epoch 4: Train Loss=6.0178, Train Acc=0.141, Val Loss=0.0248, Val Acc=0.090, LR=0.000800
+    Epoch 10: Train Loss=4.7644, Train Acc=0.159, Val Loss=0.0202, Val Acc=0.108, LR=0.000800
+    Epoch 20: Train Loss=3.9466, Train Acc=0.273, Val Loss=0.0204, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=3.0793, Train Acc=0.493, Val Loss=0.0206, Val Acc=0.100, LR=0.000800
+    Epoch 40: Train Loss=2.2469, Train Acc=0.659, Val Loss=0.0206, Val Acc=0.102, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.107, MI: 0.772, Batch Type Pred: 0.000, Time: 29.4s
+
+[Seed 2] ablation_momentum_0.5: BN, single_class sampling
+    Epoch 0: Train Loss=10.1093, Train Acc=0.106, Val Loss=0.0311, Val Acc=0.095, LR=0.000800
+    Epoch 1: Train Loss=7.7909, Train Acc=0.121, Val Loss=0.0277, Val Acc=0.093, LR=0.000800
+    Epoch 2: Train Loss=7.0638, Train Acc=0.121, Val Loss=0.0248, Val Acc=0.102, LR=0.000800
+    Epoch 3: Train Loss=6.5051, Train Acc=0.135, Val Loss=0.0238, Val Acc=0.095, LR=0.000800
+    Epoch 4: Train Loss=6.0178, Train Acc=0.141, Val Loss=0.0230, Val Acc=0.087, LR=0.000800
+    Epoch 10: Train Loss=4.7644, Train Acc=0.159, Val Loss=0.0200, Val Acc=0.108, LR=0.000800
+    Epoch 20: Train Loss=3.9466, Train Acc=0.273, Val Loss=0.0204, Val Acc=0.104, LR=0.000800
+    Epoch 30: Train Loss=3.0793, Train Acc=0.493, Val Loss=0.0212, Val Acc=0.106, LR=0.000800
+    Epoch 40: Train Loss=2.2469, Train Acc=0.659, Val Loss=0.0212, Val Acc=0.113, LR=0.000800
+    CONVERGED at epoch 41
+  Test Acc: 0.106, MI: 0.767, Batch Type Pred: 0.000, Time: 29.1s
+
+[Seed 2] ablation_momentum_0.9: BN, single_class sampling
+    Epoch 0: Train Loss=10.1093, Train Acc=0.106, Val Loss=0.0316, Val Acc=0.099, LR=0.000800
+    Epoch 1: Train Loss=7.7909, Train Acc=0.121, Val Loss=0.0286, Val Acc=0.090, LR=0.000800
+    Epoch 2: Train Loss=7.0638, Train Acc=0.121, Val Loss=0.0255, Val Acc=0.096, LR=0.000800
+    Epoch 3: Train Loss=6.5051, Train Acc=0.135, Val Loss=0.0241, Val Acc=0.095, LR=0.000800
+    Epoch 4: Train Loss=6.0178, Train Acc=0.141, Val Loss=0.0236, Val Acc=0.086, LR=0.000800
+    Epoch 10: Train Loss=4.7644, Train Acc=0.159, Val Loss=0.0202, Val Acc=0.109, LR=0.000800
+    Epoch 20: Train Loss=3.9466, Train Acc=0.273, Val Loss=0.0206, Val Acc=0.108, LR=0.000800
+    Epoch 30: Train Loss=3.0793, Train Acc=0.493, Val Loss=0.0236, Val Acc=0.098, LR=0.000800
+    Epoch 40: Train Loss=2.2469, Train Acc=0.659, Val Loss=0.0228, Val Acc=0.107, LR=0.000800
+    CONVERGED at epoch 48
+  Test Acc: 0.104, MI: 0.746, Batch Type Pred: 0.000, Time: 40.7s
+
+3c. Dataset difficulty ablation
+
+[Seed 0] ablation_difficulty_hard: BN, single_class sampling
+    Epoch 0: Train Loss=10.2213, Train Acc=0.110, Val Loss=0.0312, Val Acc=0.117, LR=0.000800
+    Epoch 1: Train Loss=7.7329, Train Acc=0.116, Val Loss=0.0287, Val Acc=0.083, LR=0.000800
+    Epoch 2: Train Loss=6.7257, Train Acc=0.126, Val Loss=0.0256, Val Acc=0.107, LR=0.000800
+    Epoch 3: Train Loss=6.0894, Train Acc=0.138, Val Loss=0.0238, Val Acc=0.112, LR=0.000800
+    Epoch 4: Train Loss=5.6852, Train Acc=0.136, Val Loss=0.0224, Val Acc=0.123, LR=0.000800
+    Epoch 10: Train Loss=4.6795, Train Acc=0.167, Val Loss=0.0199, Val Acc=0.134, LR=0.000800
+    Epoch 20: Train Loss=3.7193, Train Acc=0.327, Val Loss=0.0214, Val Acc=0.111, LR=0.000800
+    Epoch 30: Train Loss=2.7726, Train Acc=0.562, Val Loss=0.0215, Val Acc=0.102, LR=0.000800
+    Epoch 40: Train Loss=1.9179, Train Acc=0.748, Val Loss=0.0212, Val Acc=0.107, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.097, MI: 1.121, Batch Type Pred: 0.000, Time: 24.6s
+
+[Seed 0] ablation_difficulty_very_hard: BN, single_class sampling
+    Epoch 0: Train Loss=10.4486, Train Acc=0.102, Val Loss=0.0316, Val Acc=0.091, LR=0.000800
+    Epoch 1: Train Loss=7.9229, Train Acc=0.114, Val Loss=0.0269, Val Acc=0.100, LR=0.000800
+    Epoch 2: Train Loss=7.0675, Train Acc=0.123, Val Loss=0.0254, Val Acc=0.099, LR=0.000800
+    Epoch 3: Train Loss=6.5042, Train Acc=0.130, Val Loss=0.0235, Val Acc=0.105, LR=0.000800
+    Epoch 4: Train Loss=5.9844, Train Acc=0.136, Val Loss=0.0230, Val Acc=0.099, LR=0.000800
+    Epoch 10: Train Loss=4.7346, Train Acc=0.161, Val Loss=0.0206, Val Acc=0.100, LR=0.000800
+    Epoch 20: Train Loss=3.9223, Train Acc=0.271, Val Loss=0.0205, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=3.0196, Train Acc=0.506, Val Loss=0.0211, Val Acc=0.108, LR=0.000800
+    Epoch 40: Train Loss=2.0973, Train Acc=0.687, Val Loss=0.0204, Val Acc=0.097, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.097, MI: 0.739, Batch Type Pred: 0.000, Time: 34.5s
+
+[Seed 1] ablation_difficulty_hard: BN, single_class sampling
+    Epoch 0: Train Loss=9.6970, Train Acc=0.115, Val Loss=0.0324, Val Acc=0.099, LR=0.000800
+    Epoch 1: Train Loss=7.4552, Train Acc=0.122, Val Loss=0.0263, Val Acc=0.114, LR=0.000800
+    Epoch 2: Train Loss=6.5814, Train Acc=0.124, Val Loss=0.0245, Val Acc=0.130, LR=0.000800
+    Epoch 3: Train Loss=5.9148, Train Acc=0.138, Val Loss=0.0221, Val Acc=0.134, LR=0.000800
+    Epoch 4: Train Loss=5.5100, Train Acc=0.137, Val Loss=0.0212, Val Acc=0.123, LR=0.000800
+    Epoch 10: Train Loss=4.5582, Train Acc=0.157, Val Loss=0.0193, Val Acc=0.152, LR=0.000800
+    Epoch 20: Train Loss=3.6526, Train Acc=0.309, Val Loss=0.0199, Val Acc=0.127, LR=0.000800
+    Epoch 30: Train Loss=2.6320, Train Acc=0.586, Val Loss=0.0205, Val Acc=0.108, LR=0.000800
+    Epoch 40: Train Loss=1.8235, Train Acc=0.750, Val Loss=0.0200, Val Acc=0.110, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.100, MI: 1.082, Batch Type Pred: 0.000, Time: 29.6s
+
+[Seed 1] ablation_difficulty_very_hard: BN, single_class sampling
+    Epoch 0: Train Loss=9.9127, Train Acc=0.107, Val Loss=0.0304, Val Acc=0.110, LR=0.000800
+    Epoch 1: Train Loss=7.8441, Train Acc=0.117, Val Loss=0.0278, Val Acc=0.092, LR=0.000800
+    Epoch 2: Train Loss=6.9506, Train Acc=0.126, Val Loss=0.0254, Val Acc=0.102, LR=0.000800
+    Epoch 3: Train Loss=6.3519, Train Acc=0.131, Val Loss=0.0238, Val Acc=0.101, LR=0.000800
+    Epoch 4: Train Loss=5.8516, Train Acc=0.132, Val Loss=0.0221, Val Acc=0.109, LR=0.000800
+    Epoch 10: Train Loss=4.6533, Train Acc=0.147, Val Loss=0.0199, Val Acc=0.110, LR=0.000800
+    Epoch 20: Train Loss=3.8411, Train Acc=0.257, Val Loss=0.0203, Val Acc=0.103, LR=0.000800
+    Epoch 30: Train Loss=2.8286, Train Acc=0.516, Val Loss=0.0205, Val Acc=0.111, LR=0.000800
+    Epoch 40: Train Loss=1.8483, Train Acc=0.732, Val Loss=0.0200, Val Acc=0.088, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.098, MI: 0.815, Batch Type Pred: 0.000, Time: 27.6s
+
+[Seed 2] ablation_difficulty_hard: BN, single_class sampling
+    Epoch 0: Train Loss=9.9626, Train Acc=0.104, Val Loss=0.0312, Val Acc=0.088, LR=0.000800
+    Epoch 1: Train Loss=7.4625, Train Acc=0.124, Val Loss=0.0263, Val Acc=0.111, LR=0.000800
+    Epoch 2: Train Loss=6.5514, Train Acc=0.130, Val Loss=0.0245, Val Acc=0.111, LR=0.000800
+    Epoch 3: Train Loss=5.9347, Train Acc=0.140, Val Loss=0.0220, Val Acc=0.127, LR=0.000800
+    Epoch 4: Train Loss=5.5204, Train Acc=0.146, Val Loss=0.0212, Val Acc=0.118, LR=0.000800
+    Epoch 10: Train Loss=4.5525, Train Acc=0.171, Val Loss=0.0194, Val Acc=0.141, LR=0.000800
+    Epoch 20: Train Loss=3.7887, Train Acc=0.307, Val Loss=0.0202, Val Acc=0.123, LR=0.000800
+    Epoch 30: Train Loss=2.8081, Train Acc=0.544, Val Loss=0.0205, Val Acc=0.087, LR=0.000800
+    Epoch 40: Train Loss=1.8847, Train Acc=0.735, Val Loss=0.0209, Val Acc=0.092, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.083, MI: 1.068, Batch Type Pred: 0.000, Time: 36.1s
+
+[Seed 2] ablation_difficulty_very_hard: BN, single_class sampling
+    Epoch 0: Train Loss=10.1093, Train Acc=0.106, Val Loss=0.0309, Val Acc=0.090, LR=0.000800
+    Epoch 1: Train Loss=7.7909, Train Acc=0.121, Val Loss=0.0271, Val Acc=0.096, LR=0.000800
+    Epoch 2: Train Loss=7.0638, Train Acc=0.121, Val Loss=0.0248, Val Acc=0.107, LR=0.000800
+    Epoch 3: Train Loss=6.5051, Train Acc=0.135, Val Loss=0.0238, Val Acc=0.094, LR=0.000800
+    Epoch 4: Train Loss=6.0178, Train Acc=0.141, Val Loss=0.0233, Val Acc=0.093, LR=0.000800
+    Epoch 10: Train Loss=4.7644, Train Acc=0.159, Val Loss=0.0201, Val Acc=0.103, LR=0.000800
+    Epoch 20: Train Loss=3.9466, Train Acc=0.273, Val Loss=0.0204, Val Acc=0.102, LR=0.000800
+    Epoch 30: Train Loss=3.0793, Train Acc=0.493, Val Loss=0.0210, Val Acc=0.094, LR=0.000800
+    Epoch 40: Train Loss=2.2469, Train Acc=0.659, Val Loss=0.0209, Val Acc=0.102, LR=0.000800
+    CONVERGED at epoch 40
+  Test Acc: 0.102, MI: 0.772, Batch Type Pred: 0.000, Time: 25.5s
+
+============================================================
+ANALYSIS AND RESULTS
+============================================================
+
+Main Results (mean ± std, [95% CI]):
+--------------------------------------------------------------------------------------------------------------------------------------------
+Method                         Test Acc                            MI                                  Batch Type Pred           Conv%
+--------------------------------------------------------------------------------------------------------------------------------------------
+bn_balanced                    0.487±0.005 [0.484,0.490]   0.000±0.000 [0.000,0.000]   0.000          100%
+bn_random                      0.482±0.007 [0.478,0.486]   0.097±0.018 [0.085,0.108]   0.000          100%
+bn_single_class                0.098±0.004 [0.095,0.100]   0.756±0.033 [0.737,0.777]   0.000          100%
+gn_random                      0.501±0.008 [0.495,0.509]   0.000±0.000 [0.000,0.000]   0.000          100%
+gn_single_class                0.483±0.008 [0.477,0.490]   0.000±0.000 [0.000,0.000]   0.000          100%
+ln_random                      0.498±0.009 [0.490,0.507]   0.000±0.000 [0.000,0.000]   0.000          100%
+ln_single_class                0.475±0.007 [0.468,0.481]   0.000±0.000 [0.000,0.000]   0.000          100%
+no_norm_random                 0.484±0.006 [0.479,0.490]   0.000±0.000 [0.000,0.000]   0.000          100%
+no_norm_single_class           0.462±0.006 [0.458,0.468]   0.000±0.000 [0.000,0.000]   0.000          100%
+
+Key Findings:
+--------------------------------------------------------------------------------
+Accuracy cost of single-class training: 38.4%
+MI increase from single-class training: 7.76x
+Batch type predictability: 0.0%
+Estimated class-specific variance ratio: 87.1%
+
+Statistical Tests:
+--------------------------------------------------------------------------------
+BN single vs random MI (paired t-test): t=65.723, p=0.000000
+BN single vs random Acc (paired t-test): t=-122.710, p=0.000000
+Effect size for MI (Cohen's d): 21.908
+
+Layer-wise MI Analysis (BN single-class):
+--------------------------------------------------------------------------------
+features.1                     MI: 0.756 ± 0.033
+features.5                     MI: 0.154 ± 0.023
+features.9                     MI: 0.092 ± 0.014
+
+Ablation Study Results:
+--------------------------------------------------------------------------------
+ablation_deep                       Acc: 0.100±0.006, MI: 0.760±0.020
+ablation_difficulty_hard            Acc: 0.093±0.007, MI: 1.090±0.023
+ablation_difficulty_very_hard       Acc: 0.099±0.002, MI: 0.776±0.031
+ablation_momentum_0.01              Acc: 0.095±0.009, MI: 0.776±0.031
+ablation_momentum_0.5               Acc: 0.100±0.006, MI: 0.774±0.031
+ablation_momentum_0.9               Acc: 0.104±0.002, MI: 0.764±0.030
+ablation_shallow                    Acc: 0.104±0.008, MI: 0.793±0.032
+
+Hypothesis Testing:
+--------------------------------------------------------------------------------
+H1 (BN contains class info): SUPPORTED (MI = 0.756)
+H2 (early layers encode more class info): SUPPORTED (Early: 0.756, Late: 0.123)

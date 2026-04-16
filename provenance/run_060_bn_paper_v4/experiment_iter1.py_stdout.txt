@@ -1,0 +1,8 @@
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+
+============================================================
+RUNNING SEED 0
+============================================================
+
+=== Training early_stopped model (seed 0) ===

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter3.py", line 753, in <module>
+    main()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter3.py", line 705, in main
+    first_result = run_single_seed(0, dry_run=dry_run)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter3.py", line 456, in run_single_seed
+    train_loss, train_acc = train_epoch(simple_model, train_loader, optimizer, device)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter3.py", line 214, in train_epoch
+    loss = F.cross_entropy(outputs, targets)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3504, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected input batch_size (32) to match target batch_size (128).

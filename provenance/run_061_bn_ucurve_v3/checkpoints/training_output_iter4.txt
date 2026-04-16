@@ -1,0 +1,131 @@
+=== METRIC SANITY CHECK ===
+Perfect calibration - ECE: 0.0150, MCE: 0.0150, Brier: 0.0005
+Overconfident ECE: 0.9900
+METRIC_SANITY_PASSED
+
+Using device: cpu
+DRY RUN MODE: True
+
+============================================================
+SEED 0/2
+============================================================
+
+Random Baseline...
+Random: Acc: 10.00%, ECE: 0.0140
+
+Training Standard BN...
+Epoch 1: Train Loss: 2.4052, Train Acc: 15.55%, Val Acc: 20.40%, Val ECE: 0.0584
+Epoch 2: Train Loss: 2.0499, Train Acc: 22.94%, Val Acc: 28.00%, Val ECE: 0.0834
+Epoch 3: Train Loss: 1.9269, Train Acc: 28.48%, Val Acc: 32.80%, Val ECE: 0.0737
+CONVERGED
+
+Calibrating temperature...
+Temperature 0.895: ECE = 0.0271
+
+Training with Label Smoothing...
+Epoch 1: Val Acc: 18.40%, Val ECE: 0.0343
+CONVERGED
+
+Training CA-BN...
+Epoch 1: Train Loss: 2.4275, Train Acc: 15.70%, Val Acc: 24.00%, Val ECE: 0.0609
+Epoch 2: Train Loss: 2.0329, Train Acc: 25.71%, Val Acc: 27.60%, Val ECE: 0.0476
+Epoch 3: Train Loss: 1.9124, Train Acc: 30.40%, Val Acc: 33.60%, Val ECE: 0.0435
+Epoch 4: Train Loss: 1.8366, Train Acc: 31.32%, Val Acc: 36.00%, Val ECE: 0.0625
+Epoch 5: Train Loss: 1.7980, Train Acc: 33.38%, Val Acc: 35.60%, Val ECE: 0.0468
+CONVERGED
+
+=== EARLY ABORT CHECK ===
+First seed improvement: 3.8%
+Metrics look reasonable, continuing...
+
+============================================================
+SEED 1/2
+============================================================
+
+Training Standard BN...
+Epoch 1: Train Loss: 2.3944, Train Acc: 16.48%, Val Acc: 17.60%, Val ECE: 0.0482
+Epoch 2: Train Loss: 2.0196, Train Acc: 25.14%, Val Acc: 24.80%, Val ECE: 0.0474
+Epoch 3: Train Loss: 1.8957, Train Acc: 29.69%, Val Acc: 34.80%, Val ECE: 0.0910
+CONVERGED
+
+Calibrating temperature...
+Temperature 0.763: ECE = 0.0526
+
+Training with Label Smoothing...
+Epoch 1: Val Acc: 22.40%, Val ECE: 0.0870
+CONVERGED
+
+Training CA-BN...
+Epoch 1: Train Loss: 2.2729, Train Acc: 18.75%, Val Acc: 24.80%, Val ECE: 0.0537
+Epoch 2: Train Loss: 1.9082, Train Acc: 29.83%, Val Acc: 32.80%, Val ECE: 0.0779
+Epoch 3: Train Loss: 1.8567, Train Acc: 30.18%, Val Acc: 36.00%, Val ECE: 0.0702
+CONVERGED
+
+============================================================
+SEED 2/2
+============================================================
+
+Training Standard BN...
+Epoch 1: Train Loss: 2.2748, Train Acc: 16.90%, Val Acc: 25.20%, Val ECE: 0.0768
+Epoch 2: Train Loss: 1.9385, Train Acc: 27.70%, Val Acc: 30.00%, Val ECE: 0.0595
+Epoch 3: Train Loss: 1.8645, Train Acc: 33.24%, Val Acc: 38.80%, Val ECE: 0.1124
+Epoch 4: Train Loss: 1.7245, Train Acc: 37.07%, Val Acc: 38.00%, Val ECE: 0.0567
+Epoch 5: Train Loss: 1.6918, Train Acc: 37.50%, Val Acc: 38.40%, Val ECE: 0.0714
+NOT_CONVERGED: Reached max epochs
+
+Calibrating temperature...
+Temperature 0.895: ECE = 0.1023
+
+Training with Label Smoothing...
+Epoch 1: Val Acc: 20.40%, Val ECE: 0.0509
+CONVERGED
+
+Training CA-BN...
+Epoch 1: Train Loss: 2.2744, Train Acc: 17.54%, Val Acc: 22.00%, Val ECE: 0.0620
+Epoch 2: Train Loss: 2.0218, Train Acc: 25.78%, Val Acc: 27.60%, Val ECE: 0.0801
+Epoch 3: Train Loss: 1.8969, Train Acc: 29.83%, Val Acc: 37.20%, Val ECE: 0.0920
+CONVERGED
+
+============================================================
+FINAL RESULTS
+============================================================
+
+STANDARD_BN:
+  Accuracy: 32.20 ± 0.82%
+  ECE: 0.0490 ± 0.0053
+  MCE: 0.4647 ± 0.2690
+  Brier: 0.7930 ± 0.0043
+
+CABN:
+  Accuracy: 35.40 ± 0.43%
+  ECE: 0.0429 ± 0.0088
+  MCE: 0.4670 ± 0.2298
+  Brier: 0.7734 ± 0.0105
+
+TEMP_SCALING:
+  Accuracy: 32.20 ± 0.82%
+  ECE: 0.0607 ± 0.0312
+  MCE: 0.4807 ± 0.2826
+  Brier: 0.7945 ± 0.0011
+
+LABEL_SMOOTHING:
+  Accuracy: 32.53 ± 2.73%
+  ECE: 0.0720 ± 0.0164
+  MCE: 0.4828 ± 0.2007
+  Brier: 0.8012 ± 0.0102
+
+RANDOM:
+  Accuracy: 10.00 ± 0.00%
+  ECE: 0.0140 ± 0.0000
+  MCE: 0.0140 ± 0.0000
+  Brier: 0.9000 ± 0.0000
+
+=== STATISTICAL TESTS ===
+CA-BN vs Standard BN - ECE p-value: 0.3049, Acc p-value: 0.0615
+CA-BN vs Temperature Scaling - ECE p-value: 0.4287
+
+NO_SIGNAL: CA-BN does not significantly improve calibration
+
+RESULTS: {"standard_bn": {"mean_acc": 32.2, "std_acc": 0.8164965809277275, "mean_ece": 0.04897086570660273, "std_ece": 0.005255967021218234, "mean_mce": 0.46472084522247314, "std_mce": 0.2690451971739847, "mean_brier": 0.7929782867431641, "std_brier": 0.004302677116809707, "per_seed_results": {"acc": [31.2, 32.2, 33.2], "ece": [0.043225161731243134, 0.047759853303432465, 0.0559275820851326], "mce": [0.8397459983825684, 0.332841694355011, 0.2215748429298401], "brier": [0.7965472340583801, 0.795461893081665, 0.786925733089447], "converged": [1, 1, 0]}, "convergence_rate": 0.6666666666666666}, "cabn": {"mean_acc": 35.4, "std_acc": 0.4320493798938569, "mean_ece": 0.042904129872719445, "std_ece": 0.008822265152573764, "mean_mce": 0.46697468558947247, "std_mce": 0.22975873638494748, "mean_brier": 0.7733642856280009, "std_brier": 0.010514565544598063, "per_seed_results": {"acc": [36.0, 35.0, 35.2], "ece": [0.041583217680454254, 0.032820288091897964, 0.05430888384580612], "mce": [0.2618100643157959, 0.35135015845298767, 0.7877638339996338], "brier": [0.759661853313446, 0.7752138376235962, 0.7852171659469604], "converged": [1, 1, 1]}, "convergence_rate": 1.0}, "temp_scaling": {"mean_acc": 32.2, "std_acc": 0.8164965809277275, "mean_ece": 0.060664111748337746, "std_ece": 0.031204969504583333, "mean_mce": 0.48068857192993164, "std_mce": 0.2825861485838606, "mean_brier": 0.7945342659950256, "std_brier": 0.0011112503681870037, "per_seed_results": {"acc": [31.2, 32.2, 33.2], "ece": [0.027147425338625908, 0.05256085842847824, 0.10228405147790909], "mce": [0.8790399432182312, 0.2537723779678345, 0.30925339460372925], "brier": [0.7941069602966309, 0.7960576415061951, 0.793438196182251], "temperature": [0.8947368860244751, 0.7631579041481018, 0.8947368860244751]}}, "label_smoothing": {"mean_acc": 32.53333333333333, "std_acc": 2.7341462205879825, "mean_ece": 0.07202132915457089, "std_ece": 0.01642905510336449, "mean_mce": 0.4827767610549927, "std_mce": 0.2007186114850396, "mean_brier": 0.8012098868687948, "std_brier": 0.010198248997735821, "per_seed_results": {"acc": [30.6, 36.4, 30.6], "ece": [0.07103380560874939, 0.09261830896139145, 0.052411872893571854], "mce": [0.3011435866355896, 0.38467806577682495, 0.7625086307525635], "brier": [0.8133994340896606, 0.7884392142295837, 0.8017910122871399], "converged": [1, 1, 1]}, "convergence_rate": 1.0}, "random": {"mean_acc": 10.0, "std_acc": 0.0, "mean_ece": 0.013999983668327332, "std_ece": 0.0, "mean_mce": 0.013999983668327332, "std_mce": 0.0, "mean_brier": 0.899999737739563, "std_brier": 0.0, "per_seed_results": {"acc": [10.0, 10.0, 10.0], "ece": [0.013999983668327332, 0.013999983668327332, 0.013999983668327332], "mce": [0.013999983668327332, 0.013999983668327332, 0.013999983668327332], "brier": [0.899999737739563, 0.899999737739563, 0.899999737739563]}}, "p_value_cabn_vs_standard_ece": 0.3048697734004723, "p_value_cabn_vs_standard_acc": 0.06152573559307005, "p_value_cabn_vs_temp": 0.4287493704900393, "signal_detected": 0, "ece_improvement_percent": 12.38845943674079, "dry_run": true}
+
+Total runtime: 0.75 minutes

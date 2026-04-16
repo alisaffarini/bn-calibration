@@ -1,0 +1,62 @@
+=== METRIC SANITY CHECK ===
+Perfect calibration (high conf, high acc) ECE: 0.0150
+Good calibration ECE: 0.0000
+Overconfident (bad calibration) ECE: 0.9900
+METRIC_SANITY_PASSED
+
+Using device: cpu
+
+==================================================
+SEED 0
+==================================================
+
+Training Standard BN...
+Epoch 1: Train Loss: 1.8850, Train Acc: 33.21%, Val Acc: 39.10%, Val ECE: 0.0527
+Epoch 2: Train Loss: 1.5121, Train Acc: 45.83%, Val Acc: 42.00%, Val ECE: 0.0777
+Epoch 3: Train Loss: 1.3060, Train Acc: 53.92%, Val Acc: 46.70%, Val ECE: 0.0376
+Epoch 4: Train Loss: 1.1609, Train Acc: 59.77%, Val Acc: 48.90%, Val ECE: 0.0382
+Epoch 5: Train Loss: 1.0920, Train Acc: 61.92%, Val Acc: 49.30%, Val ECE: 0.0702
+Epoch 6: Train Loss: 1.0037, Train Acc: 66.18%, Val Acc: 49.90%, Val ECE: 0.0773
+CONVERGED
+
+Training CA-BN...
+Epoch 1: Train Loss: 1.9254, Train Acc: 31.40%, Val Acc: 38.20%, Val ECE: 0.0284
+Epoch 2: Train Loss: 1.5262, Train Acc: 45.83%, Val Acc: 40.20%, Val ECE: 0.0719
+Epoch 3: Train Loss: 1.3351, Train Acc: 52.51%, Val Acc: 47.00%, Val ECE: 0.0456
+Epoch 4: Train Loss: 1.2056, Train Acc: 58.06%, Val Acc: 48.80%, Val ECE: 0.0326
+CONVERGED
+
+==================================================
+SEED 1
+==================================================
+
+Training Standard BN...
+Epoch 1: Train Loss: 1.9009, Train Acc: 32.23%, Val Acc: 40.10%, Val ECE: 0.0389
+Epoch 2: Train Loss: 1.5073, Train Acc: 45.86%, Val Acc: 39.40%, Val ECE: 0.0671
+Epoch 3: Train Loss: 1.3482, Train Acc: 51.93%, Val Acc: 43.50%, Val ECE: 0.0642
+Epoch 4: Train Loss: 1.2202, Train Acc: 57.11%, Val Acc: 48.50%, Val ECE: 0.0593
+CONVERGED
+
+Training CA-BN...
+Epoch 1: Train Loss: 1.8954, Train Acc: 31.59%, Val Acc: 38.40%, Val ECE: 0.0427
+Epoch 2: Train Loss: 1.5269, Train Acc: 45.16%, Val Acc: 40.70%, Val ECE: 0.0573
+Epoch 3: Train Loss: 1.3609, Train Acc: 52.76%, Val Acc: 43.80%, Val ECE: 0.0620
+Epoch 4: Train Loss: 1.2189, Train Acc: 57.84%, Val Acc: 48.20%, Val ECE: 0.0346
+Epoch 5: Train Loss: 1.1416, Train Acc: 60.17%, Val Acc: 45.90%, Val ECE: 0.0685
+Epoch 6: Train Loss: 1.0346, Train Acc: 64.95%, Val Acc: 47.40%, Val ECE: 0.0886
+Epoch 7: Train Loss: 0.9363, Train Acc: 69.03%, Val Acc: 51.00%, Val ECE: 0.0584
+CONVERGED
+
+==================================================
+FINAL RESULTS
+==================================================
+
+STANDARD_BN:
+  Accuracy: 51.49 ± 0.84%
+  ECE: 0.0475 ± 0.0227
+
+CABN:
+  Accuracy: 52.33 ± 2.11%
+  ECE: 0.0278 ± 0.0009
+
+SIGNAL_DETECTED: CA-BN improves ECE by 41.4%

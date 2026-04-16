@@ -1,0 +1,90 @@
+{
+  "run_id": "run_059_bn_deeper_v2",
+  "status": "ideation",
+  "topic_seed": "Investigate BN statistics as calibrators from a different angle: (1) Gradually interpolate between global and class-conditional BN stats (alpha sweep 0 to 1) to find the phase transition where accuracy collapses, (2) Test if the effect holds for GroupNorm and LayerNorm, (3) Analyze which SPECIFIC BN layers cause the most damage when replaced (layer-wise ablation), (4) Test on a pretrained ResNet-50. Build on run_057 finding that BN stats are calibrators not feature encoders.",
+  "domain": "interpretability",
+  "token_usage": {
+    "total_input": 16599,
+    "total_output": 7298,
+    "calls": 5
+  },
+  "log": [
+    {
+      "timestamp": "2026-03-13T02:08:51.491338",
+      "agent": "system",
+      "action": "searching_literature",
+      "content": "Searching with queries: ['Investigate BN statistics as calibrators from a different angle: (1) Gradually interpolate between global and class-conditional BN stats (alpha sweep 0 to 1) to find the phase transition where accuracy collapses, (2) Test if the effect holds for GroupNorm and LayerNorm, (3) Analyze which SPECIFIC BN layers cause the most damage when replaced (layer-wise ablation), (4) Test on a pretrained ResNet-50. Build on run_057 finding that BN stats are calibrators not feature enco...",
+      "tokens_so_far": {
+        "total_input": 0,
+        "total_output": 0,
+        "calls": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:10:22.455485",
+      "agent": "scout",
+      "action": "literature_report",
+      "content": "## Literature Summary\n\nThe search results reveal a significant gap - there appear to be **no papers directly investigating BatchNorm (BN) statistics as calibrators or examining the interpolation between global and class-conditional BN statistics**. The returned papers are largely unrelated to normalization layers or calibration.\n\nThe few relevant interpretability papers focus on:\n- **Sparse autoencoders** (Erdogan & Lucic 2025) for disentangling neural network activations, with focus on incorpor...",
+      "tokens_so_far": {
+        "total_input": 6445,
+        "total_output": 1603,
+        "calls": 1
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:11:06.819911",
+      "agent": "researcher",
+      "action": "initial_proposal",
+      "content": "## Research Proposal: Discovery and Characterization of Critical Phase Transitions in BatchNorm Statistics Interpolation\n\n### (1) EXACT NOVELTY CLAIM\n**This is the first work to systematically interpolate between global and class-conditional BatchNorm statistics via continuous parameter \u03b1 \u2208 [0,1] and discover sharp phase transitions in model performance.** Specifically, we introduce the interpolation scheme: `running_stats = \u03b1 \u00d7 class_conditional_stats + (1-\u03b1) \u00d7 global_stats` and show that there...",
+      "tokens_so_far": {
+        "total_input": 8016,
+        "total_output": 3057,
+        "calls": 2
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:11:57.236018",
+      "agent": "critic",
+      "action": "critique_round_1",
+      "content": "Looking at this proposal through my ICML reviewer lens...\n\n## SCORES:\n- **NOVELTY: 6/10** - Yes, interpolating BN statistics hasn't been done, but it's a fairly straightforward idea. The \"phase transition\" framing is overselling what's essentially a parameter sweep.\n- **METHODOLOGY: 5/10** - Several critical flaws:\n  - Missing baseline: What about interpolating with **random statistics**? This would test if the effect is specific to class-conditional stats.\n  - No comparison to **MixStyle** (Zho...",
+      "tokens_so_far": {
+        "total_input": 9529,
+        "total_output": 4582,
+        "calls": 3
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:12:44.557977",
+      "agent": "researcher",
+      "action": "revision_round_1",
+      "content": "## Revised Research Proposal: BatchNorm Statistics Interpolation: Revealing Implicit Class Boundaries and Calibration Limits\n\n### (1) EXACT NOVELTY CLAIM\n**This is the first work to systematically study the failure modes of interpolating between global and class-conditional BatchNorm statistics, revealing that BN layers encode implicit decision boundaries that become incompatible under linear mixing.** Unlike MixStyle (Zhou et al., ICLR 2021) which interpolates instance stats for augmentation, a...",
+      "tokens_so_far": {
+        "total_input": 12916,
+        "total_output": 6107,
+        "calls": 4
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:13:24.148230",
+      "agent": "critic",
+      "action": "critique_round_2",
+      "content": "Looking at this revised proposal...\n\n## SCORES:\n- **NOVELTY: 7/10** - Good differentiation from MixStyle/AdaBN. The \"calibration manifold incompatibility\" angle is genuinely novel. Still somewhat incremental but sufficiently distinct.\n- **METHODOLOGY: 8/10** - Much improved! The random baseline addresses my main concern. Wasserstein distance for mechanistic validation is smart. Layer-wise analysis is thorough. Only missing comparison to gradual adaptation methods like Tent.\n- **SIGNIFICANCE: 6/1...",
+      "tokens_so_far": {
+        "total_input": 16599,
+        "total_output": 7298,
+        "calls": 5
+      }
+    },
+    {
+      "timestamp": "2026-03-13T02:13:24.149279",
+      "agent": "system",
+      "action": "debate_resolved",
+      "content": "Approved after 2 rounds",
+      "tokens_so_far": {
+        "total_input": 16599,
+        "total_output": 7298,
+        "calls": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+Running metric sanity checks...
+✓ Evaluation function returns valid accuracy
+✓ Alpha interpolation works correctly
+METRIC_SANITY_PASSED
+
+=== First seed (sanity check) ===
+
+=== Seed 0 (cpu) ===
+  Epoch 1: Val Acc: 0.2469
+  Epoch 6: Val Acc: 0.4094
+  Epoch 11: Val Acc: 0.4062
+  Epoch 16: Val Acc: 0.4688
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1406
+  Layer 1: 0.1875
+  Layer 2: 0.3125
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4781
+  Class-cond: 0.0063
+  Hybrid: 0.0281
+  Reverse: 0.3625
+SIGNAL_DETECTED
+Time: 27.0s
+Sanity passed! Continuing...
+
+=== Seed 1 (cpu) ===
+  Epoch 1: Val Acc: 0.1969
+  Epoch 6: Val Acc: 0.3438
+  Epoch 11: Val Acc: 0.4188
+  Epoch 16: Val Acc: 0.4625
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1484
+  Layer 1: 0.2734
+  Layer 2: 0.4141
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4641
+  Class-cond: 0.0031
+  Hybrid: 0.0141
+  Reverse: 0.2891
+SIGNAL_DETECTED
+Time: 26.9s
+
+=== Seed 2 (cpu) ===
+  Epoch 1: Val Acc: 0.1938
+  Epoch 6: Val Acc: 0.3031
+  Epoch 11: Val Acc: 0.3750
+  Epoch 16: Val Acc: 0.4219
+CONVERGED
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1641
+  Layer 1: 0.2344
+  Layer 2: 0.4219
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4313
+  Class-cond: 0.0125
+  Hybrid: 0.0344
+  Reverse: 0.2781
+SIGNAL_DETECTED
+Time: 26.4s
+
+=== Seed 3 (cpu) ===
+  Epoch 1: Val Acc: 0.1688
+  Epoch 6: Val Acc: 0.2687
+  Epoch 11: Val Acc: 0.3969
+  Epoch 16: Val Acc: 0.3844
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1172
+  Layer 1: 0.2422
+  Layer 2: 0.4531
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4516
+  Class-cond: 0.0047
+  Hybrid: 0.0156
+  Reverse: 0.2984
+SIGNAL_DETECTED
+Time: 27.4s
+
+=== Seed 4 (cpu) ===
+  Epoch 1: Val Acc: 0.1906
+  Epoch 6: Val Acc: 0.3906
+  Epoch 11: Val Acc: 0.3719
+  Epoch 16: Val Acc: 0.4875
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.0859
+  Layer 1: 0.1328
+  Layer 2: 0.3281
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4578
+  Class-cond: 0.0078
+  Hybrid: 0.0219
+  Reverse: 0.3312
+SIGNAL_DETECTED
+Time: 26.7s
+
+=== Seed 5 (cpu) ===
+  Epoch 1: Val Acc: 0.2156
+  Epoch 6: Val Acc: 0.3438
+  Epoch 11: Val Acc: 0.3937
+  Epoch 16: Val Acc: 0.4406
+CONVERGED
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1250
+  Layer 1: 0.2813
+  Layer 2: 0.4531
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4391
+  Class-cond: 0.0047
+  Hybrid: 0.0156
+  Reverse: 0.2719
+SIGNAL_DETECTED
+Time: 26.9s
+
+=== Seed 6 (cpu) ===
+  Epoch 1: Val Acc: 0.2344
+  Epoch 6: Val Acc: 0.3937
+  Epoch 11: Val Acc: 0.3531
+  Epoch 16: Val Acc: 0.4469
+CONVERGED
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1641
+  Layer 1: 0.2187
+  Layer 2: 0.3281
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4437
+  Class-cond: 0.0063
+  Hybrid: 0.0281
+  Reverse: 0.3031
+SIGNAL_DETECTED
+Time: 23.2s
+
+=== Seed 7 (cpu) ===
+  Epoch 1: Val Acc: 0.2250
+  Epoch 6: Val Acc: 0.3500
+  Epoch 11: Val Acc: 0.4125
+CONVERGED
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1562
+  Layer 1: 0.2109
+  Layer 2: 0.3594
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4469
+  Class-cond: 0.0047
+  Hybrid: 0.0156
+  Reverse: 0.2781
+SIGNAL_DETECTED
+Time: 20.9s
+
+=== Seed 8 (cpu) ===
+  Epoch 1: Val Acc: 0.2125
+  Epoch 6: Val Acc: 0.3406
+CONVERGED
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.1797
+  Layer 1: 0.2266
+  Layer 2: 0.3047
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.3844
+  Class-cond: 0.0172
+  Hybrid: 0.0328
+  Reverse: 0.2391
+SIGNAL_DETECTED
+Time: 14.8s
+
+=== Seed 9 (cpu) ===
+  Epoch 1: Val Acc: 0.2281
+  Epoch 6: Val Acc: 0.3500
+  Epoch 11: Val Acc: 0.4500
+  Epoch 16: Val Acc: 0.4437
+NOT_CONVERGED: Max epochs
+Found 3 BN layers
+Computing importance...
+  Layer 0: 0.0703
+  Layer 1: 0.1406
+  Layer 2: 0.3203
+Spearman ρ=1.000, p=0.000
+Testing configurations...
+  Global: 0.4656
+  Class-cond: 0.0031
+  Hybrid: 0.0187
+  Reverse: 0.3328
+SIGNAL_DETECTED
+Time: 26.7s
+
+=== SUMMARY (10 seeds) ===
+Mean importance: [0.13515625000000003, 0.21484375, 0.36953125]
+Spearman ρ: 1.000 ± 0.000
+Global acc: 0.446 ± 0.024
+Hybrid acc: 0.022 ± 0.007
+p-value (hybrid vs global): 0.000000
+Total time: 246.8s
+
+RESULTS: {"per_seed_results": [{"seed": 0, "converged": false, "importance_scores": [0.14062500000000006, 0.18750000000000017, 0.3125], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.5125, "global": 0.478125, "class_cond": 0.00625, "hybrid": 0.028125, "reverse": 0.3625}, "signal_detected": true, "time": 26.953233242034912}, {"seed": 1, "converged": false, "importance_scores": [0.1484374999999999, 0.2734375, 0.41406250000000006], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.4625, "global": 0.4640625, "class_cond": 0.003125, "hybrid": 0.0140625, "reverse": 0.2890625}, "signal_detected": true, "time": 26.91992712020874}, {"seed": 2, "converged": true, "importance_scores": [0.1640625000000001, 0.234375, 0.42187500000000017], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.434375, "global": 0.43125, "class_cond": 0.0125, "hybrid": 0.034375, "reverse": 0.278125}, "signal_detected": true, "time": 26.356624126434326}, {"seed": 3, "converged": false, "importance_scores": [0.1171875, 0.24218749999999983, 0.4531249999999998], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.471875, "global": 0.4515625, "class_cond": 0.0046875, "hybrid": 0.015625, "reverse": 0.2984375}, "signal_detected": true, "time": 27.372999906539917}, {"seed": 4, "converged": false, "importance_scores": [0.08593750000000011, 0.13281249999999994, 0.32812499999999994], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.4875, "global": 0.4578125, "class_cond": 0.0078125, "hybrid": 0.021875, "reverse": 0.33125}, "signal_detected": true, "time": 26.737483978271484}, {"seed": 5, "converged": true, "importance_scores": [0.1250000000000001, 0.2812500000000001, 0.45312500000000006], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.471875, "global": 0.4390625, "class_cond": 0.0046875, "hybrid": 0.015625, "reverse": 0.271875}, "signal_detected": true, "time": 26.873257875442505}, {"seed": 6, "converged": true, "importance_scores": [0.16406249999999983, 0.21874999999999978, 0.32812499999999994], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.475, "global": 0.44375, "class_cond": 0.00625, "hybrid": 0.028125, "reverse": 0.303125}, "signal_detected": true, "time": 23.176100969314575}, {"seed": 7, "converged": true, "importance_scores": [0.15625, 0.21093750000000022, 0.3593750000000001], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.4625, "global": 0.446875, "class_cond": 0.0046875, "hybrid": 0.015625, "reverse": 0.278125}, "signal_detected": true, "time": 20.863520860671997}, {"seed": 8, "converged": true, "importance_scores": [0.17968750000000006, 0.22656250000000017, 0.30468750000000017], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.38125, "global": 0.384375, "class_cond": 0.0171875, "hybrid": 0.0328125, "reverse": 0.2390625}, "signal_detected": true, "time": 14.815973281860352}, {"seed": 9, "converged": false, "importance_scores": [0.07031250000000017, 0.14062500000000006, 0.3203125000000001], "spearman_rho": 1.0, "spearman_p": 0.0, "accuracies": {"validation": 0.5, "global": 0.465625, "class_cond": 0.003125, "hybrid": 0.01875, "reverse": 0.3328125}, "signal_detected": true, "time": 26.729315996170044}], "mean": {"importance_scores": [0.13515625000000003, 0.21484375, 0.36953125], "spearman_rho": 1.0, "accuracies": {"global": 0.4462499999999999, "hybrid": 0.0225, "reverse": 0.2984375}}, "std": {"importance_scores": [0.03370258532831712, 0.047037478823407405, 0.05666621189308931], "spearman_rho": 0.0, "accuracies": {"global": 0.024458989911686865, "hybrid": 0.00733543412144094}}, "p_values": {"hybrid_vs_global": 7.733445542808827e-12, "hybrid_vs_reverse": 2.249275639733802e-09}, "convergence_status": "5/10 converged", "signal_detection_rate": 1.0, "total_time_seconds": 246.8467390537262}

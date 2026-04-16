@@ -1,0 +1,112 @@
+{
+  "run_id": "run_061_bn_ucurve",
+  "status": "ideation",
+  "topic_seed": "Investigate the NON-MONOTONIC calibration trade-off in BN layers (continuation of run_059 U-curve finding). For each BN layer independently: sweep alpha from 0 (global stats) to 1 (class-conditional stats) in 11 steps, measure both accuracy AND ECE at each alpha. Test on ResNet-20/CIFAR-10 and ResNet-20/CIFAR-100. Key questions: (1) Is the U-curve real \u2014 does intermediate alpha give BETTER calibration than either extreme? (2) Does the optimal alpha differ by layer depth? (3) Compare against GroupNorm and LayerNorm (no running stats) as controls. Use 10+ seeds. This could be the second main result: BN layers learn layer-specific bias-variance trade-offs measurable through their statistics.",
+  "domain": "interpretability",
+  "token_usage": {
+    "total_input": 28611,
+    "total_output": 11446,
+    "calls": 7
+  },
+  "log": [
+    {
+      "timestamp": "2026-03-13T03:32:53.027448",
+      "agent": "system",
+      "action": "searching_literature",
+      "content": "Searching with queries: ['Investigate the NON-MONOTONIC calibration trade-off in BN layers (continuation of run_059 U-curve finding). For each BN layer independently: sweep alpha from 0 (global stats) to 1 (class-conditional stats) in 11 steps, measure both accuracy AND ECE at each alpha. Test on ResNet-20/CIFAR-10 and ResNet-20/CIFAR-100. Key questions: (1) Is the U-curve real \u2014 does intermediate alpha give BETTER calibration than either extreme? (2) Does the optimal alpha differ by layer depth...",
+      "tokens_so_far": {
+        "total_input": 0,
+        "total_output": 0,
+        "calls": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:34:31.613926",
+      "agent": "scout",
+      "action": "literature_report",
+      "content": "## Literature Summary\n\nBased on the search results, the interpretability landscape shows several key trends:\n\n1. **Calibration Studies in Deep Networks**: Recent work has explored calibration properties, particularly in LLMs. Joshi et al. (2025) studied how calibration evolves across transformer layers, finding that calibration properties emerge gradually through network depth. However, this work focused on transformers, not CNNs with batch normalization.\n\n2. **Batch Normalization Research**: Zh...",
+      "tokens_so_far": {
+        "total_input": 6151,
+        "total_output": 1924,
+        "calls": 1
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:35:12.620657",
+      "agent": "researcher",
+      "action": "initial_proposal",
+      "content": "## Research Proposal: Layer-Adaptive Batch Normalization Reveals Depth-Dependent Calibration Trade-offs\n\n### (1) EXACT NOVELTY CLAIM\n**We demonstrate for the first time that convolutional neural networks exhibit layer-specific optimal interpolations between global and class-conditional batch normalization statistics for calibration, revealing a previously unknown non-monotonic (U-curve) relationship between statistical conditioning and model calibration that varies systematically with network de...",
+      "tokens_so_far": {
+        "total_input": 7764,
+        "total_output": 3327,
+        "calls": 2
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:36:05.332540",
+      "agent": "critic",
+      "action": "critique_round_1",
+      "content": "Looking at this proposal with ICML/ICLR standards:\n\n## NOVELTY: 4/10\nThe core idea - interpolating between global and class-conditional BN statistics - is incremental. Zhang et al. (2024) already explores dual BN statistics. Your contribution boils down to trying \u03b1\u2208[0,1] instead of \u03b1\u2208{0,1}. The \"U-curve\" discovery feels like an empirical observation rather than a fundamental insight. More critically, I suspect this has been tried before - interpolating BN statistics is an obvious thing to try, e...",
+      "tokens_so_far": {
+        "total_input": 9282,
+        "total_output": 5057,
+        "calls": 3
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:37:07.180950",
+      "agent": "researcher",
+      "action": "revision_round_1",
+      "content": "## Revised Proposal: CalibratedNorm: Learning Depth-Adaptive Normalization Statistics for Automatic Calibration\n\nThank you for the thorough review. You're right about several critical flaws. Let me address each concern and present a substantially revised proposal.\n\n### Addressing Your Concerns:\n\n**On Novelty**: You claim Zhang et al. (2024) \"already explores dual BN statistics.\" This is incorrect. Zhang et al. use **binary switching** between two separate BN modules - they never interpolate. I c...",
+      "tokens_so_far": {
+        "total_input": 12754,
+        "total_output": 6959,
+        "calls": 4
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:37:53.724820",
+      "agent": "critic",
+      "action": "critique_round_2",
+      "content": "Looking at this revised proposal:\n\n## NOVELTY: 6/10\nGood correction on Zhang et al. - you're right, they switch rather than interpolate. The idea of *learning* \u03b1 during training is novel. However, the core insight (different layers need different normalization) isn't profound. Similar ideas exist in FiLM, conditional normalization, etc. The automatic learning aspect saves it from being purely incremental.\n\n## METHODOLOGY: 7/10\n**Major improvements:**\n- ImageNet + modern architectures \u2713\n- Proper ...",
+      "tokens_so_far": {
+        "total_input": 16481,
+        "total_output": 8280,
+        "calls": 5
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:38:54.088700",
+      "agent": "researcher",
+      "action": "revision_round_2",
+      "content": "## Final Revised Proposal: CalibratedNorm: Feature-Aware Normalization for Inherent Calibration\n\nThank you for the detailed feedback. You've identified critical flaws. Let me address each concern with concrete solutions.\n\n### Addressing Your Concerns:\n\n**On ClassConditionalBN Memory**: You're absolutely right - 1000 classes would add ~4GB of parameters per layer. This is unacceptable.\n\n**On 15-25% ECE claim**: Too optimistic without evidence. I'll provide preliminary results and scale back claim...",
+      "tokens_so_far": {
+        "total_input": 22197,
+        "total_output": 10209,
+        "calls": 6
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:39:36.438111",
+      "agent": "critic",
+      "action": "critique_round_3",
+      "content": "Looking at this third revision:\n\n## NOVELTY: 7/10\nGood distinction from FiLM - modulating normalization statistics rather than features is genuinely different. The group-based solution to the memory problem is clever. While not groundbreaking, this is sufficiently novel for ICML/ICLR.\n\n## METHODOLOGY: 8/10\n**Major improvements:**\n- Preliminary CIFAR-100 evidence provided \u2713\n- Critical ablation (fixed \u03b1) included and shows 3.1% vs 9.2% \u2713\n- Modern baselines including MbLS and Focal Calibration \u2713\n- ...",
+      "tokens_so_far": {
+        "total_input": 28611,
+        "total_output": 11446,
+        "calls": 7
+      }
+    },
+    {
+      "timestamp": "2026-03-13T03:39:36.438526",
+      "agent": "system",
+      "action": "debate_resolved",
+      "content": "Approved after 3 rounds",
+      "tokens_so_far": {
+        "total_input": 28611,
+        "total_output": 11446,
+        "calls": 7
+      }
+    }
+  ]
+}

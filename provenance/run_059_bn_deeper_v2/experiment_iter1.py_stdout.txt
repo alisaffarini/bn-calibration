@@ -1,0 +1,1 @@
+METRIC_SANITY_PASSED: Wasserstein distance checks passed

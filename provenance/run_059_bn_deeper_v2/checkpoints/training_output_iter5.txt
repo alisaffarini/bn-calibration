@@ -1,0 +1,44 @@
+METRIC_SANITY_PASSED: All checks passed
+
+Seed 0, device: cpu
+Quick training...
+Base accuracy: 48.2%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=48.8%
+  α=0.2: class_interp=49.2%
+  α=0.4: class_interp=49.4%
+  α=0.5: class_interp=49.3%
+  α=0.6: class_interp=49.4%
+  α=0.8: class_interp=49.1%
+  α=1.0: class_interp=49.2%
+
+Seed 1, device: cpu
+Quick training...
+Base accuracy: 51.2%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=51.3%
+  α=0.2: class_interp=51.4%
+  α=0.4: class_interp=51.4%
+  α=0.5: class_interp=51.5%
+  α=0.6: class_interp=51.7%
+  α=0.8: class_interp=51.9%
+  α=1.0: class_interp=51.9%
+
+Seed 2, device: cpu
+Quick training...
+Base accuracy: 48.6%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=50.1%
+  α=0.2: class_interp=50.4%
+  α=0.4: class_interp=50.6%
+  α=0.5: class_interp=50.6%
+  α=0.6: class_interp=50.4%
+  α=0.8: class_interp=50.8%
+  α=1.0: class_interp=50.6%
+
+NO_SIGNAL: Did not observe clear non-monotonic behavior
+
+RESULTS: {"per_seed_results": [{"class_interp_accs": [48.8, 49.2, 49.4, 49.3, 49.4, 49.1, 49.2], "random_interp_accs": [48.8, 37.8, 27.6, 25.2, 23.5, 20.6, 12.8], "alphas": [0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0], "non_monotonic": false, "min_acc_alpha": 0.0, "base_accuracy": 48.2}, {"class_interp_accs": [51.3, 51.4, 51.4, 51.5, 51.7, 51.9, 51.9], "random_interp_accs": [51.3, 40.5, 37.5, 35.2, 25.8, 12.0, 10.9], "alphas": [0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0], "non_monotonic": false, "min_acc_alpha": 0.0, "base_accuracy": 51.2}, {"class_interp_accs": [50.1, 50.4, 50.6, 50.6, 50.4, 50.8, 50.6], "random_interp_accs": [50.1, 41.1, 35.0, 34.8, 27.6, 20.7, 19.3], "alphas": [0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0], "non_monotonic": false, "min_acc_alpha": 0.0, "base_accuracy": 48.6}], "mean_class_interp": [50.06666666666666, 50.333333333333336, 50.46666666666667, 50.46666666666667, 50.5, 50.6, 50.56666666666666], "std_class_interp": [1.0208928554075705, 0.8993825042154676, 0.8219218670625303, 0.9030811456096057, 0.9416297927883708, 1.1518101695447316, 1.1025223605694134], "mean_random_interp": [50.06666666666666, 39.800000000000004, 33.36666666666667, 31.733333333333334, 25.633333333333336, 17.766666666666666, 14.333333333333334], "std_random_interp": [1.0208928554075705, 1.435270009440734, 4.203437746522349, 4.622649552895925, 1.6779617264870965, 4.077853465843138, 3.5966033358650433], "non_monotonic_seeds": 0, "convergence_status": "CONVERGED", "signal_detected": false}

@@ -1,0 +1,6 @@
+Using device: cpu
+Running metric sanity checks...
+  Perfect separation MI: 2.303
+  Random MI: 0.503
+  Partial correlation MI: 0.883
+  Single class MI: 0.000

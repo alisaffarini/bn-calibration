@@ -1,0 +1,2 @@
+=== METRIC SANITY CHECK ===
+Perfect calibration ECE: 0.2500

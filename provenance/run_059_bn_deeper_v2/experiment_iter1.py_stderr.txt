@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/experiment_iter1.py", line 60, in <module>
+    sanity_check_interpolation()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/experiment_iter1.py", line 44, in sanity_check_interpolation
+    interp = interpolate_stats(stats1, stats2, alpha=0.0)
+             ^^^^^^^^^^^^^^^^^
+NameError: name 'interpolate_stats' is not defined

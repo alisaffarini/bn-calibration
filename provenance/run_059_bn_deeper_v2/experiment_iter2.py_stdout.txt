@@ -1,0 +1,9 @@
+METRIC_SANITY_PASSED: Wasserstein distance checks passed
+METRIC_SANITY_PASSED: Interpolation checks passed
+
+Running seed 0 on device: cpu
+Training model briefly...
+METRIC_SANITY_PASSED: Wasserstein distance checks passed
+METRIC_SANITY_PASSED: Interpolation checks passed
+METRIC_SANITY_PASSED: Wasserstein distance checks passed
+METRIC_SANITY_PASSED: Interpolation checks passed

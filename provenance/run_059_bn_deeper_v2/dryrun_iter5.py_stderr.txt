@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/dryrun_iter5.py", line 624, in <module>
+    main()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/dryrun_iter5.py", line 548, in main
+    first_result = run_experiment(0, quick=quick)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/dryrun_iter5.py", line 335, in run_experiment
+    converged = train_fast(model, train_loader, val_loader, device, epochs=epochs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/dryrun_iter5.py", line 253, in train_fast
+    outputs = model(inputs)
+              ^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper_v2/dryrun_iter5.py", line 124, in forward
+    out = self.linear(out)
+          ^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/.venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (64x256 and 4096x10)

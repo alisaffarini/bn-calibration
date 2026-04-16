@@ -1,0 +1,898 @@
+[
+  {
+    "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability",
+    "abstract": "Through considerable effort and intuition, several recent works have reverse-engineered nontrivial behaviors of transformer models. This paper systematizes the mechanistic interpretability process they followed. First, researchers choose a metric and dataset that elicit the desired model behavior. Then, they apply activation patching to find which abstract neural network units are involved in the behavior. By varying the dataset, metric, and units under investigation, researchers can understand ",
+    "authors": [
+      "Arthur Conmy",
+      "Augustine N. Mavor-Parker",
+      "Aengus Lynch",
+      "Stefan Heimersheim",
+      "Adri\u00e0 Garriga-Alonso"
+    ],
+    "year": "2023",
+    "url": "https://www.semanticscholar.org/paper/eefbd8b384a58f464827b19e30a6920ba976def9",
+    "citation_count": 500,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "A Practical Review of Mechanistic Interpretability for Transformer-Based Language Models",
+    "abstract": "Mechanistic interpretability (MI) is an emerging sub-field of interpretability that seeks to understand a neural network model by reverse-engineering its internal computations. Recently, MI has garnered significant attention for interpreting transformer-based language models (LMs), resulting in many novel insights yet introducing new challenges. However, there has not been work that comprehensively reviews these insights and challenges, particularly as a guide for newcomers to this field. To fil",
+    "authors": [
+      "Daking Rai",
+      "Yilun Zhou",
+      "Shi Feng",
+      "Abulhair Saparov",
+      "Ziyu Yao"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/2ac231b9cff4f5f9054d86c9b540429d4dd687f4",
+    "citation_count": 97,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Interpretability in Parameter Space: Minimizing Mechanistic Description Length with Attribution-based Parameter Decomposition",
+    "abstract": "Mechanistic interpretability aims to understand the internal mechanisms learned by neural networks. Despite recent progress toward this goal, it remains unclear how best to decompose neural network parameters into mechanistic components. We introduce Attribution-based Parameter Decomposition (APD), a method that directly decomposes a neural network's parameters into components that (i) are faithful to the parameters of the original network, (ii) require a minimal number of components to process ",
+    "authors": [
+      "Dan Braun",
+      "Lucius Bushnaq",
+      "Stefan Heimersheim",
+      "Jake Mendel",
+      "Lee Sharkey"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/1a365128aa7b41478bf5251793a691d8b5d8ff27",
+    "citation_count": 14,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Towards Mechanistic Interpretability of Graph Transformers via Attention Graphs",
+    "abstract": "We introduce Attention Graphs, a new tool for mechanistic interpretability of Graph Neural Networks (GNNs) and Graph Transformers based on the mathematical equivalence between message passing in GNNs and the self-attention mechanism in Transformers. Attention Graphs aggregate attention matrices across Transformer layers and heads to describe how information flows among input nodes. Through experiments on homophilous and heterophilous node classification tasks, we analyze Attention Graphs from a ",
+    "authors": [
+      "Batu El",
+      "Deepro Choudhury",
+      "Pietro Li\u00f3",
+      "Chaitanya K. Joshi"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/f928871afe54a7e79442f7b5971bd6e38beb4d2d",
+    "citation_count": 12,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "The Non-Linear Representation Dilemma: Is Causal Abstraction Enough for Mechanistic Interpretability?",
+    "abstract": "The concept of causal abstraction got recently popularised to demystify the opaque decision-making processes of machine learning models; in short, a neural network can be abstracted as a higher-level algorithm if there exists a function which allows us to map between them. Notably, most interpretability papers implement these maps as linear functions, motivated by the linear representation hypothesis: the idea that features are encoded linearly in a model's representations. However, this lineari",
+    "authors": [
+      "Denis Sutter",
+      "Julian Minder",
+      "Thomas Hofmann",
+      "Tiago Pimentel"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/b4d81c89c973b6d207dbc0562760200b7d7974ed",
+    "citation_count": 11,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "HyperDAS: Towards Automating Mechanistic Interpretability with Hypernetworks",
+    "abstract": "Mechanistic interpretability has made great strides in identifying neural network features (e.g., directions in hidden activation space) that mediate concepts(e.g., the birth year of a person) and enable predictable manipulation. Distributed alignment search (DAS) leverages supervision from counterfactual data to learn concept features within hidden states, but DAS assumes we can afford to conduct a brute force search over potential feature locations. To address this, we present HyperDAS, a tran",
+    "authors": [
+      "Jiuding Sun",
+      "Jing Huang",
+      "Sidharth Baskaran",
+      "Karel D\u2019Oosterlinck",
+      "Christopher Potts"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/be79d0ef6dec980140bf3dc940a80a23183acf91",
+    "citation_count": 8,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Position: Mechanistic Interpretability Should Prioritize Feature Consistency in SAEs",
+    "abstract": "Sparse Autoencoders (SAEs) are a prominent tool in mechanistic interpretability (MI) for decomposing neural network activations into interpretable features. However, the aspiration to identify a canonical set of features is challenged by the observed inconsistency of learned SAE features across different training runs, undermining the reliability and efficiency of MI research. This position paper argues that mechanistic interpretability should prioritize feature consistency in SAEs -- the reliab",
+    "authors": [
+      "Xiangchen Song",
+      "Aashiq Muhamed",
+      "Yujia Zheng",
+      "Lingjing Kong",
+      "Zeyu Tang"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/ccc354a9d5a4340d67e0c7a83153100b9362ca76",
+    "citation_count": 7,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Towards Combinatorial Interpretability of Neural Computation",
+    "abstract": "We introduce combinatorial interpretability, a methodology for understanding neural computation by analyzing the combinatorial structures in the sign-based categorization of a network's weights and biases. We demonstrate its power through feature channel coding, a theory that explains how neural networks compute Boolean expressions and potentially underlies other categories of neural network computation. According to this theory, features are computed via feature channels: unique cross-neuron en",
+    "authors": [
+      "Micah Adler",
+      "Dan Alistarh",
+      "N. Shavit"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/82642b3045357adf0b49575d95ca91e1a01494cf",
+    "citation_count": 7,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "MINN: A metabolic-informed neural network for integrating omics data into genome-scale metabolic modeling",
+    "abstract": "The understanding of cellular behavior relies on the integration of metabolism and its regulation. Multi-omics data provide a detailed snapshot of the molecular processes underpinning cellular functions and their regulation, describing the current state of the cell. While Machine Learning (ML) models can uncover complex patterns and relationships within these data, they require large datasets for training and often lack interpretability. On the other hand, mathematical models, such as Genome-Sca",
+    "authors": [
+      "Gabriele Tazza",
+      "Francesco Moro",
+      "Dario Ruggeri",
+      "B. Teusink",
+      "L\u00e1szl\u00f3 Vid\u00e1cs"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/a79d374c1fee08565afcf68c381c11ab111f2837",
+    "citation_count": 5,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Multivariate engineering formulas discovery with knowledge\u2010based neural network",
+    "abstract": "Multivariate engineering formulas are the foundation of various engineering standards worldwide for constructing complex systems. Traditional formula discovery methods suffer from low efficiency, the curse of dimensionality, and low physical interpretability. To address these limitations, this study proposes a knowledge\u2010based method for efficiently generating multivariate engineering formulas directly from data. The method consists of four components: (1) a deep generative model considering dime",
+    "authors": [
+      "Pei-Yao Chen",
+      "Chen Wang",
+      "Jian-sheng Fan"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/5f3320865e9b99cafae2a8c338866155b615cb8c",
+    "citation_count": 3,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Mechanistic Interpretability for Neural TSP Solvers",
+    "abstract": "Neural networks have advanced combinatorial optimization, with Transformer-based solvers achieving near-optimal solutions on the Traveling Salesman Problem (TSP) in milliseconds. However, these models operate as black boxes, providing no insight into the geometric patterns they learn or the heuristics they employ during tour construction. We address this opacity by applying sparse autoencoders (SAEs), a mechanistic interpretability technique, to a Transformer-based TSP solver, representing the f",
+    "authors": [
+      "Reuben Narad",
+      "L\u00e9onard Boussioux",
+      "Michael Wagner"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/348028ab7cc778981fc7dbba1225df57070ee441",
+    "citation_count": 2,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "A mechanistic neural network model predicts both potency and toxicity of antimicrobial combination therapies",
+    "abstract": "Antimicrobial resistance poses a major global threat due to the diminishing efficacy of current treatments and limited new therapies. Combination therapy with existing drugs offers a promising solution, yet current empirical methods often lead to suboptimal efficacy and inadvertent toxicity. The high cost of experimentally testing numerous combinations underscores the need for data-driven methods to streamline treatment design. We introduce CALMA, an approach that predicts the potency and toxici",
+    "authors": [
+      "Harkirat Singh Arora",
+      "Katherine L. Lev",
+      "Aaron Robida",
+      "Ramraj Velmurugan",
+      "Sriram Chandrasekaran"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/7060b254bae095bd198cd0a83d27caff7d2af10e",
+    "citation_count": 1,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Concept-Based Mechanistic Interpretability Using Structured Knowledge Graphs",
+    "abstract": "While concept-based interpretability methods have traditionally focused on local explanations of neural network predictions, we propose a novel framework and interactive tool that extends these methods into the domain of mechanistic interpretability. Our approach enables a global dissection of model behavior by analyzing how high-level semantic attributes (referred to as concepts) emerge, interact, and propagate through internal model components. Unlike prior work that isolates individual neuron",
+    "authors": [
+      "Sofiia Chorna",
+      "Kateryna Tarelkina",
+      "Eloise Berthier",
+      "Gianni Franchi"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/91595f66ec8f07474cdb8a7cdecda1664301c0af",
+    "citation_count": 1,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Physics-Augmented Neural Network for Predicting Corrosion Inhibition Efficiency of Green Inhibitors",
+    "abstract": "Material degradation, particularly corrosion, poses a persistent engineering challenge that impacts infrastructure, transportation, energy, and manufacturing sectors. In India alone, corrosion-related losses are estimated to exceed several billion dollars annually, affecting pipelines, bridges, marine vessels, and industrial plants. This study presents a physics-augmented artificial neural network (ANN) framework for predicting the performance of eco-friendly corrosion inhibitors in acidic envir",
+    "authors": [
+      "Aswin Karkadakattil"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/533b48bc202c65475f14f70e322fcc9102fa3902",
+    "citation_count": 1,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "StaTS: Spectral Trajectory Schedule Learning for Adaptive Time Series Forecasting with Frequency Guided Denoiser",
+    "abstract": "Diffusion models have been used for probabilistic time series forecasting and show strong potential. However, fixed noise schedules often produce intermediate states that are hard to invert and a terminal state that deviates from the near noise assumption. Meanwhile, prior methods rely on time domain conditioning and seldom model schedule induced spectral degradation, which limits structure recovery across noise levels. We propose StaTS, a diffusion model for probabilistic time series forecastin",
+    "authors": [
+      "Jintao Zhang",
+      "Zirui Liu",
+      "Mingyue Cheng",
+      "Xianquan Wang",
+      "Zhiding Liu"
+    ],
+    "year": "2026",
+    "url": "https://arxiv.org/abs/2603.00037v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "STaTS: Structure-Aware Temporal Sequence Summarization via Statistical Window Merging",
+    "abstract": "Time series data often contain latent temporal structure, transitions between locally stationary regimes, repeated motifs, and bursts of variability, that are rarely leveraged in standard representation learning pipelines. Existing models typically operate on raw or fixed-window sequences, treating all time steps as equally informative, which leads to inefficiencies, poor robustness, and limited scalability in long or noisy sequences. We propose STaTS, a lightweight, unsupervised framework for S",
+    "authors": [
+      "Disharee Bhowmick",
+      "Ranjith Ramanathan",
+      "Sathyanarayanan N. Aakur"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2510.09593v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "PP-STAT: An Efficient Privacy-Preserving Statistical Analysis Framework using Homomorphic Encryption",
+    "abstract": "With the widespread adoption of cloud computing, the need for outsourcing statistical analysis to third-party platforms is growing rapidly. However, handling sensitive data such as medical records and financial information in cloud environments raises serious privacy concerns. In this paper, we present PP-STAT, a novel and efficient Homomorphic Encryption (HE)-based framework for privacy-preserving statistical analysis. HE enables computations to be performed directly on encrypted data without r",
+    "authors": [
+      "Hyunmin Choi"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2508.12093v3",
+    "source": "arxiv"
+  },
+  {
+    "title": "On computing and the complexity of computing higher-order $U$-statistics, exactly",
+    "abstract": "Higher-order $U$-statistics abound in fields such as statistics, machine learning, and computer science, but are known to be highly time-consuming to compute in practice. Despite their widespread appearance, a comprehensive study of their computational complexity is surprisingly lacking. This paper aims to fill that gap by presenting several results related to the computational aspect of $U$-statistics. First, we derive a useful decomposition from an $m$-th order $U$-statistic to a linear combin",
+    "authors": [
+      "Xingyu Chen",
+      "Ruiqi Zhang",
+      "Lin Liu"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2508.12627v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "CaRe-BN: Precise Moving Statistics for Stabilizing Spiking Neural Networks in Reinforcement Learning",
+    "abstract": "Spiking Neural Networks (SNNs) offer low-latency and energy-efficient decision-making on neuromorphic hardware by mimicking the event-driven dynamics of biological neurons. However, the discrete and non-differentiable nature of spikes leads to unstable gradient propagation in directly trained SNNs, making Batch Normalization (BN) an important component for stabilizing training. In online Reinforcement Learning (RL), imprecise BN statistics hinder exploitation, resulting in slower convergence and",
+    "authors": [
+      "Zijie Xu",
+      "Xinyu Shi",
+      "Yiting Dong",
+      "Zihan Huang",
+      "Zhaofei Yu"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2509.23791v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "On the Mechanistic Interpretability of Neural Networks for Causality in Bio-statistics",
+    "abstract": "Interpretable insights from predictive models remain critical in bio-statistics, particularly when assessing causality, where classical statistical and machine learning methods often provide inherent clarity. While Neural Networks (NNs) offer powerful capabilities for modeling complex biological data, their traditional\"black-box\"nature presents challenges for validation and trust in high-stakes health applications. Recent advances in Mechanistic Interpretability (MI) aim to decipher the internal",
+    "authors": [
+      "Jean-Baptiste A. Conan"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/1ffe1d87516ec4009ecf557c44d428fc1aeb941f",
+    "citation_count": 0,
+    "source": "semantic_scholar"
+  },
+  {
+    "title": "Group Equivariance Meets Mechanistic Interpretability: Equivariant Sparse Autoencoders",
+    "abstract": "Sparse autoencoders (SAEs) have proven useful in disentangling the opaque activations of neural networks, primarily large language models, into sets of interpretable features. However, adapting them to domains beyond language, such as scientific data with group symmetries, introduces challenges that can hinder their effectiveness. We show that incorporating such group symmetries into the SAEs yields features more useful in downstream tasks. More specifically, we train autoencoders on synthetic i",
+    "authors": [
+      "Ege Erdogan",
+      "Ana Lucic"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2511.09432v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "nnterp: A Standardized Interface for Mechanistic Interpretability of Transformers",
+    "abstract": "Mechanistic interpretability research requires reliable tools for analyzing transformer internals across diverse architectures. Current approaches face a fundamental tradeoff: custom implementations like TransformerLens ensure consistent interfaces but require coding a manual adaptation for each architecture, introducing numerical mismatch with the original models, while direct HuggingFace access through NNsight preserves exact behavior but lacks standardization across models. To bridge this gap",
+    "authors": [
+      "Cl\u00e9ment Dumas"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2511.14465v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vision and Video",
+    "abstract": "Robust tooling and publicly available pre-trained models have helped drive recent advances in mechanistic interpretability for language models. However, similar progress in vision mechanistic interpretability has been hindered by the lack of accessible frameworks and pre-trained weights. We present Prisma (Access the codebase here: https://github.com/Prisma-Multimodal/ViT-Prisma), an open-source framework designed to accelerate vision mechanistic interpretability research, providing a unified to",
+    "authors": [
+      "Sonia Joseph",
+      "Praneet Suresh",
+      "Lorenz Hufe",
+      "Edward Stevinson",
+      "Robert Graham"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2504.19475v3",
+    "source": "arxiv"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "abstract": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2502.01654v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Small Singular Values Matter: A Random Matrix Analysis of Transformer Models",
+    "abstract": "This work analyzes singular-value spectra of weight matrices in pretrained transformer models to understand how information is stored at both ends of the spectrum. Using Random Matrix Theory (RMT) as a zero information hypothesis, we associate agreement with RMT as evidence of randomness and deviations as evidence for learning. Surprisingly, we observe pronounced departures from RMT not only among the largest singular values -- the usual outliers -- but also among the smallest ones. A comparison",
+    "authors": [
+      "Max Staats",
+      "Matthias Thamm",
+      "Bernd Rosenow"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2410.17770v3",
+    "source": "arxiv"
+  },
+  {
+    "title": "Dynamics of Hot QCD Matter 2024 -- Hard Probes",
+    "abstract": "The hot and dense QCD matter, known as the Quark-Gluon Plasma (QGP), is explored through heavy-ion collision experiments at the LHC and RHIC. Jets and heavy flavors, produced from the initial hard scattering, are used as hard probes to study the properties of the QGP. Recent experimental observations on jet quenching and heavy-flavor suppression have strengthened our understanding, allowing for fine-tuning of theoretical models in hard probes. The second conference, HOT QCD Matter 2024, was orga",
+    "authors": [
+      "Santosh K. Das",
+      "Prabhakar Palni",
+      "Amal Sarkar",
+      "Vineet Kumar Agotiya",
+      "Aritra Bandyopadhyay"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2412.14026v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Challenges in Mechanistically Interpreting Model Representations",
+    "abstract": "Mechanistic interpretability (MI) aims to understand AI models by reverse-engineering the exact algorithms neural networks learn. Most works in MI so far have studied behaviors and capabilities that are trivial and token-aligned. However, most capabilities important for safety and trust are not that trivial, which advocates for the study of hidden representations inside these networks as the unit of analysis. We formalize representations for features and behaviors, highlight their importance and",
+    "authors": [
+      "Satvik Golechha",
+      "James Dao"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2402.03855v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Mechanistic Neural Networks for Scientific Machine Learning",
+    "abstract": "This paper presents Mechanistic Neural Networks, a neural network design for machine learning applications in the sciences. It incorporates a new Mechanistic Block in standard architectures to explicitly learn governing differential equations as representations, revealing the underlying dynamics of data and enhancing interpretability and efficiency in data modeling. Central to our approach is a novel Relaxed Linear Programming Solver (NeuRLP) inspired by a technique that reduces solving linear O",
+    "authors": [
+      "Adeel Pervez",
+      "Francesco Locatello",
+      "Efstratios Gavves"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2402.13077v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "NTU-NPU System for Voice Privacy 2024 Challenge",
+    "abstract": "In this work, we describe our submissions for the Voice Privacy Challenge 2024. Rather than proposing a novel speech anonymization system, we enhance the provided baselines to meet all required conditions and improve evaluated metrics. Specifically, we implement emotion embedding and experiment with WavLM and ECAPA2 speaker embedders for the B3 baseline. Additionally, we compare different speaker and prosody anonymization techniques. Furthermore, we introduce Mean Reversion F0 for B5, which help",
+    "authors": [
+      "Nikita Kuzmin",
+      "Hieu-Thi Luong",
+      "Jixun Yao",
+      "Lei Xie",
+      "Kong Aik Lee"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2410.02371v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Atmospheric entry and fragmentation of small asteroid 2024 BX1: Bolide trajectory, orbit, dynamics, light curve, and spectrum",
+    "abstract": "Asteroid 2024 BX1 was the eighth asteroid that was discovered shortly before colliding with the Earth. The associated bolide was recorded by dedicated instruments of the European Fireball Network and the AllSky7 network on 2024 January 21 at 0:32:38-44 UT. We report a comprehensive analysis of this instrumentally observed meteorite fall, which occurred as predicted west of Berlin, Germany. The atmospheric trajectory was quite steep, with an average slope to the Earth's surface of 75.6 deg. The e",
+    "authors": [
+      "P. Spurny",
+      "J. Borovicka",
+      "L. Shrbeny",
+      "M. Hankey",
+      "R. Neubert"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2403.00634v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Discovery Opportunities with Gravitational Waves -- TASI 2024 Lecture Notes",
+    "abstract": "Recent advancements in gravitational wave astronomy hold the promise of a completely new way to explore our Universe. These lecture notes aim to provide a concise but self-contained introduction to key concepts of gravitational wave physics, with a focus on the opportunities to explore fundamental physics in transient gravitational wave signals and stochastic gravitational wave background searches.CERN-TH-2024-152",
+    "authors": [
+      "Valerie Domcke"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.08956v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Double Multi-Head Attention Multimodal System for Odyssey 2024 Speech Emotion Recognition Challenge",
+    "abstract": "As computer-based applications are becoming more integrated into our daily lives, the importance of Speech Emotion Recognition (SER) has increased significantly. Promoting research with innovative approaches in SER, the Odyssey 2024 Speech Emotion Recognition Challenge was organized as part of the Odyssey 2024 Speaker and Language Recognition Workshop. In this paper we describe the Double Multi-Head Attention Multimodal System developed for this challenge. Pre-trained self-supervised models were",
+    "authors": [
+      "Federico Costa",
+      "Miquel India",
+      "Javier Hernando"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2406.10598v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "ICAGC 2024: Inspirational and Convincing Audio Generation Challenge 2024",
+    "abstract": "The Inspirational and Convincing Audio Generation Challenge 2024 (ICAGC 2024) is part of the ISCSLP 2024 Competitions and Challenges track. While current text-to-speech (TTS) technology can generate high-quality audio, its ability to convey complex emotions and controlled detail content remains limited. This constraint leads to a discrepancy between the generated audio and human subjective perception in practical applications like companion robots for children and marketing bots. The core issue ",
+    "authors": [
+      "Ruibo Fu",
+      "Rui Liu",
+      "Chunyu Qiang",
+      "Yingming Gao",
+      "Yi Lu"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2407.12038v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Uncovering Coordinated Cross-Platform Information Operations Threatening the Integrity of the 2024 U.S. Presidential Election Online Discussion",
+    "abstract": "Information Operations (IOs) pose a significant threat to the integrity of democratic processes, with the potential to influence election-related online discourse. In anticipation of the 2024 U.S. presidential election, we present a study aimed at uncovering the digital traces of coordinated IOs on $\\mathbb{X}$ (formerly Twitter). Using our machine learning framework for detecting online coordination, we analyze a dataset comprising election-related conversations on $\\mathbb{X}$ from May 2024. T",
+    "authors": [
+      "Marco Minici",
+      "Luca Luceri",
+      "Federico Cinus",
+      "Emilio Ferrara"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.15402v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Overview of the 2024 ALTA Shared Task: Detect Automatic AI-Generated Sentences for Human-AI Hybrid Articles",
+    "abstract": "The ALTA shared tasks have been running annually since 2010. In 2024, the purpose of the task is to detect machine-generated text in a hybrid setting where the text may contain portions of human text and portions machine-generated. In this paper, we present the task, the evaluation criteria, and the results of the systems participating in the shared task.",
+    "authors": [
+      "Diego Moll\u00e1",
+      "Qiongkai Xu",
+      "Zijie Zeng",
+      "Zhuang Li"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2412.17848v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "OpenFact at CheckThat! 2024: Combining Multiple Attack Methods for Effective Adversarial Text Generation",
+    "abstract": "This paper presents the experiments and results for the CheckThat! Lab at CLEF 2024 Task 6: Robustness of Credibility Assessment with Adversarial Examples (InCrediblAE). The primary objective of this task was to generate adversarial examples in five problem domains in order to evaluate the robustness of widely used text classification methods (fine-tuned BERT, BiLSTM, and RoBERTa) when applied to credibility assessment issues.   This study explores the application of ensemble learning to enhance",
+    "authors": [
+      "W\u0142odzimierz Lewoniewski",
+      "Piotr Stolarski",
+      "Milena Str\u00f3\u017cyna",
+      "Elzbieta Lewa\u0144ska",
+      "Aleksandra Wojewoda"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.02649v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Proceedings of 6th International Conference AsiaHaptics 2024",
+    "abstract": "The sixth international conference AsiaHaptics 2024 took place at Sunway University, Malaysia on 28-30 October 2024. AsiaHaptics is an exhibition type of international conference dedicated to the haptics domain, engaging presentations accompanied by hands-on demonstrations. It presents the state-of-the-art of the diverse haptics (touch)-related research, including perception and illusion, development of haptics devices, and applications to a wide variety of fields such as education, medicine, te",
+    "authors": [
+      "Yasutoshi Makino",
+      "Hsin-Ni Ho",
+      "Seokhee Jeon"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2411.08318v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "On The Lunar Origin of Near-Earth Asteroid 2024 PT5",
+    "abstract": "The Near-Earth Asteroid (NEA) 2024 PT5 is on an Earth-like orbit which remained in Earth's immediate vicinity for several months at the end of 2024. PT5's orbit is challenging to populate with asteroids originating from the Main Belt and is more commonly associated with rocket bodies mistakenly identified as natural objects or with debris ejected from impacts on the Moon. We obtained visible and near-infrared reflectance spectra of PT5 with the Lowell Discovery Telescope and NASA Infrared Telesc",
+    "authors": [
+      "Theodore Kareta",
+      "Oscar Fuentes-Mu\u00f1oz",
+      "Nicholas Moskovitz",
+      "Davide Farnocchia",
+      "Benjamin N. L. Sharkey"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2412.10264v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Team HYU ASML ROBOVOX SP Cup 2024 System Description",
+    "abstract": "This report describes the submission of HYU ASML team to the IEEE Signal Processing Cup 2024 (SP Cup 2024). This challenge, titled \"ROBOVOX: Far-Field Speaker Recognition by a Mobile Robot,\" focuses on speaker recognition using a mobile robot in noisy and reverberant conditions. Our solution combines the result of deep residual neural networks and time-delay neural network-based speaker embedding models. These models were trained on a diverse dataset that includes French speech. To account for t",
+    "authors": [
+      "Jeong-Hwan Choi",
+      "Gaeun Kim",
+      "Hee-Jae Lee",
+      "Seyun Ahn",
+      "Hyun-Soo Kim"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2407.11365v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "NPU-NTU System for Voice Privacy 2024 Challenge",
+    "abstract": "Speaker anonymization is an effective privacy protection solution that conceals the speaker's identity while preserving the linguistic content and paralinguistic information of the original speech. To establish a fair benchmark and facilitate comparison of speaker anonymization systems, the VoicePrivacy Challenge (VPC) was held in 2020 and 2022, with a new edition planned for 2024. In this paper, we describe our proposed speaker anonymization system for VPC 2024. Our system employs a disentangle",
+    "authors": [
+      "Jixun Yao",
+      "Nikita Kuzmin",
+      "Qing Wang",
+      "Pengcheng Guo",
+      "Ziqian Ning"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.04173v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "The First Place Solution of WSDM Cup 2024: Leveraging Large Language Models for Conversational Multi-Doc QA",
+    "abstract": "Conversational multi-doc question answering aims to answer specific questions based on the retrieved documents as well as the contextual conversations. In this paper, we introduce our winning approach for the \"Conversational Multi-Doc QA\" challenge in WSDM Cup 2024, which exploits the superior natural language understanding and generation capability of Large Language Models (LLMs). We first adapt LLMs to the task, then devise a hybrid training strategy to make the most of in-domain unlabeled dat",
+    "authors": [
+      "Yiming Li",
+      "Zhao Zhang"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2402.18385v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Lisbon Computational Linguists at SemEval-2024 Task 2: Using A Mistral 7B Model and Data Augmentation",
+    "abstract": "This paper describes our approach to the SemEval-2024 safe biomedical Natural Language Inference for Clinical Trials (NLI4CT) task, which concerns classifying statements about Clinical Trial Reports (CTRs). We explored the capabilities of Mistral-7B, a generalist open-source Large Language Model (LLM). We developed a prompt for the NLI4CT task, and fine-tuned a quantized version of the model using an augmented version of the training dataset. The experimental results show that this approach can ",
+    "authors": [
+      "Artur Guimar\u00e3es",
+      "Bruno Martins",
+      "Jo\u00e3o Magalh\u00e3es"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2408.03127v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "LLMs4OL 2024 Overview: The 1st Large Language Models for Ontology Learning Challenge",
+    "abstract": "This paper outlines the LLMs4OL 2024, the first edition of the Large Language Models for Ontology Learning Challenge. LLMs4OL is a community development initiative collocated with the 23rd International Semantic Web Conference (ISWC) to explore the potential of Large Language Models (LLMs) in Ontology Learning (OL), a vital process for enhancing the web with structured knowledge to improve interoperability. By leveraging LLMs, the challenge aims to advance understanding and innovation in OL, ali",
+    "authors": [
+      "Hamed Babaei Giglou",
+      "Jennifer D'Souza",
+      "S\u00f6ren Auer"
+    ],
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.10146v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "PH-STAT",
+    "abstract": "We introduce PH-STAT, a comprehensive MATLAB toolbox designed for performing a wide range of statistical inferences and machine learning tasks on persistent homology, primarily for network and graph data, with an emphasis on brain network analysis. Persistent homology is a prominent tool in topological data analysis (TDA) that captures the underlying topological features of complex data sets. The toolbox aims to provide users with an accessible and user-friendly interface for analyzing and inter",
+    "authors": [
+      "Moo K. Chung"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2304.05912v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Learn to Accumulate Evidence from All Training Samples: Theory and Practice",
+    "abstract": "Evidential deep learning, built upon belief theory and subjective logic, offers a principled and computationally efficient way to turn a deterministic neural network uncertainty-aware. The resultant evidential models can quantify fine-grained uncertainty using the learned evidence. To ensure theoretically sound evidential models, the evidence needs to be non-negative, which requires special activation functions for model training and inference. This constraint often leads to inferior predictive ",
+    "authors": [
+      "Deep Pandey",
+      "Qi Yu"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2306.11113v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Changing Data Sources in the Age of Machine Learning for Official Statistics",
+    "abstract": "Data science has become increasingly essential for the production of official statistics, as it enables the automated collection, processing, and analysis of large amounts of data. With such data science practices in place, it enables more timely, more insightful and more flexible reporting. However, the quality and integrity of data-science-driven statistics rely on the accuracy and reliability of the data sources and the machine learning techniques that support them. In particular, changes in ",
+    "authors": [
+      "Cedric De Boom",
+      "Michael Reusens"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2306.04338v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Enhancing Noise-Robust Losses for Large-Scale Noisy Data Learning",
+    "abstract": "Large annotated datasets inevitably contain noisy labels, which poses a major challenge for training deep neural networks as they easily memorize the labels. Noise-robust loss functions have emerged as a notable strategy to counteract this issue, but it remains challenging to create a robust loss function which is not susceptible to underfitting. Through a quantitative approach, this paper explores the limited overlap between the network output at initialization and regions of non-vanishing grad",
+    "authors": [
+      "Max Staats",
+      "Matthias Thamm",
+      "Bernd Rosenow"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2306.05497v3",
+    "source": "arxiv"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "abstract": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2306.14753v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Parallel Neural Networks in Golang",
+    "abstract": "This paper describes the design and implementation of parallel neural networks (PNNs) with the novel programming language Golang. We follow in our approach the classical Single-Program Multiple-Data (SPMD) model where a PNN is composed of several sequential neural networks, which are trained with a proportional share of the training dataset. We used for this purpose the MNIST dataset, which contains binary images of handwritten digits. Our analysis focusses on different activation functions and ",
+    "authors": [
+      "Daniela Kalwarowskyj",
+      "Erich Schikuta"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2304.09590v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Learning Active Subspaces and Discovering Important Features with Gaussian Radial Basis Functions Neural Networks",
+    "abstract": "Providing a model that achieves a strong predictive performance and is simultaneously interpretable by humans is one of the most difficult challenges in machine learning research due to the conflicting nature of these two objectives. To address this challenge, we propose a modification of the radial basis function neural network model by equipping its Gaussian kernel with a learnable precision matrix. We show that precious information is contained in the spectrum of the precision matrix that can",
+    "authors": [
+      "Danny D'Agostino",
+      "Ilija Ilievski",
+      "Christine Annette Shoemaker"
+    ],
+    "year": "2023",
+    "url": "https://arxiv.org/abs/2307.05639v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "JSON Stats Analyzer",
+    "abstract": "In this paper, we present the JSON Stats Analyzer, a free-to-use open-source web-based JavaScript tool and module that provides JSON document analysis. We explain how the JSON Stats Analyzer works, its usage alongside the demonstration of eleven JSON documents from Tier 1, Tier 2 and Tier 3 from our proposed taxonomy that categorizes JSON documents according to their size, content, redundancy and nesting characteristics. For each JSON document, we provide its definition, characteristics and the ",
+    "authors": [
+      "Juan Cruz Viotti",
+      "Mital Kinderkhedia"
+    ],
+    "year": "2022",
+    "url": "https://arxiv.org/abs/2211.11314v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Layer-wise Regularized Adversarial Training using Layers Sustainability Analysis (LSA) framework",
+    "abstract": "Deep neural network models are used today in various applications of artificial intelligence, the strengthening of which, in the face of adversarial attacks is of particular importance. An appropriate solution to adversarial attacks is adversarial training, which reaches a trade-off between robustness and generalization. This paper introduces a novel framework (Layer Sustainability Analysis (LSA)) for the analysis of layer vulnerability in an arbitrary neural network in the scenario of adversari",
+    "authors": [
+      "Mohammad Khalooei",
+      "Mohammad Mehdi Homayounpour",
+      "Maryam Amirmazlaghani"
+    ],
+    "year": "2022",
+    "url": "https://arxiv.org/abs/2202.02626v3",
+    "source": "arxiv"
+  },
+  {
+    "title": "Calibrate and Debias Layer-wise Sampling for Graph Convolutional Networks",
+    "abstract": "Multiple sampling-based methods have been developed for approximating and accelerating node embedding aggregation in graph convolutional networks (GCNs) training. Among them, a layer-wise approach recursively performs importance sampling to select neighbors jointly for existing nodes in each layer. This paper revisits the approach from a matrix approximation perspective, and identifies two issues in the existing layer-wise sampling methods: suboptimal sampling probabilities and estimation biases",
+    "authors": [
+      "Yifan Chen",
+      "Tianning Xu",
+      "Dilek Hakkani-Tur",
+      "Di Jin",
+      "Yun Yang"
+    ],
+    "year": "2022",
+    "url": "https://arxiv.org/abs/2206.00583v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "BN-NAS: Neural Architecture Search with Batch Normalization",
+    "abstract": "We present BN-NAS, neural architecture search with Batch Normalization (BN-NAS), to accelerate neural architecture search (NAS). BN-NAS can significantly reduce the time required by model training and evaluation in NAS. Specifically, for fast evaluation, we propose a BN-based indicator for predicting subnet performance at a very early training stage. The BN-based indicator further facilitates us to improve the training efficiency by only training the BN parameters during the supernet training. T",
+    "authors": [
+      "Boyu Chen",
+      "Peixia Li",
+      "Baopu Li",
+      "Chen Lin",
+      "Chuming Li"
+    ],
+    "year": "2021",
+    "url": "https://arxiv.org/abs/2108.07375v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "\"BNN - BN = ?\": Training Binary Neural Networks without Batch Normalization",
+    "abstract": "Batch normalization (BN) is a key facilitator and considered essential for state-of-the-art binary neural networks (BNN). However, the BN layer is costly to calculate and is typically implemented with non-binary parameters, leaving a hurdle for the efficient implementation of BNN training. It also introduces undesirable dependence between samples within each batch. Inspired by the latest advance on Batch Normalization Free (BN-Free) training, we extend their framework to training BNNs, and for t",
+    "authors": [
+      "Tianlong Chen",
+      "Zhenyu Zhang",
+      "Xu Ouyang",
+      "Zechun Liu",
+      "Zhiqiang Shen"
+    ],
+    "year": "2021",
+    "url": "https://arxiv.org/abs/2104.08215v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "The Modern Mathematics of Deep Learning",
+    "abstract": "We describe the new field of mathematical analysis of deep learning. This field emerged around a list of research questions that were not answered within the classical framework of learning theory. These questions concern: the outstanding generalization power of overparametrized neural networks, the role of depth in deep architectures, the apparent absence of the curse of dimensionality, the surprisingly successful optimization performance despite the non-convexity of the problem, understanding ",
+    "authors": [
+      "Julius Berner",
+      "Philipp Grohs",
+      "Gitta Kutyniok",
+      "Philipp Petersen"
+    ],
+    "year": "2021",
+    "url": "https://arxiv.org/abs/2105.04026v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "WI Fast Stats: a collection of web apps for the visualization and analysis of WI Fast Plants data",
+    "abstract": "WI Fast Stats is the first and only dedicated tool tailored to the WI Fast Plants educational objectives. WI Fast Stats is an integrated animated web page with a collection of R-developed web apps that provide Data Visualization and Data Analysis tools for WI Fast Plants data. WI Fast Stats is a user-friendly easy-to-use interface that will render Data Science accessible to K-16 teachers and students currently using WI Fast Plants lesson plans. Users do not need to have strong programming or mat",
+    "authors": [
+      "Yizhou Liu",
+      "Claudia Solis-Lemus"
+    ],
+    "year": "2020",
+    "url": "https://arxiv.org/abs/2012.03290v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "A Universal Logic Operator for Interpretable Deep Convolution Networks",
+    "abstract": "Explaining neural network computation in terms of probabilistic/fuzzy logical operations has attracted much attention due to its simplicity and high interpretability. Different choices of logical operators such as AND, OR and XOR give rise to another dimension for network optimization, and in this paper, we study the open problem of learning a universal logical operator without prescribing to any logical operations manually. Insightful observations along this exploration furnish deep convolution",
+    "authors": [
+      "KamWoh Ng",
+      "Lixin Fan",
+      "Chee Seng Chan"
+    ],
+    "year": "2019",
+    "url": "https://arxiv.org/abs/1901.08551v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Towards Interpretable Deep Neural Networks by Leveraging Adversarial Examples",
+    "abstract": "Sometimes it is not enough for a DNN to produce an outcome. For example, in applications such as healthcare, users need to understand the rationale of the decisions. Therefore, it is imperative to develop algorithms to learn models with good interpretability (Doshi-Velez 2017). An important factor that leads to the lack of interpretability of DNNs is the ambiguity of neurons, where a neuron may fire for various unrelated concepts. This work aims to increase the interpretability of DNNs on the wh",
+    "authors": [
+      "Yinpeng Dong",
+      "Fan Bao",
+      "Hang Su",
+      "Jun Zhu"
+    ],
+    "year": "2019",
+    "url": "https://arxiv.org/abs/1901.09035v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "abstract": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai"
+    ],
+    "year": "2019",
+    "url": "https://arxiv.org/abs/1906.10015v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Rethinking Layer-wise Feature Amounts in Convolutional Neural Network Architectures",
+    "abstract": "We characterize convolutional neural networks with respect to the relative amount of features per layer. Using a skew normal distribution as a parametrized framework, we investigate the common assumption of monotonously increasing feature-counts with higher layers of architecture designs. Our evaluation on models with VGG-type layers on the MNIST, Fashion-MNIST and CIFAR-10 image classification benchmarks provides evidence that motivates rethinking of our common assumption: architectures that fa",
+    "authors": [
+      "Martin Mundt",
+      "Sagnik Majumder",
+      "Tobias Weis",
+      "Visvanathan Ramesh"
+    ],
+    "year": "2018",
+    "url": "https://arxiv.org/abs/1812.05836v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "abstract": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": "2018",
+    "url": "https://arxiv.org/abs/1803.02421v2",
+    "source": "arxiv"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "abstract": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": "2018",
+    "url": "https://arxiv.org/abs/1807.02477v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Exclusive photoproduction of $\u03c0^0$ up to large values of Mandelstam variables $s, t$ and $u$ with CLAS",
+    "abstract": "Exclusive photoproduction cross sections have been measured for the process $\u03b3p \\rightarrow p\u03c0^0(e^+e^-(\u03b3))$ with the Dalitz decay final state using tagged photon energies in the range of $E_\u03b3 = 1.275-5.425$ GeV. The complete angular distribution of the final state $\u03c0^0$, for the entire photon energy range up to large values of $t$ and $u$, has been measured for the first time. The data obtained show that the cross section $d\u03c3/dt$, at mid to large angles, decreases with energy as $s^{-6.89\\pm 0.",
+    "authors": [
+      "M. C. Kunkel",
+      "32",
+      "18 M. J. Amaryan",
+      "32",
+      "I. I. Strakovsky"
+    ],
+    "year": "2017",
+    "url": "https://arxiv.org/abs/1712.10314v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "TensorFlow Enabled Genetic Programming",
+    "abstract": "Genetic Programming, a kind of evolutionary computation and machine learning algorithm, is shown to benefit significantly from the application of vectorized data and the TensorFlow numerical computation library on both CPU and GPU architectures. The open source, Python Karoo GP is employed for a series of 190 tests across 6 platforms, with real-world datasets ranging from 18 to 5.5M data points. This body of tests demonstrates that datasets measured in tens and hundreds of data points see 2-15x ",
+    "authors": [
+      "Kai Staats",
+      "Edward Pantridge",
+      "Marco Cavaglia",
+      "Iurii Milovanov",
+      "Arun Aniyan"
+    ],
+    "year": "2017",
+    "url": "https://arxiv.org/abs/1708.03157v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "abstract": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": "2016",
+    "url": "https://arxiv.org/abs/1609.04846v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Mahonian STAT on words",
+    "abstract": "In 2000, Babson and Steingr\u00edmsson introduced the notion of what is now known as a permutation vincular pattern, and based on it they re-defined known Mahonian statistics and introduced new ones, proving or conjecturing their Mahonity. These conjectures were proved by Foata and Zeilberger in 2001, and by Foata and Randrianarivony in 2006.   In 2010, Burstein refined some of these results by giving a bijection between permutations with a fixed value for the major index and those with the same valu",
+    "authors": [
+      "Sergey Kitaev",
+      "Vincent Vajnovszki"
+    ],
+    "year": "2014",
+    "url": "https://arxiv.org/abs/1408.4290v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Two-dimensional magnetic interactions in LaFeAsO",
+    "abstract": "Inelastic neutron scattering measurements demonstrate that the magnetic interactions in antiferromagnetic LaFeAsO are two-dimensional. Spin wave velocities within the Fe layer and the magnitude of the spin gap are similar to the \\textit{A}Fe$_2$As$_2$ based materials. However, the ratio of interlayer and intralayer exchange is found to be less than $\\sim 10^{-4}$ in LaFeAsO, very similar to the cuprates, and $\\sim$ 100 times smaller than that found in \\textit{A}Fe$_2$As$_2$ compounds. The result",
+    "authors": [
+      "M. Ramazanoglu",
+      "1",
+      "2 J. Lamsal",
+      "1",
+      "2 G. S. Tucker"
+    ],
+    "year": "2013",
+    "url": "https://arxiv.org/abs/1303.4033v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Strain Tunable Band-gaps of Two-dimensional Hexagonal BN And AlN: An FP-(L)APW+lo Study",
+    "abstract": "Using full potential density functional calculations within local density approximation (LDA), we found strain tunable band gaps of two-dimensional (2D) hexagonal BN (h-BN) and AlN (h-AlN) by application of in-plane homogeneous biaxial strain. The direct band gap of 2D h-BN turns indirect for compressive strains below 1.53% and remains direct under tensile strains up to 10%. However, the band gap of 2D h-AlN remains indirect for strains up to $\\pm10%$. While our result on 2D h-BN corroborates th",
+    "authors": [
+      "Harihar Behera",
+      "Gautam Mukhopadhyay"
+    ],
+    "year": "2012",
+    "url": "https://arxiv.org/abs/1206.3162v1",
+    "source": "arxiv"
+  },
+  {
+    "title": "Observation of post-soliton expansion following laser propagation through an underdense plasma",
+    "abstract": "The expansion of electromagnetic post-solitons emerging from the interaction of a 30 ps, $3\\times 10^{18}$ W cm$^{-2}$ laser pulse with an underdense deuterium plasma has been observed up to 100 ps after the pulse propagation, when large numbers of post-solitons were seen to remain in the plasma. The temporal evolution of the post-solitons has been accurately characterized with a high spatial and temporal resolution. The observed expansion is compared to analytical models and three dimensional p",
+    "authors": [
+      "G. Sarri",
+      "1 D. K. Singh",
+      "2 J. R. Davies",
+      "2 K. L. Lancaster",
+      "3 E. L. Clark"
+    ],
+    "year": "2010",
+    "url": "https://arxiv.org/abs/1007.0183v1",
+    "source": "arxiv"
+  }
+]

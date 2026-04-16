@@ -1,0 +1,278 @@
+Using device: cpu
+Running metric sanity checks...
+Sanity checks passed: Random MI=0.036, Correlated MI=0.551, Perfect MI=1.754
+METRIC_SANITY_PASSED
+Starting Full-Scale BN Class-Specificity Experiment
+================================================================================
+
+Running first seed as sanity check...
+
+============================================================
+Seed 0: BN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=2.4998, Train Acc=0.091, Val Loss=5.5512, Val Acc=0.271, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 0.101
+  Avg MI: 0.129
+  Avg Class Ratio: 0.788
+  Tracked batches: 300
+
+First seed passed sanity check: MI=0.129, Acc=0.101
+
+Running random sampling comparison...
+
+============================================================
+Seed 0: BN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0540, Train Acc=0.991, Val Loss=0.0019, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.143
+  Avg Class Ratio: 0.835
+  Tracked batches: 312
+
+================================================================================
+MAIN EXPERIMENTS
+================================================================================
+
+============================================================
+Seed 1: BN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0480, Train Acc=0.990, Val Loss=0.0018, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.126
+  Avg Class Ratio: 0.833
+  Tracked batches: 312
+
+============================================================
+Seed 1: BN model, balanced sampling
+============================================================
+Epoch 0: Train Loss=0.0342, Train Acc=0.992, Val Loss=0.0020, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.130
+  Avg Class Ratio: 0.859
+  Tracked batches: 332
+
+============================================================
+Seed 1: BN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=2.4949, Train Acc=0.085, Val Loss=6.9472, Val Acc=0.001, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 0.006
+  Avg MI: 0.133
+  Avg Class Ratio: 0.786
+  Tracked batches: 300
+
+================================================================================
+BASELINE COMPARISONS
+================================================================================
+
+============================================================
+Seed 0: GN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0406, Train Acc=0.994, Val Loss=0.0012, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 0: GN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=0.2545, Train Acc=0.933, Val Loss=0.0100, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 0: LN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0500, Train Acc=0.991, Val Loss=0.0011, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 0: LN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=0.3016, Train Acc=0.927, Val Loss=0.0093, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 0 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 1: GN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0485, Train Acc=0.992, Val Loss=0.0012, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 1: GN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=0.3209, Train Acc=0.936, Val Loss=0.0120, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 1: LN model, random sampling
+============================================================
+Epoch 0: Train Loss=0.0426, Train Acc=0.993, Val Loss=0.0007, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+============================================================
+Seed 1: LN model, single_class sampling
+============================================================
+Epoch 0: Train Loss=0.2918, Train Acc=0.927, Val Loss=0.0074, Val Acc=1.000, LR=0.001000
+NOT_CONVERGED: Max epochs reached
+
+Seed 1 Summary:
+  Test Acc: 1.000
+  Avg MI: 0.000
+  Avg Class Ratio: 0.000
+
+================================================================================
+FINAL ANALYSIS
+================================================================================
+
+Summary Results (mean ± std):
+--------------------------------------------------------------------------------
+Condition                      Test Acc             Avg MI               Class Ratio         
+--------------------------------------------------------------------------------
+bn_balanced                    1.000±0.000       0.130±0.000       0.859±0.000
+bn_random                      1.000±0.000       0.134±0.009       0.834±0.001
+bn_single_class                0.054±0.048       0.131±0.002       0.787±0.001
+gn_random                      1.000±0.000       0.000±0.000       0.000±0.000
+gn_single_class                1.000±0.000       0.000±0.000       0.000±0.000
+ln_random                      1.000±0.000       0.000±0.000       0.000±0.000
+ln_single_class                1.000±0.000       0.000±0.000       0.000±0.000
+
+Statistical Tests (p-values):
+--------------------------------------------------
+bn_single_vs_random_mi: p=0.8183 
+
+Hypothesis Testing:
+--------------------------------------------------
+H1 (BN contains class info): SUPPORTED
+H3 (single > random): NOT SUPPORTED (p=0.818)
+
+RESULTS: {
+  "experiment": "bn_class_specificity_full_scale",
+  "runtime_minutes": 0.18948078552881878,
+  "n_experiments": 13,
+  "convergence_rate": 0.8461538461538461,
+  "summary_stats": {
+    "bn_balanced": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.13005222679382386,
+      "mi_std": 0.0,
+      "class_ratio_mean": 0.8590092783172926,
+      "class_ratio_std": 0.0,
+      "n_samples": 1
+    },
+    "bn_random": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.13434642517539386,
+      "mi_std": 0.008501581976924785,
+      "class_ratio_mean": 0.8340223763758938,
+      "class_ratio_std": 0.0005426608646909581,
+      "n_samples": 2
+    },
+    "bn_single_class": {
+      "test_acc_mean": 0.053500000000000006,
+      "test_acc_std": 0.04750000000000001,
+      "mi_mean": 0.13117509306863873,
+      "mi_std": 0.0023093891522308063,
+      "class_ratio_mean": 0.7871308820322156,
+      "class_ratio_std": 0.0006412053480744362,
+      "n_samples": 2
+    },
+    "gn_random": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "class_ratio_mean": 0.0,
+      "class_ratio_std": 0.0,
+      "n_samples": 2
+    },
+    "gn_single_class": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "class_ratio_mean": 0.0,
+      "class_ratio_std": 0.0,
+      "n_samples": 2
+    },
+    "ln_random": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "class_ratio_mean": 0.0,
+      "class_ratio_std": 0.0,
+      "n_samples": 2
+    },
+    "ln_single_class": {
+      "test_acc_mean": 1.0,
+      "test_acc_std": 0.0,
+      "mi_mean": 0.0,
+      "mi_std": 0.0,
+      "class_ratio_mean": 0.0,
+      "class_ratio_std": 0.0,
+      "n_samples": 2
+    }
+  },
+  "statistical_tests": {
+    "bn_single_vs_random_mi": 0.8183474732344566
+  },
+  "hypotheses": {
+    "h1_bn_contains_class_info": true,
+    "h3_sampling_affects_mi": false
+  },
+  "key_findings": {
+    "single_class_mi": 0.13117509306863873,
+    "random_mi": 0.13434642517539386,
+    "signal_detected": true
+  }
+}
+DRY_RUN_OK: Full pipeline validated (train → analyze → output)

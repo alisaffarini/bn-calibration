@@ -1,0 +1,93 @@
+Using device: cpu
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+
+============================================================
+RUNNING SEED 0
+============================================================
+
+=== Training early_stopped model (seed 0) ===
+Epoch 1: Train Loss: 2.125, Train Acc: 0.214, Val Acc: 0.228, Val ECE: 0.025
+Epoch 2: Train Loss: 1.956, Train Acc: 0.244, Val Acc: 0.222, Val ECE: 0.141
+Epoch 3: Train Loss: 1.822, Train Acc: 0.299, Val Acc: 0.192, Val ECE: 0.247
+Epoch 4: Train Loss: 1.771, Train Acc: 0.316, Val Acc: 0.260, Val ECE: 0.131
+Epoch 5: Train Loss: 1.708, Train Acc: 0.362, Val Acc: 0.296, Val ECE: 0.060
+CONVERGED (early stopped)
+
+=== Applying diagnostic to early_stopped model ===
+Original accuracy: 0.296
+Corrupted accuracy (noise): 0.124
+Linear probe accuracy: 0.242
+Diagnostic gap: 0.118
+Diagnosed as: Type 1 (features)
+
+=== Training overtrained model (seed 0) ===
+Epoch 1: Train Loss: 2.108, Train Acc: 0.212, Val Acc: 0.218, Val ECE: 0.043
+Epoch 2: Train Loss: 1.907, Train Acc: 0.275, Val Acc: 0.170, Val ECE: 0.171
+Epoch 3: Train Loss: 1.817, Train Acc: 0.307, Val Acc: 0.268, Val ECE: 0.098
+Epoch 4: Train Loss: 1.763, Train Acc: 0.336, Val Acc: 0.282, Val ECE: 0.043
+Epoch 5: Train Loss: 1.696, Train Acc: 0.368, Val Acc: 0.268, Val ECE: 0.128
+Epoch 6: Train Loss: 1.680, Train Acc: 0.364, Val Acc: 0.290, Val ECE: 0.095
+Epoch 7: Train Loss: 1.628, Train Acc: 0.403, Val Acc: 0.328, Val ECE: 0.065
+Epoch 8: Train Loss: 1.562, Train Acc: 0.408, Val Acc: 0.386, Val ECE: 0.034
+Epoch 9: Train Loss: 1.529, Train Acc: 0.423, Val Acc: 0.368, Val ECE: 0.046
+Epoch 10: Train Loss: 1.500, Train Acc: 0.445, Val Acc: 0.314, Val ECE: 0.104
+Epoch 11: Train Loss: 1.419, Train Acc: 0.485, Val Acc: 0.434, Val ECE: 0.054
+Epoch 12: Train Loss: 1.370, Train Acc: 0.509, Val Acc: 0.424, Val ECE: 0.025
+Epoch 13: Train Loss: 1.362, Train Acc: 0.510, Val Acc: 0.420, Val ECE: 0.023
+Epoch 14: Train Loss: 1.348, Train Acc: 0.512, Val Acc: 0.412, Val ECE: 0.027
+CONVERGED
+
+=== Applying diagnostic to overtrained model ===
+Original accuracy: 0.412
+Corrupted accuracy (noise): 0.206
+Linear probe accuracy: 0.236
+Diagnostic gap: 0.030
+Diagnosed as: Type 1 (features)
+
+============================================================
+RUNNING SEED 1
+============================================================
+
+=== Training early_stopped model (seed 1) ===
+Epoch 1: Train Loss: 2.121, Train Acc: 0.192, Val Acc: 0.212, Val ECE: 0.083
+Epoch 2: Train Loss: 1.953, Train Acc: 0.271, Val Acc: 0.262, Val ECE: 0.046
+Epoch 3: Train Loss: 1.821, Train Acc: 0.302, Val Acc: 0.260, Val ECE: 0.124
+Epoch 4: Train Loss: 1.741, Train Acc: 0.324, Val Acc: 0.340, Val ECE: 0.049
+Epoch 5: Train Loss: 1.707, Train Acc: 0.338, Val Acc: 0.318, Val ECE: 0.077
+CONVERGED (early stopped)
+
+=== Applying diagnostic to early_stopped model ===
+Original accuracy: 0.318
+Corrupted accuracy (noise): 0.236
+Linear probe accuracy: 0.234
+Diagnostic gap: -0.002
+Diagnosed as: Type 1 (features)
+
+=== Training overtrained model (seed 1) ===
+Epoch 1: Train Loss: 2.108, Train Acc: 0.216, Val Acc: 0.254, Val ECE: 0.066
+Epoch 2: Train Loss: 1.932, Train Acc: 0.257, Val Acc: 0.250, Val ECE: 0.055
+Epoch 3: Train Loss: 1.788, Train Acc: 0.301, Val Acc: 0.256, Val ECE: 0.127
+Epoch 4: Train Loss: 1.738, Train Acc: 0.328, Val Acc: 0.292, Val ECE: 0.064
+Epoch 5: Train Loss: 1.694, Train Acc: 0.338, Val Acc: 0.324, Val ECE: 0.029
+Epoch 6: Train Loss: 1.669, Train Acc: 0.366, Val Acc: 0.312, Val ECE: 0.077
+Epoch 7: Train Loss: 1.633, Train Acc: 0.374, Val Acc: 0.368, Val ECE: 0.070
+Epoch 8: Train Loss: 1.591, Train Acc: 0.397, Val Acc: 0.376, Val ECE: 0.052
+Epoch 9: Train Loss: 1.542, Train Acc: 0.420, Val Acc: 0.388, Val ECE: 0.039
+Epoch 10: Train Loss: 1.497, Train Acc: 0.441, Val Acc: 0.374, Val ECE: 0.053
+Epoch 11: Train Loss: 1.423, Train Acc: 0.476, Val Acc: 0.412, Val ECE: 0.029
+Epoch 12: Train Loss: 1.389, Train Acc: 0.498, Val Acc: 0.412, Val ECE: 0.053
+Epoch 13: Train Loss: 1.372, Train Acc: 0.500, Val Acc: 0.418, Val ECE: 0.033
+Epoch 14: Train Loss: 1.369, Train Acc: 0.509, Val Acc: 0.412, Val ECE: 0.037
+CONVERGED
+
+=== Applying diagnostic to overtrained model ===
+Original accuracy: 0.412
+Corrupted accuracy (noise): 0.176
+Linear probe accuracy: 0.234
+Diagnostic gap: 0.058
+Diagnosed as: Type 1 (features)
+
+SIGNAL_DETECTED: Early-stopped models show small diagnostic gaps (Type 1 feature failure)
+
+RESULTS: {"per_model_results": {"early_stopped": {"original_acc": {"mean": 0.307, "std": 0.01100000000000001, "values": [0.296, 0.318]}, "original_ece": {"mean": 0.0687316507101059, "std": 0.00849587470293045, "values": [0.060235776007175446, 0.07722752541303635]}, "corrupted_acc": {"mean": 0.18, "std": 0.055999999999999994, "values": [0.124, 0.236]}, "probe_acc": {"mean": 0.238, "std": 0.00399999999999999, "values": [0.242, 0.234]}, "diagnostic_gap": {"mean": 0.05800000000000001, "std": 0.059999999999999984, "values": [0.118, -0.001999999999999974]}}, "overtrained": {"original_acc": {"mean": 0.412, "std": 0.0, "values": [0.412, 0.412]}, "original_ece": {"mean": 0.03210795018821955, "std": 0.0046091219410300255, "values": [0.027498828247189522, 0.03671707212924957]}, "corrupted_acc": {"mean": 0.191, "std": 0.015, "values": [0.206, 0.176]}, "probe_acc": {"mean": 0.235, "std": 0.000999999999999987, "values": [0.236, 0.234]}, "diagnostic_gap": {"mean": 0.04400000000000001, "std": 0.014000000000000012, "values": [0.03, 0.058000000000000024]}}}, "statistical_comparison": {"early_vs_overtrained_p_value": 0.8413591368152322, "early_stopped_gap_mean": 0.05800000000000001, "overtrained_gap_mean": 0.04400000000000001}, "convergence_status": "CONVERGED", "signal_detected": true, "signal_description": "Early-stopped models show small diagnostic gaps (Type 1 feature failure)", "n_seeds": 2}

@@ -1,0 +1,48 @@
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+
+=== Seed 0 ===
+Testing random baseline...
+Error in seed 0: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 1 ===
+Testing random baseline...
+Error in seed 1: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 2 ===
+Testing random baseline...
+Error in seed 2: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 3 ===
+Testing random baseline...
+Error in seed 3: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 4 ===
+Testing random baseline...
+Error in seed 4: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 5 ===
+Testing random baseline...
+Error in seed 5: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 6 ===
+Testing random baseline...
+Error in seed 6: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 7 ===
+Testing random baseline...
+Error in seed 7: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 8 ===
+Testing random baseline...
+Error in seed 8: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== Seed 9 ===
+Testing random baseline...
+Error in seed 9: mat1 and mat2 shapes cannot be multiplied (32x1024 and 4096x10)
+
+=== FINAL ANALYSIS ===
+NO_SIGNAL: Found U-curve in 0/3 layers
+
+Total runtime: 0.00 hours
+RESULTS: {"num_seeds": 10, "signal_detected": false, "u_curve_layers": 0, "bn_ece_mean": 0.9, "bn_ece_std": 0.0, "summary": "Found U-curve in 0/3 layers", "runtime_hours": 0.0002456610732608371}

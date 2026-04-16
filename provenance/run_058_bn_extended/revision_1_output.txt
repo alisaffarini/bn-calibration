@@ -1,0 +1,139 @@
+Running metric sanity checks...
+Testing class-conditional behavior...
+✓ Class-conditional behavior verified
+METRIC_SANITY_PASSED
+
+Running 3 seeds in QUICK mode
+
+=== FIRST SEED WITH VALIDATION ===
+
+=== Seed 0 (cpu) ===
+Training Class-Conditional BN model...
+  Epoch 1: Train Acc: 0.295, Val Acc: 0.347
+  Epoch 6: Train Acc: 0.520, Val Acc: 0.491
+  Epoch 11: Train Acc: 0.603, Val Acc: 0.561
+  Epoch 16: Train Acc: 0.639, Val Acc: 0.568
+  Epoch 21: Train Acc: 0.669, Val Acc: 0.575
+  Epoch 26: Train Acc: 0.685, Val Acc: 0.598
+NOT_CONVERGED
+Test accuracy: 0.557
+
+Training Standard BN baseline...
+  Epoch 1: Train Acc: 0.290, Val Acc: 0.332
+  Epoch 6: Train Acc: 0.534, Val Acc: 0.490
+  Epoch 11: Train Acc: 0.605, Val Acc: 0.542
+  Epoch 16: Train Acc: 0.669, Val Acc: 0.570
+  Epoch 21: Train Acc: 0.690, Val Acc: 0.564
+  Epoch 26: Train Acc: 0.728, Val Acc: 0.608
+CONVERGED
+Standard BN test accuracy: 0.570
+
+Computing layer importance...
+  Layer 0: 1.6835
+  Layer 1: 0.2608
+  Layer 2: 0.3020
+Spearman ρ = -0.500, p = 0.667
+
+Testing configurations...
+  all_global: 0.557
+  mild_class: 0.189
+  hierarchical: 0.270
+  reverse: 0.414
+  random: 0.100
+
+Hierarchy advantage: -0.144
+NO_SIGNAL
+Time: 282.8s
+✓ Class-conditional BN working
+✓ Model training successful
+
+=== Seed 1 (cpu) ===
+Training Class-Conditional BN model...
+  Epoch 1: Train Acc: 0.295, Val Acc: 0.376
+  Epoch 6: Train Acc: 0.527, Val Acc: 0.503
+  Epoch 11: Train Acc: 0.598, Val Acc: 0.494
+  Epoch 16: Train Acc: 0.641, Val Acc: 0.577
+  Epoch 21: Train Acc: 0.671, Val Acc: 0.573
+CONVERGED at epoch 24
+Test accuracy: 0.550
+
+Training Standard BN baseline...
+  Epoch 1: Train Acc: 0.286, Val Acc: 0.353
+  Epoch 6: Train Acc: 0.518, Val Acc: 0.511
+  Epoch 11: Train Acc: 0.600, Val Acc: 0.511
+  Epoch 16: Train Acc: 0.653, Val Acc: 0.561
+  Epoch 21: Train Acc: 0.688, Val Acc: 0.564
+CONVERGED at epoch 25
+Standard BN test accuracy: 0.546
+
+Computing layer importance...
+  Layer 0: 2.8432
+  Layer 1: 0.2988
+  Layer 2: 0.4789
+Spearman ρ = -0.500, p = 0.667
+
+Testing configurations...
+  all_global: 0.550
+  mild_class: 0.179
+  hierarchical: 0.256
+  reverse: 0.386
+  random: 0.100
+
+Hierarchy advantage: -0.130
+NO_SIGNAL
+Time: 231.5s
+
+=== Seed 2 (cpu) ===
+Training Class-Conditional BN model...
+  Epoch 1: Train Acc: 0.290, Val Acc: 0.364
+  Epoch 6: Train Acc: 0.528, Val Acc: 0.500
+  Epoch 11: Train Acc: 0.582, Val Acc: 0.563
+  Epoch 16: Train Acc: 0.654, Val Acc: 0.573
+  Epoch 21: Train Acc: 0.679, Val Acc: 0.581
+  Epoch 26: Train Acc: 0.701, Val Acc: 0.614
+CONVERGED
+Test accuracy: 0.570
+
+Training Standard BN baseline...
+  Epoch 1: Train Acc: 0.290, Val Acc: 0.303
+  Epoch 6: Train Acc: 0.524, Val Acc: 0.480
+  Epoch 11: Train Acc: 0.590, Val Acc: 0.497
+  Epoch 16: Train Acc: 0.645, Val Acc: 0.571
+  Epoch 21: Train Acc: 0.677, Val Acc: 0.592
+  Epoch 26: Train Acc: 0.696, Val Acc: 0.593
+CONVERGED
+Standard BN test accuracy: 0.574
+
+Computing layer importance...
+  Layer 0: 3.3392
+  Layer 1: 0.4999
+  Layer 2: 0.5957
+Spearman ρ = -0.500, p = 0.667
+
+Testing configurations...
+  all_global: 0.570
+  mild_class: 0.167
+  hierarchical: 0.276
+  reverse: 0.401
+  random: 0.100
+
+Hierarchy advantage: -0.125
+NO_SIGNAL
+Time: 285.6s
+
+=== SUMMARY ===
+Test accuracy: 0.559 ± 0.008
+Standard BN: 0.563 ± 0.012
+Spearman ρ: -0.500 ± 0.000
+Hierarchy advantage: -0.133 ± 0.008
+
+Configuration accuracies:
+  all_global: 0.559 ± 0.008
+  mild_class: 0.178 ± 0.009
+  hierarchical: 0.267 ± 0.008
+  reverse: 0.400 ± 0.011
+  random: 0.100 ± 0.000
+
+Total time: 799.9s
+
+RESULTS: {"per_seed_results": [{"seed": 0, "converged": false, "test_accuracy": 0.557, "standard_accuracy": 0.57, "importance_scores": [1.6835281046919346, 0.2608003144167347, 0.30195747596821176], "spearman_rho": -0.5, "spearman_p": 0.6666666666666666, "configurations": {"all_global": 0.557, "mild_class": 0.189, "hierarchical": 0.27, "reverse": 0.414, "random": 0.1}, "hierarchy_advantage": -0.14399999999999996, "signal_detected": false, "time": 282.8214840888977}, {"seed": 1, "converged": true, "test_accuracy": 0.55, "standard_accuracy": 0.546, "importance_scores": [2.8432486907273256, 0.2987764871726979, 0.47894365649547127], "spearman_rho": -0.5, "spearman_p": 0.6666666666666666, "configurations": {"all_global": 0.55, "mild_class": 0.179, "hierarchical": 0.256, "reverse": 0.386, "random": 0.1}, "hierarchy_advantage": -0.13, "signal_detected": false, "time": 231.4942090511322}, {"seed": 2, "converged": true, "test_accuracy": 0.57, "standard_accuracy": 0.574, "importance_scores": [3.3391664843051885, 0.49988746634554776, 0.5957276078086636], "spearman_rho": -0.5, "spearman_p": 0.6666666666666666, "configurations": {"all_global": 0.57, "mild_class": 0.167, "hierarchical": 0.276, "reverse": 0.401, "random": 0.1}, "hierarchy_advantage": -0.125, "signal_detected": false, "time": 285.61921095848083}], "mean": {"test_accuracy": 0.559, "standard_accuracy": 0.5633333333333334, "spearman_rho": -0.5, "hierarchy_advantage": -0.13299999999999998}, "std": {"test_accuracy": 0.008286535263103993, "standard_accuracy": 0.012364824660660897, "spearman_rho": 0.0, "hierarchy_advantage": 0.008041558721209862}, "p_values": {"hier_vs_reverse": 0.0018228814781068386}, "convergence_status": "2/3 converged", "signal_detection_rate": 0.0, "total_time_seconds": 799.9447932243347}

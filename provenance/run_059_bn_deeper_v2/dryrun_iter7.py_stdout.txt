@@ -1,0 +1,9 @@
+METRIC_SANITY_PASSED: All checks passed
+FULL MODE: 10 seeds
+
+RUNNING FIRST SEED...
+
+Seed 0, device: cpu
+Training model...
+DRY_RUN_WARNING: Pipeline completed but no RESULTS: line was printed!
+DRY_RUN_WARNING: The post-processing/output stage may be broken.

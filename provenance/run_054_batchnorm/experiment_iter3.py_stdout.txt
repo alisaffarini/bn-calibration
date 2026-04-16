@@ -1,0 +1,99 @@
+Running metric sanity checks...
+Sanity checks passed: Random MI=0.040, Correlated MI=0.560, Perfect MI=1.754
+METRIC_SANITY_PASSED
+Starting BN Class-Specificity Experiment (Fixed)
+============================================================
+
+
+Testing random sampling...
+----------------------------------------
+
+[Seed 0] Running random sampling...
+Epoch 1: Train Acc=0.612, Val Acc=0.936
+Epoch 2: Train Acc=0.992, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+Epoch 4: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+[Seed 1] Running random sampling...
+Epoch 1: Train Acc=0.542, Val Acc=0.932
+Epoch 2: Train Acc=0.996, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+Epoch 4: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+[Seed 2] Running random sampling...
+Epoch 1: Train Acc=0.652, Val Acc=1.000
+Epoch 2: Train Acc=1.000, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+
+Testing balanced sampling...
+----------------------------------------
+
+[Seed 0] Running balanced sampling...
+Epoch 1: Train Acc=0.639, Val Acc=0.984
+Epoch 2: Train Acc=0.997, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+Epoch 4: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+[Seed 1] Running balanced sampling...
+Epoch 1: Train Acc=0.589, Val Acc=0.952
+Epoch 2: Train Acc=0.999, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+Epoch 4: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+[Seed 2] Running balanced sampling...
+Epoch 1: Train Acc=0.686, Val Acc=1.000
+Epoch 2: Train Acc=1.000, Val Acc=1.000
+Epoch 3: Train Acc=1.000, Val Acc=1.000
+CONVERGED
+
+
+Testing single_class sampling...
+----------------------------------------
+
+[Seed 0] Running single_class sampling...
+Epoch 1: Train Acc=0.090, Val Acc=0.246
+Epoch 2: Train Acc=0.102, Val Acc=0.300
+Epoch 3: Train Acc=0.103, Val Acc=0.294
+Epoch 4: Train Acc=0.105, Val Acc=0.302
+Epoch 5: Train Acc=0.121, Val Acc=0.298
+NOT_CONVERGED: Max epochs
+
+[Seed 1] Running single_class sampling...
+Epoch 1: Train Acc=0.096, Val Acc=0.068
+Epoch 2: Train Acc=0.101, Val Acc=0.084
+Epoch 3: Train Acc=0.105, Val Acc=0.086
+Epoch 4: Train Acc=0.104, Val Acc=0.138
+Epoch 5: Train Acc=0.102, Val Acc=0.150
+NOT_CONVERGED: Max epochs
+
+[Seed 2] Running single_class sampling...
+Epoch 1: Train Acc=0.089, Val Acc=0.100
+Epoch 2: Train Acc=0.100, Val Acc=0.100
+Epoch 3: Train Acc=0.100, Val Acc=0.100
+CONVERGED
+
+
+Analyzing Results...
+============================================================
+
+RANDOM:
+  MI: 0.000 ± 0.000
+  Acc: 1.000 ± 0.000
+
+BALANCED:
+  MI: 0.000 ± 0.000
+  Acc: 1.000 ± 0.000
+
+SINGLE_CLASS:
+  MI: 1.072 ± 0.758
+  Acc: 0.184 ± 0.086
+
+SIGNAL_DETECTED: Single-class sampling shows higher MI in BN stats
+
+RESULTS: {"experiment": "bn_class_specificity_fixed", "runtime_minutes": 0.023365978399912515, "signal_detected": true, "summary": {"random": {"mi_mean": 0.0, "mi_std": 0.0, "acc_mean": 1.0, "acc_std": 0.0}, "balanced": {"mi_mean": 0.0, "mi_std": 0.0, "acc_mean": 1.0, "acc_std": 0.0}, "single_class": {"mi_mean": 1.0722680603607804, "mi_std": 0.7582083467667872, "acc_mean": 0.18399999999999997, "acc_std": 0.08589916569249474}}, "p_values": {"single_vs_random": 0.11611663893896881}, "hypothesis_supported": true}

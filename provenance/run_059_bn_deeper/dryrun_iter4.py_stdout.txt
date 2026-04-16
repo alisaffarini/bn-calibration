@@ -1,0 +1,16 @@
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+Running first seed for sanity check...
+
+=== Seed 0 ===
+Testing random baseline...
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+DRY_RUN_WARNING: Pipeline completed but no RESULTS: line was printed!
+DRY_RUN_WARNING: The post-processing/output stage may be broken.
+DRY_RUN_WARNING: Pipeline completed but no RESULTS: line was printed!
+DRY_RUN_WARNING: The post-processing/output stage may be broken.
+DRY_RUN_WARNING: Pipeline completed but no RESULTS: line was printed!
+DRY_RUN_WARNING: The post-processing/output stage may be broken.

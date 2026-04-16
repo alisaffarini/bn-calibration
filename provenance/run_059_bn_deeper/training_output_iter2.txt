@@ -1,0 +1,41 @@
+Running metric sanity checks...
+METRIC_SANITY_PASSED
+
+=== Seed 0 ===
+Epoch 0: Train Acc: 0.977, Val Acc: 0.438, Val ECE: 0.235
+Epoch 1: Train Acc: 1.000, Val Acc: 0.496, Val ECE: 0.248
+Epoch 2: Train Acc: 1.000, Val Acc: 0.504, Val ECE: 0.269
+Epoch 3: Train Acc: 1.000, Val Acc: 0.516, Val ECE: 0.296
+Epoch 4: Train Acc: 1.000, Val Acc: 0.530, Val ECE: 0.262
+Epoch 5: Train Acc: 1.000, Val Acc: 0.508, Val ECE: 0.268
+Epoch 6: Train Acc: 1.000, Val Acc: 0.544, Val ECE: 0.255
+Epoch 7: Train Acc: 1.000, Val Acc: 0.538, Val ECE: 0.263
+Epoch 8: Train Acc: 1.000, Val Acc: 0.576, Val ECE: 0.229
+Epoch 9: Train Acc: 1.000, Val Acc: 0.558, Val ECE: 0.253
+Epoch 10: Train Acc: 1.000, Val Acc: 0.592, Val ECE: 0.201
+Epoch 11: Train Acc: 1.000, Val Acc: 0.632, Val ECE: 0.207
+Epoch 12: Train Acc: 1.000, Val Acc: 0.564, Val ECE: 0.233
+Epoch 13: Train Acc: 1.000, Val Acc: 0.656, Val ECE: 0.231
+Epoch 14: Train Acc: 1.000, Val Acc: 0.528, Val ECE: 0.279
+Epoch 15: Train Acc: 1.000, Val Acc: 0.536, Val ECE: 0.262
+Epoch 16: Train Acc: 1.000, Val Acc: 0.454, Val ECE: 0.342
+CONVERGED
+Collecting BN statistics...
+Testing interpolation...
+
+=== Seed 1 ===
+Epoch 0: Train Acc: 0.945, Val Acc: 0.158, Val ECE: 0.286
+Epoch 1: Train Acc: 1.000, Val Acc: 0.100, Val ECE: 0.430
+Epoch 2: Train Acc: 1.000, Val Acc: 0.148, Val ECE: 0.398
+Epoch 3: Train Acc: 1.000, Val Acc: 0.094, Val ECE: 0.514
+Epoch 4: Train Acc: 1.000, Val Acc: 0.062, Val ECE: 0.535
+Epoch 5: Train Acc: 1.000, Val Acc: 0.120, Val ECE: 0.480
+CONVERGED
+Collecting BN statistics...
+Testing interpolation...
+
+=== ANALYSIS ===
+Layer 0: ECE @ α=0.0: 0.390, α=0.5: 0.409, α=1.0: 0.559
+Layer 1: ECE @ α=0.0: 0.392, α=0.5: 0.480, α=1.0: 0.728
+SIGNAL_DETECTED: U-curve pattern found in 2/2 layers
+RESULTS: {"num_seeds": 2, "signal_detected": true, "u_curve_layers": [0, 1], "convergence_status": "CONVERGED", "summary": "Found U-curve in 2/2 BN layers"}

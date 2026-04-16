@@ -1,0 +1,42 @@
+METRIC_SANITY_PASSED: All checks passed
+
+Seed 0, device: cpu
+Quick training...
+Base accuracy: 48.2%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=48.8%
+  α=0.2: class_interp=49.2%
+  α=0.4: class_interp=49.4%
+  α=0.5: class_interp=49.3%
+  α=0.6: class_interp=49.4%
+  α=0.8: class_interp=49.1%
+  α=1.0: class_interp=49.2%
+
+Seed 1, device: cpu
+Quick training...
+Base accuracy: 51.2%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=51.3%
+  α=0.2: class_interp=51.4%
+  α=0.4: class_interp=51.4%
+  α=0.5: class_interp=51.5%
+  α=0.6: class_interp=51.7%
+  α=0.8: class_interp=51.9%
+  α=1.0: class_interp=51.9%
+
+Seed 2, device: cpu
+Quick training...
+Base accuracy: 48.6%
+Computing BN statistics...
+Testing interpolation...
+  α=0.0: class_interp=50.1%
+  α=0.2: class_interp=50.4%
+  α=0.4: class_interp=50.6%
+  α=0.5: class_interp=50.6%
+  α=0.6: class_interp=50.4%
+  α=0.8: class_interp=50.8%
+  α=1.0: class_interp=50.6%
+
+NO_SIGNAL: Did not observe clear non-monotonic behavior

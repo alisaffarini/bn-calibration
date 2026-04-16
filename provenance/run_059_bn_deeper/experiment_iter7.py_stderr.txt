@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter7.py", line 1004, in <module>
+    main()
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter7.py", line 941, in main
+    first_result = run_single_seed(0, dry_run=dry_run)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter7.py", line 515, in run_single_seed
+    train_X, train_y, test_X, test_y = generate_challenging_cifar(num_train=20000, num_test=5000, num_classes=10)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter7.py", line 116, in generate_challenging_cifar
+    X_c, y_c = generate_class_data(num_train // num_classes, c, num_classes)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alisaffarini/burn-tokens/research/runs/run_059_bn_deeper/experiment_iter7.py", line 100, in generate_class_data
+    X[:, pattern_channel:pattern_channel+1, pattern_x:pattern_x+pattern_size, pattern_y:pattern_y+pattern_size] += pattern_strength
+RuntimeError: output with shape [2000, 1, 4, 4] doesn't match the broadcast shape [2000, 2000, 4, 4]

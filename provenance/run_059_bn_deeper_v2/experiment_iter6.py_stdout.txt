@@ -1,0 +1,7 @@
+METRIC_SANITY_PASSED: All checks passed
+FULL MODE: Using 10 seeds
+
+RUNNING FIRST SEED...
+
+Seed 0, device: cpu
+Training model...

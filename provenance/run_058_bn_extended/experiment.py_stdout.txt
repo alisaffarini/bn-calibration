@@ -1,0 +1,338 @@
+Running metric sanity checks...
+Testing class-conditional behavior...
+✓ Class-conditional behavior verified
+METRIC_SANITY_PASSED
+
+BatchNorm Hierarchical Semantic Structure Experiment
+Seeds: 10
+============================================================
+
+=== Seed 0 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.219
+  Epoch 6: Val Acc: 0.532
+  Epoch 11: Val Acc: 0.545
+CONVERGED
+Test accuracy: 0.465
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.241
+  Epoch 6: Val Acc: 0.440
+  Epoch 11: Val Acc: 0.487
+NOT_CONVERGED
+Baseline test accuracy: 0.475
+
+Computing importance...
+  Layer 0: 0.2118
+  Layer 1: 0.4254
+  Layer 2: 0.5210
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.465
+  mild_class: 0.179
+  hierarchical: 0.206
+  reverse: 0.290
+
+Hierarchy advantage: -0.084
+NO_SIGNAL
+Time: 110.9s
+
+=== Seed 1 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.226
+  Epoch 6: Val Acc: 0.497
+  Epoch 11: Val Acc: 0.495
+NOT_CONVERGED
+Test accuracy: 0.493
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.193
+  Epoch 6: Val Acc: 0.473
+  Epoch 11: Val Acc: 0.490
+NOT_CONVERGED
+Baseline test accuracy: 0.553
+
+Computing importance...
+  Layer 0: 0.2216
+  Layer 1: 0.4044
+  Layer 2: 0.5045
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.493
+  mild_class: 0.182
+  hierarchical: 0.228
+  reverse: 0.322
+
+Hierarchy advantage: -0.094
+NO_SIGNAL
+Time: 124.5s
+
+=== Seed 2 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.250
+  Epoch 6: Val Acc: 0.522
+  Epoch 11: Val Acc: 0.496
+CONVERGED
+Test accuracy: 0.425
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.225
+  Epoch 6: Val Acc: 0.441
+  Epoch 11: Val Acc: 0.541
+CONVERGED
+Baseline test accuracy: 0.511
+
+Computing importance...
+  Layer 0: 0.2196
+  Layer 1: 0.4399
+  Layer 2: 0.5429
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.425
+  mild_class: 0.151
+  hierarchical: 0.182
+  reverse: 0.274
+
+Hierarchy advantage: -0.092
+NO_SIGNAL
+Time: 126.2s
+
+=== Seed 3 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.303
+  Epoch 6: Val Acc: 0.437
+  Epoch 11: Val Acc: 0.517
+CONVERGED
+Test accuracy: 0.543
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.279
+  Epoch 6: Val Acc: 0.484
+  Epoch 11: Val Acc: 0.492
+NOT_CONVERGED
+Baseline test accuracy: 0.498
+
+Computing importance...
+  Layer 0: 0.2018
+  Layer 1: 0.4404
+  Layer 2: 0.5601
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.543
+  mild_class: 0.205
+  hierarchical: 0.249
+  reverse: 0.371
+
+Hierarchy advantage: -0.122
+NO_SIGNAL
+Time: 112.3s
+
+=== Seed 4 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.233
+  Epoch 6: Val Acc: 0.471
+  Epoch 11: Val Acc: 0.425
+NOT_CONVERGED
+Test accuracy: 0.454
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.227
+  Epoch 6: Val Acc: 0.489
+  Epoch 11: Val Acc: 0.456
+NOT_CONVERGED
+Baseline test accuracy: 0.451
+
+Computing importance...
+  Layer 0: 0.2351
+  Layer 1: 0.4355
+  Layer 2: 0.5240
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.454
+  mild_class: 0.172
+  hierarchical: 0.219
+  reverse: 0.286
+
+Hierarchy advantage: -0.067
+NO_SIGNAL
+Time: 112.7s
+
+=== Seed 5 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.246
+  Epoch 6: Val Acc: 0.385
+  Epoch 11: Val Acc: 0.495
+NOT_CONVERGED
+Test accuracy: 0.501
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.226
+  Epoch 6: Val Acc: 0.454
+  Epoch 11: Val Acc: 0.489
+NOT_CONVERGED
+Baseline test accuracy: 0.500
+
+Computing importance...
+  Layer 0: 0.1154
+  Layer 1: 0.2847
+  Layer 2: 0.3824
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.501
+  mild_class: 0.231
+  hierarchical: 0.262
+  reverse: 0.345
+
+Hierarchy advantage: -0.083
+NO_SIGNAL
+Time: 112.7s
+
+=== Seed 6 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.235
+  Epoch 6: Val Acc: 0.392
+  Epoch 11: Val Acc: 0.482
+NOT_CONVERGED
+Test accuracy: 0.521
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.213
+  Epoch 6: Val Acc: 0.446
+  Epoch 11: Val Acc: 0.531
+CONVERGED
+Baseline test accuracy: 0.490
+
+Computing importance...
+  Layer 0: 0.1347
+  Layer 1: 0.2807
+  Layer 2: 0.4252
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.521
+  mild_class: 0.222
+  hierarchical: 0.263
+  reverse: 0.367
+
+Hierarchy advantage: -0.104
+NO_SIGNAL
+Time: 113.8s
+
+=== Seed 7 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.246
+  Epoch 6: Val Acc: 0.398
+  Epoch 11: Val Acc: 0.441
+NOT_CONVERGED
+Test accuracy: 0.545
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.261
+  Epoch 6: Val Acc: 0.463
+  Epoch 11: Val Acc: 0.458
+NOT_CONVERGED
+Baseline test accuracy: 0.500
+
+Computing importance...
+  Layer 0: 0.1717
+  Layer 1: 0.3645
+  Layer 2: 0.5100
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.545
+  mild_class: 0.213
+  hierarchical: 0.258
+  reverse: 0.395
+
+Hierarchy advantage: -0.137
+NO_SIGNAL
+Time: 128.6s
+
+=== Seed 8 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.156
+  Epoch 6: Val Acc: 0.435
+  Epoch 11: Val Acc: 0.423
+NOT_CONVERGED
+Test accuracy: 0.503
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.254
+  Epoch 6: Val Acc: 0.430
+  Epoch 11: Val Acc: 0.509
+CONVERGED
+Baseline test accuracy: 0.531
+
+Computing importance...
+  Layer 0: 0.1751
+  Layer 1: 0.4411
+  Layer 2: 0.5181
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.503
+  mild_class: 0.212
+  hierarchical: 0.239
+  reverse: 0.364
+
+Hierarchy advantage: -0.125
+NO_SIGNAL
+Time: 132.4s
+
+=== Seed 9 (cpu) ===
+Training Class-Conditional BN...
+  Epoch 1: Val Acc: 0.247
+  Epoch 6: Val Acc: 0.475
+  Epoch 11: Val Acc: 0.504
+CONVERGED
+Test accuracy: 0.510
+
+Training Standard BN...
+  Epoch 1: Val Acc: 0.220
+  Epoch 6: Val Acc: 0.498
+  Epoch 11: Val Acc: 0.477
+NOT_CONVERGED
+Baseline test accuracy: 0.480
+
+Computing importance...
+  Layer 0: 0.2650
+  Layer 1: 0.3847
+  Layer 2: 0.4889
+Spearman ρ = 1.000
+
+Testing configurations...
+  global: 0.510
+  mild_class: 0.207
+  hierarchical: 0.251
+  reverse: 0.367
+
+Hierarchy advantage: -0.116
+NO_SIGNAL
+Time: 131.1s
+
+=== SUMMARY ===
+Test accuracy: 0.496 ± 0.036
+Baseline: 0.499 ± 0.027
+Spearman ρ: 1.000 ± 0.000
+Hierarchy advantage: -0.102 ± 0.021
+
+Configurations:
+  global: 0.496 ± 0.036
+  mild_class: 0.197 ± 0.024
+  hierarchical: 0.236 ± 0.025
+  reverse: 0.338 ± 0.040
+
+Signal detection rate: 0%
+Convergence rate: 40%
+P-value (hier vs reverse): 0.000000
+
+Total time: 1205.3s
+
+RESULTS: {"per_seed_results": [{"seed": 0, "converged": true, "test_accuracy": 0.465, "baseline_accuracy": 0.475, "importance_scores": [0.21176405234596757, 0.4254001572083673, 0.5209787379841057], "spearman_rho": 1.0, "configurations": {"global": 0.465, "mild_class": 0.179, "hierarchical": 0.206, "reverse": 0.29}, "hierarchy_advantage": -0.08399999999999999, "signal_detected": false, "time": 110.92224907875061}, {"seed": 1, "converged": false, "test_accuracy": 0.493, "baseline_accuracy": 0.553, "importance_scores": [0.22162434536366343, 0.40438824358635, 0.5044718282477366], "spearman_rho": 1.0, "configurations": {"global": 0.493, "mild_class": 0.182, "hierarchical": 0.228, "reverse": 0.322}, "hierarchy_advantage": -0.094, "signal_detected": false, "time": 124.48013520240784}, {"seed": 2, "converged": true, "test_accuracy": 0.425, "baseline_accuracy": 0.511, "importance_scores": [0.21958324215259445, 0.4399437331727735, 0.5428638039043314], "spearman_rho": 1.0, "configurations": {"global": 0.425, "mild_class": 0.151, "hierarchical": 0.182, "reverse": 0.274}, "hierarchy_advantage": -0.09200000000000003, "signal_detected": false, "time": 126.24169993400574}, {"seed": 3, "converged": true, "test_accuracy": 0.543, "baseline_accuracy": 0.498, "importance_scores": [0.2017886284734305, 0.44043650985051236, 0.5600964974680722], "spearman_rho": 1.0, "configurations": {"global": 0.543, "mild_class": 0.205, "hierarchical": 0.249, "reverse": 0.371}, "hierarchy_advantage": -0.122, "signal_detected": false, "time": 112.260183095932}, {"seed": 4, "converged": false, "test_accuracy": 0.454, "baseline_accuracy": 0.451, "importance_scores": [0.23505056170714286, 0.43549995133323793, 0.5240040910688932], "spearman_rho": 1.0, "configurations": {"global": 0.454, "mild_class": 0.172, "hierarchical": 0.219, "reverse": 0.286}, "hierarchy_advantage": -0.06699999999999998, "signal_detected": false, "time": 112.7082781791687}, {"seed": 5, "converged": false, "test_accuracy": 0.501, "baseline_accuracy": 0.5, "importance_scores": [0.11544122748688486, 0.2846691298481059, 0.38243077118700786], "spearman_rho": 1.0, "configurations": {"global": 0.501, "mild_class": 0.231, "hierarchical": 0.262, "reverse": 0.345}, "hierarchy_advantage": -0.08299999999999996, "signal_detected": false, "time": 112.7472710609436}, {"seed": 6, "converged": false, "test_accuracy": 0.521, "baseline_accuracy": 0.49, "importance_scores": [0.1346882163265126, 0.2807290039236125, 0.42521782078807613], "spearman_rho": 1.0, "configurations": {"global": 0.521, "mild_class": 0.222, "hierarchical": 0.263, "reverse": 0.367}, "hierarchy_advantage": -0.10399999999999998, "signal_detected": false, "time": 113.84773898124695}, {"seed": 7, "converged": false, "test_accuracy": 0.545, "baseline_accuracy": 0.5, "importance_scores": [0.17169052570379995, 0.3645340626294589, 0.5100328201636781], "spearman_rho": 1.0, "configurations": {"global": 0.545, "mild_class": 0.213, "hierarchical": 0.258, "reverse": 0.395}, "hierarchy_advantage": -0.137, "signal_detected": false, "time": 128.59407901763916}, {"seed": 8, "converged": false, "test_accuracy": 0.503, "baseline_accuracy": 0.531, "importance_scores": [0.17509120471661999, 0.44109128273327225, 0.5180530296909776], "spearman_rho": 1.0, "configurations": {"global": 0.503, "mild_class": 0.212, "hierarchical": 0.239, "reverse": 0.364}, "hierarchy_advantage": -0.125, "signal_detected": false, "time": 132.39559197425842}, {"seed": 9, "converged": true, "test_accuracy": 0.51, "baseline_accuracy": 0.48, "importance_scores": [0.26500110855471243, 0.3847104559307499, 0.4888839336969357], "spearman_rho": 1.0, "configurations": {"global": 0.51, "mild_class": 0.207, "hierarchical": 0.251, "reverse": 0.367}, "hierarchy_advantage": -0.11599999999999999, "signal_detected": false, "time": 131.08530592918396}], "mean": {"test_accuracy": 0.496, "baseline_accuracy": 0.4988999999999999, "spearman_rho": 1.0, "hierarchy_advantage": -0.1024}, "std": {"test_accuracy": 0.036441734316577205, "baseline_accuracy": 0.02721929462715742, "spearman_rho": 0.0, "hierarchy_advantage": 0.02103901138361782}, "p_values": {"hier_vs_reverse": 1.425041241692269e-07}, "convergence_status": "4/10 converged", "signal_detection_rate": 0.0, "total_time_seconds": 1205.3269970417023}

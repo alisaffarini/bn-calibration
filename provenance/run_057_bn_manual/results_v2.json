@@ -1,0 +1,836 @@
+{
+  "experiment1_smallresnet_cifar10": {
+    "config": {
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "epochs": 20,
+      "model": "SmallResNet",
+      "dataset": "CIFAR-10"
+    },
+    "aggregate": {
+      "global": {
+        "accuracy_mean": 0.9107600000000001,
+        "accuracy_std": 0.0012411285187279824,
+        "confidence_mean": 0.8888396987926319,
+        "confidence_std": 0.0014578655849703112,
+        "linear_probe_mean": 0.90855,
+        "linear_probe_std": 0.005538275905008722
+      },
+      "same_class": {
+        "accuracy_mean": 0.035460000000000005,
+        "accuracy_std": 0.0068792732174263885,
+        "confidence_mean": 0.048045352673047374,
+        "confidence_std": 0.005203717175836433,
+        "linear_probe_mean": 0.9987999999999999,
+        "linear_probe_std": 0.0008999999999999909
+      },
+      "wrong_class": {
+        "accuracy_mean": 0.6537200000000001,
+        "accuracy_std": 0.046944984822662385,
+        "confidence_mean": 0.5063781081045029,
+        "confidence_std": 0.03220503218887086,
+        "linear_probe_mean": 1.0,
+        "linear_probe_std": 0.0
+      },
+      "random_class": {
+        "accuracy_mean": 0.5898999999999999,
+        "accuracy_std": 0.058399794520186475,
+        "confidence_mean": 0.4547338775338202,
+        "confidence_std": 0.051941454312006606,
+        "linear_probe_mean": 0.9762500000000001,
+        "linear_probe_std": 0.01105723744883867
+      }
+    },
+    "statistical_tests": {
+      "same_vs_global_acc": {
+        "t": -374.1448709597248,
+        "p": 3.543222658081514e-20
+      },
+      "wrong_vs_global_acc": {
+        "t": -16.15730419196428,
+        "p": 5.906335932487591e-08
+      },
+      "same_vs_wrong_acc": {
+        "t": -39.098438978437365,
+        "p": 2.328125573768288e-11
+      },
+      "same_vs_global_probe": {
+        "t": 48.657574413857965,
+        "p": 3.2792580659962493e-12
+      }
+    },
+    "per_seed": [
+      {
+        "global": {
+          "mean_acc": 0.9096000000000002,
+          "mean_conf": 0.8880999266128649,
+          "linear_probe_acc": 0.903
+        },
+        "same_class": {
+          "mean_acc": 0.0385,
+          "mean_conf": 0.046499057303299195,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.6019,
+          "mean_conf": 0.48235988867254925,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5526,
+          "mean_conf": 0.4291669346653972,
+          "linear_probe_acc": 0.963
+        },
+        "seed": 42
+      },
+      {
+        "global": {
+          "mean_acc": 0.9105000000000001,
+          "mean_conf": 0.8872087914768493,
+          "linear_probe_acc": 0.9065
+        },
+        "same_class": {
+          "mean_acc": 0.0402,
+          "mean_conf": 0.04885670567478082,
+          "linear_probe_acc": 0.998
+        },
+        "wrong_class": {
+          "mean_acc": 0.7070000000000001,
+          "mean_conf": 0.5631523014981997,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.6773,
+          "mean_conf": 0.5326293358440044,
+          "linear_probe_acc": 0.9685
+        },
+        "seed": 43
+      },
+      {
+        "global": {
+          "mean_acc": 0.9100999999999999,
+          "mean_conf": 0.8869252164287795,
+          "linear_probe_acc": 0.911
+        },
+        "same_class": {
+          "mean_acc": 0.0246,
+          "mean_conf": 0.043102417605856314,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.6993,
+          "mean_conf": 0.5221485342445783,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5545,
+          "mean_conf": 0.3879029148857924,
+          "linear_probe_acc": 0.9705
+        },
+        "seed": 44
+      },
+      {
+        "global": {
+          "mean_acc": 0.9107,
+          "mean_conf": 0.8904946063325694,
+          "linear_probe_acc": 0.8965
+        },
+        "same_class": {
+          "mean_acc": 0.040600000000000004,
+          "mean_conf": 0.051428920638572885,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.6458999999999999,
+          "mean_conf": 0.46884022075976245,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5673999999999999,
+          "mean_conf": 0.41363125713843035,
+          "linear_probe_acc": 0.969
+        },
+        "seed": 45
+      },
+      {
+        "global": {
+          "mean_acc": 0.9126000000000001,
+          "mean_conf": 0.8902583035471452,
+          "linear_probe_acc": 0.908
+        },
+        "same_class": {
+          "mean_acc": 0.038400000000000004,
+          "mean_conf": 0.045679442557580476,
+          "linear_probe_acc": 1.0
+        },
+        "wrong_class": {
+          "mean_acc": 0.5708,
+          "mean_conf": 0.46395935415812417,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5607,
+          "mean_conf": 0.4469730692888261,
+          "linear_probe_acc": 0.983
+        },
+        "seed": 46
+      },
+      {
+        "global": {
+          "mean_acc": 0.9129999999999999,
+          "mean_conf": 0.8906219369014199,
+          "linear_probe_acc": 0.918
+        },
+        "same_class": {
+          "mean_acc": 0.033699999999999994,
+          "mean_conf": 0.04474779439249724,
+          "linear_probe_acc": 0.9995
+        },
+        "wrong_class": {
+          "mean_acc": 0.6049,
+          "mean_conf": 0.48838324170236,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5700999999999999,
+          "mean_conf": 0.46662411816638194,
+          "linear_probe_acc": 0.9935
+        },
+        "seed": 47
+      },
+      {
+        "global": {
+          "mean_acc": 0.9095000000000001,
+          "mean_conf": 0.887636025133254,
+          "linear_probe_acc": 0.908
+        },
+        "same_class": {
+          "mean_acc": 0.023899999999999998,
+          "mean_conf": 0.040913580443311365,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.6718999999999999,
+          "mean_conf": 0.4940305665087886,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5082,
+          "mean_conf": 0.39010744189616525,
+          "linear_probe_acc": 0.968
+        },
+        "seed": 48
+      },
+      {
+        "global": {
+          "mean_acc": 0.9118999999999999,
+          "mean_conf": 0.8898414794096776,
+          "linear_probe_acc": 0.9115
+        },
+        "same_class": {
+          "mean_acc": 0.028999999999999998,
+          "mean_conf": 0.04736041377971851,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.6357,
+          "mean_conf": 0.4994405953647568,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.5601,
+          "mean_conf": 0.43692035469673574,
+          "linear_probe_acc": 0.989
+        },
+        "seed": 49
+      },
+      {
+        "global": {
+          "mean_acc": 0.9093,
+          "mean_conf": 0.8900577529823386,
+          "linear_probe_acc": 0.91
+        },
+        "same_class": {
+          "mean_acc": 0.0422,
+          "mean_conf": 0.05148084060397996,
+          "linear_probe_acc": 0.9965
+        },
+        "wrong_class": {
+          "mean_acc": 0.6900000000000001,
+          "mean_conf": 0.551442012767424,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.6609,
+          "mean_conf": 0.5365202605063089,
+          "linear_probe_acc": 0.9665
+        },
+        "seed": 50
+      },
+      {
+        "global": {
+          "mean_acc": 0.9104000000000001,
+          "mean_conf": 0.8872529491014205,
+          "linear_probe_acc": 0.913
+        },
+        "same_class": {
+          "mean_acc": 0.0435,
+          "mean_conf": 0.06038435373087705,
+          "linear_probe_acc": 0.999
+        },
+        "wrong_class": {
+          "mean_acc": 0.7098,
+          "mean_conf": 0.5300243653684855,
+          "linear_probe_acc": 1.0
+        },
+        "random_class": {
+          "mean_acc": 0.6872,
+          "mean_conf": 0.5068630882501602,
+          "linear_probe_acc": 0.9915
+        },
+        "seed": 51
+      }
+    ]
+  },
+  "experiment3_interpolation": {
+    "config": {
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "model": "SmallResNet",
+      "dataset": "CIFAR-10"
+    },
+    "aggregate": {
+      "0.0": {
+        "accuracy_mean": 0.03443333333333333,
+        "accuracy_std": 0.006987767088912515,
+        "linear_probe_mean": 0.999,
+        "linear_probe_std": 0.0008164965809277268
+      },
+      "0.1": {
+        "accuracy_mean": 0.0713,
+        "accuracy_std": 0.008366998665391713,
+        "linear_probe_mean": 0.997,
+        "linear_probe_std": 0.0014719601443879506
+      },
+      "0.2": {
+        "accuracy_mean": 0.13406666666666667,
+        "accuracy_std": 0.010847221866552834,
+        "linear_probe_mean": 0.9866666666666667,
+        "linear_probe_std": 0.0015456030825826026
+      },
+      "0.3": {
+        "accuracy_mean": 0.23143333333333338,
+        "accuracy_std": 0.01033451606134621,
+        "linear_probe_mean": 0.9485,
+        "linear_probe_std": 0.003240370349203916
+      },
+      "0.4": {
+        "accuracy_mean": 0.36473333333333335,
+        "accuracy_std": 0.007715928690414096,
+        "linear_probe_mean": 0.871,
+        "linear_probe_std": 0.008256310717667189
+      },
+      "0.5": {
+        "accuracy_mean": 0.5160999999999999,
+        "accuracy_std": 0.009899494936611674,
+        "linear_probe_mean": 0.7760000000000001,
+        "linear_probe_std": 0.008495096624916472
+      },
+      "0.6": {
+        "accuracy_mean": 0.6517333333333334,
+        "accuracy_std": 0.01024770977123943,
+        "linear_probe_mean": 0.7465,
+        "linear_probe_std": 0.006480740698407832
+      },
+      "0.7": {
+        "accuracy_mean": 0.7526333333333334,
+        "accuracy_std": 0.006127714817849263,
+        "linear_probe_mean": 0.7788333333333334,
+        "linear_probe_std": 0.00877812938817578
+      },
+      "0.8": {
+        "accuracy_mean": 0.8261666666666668,
+        "accuracy_std": 0.00427187182496015,
+        "linear_probe_mean": 0.8300000000000001,
+        "linear_probe_std": 0.005212165257037276
+      },
+      "0.9": {
+        "accuracy_mean": 0.8763666666666667,
+        "accuracy_std": 0.001890913947157679,
+        "linear_probe_mean": 0.8753333333333333,
+        "linear_probe_std": 0.004478342947514772
+      },
+      "1.0": {
+        "accuracy_mean": 0.9100666666666667,
+        "accuracy_std": 0.0003681787005728614,
+        "linear_probe_mean": 0.9085,
+        "linear_probe_std": 0.0032659863237109073
+      }
+    },
+    "per_seed": [
+      {
+        "seed": 42,
+        "alphas": {
+          "0.0": {
+            "mean_acc": 0.0385,
+            "mean_conf": 0.046499057303299195,
+            "linear_probe_acc": 1.0
+          },
+          "0.1": {
+            "mean_acc": 0.0733,
+            "mean_conf": 0.07381876131182653,
+            "linear_probe_acc": 0.9965
+          },
+          "0.2": {
+            "mean_acc": 0.1304,
+            "mean_conf": 0.11895835960263938,
+            "linear_probe_acc": 0.988
+          },
+          "0.3": {
+            "mean_acc": 0.22600000000000003,
+            "mean_conf": 0.19102986838854846,
+            "linear_probe_acc": 0.953
+          },
+          "0.4": {
+            "mean_acc": 0.3647,
+            "mean_conf": 0.2965258620514825,
+            "linear_probe_acc": 0.875
+          },
+          "0.5": {
+            "mean_acc": 0.5271,
+            "mean_conf": 0.4295014858314287,
+            "linear_probe_acc": 0.7705
+          },
+          "0.6": {
+            "mean_acc": 0.6657000000000001,
+            "mean_conf": 0.5682980887024708,
+            "linear_probe_acc": 0.7495
+          },
+          "0.7": {
+            "mean_acc": 0.7611000000000001,
+            "mean_conf": 0.6884360034653663,
+            "linear_probe_acc": 0.7895
+          },
+          "0.8": {
+            "mean_acc": 0.8317,
+            "mean_conf": 0.7800785466292173,
+            "linear_probe_acc": 0.8285
+          },
+          "0.9": {
+            "mean_acc": 0.8783000000000001,
+            "mean_conf": 0.844837591759587,
+            "linear_probe_acc": 0.871
+          },
+          "1.0": {
+            "mean_acc": 0.9096000000000002,
+            "mean_conf": 0.8880999266128649,
+            "linear_probe_acc": 0.9085
+          }
+        }
+      },
+      {
+        "seed": 43,
+        "alphas": {
+          "0.0": {
+            "mean_acc": 0.0402,
+            "mean_conf": 0.04885670567478082,
+            "linear_probe_acc": 0.998
+          },
+          "0.1": {
+            "mean_acc": 0.0804,
+            "mean_conf": 0.07819140063139349,
+            "linear_probe_acc": 0.9955
+          },
+          "0.2": {
+            "mean_acc": 0.1488,
+            "mean_conf": 0.12617665095550185,
+            "linear_probe_acc": 0.9875
+          },
+          "0.3": {
+            "mean_acc": 0.24590000000000006,
+            "mean_conf": 0.20002431961962466,
+            "linear_probe_acc": 0.9455
+          },
+          "0.4": {
+            "mean_acc": 0.3742,
+            "mean_conf": 0.30368150870908656,
+            "linear_probe_acc": 0.8595
+          },
+          "0.5": {
+            "mean_acc": 0.5181,
+            "mean_conf": 0.431378421693181,
+            "linear_probe_acc": 0.7695
+          },
+          "0.6": {
+            "mean_acc": 0.6481000000000001,
+            "mean_conf": 0.5649187915639879,
+            "linear_probe_acc": 0.7525
+          },
+          "0.7": {
+            "mean_acc": 0.75,
+            "mean_conf": 0.6834483352092882,
+            "linear_probe_acc": 0.779
+          },
+          "0.8": {
+            "mean_acc": 0.8213000000000001,
+            "mean_conf": 0.7759729365173349,
+            "linear_probe_acc": 0.8245
+          },
+          "0.9": {
+            "mean_acc": 0.8738000000000001,
+            "mean_conf": 0.8428455852216137,
+            "linear_probe_acc": 0.8815
+          },
+          "1.0": {
+            "mean_acc": 0.9105000000000001,
+            "mean_conf": 0.8872087914768493,
+            "linear_probe_acc": 0.9125
+          }
+        }
+      },
+      {
+        "seed": 44,
+        "alphas": {
+          "0.0": {
+            "mean_acc": 0.0246,
+            "mean_conf": 0.043102417605856314,
+            "linear_probe_acc": 0.999
+          },
+          "0.1": {
+            "mean_acc": 0.0602,
+            "mean_conf": 0.06713879752678477,
+            "linear_probe_acc": 0.999
+          },
+          "0.2": {
+            "mean_acc": 0.12300000000000003,
+            "mean_conf": 0.10812773623736575,
+            "linear_probe_acc": 0.9845
+          },
+          "0.3": {
+            "mean_acc": 0.2224,
+            "mean_conf": 0.1747627343693952,
+            "linear_probe_acc": 0.947
+          },
+          "0.4": {
+            "mean_acc": 0.3553,
+            "mean_conf": 0.2742853289409045,
+            "linear_probe_acc": 0.8785
+          },
+          "0.5": {
+            "mean_acc": 0.5031,
+            "mean_conf": 0.40403269611006254,
+            "linear_probe_acc": 0.788
+          },
+          "0.6": {
+            "mean_acc": 0.6414,
+            "mean_conf": 0.5443926976604431,
+            "linear_probe_acc": 0.7375
+          },
+          "0.7": {
+            "mean_acc": 0.7468,
+            "mean_conf": 0.6709666888369392,
+            "linear_probe_acc": 0.768
+          },
+          "0.8": {
+            "mean_acc": 0.8255000000000001,
+            "mean_conf": 0.7702557177713774,
+            "linear_probe_acc": 0.837
+          },
+          "0.9": {
+            "mean_acc": 0.877,
+            "mean_conf": 0.8411472100833338,
+            "linear_probe_acc": 0.8735
+          },
+          "1.0": {
+            "mean_acc": 0.9100999999999999,
+            "mean_conf": 0.8869252164287795,
+            "linear_probe_acc": 0.9045
+          }
+        }
+      }
+    ]
+  },
+  "experiment2a_vgg11bn_cifar10": {
+    "config": {
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "epochs": 15,
+      "model": "VGG-11-BN",
+      "dataset": "CIFAR-10"
+    },
+    "aggregate": {
+      "global": {
+        "accuracy_mean": 0.8543666666666666,
+        "accuracy_std": 0.012801128422482445,
+        "confidence_mean": 0.8046841695542785,
+        "confidence_std": 0.017781856080293354,
+        "linear_probe_mean": 0.85,
+        "linear_probe_std": 0.018018509002319456
+      },
+      "same_class": {
+        "accuracy_mean": 0.10883333333333334,
+        "accuracy_std": 0.01905436666197249,
+        "confidence_mean": 0.102916938807538,
+        "confidence_std": 0.01230132395150627,
+        "linear_probe_mean": 0.9836666666666667,
+        "linear_probe_std": 0.0063289458486825365
+      },
+      "wrong_class": {
+        "accuracy_mean": 0.6296333333333334,
+        "accuracy_std": 0.012494621064904496,
+        "confidence_mean": 0.5860946711276541,
+        "confidence_std": 0.0130824321520564,
+        "linear_probe_mean": 0.9956666666666667,
+        "linear_probe_std": 0.0026562295750848504
+      },
+      "random_class": {
+        "accuracy_mean": 0.575,
+        "accuracy_std": 0.030255688170436033,
+        "confidence_mean": 0.5228949878664294,
+        "confidence_std": 0.031162006757158474,
+        "linear_probe_mean": 0.9528333333333333,
+        "linear_probe_std": 0.007792446485040656
+      }
+    },
+    "statistical_tests": {
+      "same_vs_global_acc": {
+        "t": -41.92508238338471,
+        "p": 0.0005684361963820291
+      },
+      "wrong_vs_global_acc": {
+        "t": -90.88432619920077,
+        "p": 0.00012104396959370409
+      },
+      "same_vs_wrong_acc": {
+        "t": -33.224584587938224,
+        "p": 0.0009046721655633545
+      },
+      "same_vs_global_probe": {
+        "t": 12.226121158312502,
+        "p": 0.006623552761229608
+      }
+    },
+    "per_seed": [
+      {
+        "global": {
+          "mean_acc": 0.8719999999999999,
+          "mean_conf": 0.829320689537855,
+          "linear_probe_acc": 0.871
+        },
+        "same_class": {
+          "mean_acc": 0.0972,
+          "mean_conf": 0.09540465651765866,
+          "linear_probe_acc": 0.9835
+        },
+        "wrong_class": {
+          "mean_acc": 0.6451,
+          "mean_conf": 0.6011095675064168,
+          "linear_probe_acc": 0.999
+        },
+        "random_class": {
+          "mean_acc": 0.5650999999999999,
+          "mean_conf": 0.5277499303958257,
+          "linear_probe_acc": 0.96
+        },
+        "seed": 42
+      },
+      {
+        "global": {
+          "mean_acc": 0.8491,
+          "mean_conf": 0.7967331765356125,
+          "linear_probe_acc": 0.852
+        },
+        "same_class": {
+          "mean_acc": 0.1357,
+          "mean_conf": 0.12026197496045114,
+          "linear_probe_acc": 0.9915
+        },
+        "wrong_class": {
+          "mean_acc": 0.6293,
+          "mean_conf": 0.5879488313241755,
+          "linear_probe_acc": 0.9955
+        },
+        "random_class": {
+          "mean_acc": 0.6159999999999999,
+          "mean_conf": 0.5584007229976711,
+          "linear_probe_acc": 0.942
+        },
+        "seed": 43
+      },
+      {
+        "global": {
+          "mean_acc": 0.842,
+          "mean_conf": 0.7879986425893679,
+          "linear_probe_acc": 0.827
+        },
+        "same_class": {
+          "mean_acc": 0.0936,
+          "mean_conf": 0.09308418494450417,
+          "linear_probe_acc": 0.976
+        },
+        "wrong_class": {
+          "mean_acc": 0.6145,
+          "mean_conf": 0.5692256145523701,
+          "linear_probe_acc": 0.9925
+        },
+        "random_class": {
+          "mean_acc": 0.5439,
+          "mean_conf": 0.4825343102057912,
+          "linear_probe_acc": 0.9565
+        },
+        "seed": 44
+      }
+    ]
+  },
+  "experiment2b_simplecnn_cifar10": {
+    "config": {
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "epochs": 15,
+      "model": "SimpleCNN",
+      "dataset": "CIFAR-10"
+    },
+    "aggregate": {
+      "global": {
+        "accuracy_mean": 0.8317000000000001,
+        "accuracy_std": 0.002336664289109693,
+        "confidence_mean": 0.756770110797024,
+        "confidence_std": 0.0010809066925628425,
+        "linear_probe_mean": 0.8053333333333333,
+        "linear_probe_std": 0.014377837884126464
+      },
+      "same_class": {
+        "accuracy_mean": 0.2633,
+        "accuracy_std": 0.004818713521262678,
+        "confidence_mean": 0.20712459569044284,
+        "confidence_std": 0.00181299026382683,
+        "linear_probe_mean": 0.5468333333333334,
+        "linear_probe_std": 0.007408703590297629
+      },
+      "wrong_class": {
+        "accuracy_mean": 0.7809666666666666,
+        "accuracy_std": 0.004584272631023958,
+        "confidence_mean": 0.6578793782740063,
+        "confidence_std": 0.005928960175436822,
+        "linear_probe_mean": 0.9366666666666666,
+        "linear_probe_std": 0.002718251071716659
+      },
+      "random_class": {
+        "accuracy_mean": 0.7211333333333334,
+        "accuracy_std": 0.00358732335995635,
+        "confidence_mean": 0.592046678341192,
+        "confidence_std": 0.003320132091652577,
+        "linear_probe_mean": 0.9081666666666667,
+        "linear_probe_std": 0.005169354139756937
+      }
+    },
+    "statistical_tests": {
+      "same_vs_global_acc": {
+        "t": -145.60007066422537,
+        "p": 4.7167852151429726e-05
+      },
+      "wrong_vs_global_acc": {
+        "t": -12.70408263510291,
+        "p": 0.006139030270458595
+      },
+      "same_vs_wrong_acc": {
+        "t": -853.6059995202263,
+        "p": 1.3724109935658036e-06
+      },
+      "same_vs_global_probe": {
+        "t": -35.479823793098575,
+        "p": 0.0007934507320084682
+      }
+    },
+    "per_seed": [
+      {
+        "global": {
+          "mean_acc": 0.8299,
+          "mean_conf": 0.7562318363040219,
+          "linear_probe_acc": 0.7975
+        },
+        "same_class": {
+          "mean_acc": 0.2579,
+          "mean_conf": 0.2050366669807314,
+          "linear_probe_acc": 0.5505
+        },
+        "wrong_class": {
+          "mean_acc": 0.7766,
+          "mean_conf": 0.6530852613051985,
+          "linear_probe_acc": 0.9395
+        },
+        "random_class": {
+          "mean_acc": 0.7161000000000001,
+          "mean_conf": 0.5962965093915511,
+          "linear_probe_acc": 0.913
+        },
+        "seed": 42
+      },
+      {
+        "global": {
+          "mean_acc": 0.8350000000000002,
+          "mean_conf": 0.7582782937830677,
+          "linear_probe_acc": 0.8255
+        },
+        "same_class": {
+          "mean_acc": 0.26239999999999997,
+          "mean_conf": 0.20687983361099677,
+          "linear_probe_acc": 0.5535
+        },
+        "wrong_class": {
+          "mean_acc": 0.7789999999999999,
+          "mean_conf": 0.6543189888979657,
+          "linear_probe_acc": 0.9375
+        },
+        "random_class": {
+          "mean_acc": 0.7231,
+          "mean_conf": 0.5916506693177018,
+          "linear_probe_acc": 0.901
+        },
+        "seed": 43
+      },
+      {
+        "global": {
+          "mean_acc": 0.8301999999999999,
+          "mean_conf": 0.7558002023039829,
+          "linear_probe_acc": 0.793
+        },
+        "same_class": {
+          "mean_acc": 0.26959999999999995,
+          "mean_conf": 0.2094572864796004,
+          "linear_probe_acc": 0.5365
+        },
+        "wrong_class": {
+          "mean_acc": 0.7872999999999999,
+          "mean_conf": 0.6662338846188548,
+          "linear_probe_acc": 0.933
+        },
+        "random_class": {
+          "mean_acc": 0.7242,
+          "mean_conf": 0.5881928563143228,
+          "linear_probe_acc": 0.9105
+        },
+        "seed": 44
+      }
+    ]
+  }
+}

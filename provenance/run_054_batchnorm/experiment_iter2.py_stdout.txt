@@ -1,0 +1,89 @@
+Running metric sanity checks...
+Sanity checks passed: Random MI=0.041, Correlated MI=1.428, Perfect MI=1.882
+METRIC_SANITY_PASSED
+Starting BN Class-Specificity Experiment (Fast Feasibility Probe)
+============================================================
+
+
+Testing random sampling...
+----------------------------------------
+
+[Seed 0] Running random sampling...
+Epoch 1: Train Acc=0.954, Val Acc=0.104
+Epoch 2: Train Acc=1.000, Val Acc=0.116
+Epoch 3: Train Acc=1.000, Val Acc=0.116
+NOT_CONVERGED: Max epochs
+
+[Seed 1] Running random sampling...
+Epoch 1: Train Acc=0.952, Val Acc=0.018
+Epoch 2: Train Acc=1.000, Val Acc=0.012
+Epoch 3: Train Acc=1.000, Val Acc=0.004
+CONVERGED
+
+[Seed 2] Running random sampling...
+Epoch 1: Train Acc=0.942, Val Acc=0.094
+Epoch 2: Train Acc=1.000, Val Acc=0.104
+Epoch 3: Train Acc=1.000, Val Acc=0.108
+NOT_CONVERGED: Max epochs
+
+
+Testing balanced sampling...
+----------------------------------------
+
+[Seed 0] Running balanced sampling...
+Epoch 1: Train Acc=0.958, Val Acc=0.116
+Epoch 2: Train Acc=1.000, Val Acc=0.126
+Epoch 3: Train Acc=1.000, Val Acc=0.126
+NOT_CONVERGED: Max epochs
+
+[Seed 1] Running balanced sampling...
+Epoch 1: Train Acc=0.953, Val Acc=0.006
+Epoch 2: Train Acc=1.000, Val Acc=0.006
+Epoch 3: Train Acc=1.000, Val Acc=0.004
+CONVERGED
+
+[Seed 2] Running balanced sampling...
+Epoch 1: Train Acc=0.944, Val Acc=0.054
+Epoch 2: Train Acc=1.000, Val Acc=0.066
+Epoch 3: Train Acc=1.000, Val Acc=0.066
+NOT_CONVERGED: Max epochs
+
+
+Testing single_class sampling...
+----------------------------------------
+
+[Seed 0] Running single_class sampling...
+Epoch 1: Train Acc=0.027, Val Acc=0.042
+Epoch 2: Train Acc=0.070, Val Acc=0.080
+Epoch 3: Train Acc=0.047, Val Acc=0.040
+NOT_CONVERGED: Max epochs
+
+[Seed 1] Running single_class sampling...
+Epoch 1: Train Acc=0.039, Val Acc=0.110
+Epoch 2: Train Acc=0.053, Val Acc=0.142
+Epoch 3: Train Acc=0.057, Val Acc=0.226
+NOT_CONVERGED: Max epochs
+
+[Seed 2] Running single_class sampling...
+Epoch 1: Train Acc=0.057, Val Acc=0.012
+Epoch 2: Train Acc=0.051, Val Acc=0.000
+Epoch 3: Train Acc=0.044, Val Acc=0.004
+CONVERGED
+
+
+Analyzing Results...
+============================================================
+
+RANDOM:
+  MI: 0.745 ± 0.031
+  Acc: 0.081 ± 0.044
+
+BALANCED:
+  MI: 0.745 ± 0.031
+  Acc: 0.066 ± 0.049
+
+SINGLE_CLASS:
+  MI: 0.745 ± 0.031
+  Acc: 0.106 ± 0.089
+
+NO_SIGNAL: No clear difference in class-specific MI across strategies
