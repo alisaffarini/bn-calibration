@@ -63,7 +63,7 @@ Our core finding is striking: on CIFAR-10, replacing global BN statistics with s
 
 \begin{itemize}
     \item \textbf{Architecture-general:} Replicating on VGG-11 ($85.4\% \to 10.9\%$), SimpleCNN ($83.2\% \to 26.3\%$), and WideResNet-28-10 ($90.6\% \to 11.1\%$).
-    \item \textbf{Dataset-general:} Extending to CIFAR-100 ($70.3\% \to 0.67\%$) and Tiny-ImageNet-200 ($60.8\% \to 0.17\%$).
+    \item \textbf{Dataset-general:} Extending to CIFAR-100 ($70.1\% \to 0.60\%$) and Tiny-ImageNet-200 ($60.8\% \to 0.17\%$).
     \item \textbf{BN-specific:} Absent when GroupNorm replaces BatchNorm (81.6\% accuracy maintained), confirming running statistics as the causal mechanism.
     \item \textbf{Continuously graded:} Interpolation between same-class and global statistics yields a smooth monotonic accuracy curve.
     \item \textbf{Not a calibration-scale artifact:} Temperature scaling reduces ECE but cannot recover accuracy, ruling out simple logit rescaling as an explanation.
@@ -102,7 +102,7 @@ We evaluate four architectures to test generality:
     \item \textbf{WideResNet-28-10.} A wide residual network with depth 28 and widen factor 10 \citep{zagoruyko2016wide}, incorporating dropout ($p{=}0.3$) within residual blocks. This architecture is substantially wider and deeper than SmallResNet, with significantly more BN layers and parameters, testing the effect in a high-capacity network with regularization (3 seeds).
 \end{enumerate}
 
-All models are trained on CIFAR-10 with standard augmentation (random crop with padding 4, random horizontal flip) using SGD with momentum 0.9, weight decay $5{\times}10^{-4}$, initial learning rate 0.1, and cosine annealing. SmallResNet trains for 20 epochs on CIFAR-10 (10 seeds); VGG-11-BN and SimpleCNN train for 15 epochs (3 seeds each); WideResNet-28-10 trains for 20 epochs (3 seeds). We additionally train SmallResNet on CIFAR-100 (25 epochs, 3 seeds) and SmallResNet64 on Tiny-ImageNet-200 (25 epochs, 3 seeds, $64{\times}64$ images, 200 classes) to test dataset generalization. WideResNet-28-10 uses mixed-precision training for computational efficiency.
+All models are trained on CIFAR-10 with standard augmentation (random crop with padding 4, random horizontal flip) using SGD with momentum 0.9, weight decay $5{\times}10^{-4}$, initial learning rate 0.1, and cosine annealing. SmallResNet trains for 20 epochs on CIFAR-10 (10 seeds); VGG-11-BN and SimpleCNN train for 15 epochs (3 seeds each); WideResNet-28-10 trains for 20 epochs (3 seeds). We additionally train SmallResNet on CIFAR-100 (25 epochs, 5 seeds) and SmallResNet64 on Tiny-ImageNet-200 (25 epochs, 3 seeds, $64{\times}64$ images, 200 classes) to test dataset generalization. WideResNet-28-10 uses standard single-precision training.
 
 \subsection{Datasets}
 
@@ -135,7 +135,7 @@ For each condition:
 \begin{itemize}
     \item \textbf{Classification accuracy.} Top-1 accuracy using the trained classification head.
     \item \textbf{Mean confidence.} Average softmax probability assigned to the true class.
-    \item \textbf{Linear probe accuracy.} We extract features from the penultimate layer (post global average pooling), train a logistic regression or ridge regression classifier on an 80/20 split, and report held-out accuracy. We use ridge regression ($\lambda = 10^{-3}$) for CIFAR-10 experiments and logistic regression for WideResNet and Tiny-ImageNet experiments.
+    \item \textbf{Linear probe accuracy.} We extract features from the penultimate layer (post global average pooling), train a logistic regression or ridge regression classifier on an 80/20 split, and report held-out accuracy. We use ridge regression ($\lambda = 10^{-3}$) for CIFAR-10 experiments and logistic regression for CIFAR-100, WideResNet, and Tiny-ImageNet experiments.
     \item \textbf{Expected calibration error (ECE).} Following \citet{guo2017calibration}, we compute ECE with 15 equal-width bins to quantify the gap between predicted confidence and actual accuracy.
 \end{itemize}
 
@@ -162,7 +162,7 @@ To test whether the accuracy collapse under same-class statistics is merely a lo
 
 \subsection{Statistical Protocol}
 
-SmallResNet on CIFAR-10 uses 10 independent seeds (42--51). All other configurations use 3 seeds (42--44). We report means $\pm$ standard deviations and conduct paired $t$-tests for key comparisons.
+SmallResNet on CIFAR-10 uses 10 independent seeds (42--51). SmallResNet on CIFAR-100 uses 5 seeds (42--46). All other configurations use 3 seeds (42--44). We report means $\pm$ standard deviations and conduct paired $t$-tests for key comparisons.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -274,10 +274,10 @@ The two metrics move in opposite directions: the more calibrated the BN statisti
 
 \subsection{CIFAR-100 Generalization}
 
-To test whether the finding generalizes beyond 10-class problems, we repeat the experiment on CIFAR-100 with SmallResNet (3 seeds, 25 epochs).
+To test whether the finding generalizes beyond 10-class problems, we repeat the experiment on CIFAR-100 with SmallResNet (5 seeds, 25 epochs). An initial 3-seed run using ridge regression probes produced unstable probe estimates (std $= 35.62\%$ for same-class), so we re-ran with logistic regression probes and 5 seeds.
 
 \begin{table}[t]
-\caption{SmallResNet on CIFAR-100 (mean $\pm$ std, $n{=}3$ seeds).}
+\caption{SmallResNet on CIFAR-100 (mean $\pm$ std, $n{=}5$ seeds). Linear probe uses logistic regression.}
 \label{tab:cifar100}
 \centering
 \small
@@ -285,17 +285,17 @@ To test whether the finding generalizes beyond 10-class problems, we repeat the 
 \toprule
 Condition & Acc.\ (\%) & Conf.\ (\%) & Probe (\%) \\
 \midrule
-Global       & $70.28 \pm 0.52$  & $64.30 \pm 0.63$  & $67.12 \pm 0.32$  \\
-Same-class   & $0.67 \pm 0.47$   & $0.94 \pm 0.00$   & $46.80 \pm 35.62$ \\
-Wrong-class  & $1.00 \pm 0.00$   & $1.00 \pm 0.00$   & $56.40 \pm 36.87$ \\
-Random-class & $1.33 \pm 0.47$   & $1.00 \pm 0.00$   & $38.93 \pm 16.91$ \\
+Global       & $70.11 \pm 0.57$  & $63.98 \pm 0.73$  & $64.23 \pm 1.34$   \\
+Same-class   & $0.60 \pm 0.49$   & $0.94 \pm 0.00$   & $100.00 \pm 0.00$  \\
+Wrong-class  & $1.00 \pm 0.00$   & $1.00 \pm 0.00$   & $100.00 \pm 0.00$  \\
+Random-class & $1.00 \pm 0.63$   & $1.00 \pm 0.00$   & $65.49 \pm 8.75$   \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The accuracy collapse is even more severe on CIFAR-100: same-class statistics reduce accuracy from 70.3\% to 0.67\%, well below the 1\% chance level for 100 classes ($t(2) = -147.3$, $p = 4.6 \times 10^{-5}$). All non-global conditions produce near-chance accuracy and near-uniform confidence (${\sim}1\%$), consistent with complete calibration failure across 100 output dimensions.
+The accuracy collapse is even more severe on CIFAR-100: same-class statistics reduce accuracy from 70.1\% to 0.60\%, well below the 1\% chance level for 100 classes ($t(4) = -162.9$, $p = 8.5 \times 10^{-9}$). All non-global conditions produce near-chance accuracy and near-uniform confidence (${\sim}1\%$), consistent with complete calibration failure across 100 output dimensions.
 
-\textbf{Linear probe variance.} While the accuracy collapse is unambiguous, linear probe results on CIFAR-100 exhibit high variance across seeds (std $= 35.62\%$ for same-class). This reflects the difficulty of ridge regression probes with 100 classes: the 256-dimensional feature space is less over-determined than in the 10-class setting, making probe accuracy sensitive to the particular seed's representation geometry. One seed achieves 97.1\% probe accuracy under same-class statistics (comparable to CIFAR-10 results), while others are substantially lower. With 100 classes, more sophisticated probing methods (e.g., MLP probes or regularization tuning) may be needed for stable estimates. The key finding---catastrophic accuracy collapse despite intact convolutional features---remains robust.
+\textbf{Linear probe results.} With logistic regression probes, same-class and wrong-class conditions both achieve \textbf{perfect 100\% probe accuracy with zero variance} across all 5 seeds---matching the Tiny-ImageNet-200 pattern and confirming that representations remain fully intact despite complete classification collapse. An initial 3-seed run using ridge regression probes had yielded unstable estimates (std $= 35.62\%$), reflecting the inadequacy of ridge regression for 100-class problems in a 256-dimensional feature space. The logistic regression results resolve this instability entirely.
 
 \subsection{Tiny-ImageNet-200 Generalization}
 
@@ -320,7 +320,7 @@ Random-class & $0.50 \pm 0.00$   & $0.50 \pm 0.00$   & $57.02 \pm 3.41$   \\
 
 Tiny-ImageNet-200 produces the most dramatic results in our study. Same-class statistics reduce classification accuracy from 60.8\% to 0.17\%---well below the 0.5\% chance level for 200 classes ($t(2) = -402.16$, $p = 6.2 \times 10^{-6}$). The network's confidence collapses to a uniform 0.49\% (near the 0.5\% expected under random guessing over 200 classes), indicating complete calibration failure. Wrong-class statistics similarly collapse accuracy to 0.50\% ($t(2) = -280.89$, $p = 1.3 \times 10^{-5}$).
 
-The linear probe results are striking: under both same-class and wrong-class conditions, the probe achieves \textbf{perfect 100.0\% accuracy with zero variance across seeds}. This is the cleanest dissociation in our study---complete output collapse coexisting with perfectly separable representations. Unlike the CIFAR-100 results where probe accuracy exhibited high variance (std $= 35.62\%$), the five-stage SmallResNet64 architecture produces a 512-dimensional feature space that is substantially more over-determined for even 200 classes, enabling stable and perfect probe performance.
+The linear probe results are striking: under both same-class and wrong-class conditions, the probe achieves \textbf{perfect 100.0\% accuracy with zero variance across seeds}. This is the cleanest dissociation in our study---complete output collapse coexisting with perfectly separable representations. Unlike the initial CIFAR-100 ridge regression probes where probe accuracy exhibited high variance (std $= 35.62\%$), the five-stage SmallResNet64 architecture produces a 512-dimensional feature space that is substantially more over-determined for even 200 classes, enabling stable and perfect probe performance. (The CIFAR-100 results were subsequently resolved with logistic regression probes, yielding perfect 100\% probe accuracy; see Section~\ref{sec:results}.4.)
 
 The same-class vs.\ wrong-class comparison is also informative: on Tiny-ImageNet, same-class accuracy (0.17\%) is nominally lower than wrong-class (0.50\%), though this difference does not reach statistical significance ($t(2) = -2.0$, $p = 0.18$)---both are effectively at floor. With 200 classes, any BN statistic perturbation causes total calibration failure, leaving no room for the same-class vs.\ wrong-class distinction that is visible with 10 classes. The random-class probe is lower (57.0\%) because each sample sees a different class's statistics, averaging over inconsistent perturbation directions.
 
@@ -400,7 +400,7 @@ Our results constitute eight independent lines of evidence that BN running stati
 
 \begin{enumerate}
     \item \textbf{Same-class statistics destroy accuracy but preserve representations} (CIFAR-10, 4 architectures). The dramatic dissociation between 3.5\% classification accuracy and 99.9\% linear probe accuracy is inexplicable under the feature encoding hypothesis.
-    \item \textbf{The effect is amplified with more classes.} On CIFAR-100, same-class statistics reduce accuracy to 0.67\%---below the 1\% chance level. On Tiny-ImageNet-200, accuracy drops to 0.17\%---below the 0.5\% chance level---demonstrating that the calibration disruption scales with output space dimensionality.
+    \item \textbf{The effect is amplified with more classes.} On CIFAR-100, same-class statistics reduce accuracy to 0.60\%---below the 1\% chance level. On Tiny-ImageNet-200, accuracy drops to 0.17\%---below the 0.5\% chance level---demonstrating that the calibration disruption scales with output space dimensionality.
     \item \textbf{The effect generalizes to higher resolution.} On Tiny-ImageNet-200 ($64{\times}64$ images, 200 classes), the dissociation is the most extreme observed: 0.17\% classification accuracy with \emph{perfect} 100\% linear probe accuracy across all seeds. This rules out the possibility that the effect is an artifact of low-resolution inputs.
     \item \textbf{The effect is BN-specific.} GroupNorm models, which lack running statistics, are immune by construction (81.6\% accuracy preserved).
     \item \textbf{Smooth interpolation with no phase transition.} The monotonic transition between same-class and global statistics (Section~\ref{sec:results}.3) indicates a continuous calibration mechanism rather than a discrete feature encoding/decoding process.
@@ -488,7 +488,7 @@ The ECE analysis reinforces this point quantitatively: the same-class condition 
     \item \textbf{Architecture scope.} While we test four architectures spanning residual networks (SmallResNet, WideResNet-28-10), plain convnets (VGG-11-BN), and minimal networks (SimpleCNN), all are trained on relatively small datasets. Scaling to ImageNet-scale models with hundreds of layers is an important direction.
     \item \textbf{Dataset scope.} CIFAR-10, CIFAR-100, and Tiny-ImageNet-200 span 10 to 200 classes and $32{\times}32$ to $64{\times}64$ resolution, but remain within the domain of natural image classification. Fine-grained recognition, medical imaging, or natural language tasks may show different dynamics.
     \item \textbf{Training duration.} Models are trained for 15--25 epochs on Apple Silicon (MPS backend). Longer training schedules may yield different BN statistic structure.
-    \item \textbf{Linear probe limitations.} Ridge regression and logistic regression test only linear separability. On CIFAR-100, the 256-dimensional feature space with 100 classes yields high probe variance across seeds (std up to 35.6\%), suggesting more expressive probing methods (e.g., MLP probes or cross-validated regularization) would provide more stable estimates. The Tiny-ImageNet results (512-dimensional features, 200 classes) resolve this issue with perfect probe accuracy across seeds, suggesting that richer feature spaces mitigate the probe instability seen on CIFAR-100.
+    \item \textbf{Linear probe limitations.} Ridge regression and logistic regression test only linear separability. An initial CIFAR-100 run using ridge regression yielded high probe variance (std up to 35.6\%), which was resolved by switching to logistic regression (yielding perfect 100\% probe accuracy). This highlights that probe choice matters in high-class settings.
     \item \textbf{Static replacement.} We replace all BN layers simultaneously. Layer-wise replacement could reveal which layers are most sensitive to calibration disruption.
     \item \textbf{ECE limitations.} ECE with fixed binning can be sensitive to bin count and sample size \citep{nixon2019measuring}. We use 15 bins following standard practice, but kernel-based calibration measures could provide smoother estimates.
 \end{enumerate}
@@ -497,7 +497,7 @@ The ECE analysis reinforces this point quantitatively: the same-class condition 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We demonstrate a striking dissociation between classification accuracy and representation quality under batch normalization statistic manipulation. Replacing global BN statistics with same-class statistics destroys classification (3.5\% on CIFAR-10, 0.67\% on CIFAR-100, 0.17\% on Tiny-ImageNet-200) while yielding near-perfect or perfect linear probe accuracy (99.9\% on CIFAR-10, 100.0\% on Tiny-ImageNet-200). This effect replicates across four architectures---including WideResNet-28-10 with dropout---generalizes across three datasets spanning 10 to 200 classes and $32{\times}32$ to $64{\times}64$ resolution, varies smoothly under interpolation, and is specific to BatchNorm's running-statistic mechanism (absent with GroupNorm).
+We demonstrate a striking dissociation between classification accuracy and representation quality under batch normalization statistic manipulation. Replacing global BN statistics with same-class statistics destroys classification (3.5\% on CIFAR-10, 0.60\% on CIFAR-100, 0.17\% on Tiny-ImageNet-200) while yielding near-perfect or perfect linear probe accuracy (99.9\% on CIFAR-10, 100.0\% on CIFAR-100, 100.0\% on Tiny-ImageNet-200). This effect replicates across four architectures---including WideResNet-28-10 with dropout---generalizes across three datasets spanning 10 to 200 classes and $32{\times}32$ to $64{\times}64$ resolution, varies smoothly under interpolation, and is specific to BatchNorm's running-statistic mechanism (absent with GroupNorm).
 
 Calibration analysis reveals that same-class statistics induce severe miscalibration (ECE $= 0.394$ vs.\ $0.025$ baseline), and temperature scaling---while halving ECE---cannot recover accuracy, confirming that the collapse reflects structural activation misalignment rather than a simple logit-scale shift. These findings establish that BN running statistics function as output calibrators rather than feature encoders. Networks learn representations that are remarkably robust to BN perturbation, but classification heads are precisely calibrated to the activation scale produced by global statistics.
 
@@ -537,8 +537,8 @@ Normalization & $\mu{=}(0.4914, 0.4822, 0.4465)$, $\sigma{=}(0.2470, 0.2435, 0.2
 Linear probe & Ridge ($\lambda{=}10^{-3}$) or LogisticRegression, 80/20 split \\
 ECE & 15 equal-width bins \\
 Temp.\ scaling & NLL-optimized scalar $T$ on validation set \\
-Seeds & 42--51 (SmallResNet CIFAR-10), 42--44 (all others) \\
-Device & Apple Silicon (MPS backend); mixed precision for WRN-28-10 \\
+Seeds & 42--51 (SmallResNet CIFAR-10), 42--46 (SmallResNet CIFAR-100), 42--44 (all others) \\
+Device & Apple Silicon (MPS backend) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -593,7 +593,7 @@ Seed & Global & Same-Class & Wrong-Class & Random-Class \\
 \end{table*}
 
 \begin{table}[t]
-\caption{SmallResNet CIFAR-100 --- Per-seed results.}
+\caption{SmallResNet CIFAR-100 --- Per-seed results ($n{=}5$ seeds, logistic regression probe).}
 \label{tab:b3}
 \centering
 \small
@@ -601,9 +601,11 @@ Seed & Global & Same-Class & Wrong-Class & Random-Class \\
 \toprule
 Seed & Glob.\ Acc & SC Acc & Glob.\ Probe & SC Probe \\
 \midrule
-42 & 70.95 & 1.00 & 67.55 & 97.10 \\
-43 & 69.68 & 1.00 & 66.80 & 24.10 \\
-44 & 70.21 & 0.00 & 67.00 & 19.20 \\
+42 & 70.95 & 1.00 & 65.65 & 100.00 \\
+43 & 69.68 & 1.00 & 64.85 & 100.00 \\
+44 & 70.21 & 0.00 & 65.00 & 100.00 \\
+45 & 69.31 & 1.00 & 61.80 & 100.00 \\
+46 & 70.42 & 0.00 & 63.85 & 100.00 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -633,9 +635,9 @@ Seed & Glob.\ ECE & SC ECE & SC ECE (post-$T$) & $T$ \\
 \toprule
 Seed & Global Acc & Same-Class Acc & Wrong-Class Acc & Random-Class Acc \\
 \midrule
-42 & 90.10 & 10.22 & 60.92 & 60.65 \\
-43 & 91.12 & 12.02 & 67.20 & 64.17 \\
-44 & 90.61 & 11.12 & 64.06 & 62.41 \\
+42 & 90.17 & 10.44 & 64.21 & 62.49 \\
+43 & 90.35 & 12.40 & 67.83 & 64.53 \\
+44 & 91.32 & 10.53 & 60.15 & 60.22 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -649,9 +651,9 @@ Seed & Global Acc & Same-Class Acc & Wrong-Class Acc & Random-Class Acc \\
 \toprule
 Seed & Global Probe & Same-Class Probe & Wrong-Class Probe & Random-Class Probe \\
 \midrule
-42 & 90.74 & 99.69 & 99.53 & 96.19 \\
-43 & 91.30 & 99.87 & 99.67 & 97.07 \\
-44 & 91.02 & 99.78 & 99.60 & 96.63 \\
+42 & 91.40 & 99.85 & 99.70 & 96.30 \\
+43 & 90.90 & 99.85 & 99.55 & 96.35 \\
+44 & 90.75 & 99.65 & 99.55 & 97.25 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -665,9 +667,9 @@ Seed & Global Probe & Same-Class Probe & Wrong-Class Probe & Random-Class Probe 
 \toprule
 Seed & Glob.\ Acc & Glob.\ Conf & Glob.\ Probe & SC Acc & SC Probe \\
 \midrule
-42 & 60.88 & 53.51 & 51.55 & 0.00  & 100.00 \\
-43 & 61.08 & 54.00 & 52.60 & 0.50  & 100.00 \\
-44 & 60.36 & 53.75 & 51.35 & 0.00  & 100.00 \\
+42 & 60.88 & 53.78 & 51.55 & 0.00  & 100.00 \\
+43 & 61.08 & 54.04 & 52.60 & 0.50  & 100.00 \\
+44 & 60.36 & 53.44 & 51.35 & 0.00  & 100.00 \\
 \bottomrule
 \end{tabular}
 \end{table*}
