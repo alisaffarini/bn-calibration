@@ -1,48 +1,32 @@
-%%%%%%%% ICML 2025 SUBMISSION %%%%%%%%
+%%%%%%%% ICLR 2025 SUBMISSION %%%%%%%%
 \documentclass{article}
-
-% Recommended packages
-\usepackage{microtype}
-\usepackage{graphicx}
-\usepackage{booktabs}
+\usepackage{iclr2025_conference,times}
 \usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
 
-% Use the following line for the initial blind version submitted for review:
-\usepackage{icml2025}
-
-% If accepted, instead use the following line for the camera-ready submission:
-% \usepackage[accepted]{icml2025}
-
-% Standard packages
-\usepackage{amsmath,amssymb,amsfonts}
+% Additional packages
+\usepackage{amsfonts}
 \usepackage{xcolor}
 \usepackage{multirow}
-
-\icmltitlerunning{Batch Normalization Statistics as Output Calibrators}
+\usepackage{microtype}
 
 \begin{document}
 
-\twocolumn[
-\icmltitle{Batch Normalization Statistics as Output Calibrators,\\Not Feature Encoders: Evidence from Class-Conditional Statistic Replacement}
+\title{Batch Normalization Statistics as Output Calibrators,\\Not Feature Encoders: Evidence from Class-Conditional Statistic Replacement\thanks{Code and data: \url{https://github.com/alisaffarini/bn-calibration}}}
 
+\author{Ali Saffarini \\
+Harvard University \\
+\texttt{alisaffarini@college.harvard.edu} \\
+}
 
-\icmlsetsymbol{equal}{*}
-
-\begin{icmlauthorlist}
-\icmlauthor{Ali Saffarini}{harvard}
-\end{icmlauthorlist}
-
-\icmlaffiliation{harvard}{Harvard University}
-
-\vskip 0.3in
+\maketitle
 
 \begin{abstract}
 Batch normalization (BN) is ubiquitous in deep learning, yet the functional role of its learned running statistics remains poorly understood. We investigate whether BN running statistics encode class-specific feature information or serve primarily as output calibration mechanisms. Through a simple experimental paradigm---replacing global BN running statistics with class-conditional statistics at test time---we uncover a striking dissociation: same-class BN statistics \emph{destroy} classification accuracy (3.5\% vs.\ 91.1\% baseline on CIFAR-10), yet linear probes on the resulting representations achieve 99.9\% accuracy. This effect replicates across four architectures (SmallResNet, VGG-11, SimpleCNN, WideResNet-28-10), generalizes to three datasets including Tiny-ImageNet-200 (200 classes, $64{\times}64$ resolution), and disappears when BatchNorm is replaced with GroupNorm---confirming it is specific to the running-statistic mechanism. On Tiny-ImageNet-200, same-class statistics reduce accuracy from 60.8\% to 0.17\% (chance $= 0.5\%$) while linear probes achieve \emph{perfect} 100\% accuracy---the strongest dissociation observed. An interpolation experiment reveals a smooth, monotonic transition between same-class and global statistics, ruling out phase-transition artifacts. Calibration analysis shows that same-class statistics induce severe miscalibration (ECE $= 0.394$ vs.\ $0.025$ baseline), and temperature scaling---while reducing ECE from 0.394 to 0.151---cannot recover accuracy (remaining at 2.9\%), proving the collapse is not a simple logit-scale shift. These results demonstrate that BN running statistics function as output calibrators: they align activation magnitudes with downstream layer expectations without encoding class-discriminative features. This calibration perspective reframes our understanding of batch normalization at inference time and has implications for transfer learning, domain adaptation, and normalization-free architectures.
 \end{abstract}
-]
-
-% This must follow the abstract
-\printAffiliationsAndNotice{} % leave empty for anonymous
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -506,8 +490,8 @@ This calibration perspective unifies observations from transfer learning, domain
 \paragraph{Reproducibility.} Code and data are available at \url{https://github.com/alisaffarini/bn-calibration}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{abbrvnat}
 \bibliography{refs}
-\bibliographystyle{icml2025}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
@@ -546,7 +530,7 @@ Device & Apple Silicon (MPS backend) \\
 \section{Full Per-Seed Results}
 \label{app:seeds}
 
-\begin{table*}[t]
+\begin{table}[t]
 \caption{SmallResNet CIFAR-10 --- Classification accuracy by seed and condition.}
 \label{tab:b1}
 \centering
@@ -567,9 +551,9 @@ Seed & Global & Same-Class & Wrong-Class & Random-Class \\
 51 & 91.04 & 4.35  & 70.98 & 68.72 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{table*}[t]
+\begin{table}[t]
 \caption{SmallResNet CIFAR-10 --- Linear probe accuracy by seed and condition.}
 \label{tab:b2}
 \centering
@@ -590,7 +574,7 @@ Seed & Global & Same-Class & Wrong-Class & Random-Class \\
 51 & 91.30 & 99.90  & 100.00 & 99.15 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \begin{table}[t]
 \caption{SmallResNet CIFAR-100 --- Per-seed results ($n{=}5$ seeds, logistic regression probe).}
@@ -626,7 +610,7 @@ Seed & Glob.\ ECE & SC ECE & SC ECE (post-$T$) & $T$ \\
 \end{tabular}
 \end{table}
 
-\begin{table*}[t]
+\begin{table}[t]
 \caption{WideResNet-28-10 CIFAR-10 --- Per-seed classification accuracy ($n{=}3$ seeds).}
 \label{tab:b5a}
 \centering
@@ -640,9 +624,9 @@ Seed & Global Acc & Same-Class Acc & Wrong-Class Acc & Random-Class Acc \\
 44 & 91.32 & 10.53 & 60.15 & 60.22 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{table*}[t]
+\begin{table}[t]
 \caption{WideResNet-28-10 CIFAR-10 --- Per-seed linear probe accuracy ($n{=}3$ seeds).}
 \label{tab:b5b}
 \centering
@@ -656,9 +640,9 @@ Seed & Global Probe & Same-Class Probe & Wrong-Class Probe & Random-Class Probe 
 44 & 90.75 & 99.65 & 99.55 & 97.25 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{table*}[t]
+\begin{table}[t]
 \caption{SmallResNet64 Tiny-ImageNet-200 --- Per-seed results ($n{=}3$ seeds).}
 \label{tab:b6}
 \centering
@@ -672,6 +656,6 @@ Seed & Glob.\ Acc & Glob.\ Conf & Glob.\ Probe & SC Acc & SC Probe \\
 44 & 60.36 & 53.44 & 51.35 & 0.00  & 100.00 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \end{document}
