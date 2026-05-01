@@ -1,0 +1,27 @@
+{
+  "groupnorm": {
+    "aggregate": {
+      "accuracy_mean": 0.8164666666666666,
+      "accuracy_std": 0.019388369938932185,
+      "probe_mean": 0.8108333333333334,
+      "probe_std": 0.016352030115214702
+    },
+    "per_seed": [
+      {
+        "seed": 42,
+        "accuracy": 0.835,
+        "probe": 0.8325
+      },
+      {
+        "seed": 43,
+        "accuracy": 0.7897,
+        "probe": 0.793
+      },
+      {
+        "seed": 44,
+        "accuracy": 0.8247,
+        "probe": 0.807
+      }
+    ]
+  }
+}

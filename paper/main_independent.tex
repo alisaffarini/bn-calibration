@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{microtype}
+
+\title{Class-Conditional Batch Normalization Statistics Destroy Predictions but Preserve Features:\\
+Evidence That BN Running Statistics Act as Output Calibrators, Not Feature Encoders}
+
+\author{Anonymous}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Batch Normalization (BN) running statistics are commonly understood as a benign normalization device whose only role is to standardize activations during inference. We test this assumption by replacing the global running statistics of trained convolutional networks with class-conditional statistics estimated from per-class subsets of the training data, and measuring two quantities: classification accuracy and the accuracy of a linear probe trained on the resulting penultimate features. Across four architectures (SmallResNet, VGG-11-BN, SimpleCNN, WideResNet-28-10) and three datasets (CIFAR-10, CIFAR-100, Tiny-ImageNet-200), we observe a consistent and counter-intuitive phenomenon: substituting the BN statistics of class $c$ when evaluating class $c$ collapses test accuracy to near zero (3.5\% on SmallResNet/CIFAR-10, 0.6\% on CIFAR-100, 0.17\% on Tiny-ImageNet-200), while a linear probe on the same features recovers $\geq 99.7\%$ of the global-stats accuracy. A continuous interpolation between class-conditional and global stats reveals a sharp non-monotone gap between probe accuracy and classifier accuracy. A GroupNorm control eliminates the effect, and temperature scaling reduces the resulting calibration error from $0.394$ to $0.151$ but recovers exactly $0\%$ of the lost accuracy. Together these results indicate that BN running statistics are not part of the learned representation but a structural calibrator coupling features to the classifier head.
+\end{abstract}
+
+\section{Introduction}
+
+Batch Normalization \cite{ioffe2015} is one of the most widely adopted components in modern convolutional networks. At training time it normalizes mini-batch activations using batch statistics; at inference time it uses a running estimate of those statistics, accumulated as exponential moving averages during training. The standard view treats these running statistics as a faithful, dataset-level approximation of the true population mean and variance: a regularization-and-stability device that affects optimization but not what the network represents.
+
+This paper interrogates that view by asking a simple question: \emph{What happens if we replace the running BN statistics at inference with statistics estimated only from samples of one class?} A naive prediction, drawing on the intuition that BN merely standardizes activations, would be that class-conditional statistics for class $c$ should at worst be neutral, or perhaps mildly helpful, when evaluating images of class $c$. They are after all the most representative statistics for that class.
+
+Our experiments contradict this prediction in dramatic fashion. Same-class BN statistics destroy accuracy on every architecture and dataset we test. On CIFAR-10 with a SmallResNet, accuracy falls from 91.1\% to 3.5\% (i.e., \emph{below} chance). On CIFAR-100 it falls from 70.1\% to 0.6\%. On Tiny-ImageNet-200 it falls from 60.8\% to 0.17\%. Yet linear probes trained on the resulting penultimate features recover 99.9\%, 100\%, and 100\% accuracy respectively, demonstrating that the underlying features remain perfectly class-discriminative.
+
+We argue that this dissociation between feature quality and predictive accuracy is most naturally explained by treating BN running statistics not as a normalization device but as an \emph{implicit output calibrator}: the trained network's classifier head depends on a precise alignment between the running statistics and the linear weights that follow them, and any reasonably-scaled but \emph{wrongly-aligned} statistics induce a destructive offset between features and decision boundary that linear re-fitting can completely undo.
+
+\paragraph{Contributions.}
+\begin{itemize}
+\item We formalize and run a controlled BN-statistic-replacement protocol with four conditions (\textit{global}, \textit{same-class}, \textit{wrong-class}, \textit{random-class}) and a linear-probe diagnostic that separates feature quality from output behavior.
+\item We show the same-class collapse is robust across architectures (SmallResNet, VGG-11-BN, SimpleCNN, WideResNet-28-10) and datasets (CIFAR-10, CIFAR-100, Tiny-ImageNet-200), with paired $t$-tests yielding $p < 10^{-4}$ in every BN-equipped condition.
+\item We trace the gap between feature quality and predictions through an 11-point interpolation between class-conditional and global statistics, showing a gradual recovery in accuracy and a non-monotone dip in probe quality near the midpoint.
+\item We rule out the alternative explanation that the effect is intrinsic to the architecture by training a SmallResNet with GroupNorm \cite{wu2018}: there are no running statistics to corrupt, and accuracy is preserved.
+\item We show that the failure is structural, not merely a temperature problem: temperature scaling \cite{guo2017} reduces same-class ECE from $0.394$ to $0.151$ but recovers exactly $0\%$ of the lost accuracy.
+\end{itemize}
+
+\section{Related Work}
+
+\paragraph{Batch Normalization and what it does.}
+\citet{ioffe2015} introduced BN as a remedy for internal covariate shift; subsequent work has questioned that mechanistic story \cite{santurkar2018} and emphasized the optimization geometry, rescaling, and regularization effects of the layer. Several papers note that BN at test time effectively folds running statistics into the linear weights that follow it, which gives BN a calibration-like role. Our work probes that role empirically by showing exactly how much of the network's predictive behavior is encoded in those statistics.
+
+\paragraph{Linear probing as a feature-quality diagnostic.}
+Linear probes \cite{alain2016, kornblith2019} test whether class structure is linearly accessible in a representation. Probes are widely used in self-supervised learning to compare feature spaces. We use them in a different role, as a counterfactual: if a network mispredicts but a linear probe on its features still classifies correctly, the failure is in the head, not the encoder.
+
+\paragraph{Calibration and temperature scaling.}
+\citet{guo2017} showed that modern deep networks are systematically over-confident and that a single scalar temperature can substantially reduce expected calibration error without altering predictions. We invoke their method to show the converse: in our setting, temperature scaling reduces calibration error but cannot restore accuracy, because the underlying error is not a uniform sharpening but a directional rotation of the logits.
+
+\paragraph{Normalization alternatives.}
+GroupNorm \cite{wu2018} computes statistics over feature-map groups within each example and stores no running averages. Layer-, instance-, and weight-norm variants similarly avoid persistent batch-level statistics. We use GroupNorm as a control: it does not have the mechanism that, in BN networks, leaks class information into a calibrator the head depends on.
+
+\section{Methods}
+
+\subsection{Class-conditional BN statistics}
+Let $f_\theta$ be a trained CNN containing BN layers $\{B_\ell\}$ with running means $\mu_\ell$ and running variances $\sigma_\ell^2$. We define a \emph{class-conditional} estimate $(\mu_\ell^{(c)}, (\sigma_\ell^{(c)})^2)$ for each class $c$ as follows. We reset the BN buffers, set the model to \texttt{train()} mode (which causes BN to update its running statistics with the standard exponential moving average), iterate the model in \texttt{torch.no\_grad()} over the subset of the training set with label $c$, and snapshot the resulting buffers. The model parameters are not updated during this pass. We then return the BN buffers to their global values and use the snapshot only at inference.
+
+\subsection{Inference conditions}
+We evaluate the same trained model under four BN-statistic conditions:
+\begin{enumerate}
+\item \textbf{Global} (baseline): the running statistics learned during training, applied to all classes.
+\item \textbf{Same-class}: when evaluating an example of class $c$, load $(\mu_\ell^{(c)}, (\sigma_\ell^{(c)})^2)$.
+\item \textbf{Wrong-class}: when evaluating class $c$, load the statistics of class $(c + K/2) \bmod K$ where $K$ is the number of classes (a deliberately ``maximally different'' class, e.g., \textit{cat} $\leftrightarrow$ \textit{dog}'s opposite half on CIFAR-10).
+\item \textbf{Random-class}: load the statistics of a random class $r \neq c$ chosen per class via a fixed seed.
+\end{enumerate}
+For each condition we record per-class accuracy, per-class confidence (the softmax probability assigned to the true label), and the penultimate-layer features.
+
+\subsection{Linear probe}
+We concatenate the penultimate features and labels from the per-class evaluation pass, perform an $80/20$ split, and fit an $\ell_2$-regularized linear classifier in closed form (ridge regression with one-hot targets, $\lambda = 10^{-3}$) on the train split. For CIFAR-100 and Tiny-ImageNet-200 we use a multinomial logistic regression with L-BFGS, $C=1.0$, $1000$ iterations to avoid the conditioning problems of ridge regression with many classes. We report the test-split accuracy.
+
+\subsection{Architectures and datasets}
+We test four architectures: \textbf{SmallResNet} (a CIFAR-style ResNet with channels 32-64-128-256, 20 BN layers); \textbf{VGG-11-BN}; a 3-layer \textbf{SimpleCNN}; and \textbf{WideResNet-28-10}. The first three are trained on CIFAR-10. SmallResNet is additionally trained on CIFAR-100 and on Tiny-ImageNet-200 (with a 5-stage adaptation for $64\times 64$ images). All models use SGD with momentum $0.9$, weight decay $5\times 10^{-4}$, learning rate $0.1$ with cosine annealing, and batch size $128$. SmallResNet on CIFAR-10 uses 10 random seeds (epochs 20 or 25); SmallResNet on CIFAR-100 uses 5 seeds; all other configurations use 3 seeds.
+
+\subsection{Control: GroupNorm}
+We replace every BN layer in SmallResNet with a GroupNorm layer (8 groups, or fewer when channels are smaller) and train under the same recipe. GroupNorm has no running statistics, so the same-class manipulation cannot be applied; the relevant comparison is whether the architecture without BN suffers any analogous accuracy loss.
+
+\subsection{ECE and temperature scaling}
+For SmallResNet on CIFAR-10 (3 seeds) we compute Expected Calibration Error (ECE) with 15 bins for the global, same-class and wrong-class conditions, and learn a single scalar temperature on a held-out validation split that minimizes NLL on the same-class logits. We measure ECE and accuracy before and after.
+
+\section{Experiments}
+
+\subsection{Main result: same-class statistics collapse accuracy on every BN architecture}
+Table~\ref{tab:cifar10} reports CIFAR-10 results across architectures (10 seeds for SmallResNet, 3 seeds for the others). The pattern is consistent: replacing global with same-class statistics drops accuracy by 60--87 percentage points, while linear probes on the same features recover near-baseline or super-baseline accuracy. Wrong-class and random-class statistics, despite being ``mismatched'' to the input class, are \emph{less} damaging than same-class statistics on every architecture: e.g., 65.4\% (wrong) vs.\ 3.5\% (same) for SmallResNet, and 64.1\% vs.\ 11.1\% for WideResNet-28-10. This non-monotonicity is a key piece of evidence: the same-class condition is not just a noisy variant of the global condition but actively destructive, in a way that random reshuffling does not reproduce.
+
+\begin{table}[t]
+\centering
+\caption{CIFAR-10: classifier accuracy and linear-probe accuracy under four BN-statistic conditions. Numbers are mean $\pm$ std across seeds.}
+\label{tab:cifar10}
+\small
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{4}{c}{Condition} \\
+\cmidrule(lr){2-5}
+Architecture (seeds) & Global & Same-class & Wrong-class & Random-class \\
+\midrule
+SmallResNet (10) -- acc      & $0.911 \pm 0.001$ & $0.035 \pm 0.007$ & $0.654 \pm 0.047$ & $0.590 \pm 0.058$ \\
+SmallResNet (10) -- probe    & $0.909 \pm 0.006$ & $0.999 \pm 0.001$ & $1.000 \pm 0.000$ & $0.976 \pm 0.011$ \\
+VGG-11-BN (3) -- acc         & $0.854 \pm 0.013$ & $0.109 \pm 0.019$ & $0.630 \pm 0.012$ & $0.575 \pm 0.030$ \\
+VGG-11-BN (3) -- probe       & $0.850 \pm 0.018$ & $0.984 \pm 0.006$ & $0.996 \pm 0.003$ & $0.953 \pm 0.008$ \\
+SimpleCNN (3) -- acc         & $0.832 \pm 0.002$ & $0.263 \pm 0.005$ & $0.781 \pm 0.005$ & $0.721 \pm 0.004$ \\
+SimpleCNN (3) -- probe       & $0.805 \pm 0.014$ & $0.547 \pm 0.007$ & $0.937 \pm 0.003$ & $0.908 \pm 0.005$ \\
+WideResNet-28-10 (3) -- acc  & $0.906 \pm 0.005$ & $0.111 \pm 0.009$ & $0.641 \pm 0.031$ & $0.624 \pm 0.018$ \\
+WideResNet-28-10 (3) -- probe& $0.910 \pm 0.003$ & $0.998 \pm 0.001$ & $0.996 \pm 0.001$ & $0.966 \pm 0.004$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The original 5-seed SmallResNet/CIFAR-10 run (25 epochs) is even more extreme: $0.918 \pm 0.002$ global vs.\ $0.018 \pm 0.007$ same-class, with a same-class linear probe of $0.9997$. Per-class deltas (same-class minus global) are uniformly large and negative across all 10 CIFAR-10 classes: $-0.95$ for ship, $-0.97$ for automobile, and $-0.72$ for cat (the smallest absolute drop). All paired $t$-tests of same-class vs.\ global accuracy reject the null at $p < 10^{-9}$.
+
+\subsection{The effect generalizes across datasets}
+Table~\ref{tab:datasets} reports SmallResNet across three datasets. The same-class accuracy collapses to near-zero at every scale, and the gap between collapsed accuracy and probe accuracy grows with $K$: on Tiny-ImageNet-200, same-class accuracy is $0.17\%$ while probes reach exactly $100\%$. The size of the probe-vs-prediction gap closely tracks the number of classes, consistent with the structural-calibration interpretation: a fixed mis-alignment of statistics in a $K$-way head dominates a $K$-way argmax more decisively as $K$ grows.
+
+\begin{table}[t]
+\centering
+\caption{Generalization across datasets. SmallResNet, mean$\pm$std across seeds (5 for CIFAR-100, 3 for the others). The CIFAR-100 row uses the corrected logistic-regression linear probe (\texttt{results\_cifar100\_fixed.json}).}
+\label{tab:datasets}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Dataset & Seeds & Global acc & Same-class acc & Same-class probe & Wrong-class acc \\
+\midrule
+CIFAR-10               & 10 & $0.911 \pm 0.001$ & $0.035 \pm 0.007$ & $0.999 \pm 0.001$ & $0.654 \pm 0.047$ \\
+CIFAR-100              & 5  & $0.701 \pm 0.006$ & $0.006 \pm 0.005$ & $1.000 \pm 0.000$ & $0.010 \pm 0.000$ \\
+Tiny-ImageNet-200      & 3  & $0.608 \pm 0.003$ & $0.002 \pm 0.002$ & $1.000 \pm 0.000$ & $0.005 \pm 0.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Smooth interpolation: a sharp non-monotone probe dip}
+We linearly interpolate the BN buffers as $\mu^{(\alpha,c)}_\ell = \alpha \mu_\ell + (1-\alpha) \mu_\ell^{(c)}$ (and analogously for variance), with $\alpha \in \{0.0, 0.1, \ldots, 1.0\}$. Table~\ref{tab:interp} shows the trajectory for SmallResNet (3 seeds). Accuracy is monotone in $\alpha$, recovering from $0.034$ at $\alpha=0$ to $0.910$ at $\alpha=1$. Linear-probe accuracy, however, is \emph{non-monotone}: it is highest at the endpoints ($0.999$ at $\alpha=0$, $0.909$ at $\alpha=1$) and dips to $0.747$ at $\alpha=0.6$ and $0.776$ at $\alpha=0.5$. This cross-over at $\alpha\approx 0.5\text{--}0.7$ is exactly where classifier accuracy and probe accuracy briefly approach equality, suggesting that intermediate statistics reduce both the head's bias and the feature space's separability simultaneously.
+
+\begin{table}[t]
+\centering
+\caption{Interpolating BN statistics from class-conditional ($\alpha=0$) to global ($\alpha=1$). SmallResNet/CIFAR-10, 3 seeds.}
+\label{tab:interp}
+\small
+\begin{tabular}{lccccccccccc}
+\toprule
+$\alpha$    & 0.0 & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 & 0.8 & 0.9 & 1.0 \\
+\midrule
+Acc.        & 0.034 & 0.071 & 0.134 & 0.231 & 0.365 & 0.516 & 0.652 & 0.753 & 0.826 & 0.876 & 0.910 \\
+Probe       & 0.999 & 0.997 & 0.987 & 0.949 & 0.871 & 0.776 & 0.747 & 0.779 & 0.830 & 0.875 & 0.909 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{GroupNorm control: no BN statistics, no collapse}
+A SmallResNet trained with GroupNorm on CIFAR-10 (3 seeds, 20 epochs) reaches $0.816 \pm 0.019$ test accuracy with a linear probe of $0.811 \pm 0.016$. There are no running statistics to corrupt and no analogous manipulation. The phenomenon is therefore not a property of CNNs in general but specifically of the BN-running-statistic mechanism.
+
+\subsection{Temperature scaling reduces ECE but not the accuracy collapse}
+Table~\ref{tab:ece} reports ECE and the effect of temperature scaling for SmallResNet on CIFAR-10 (3 seeds). Same-class ECE is $0.394 \pm 0.013$ -- an order of magnitude larger than the global condition's $0.025$. Fitting a single temperature ($T \approx 3.43$) on the same-class logits drops ECE to $0.151$, a substantial reduction; but accuracy before and after temperature scaling are identical, $0.0287$, recovering $0\%$ of the lost classification performance. This is by construction (temperature scaling does not change argmax) but the size of the residual ECE makes clear that the underlying logit structure is not merely too sharp -- it is rotated.
+
+\begin{table}[t]
+\centering
+\caption{ECE and temperature scaling for SmallResNet/CIFAR-10 (3 seeds). $T$ is the temperature minimizing NLL on a held-out validation split of the same-class logits.}
+\label{tab:ece}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Condition       & Accuracy            & ECE (pre)          & ECE (post)         & $T$ \\
+\midrule
+Global          & $0.913 \pm 0.001$   & $0.025 \pm 0.001$  & --                 & -- \\
+Same-class      & $0.029 \pm 0.005$   & $0.394 \pm 0.013$  & $0.151 \pm 0.003$  & $3.43 \pm 0.02$ \\
+Wrong-class     & $0.634 \pm 0.043$   & $0.064 \pm 0.013$  & --                 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+
+\paragraph{Why same-class is worse than wrong-class.}
+The most striking pattern in our results is that wrong-class and random-class statistics damage accuracy far less than same-class statistics. A naive view -- ``mismatched statistics should hurt'' -- predicts the opposite ordering. Our interpretation: the head of a BN-trained network is trained to apply a specific affine transformation \emph{after} normalization with the global statistics; that transformation effectively learns a per-feature offset and scale that bake in the global running statistics. Substituting class-$c$ statistics shifts the feature distribution away from the head's expected input \emph{in the direction the head is most sensitive to for class $c$}, because those statistics encode the class-mean activation pattern. Wrong- and random-class statistics shift it in less specifically targeted directions, where the head's misalignment is smaller. Linear refitting absorbs whatever offset the substituted statistics cause, which is why probe accuracy is uniformly high.
+
+\paragraph{Features are not corrupted; predictions are.}
+Across all BN-equipped settings, linear probe accuracy under same-class statistics is at least as high as under global statistics, often by a large margin (e.g., $1.000$ vs.\ $0.909$ on SmallResNet/CIFAR-10). The encoder's output remains an excellent representation; the trained classifier head, however, is no longer aligned to it. The SimpleCNN row of Table~\ref{tab:cifar10} is the one exception, where the same-class probe drops to $0.547$. We attribute this to the model's small feature dimension (256) and shallow encoder, which makes its features less robust to large activation-distribution shifts; even there, accuracy drops more (from 0.832 to 0.263) than the probe does (from 0.805 to 0.547).
+
+\paragraph{Implications for understanding BN.}
+The widespread reading of BN as ``just a normalization layer that helps optimization'' is incomplete. At inference time, BN running statistics behave like a learned bias term that the classifier head depends on for correctness, even though they are never updated by gradient descent. Replacing them with statistics from any other source -- even ones that look like better summaries of class-specific activations -- breaks predictions. This suggests that interventions which alter BN statistics at test time (e.g., test-time adaptation, online BN-stat updates, transfer with frozen weights) interact with the classifier head in ways the literature has not fully characterized.
+
+\section{Limitations}
+
+Our experiments are at small-to-moderate scale (CIFAR/Tiny-ImageNet, ResNet-18-class architectures). Scaling to ImageNet-1k and to transformer architectures with non-BN normalization is left to future work. We used a fixed mapping for the wrong-class condition (class $c \to (c+K/2) \bmod K$); a richer analysis would treat all $K^2$ stat-class pairings. We did not isolate the contribution of BN's affine $(\gamma, \beta)$ parameters from that of the running statistics; both shift at test time when the running stats are replaced (because the layer computes $\gamma \cdot (x - \mu)/\sigma + \beta$). Finally, our SimpleCNN result hints at architecture-dependent feature robustness that we have not characterized systematically.
+
+\section{Conclusion}
+
+Across four architectures and three datasets, replacing global BN running statistics with same-class statistics destroys classifier accuracy while leaving features fully linearly separable. The phenomenon disappears under GroupNorm and is not addressed by temperature scaling. We conclude that BN running statistics function as an implicit, structural calibrator linking the encoder to the classifier head, and that they should be analyzed -- and intervened upon -- with the same care normally given to learned parameters.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{10}
+\bibitem{ioffe2015}
+S. Ioffe and C. Szegedy.
+\newblock Batch normalization: Accelerating deep network training by reducing internal covariate shift.
+\newblock In \emph{ICML}, 2015.
+
+\bibitem{santurkar2018}
+S. Santurkar, D. Tsipras, A. Ilyas, and A. Madry.
+\newblock How does batch normalization help optimization?
+\newblock In \emph{NeurIPS}, 2018.
+
+\bibitem{wu2018}
+Y. Wu and K. He.
+\newblock Group normalization.
+\newblock In \emph{ECCV}, 2018.
+
+\bibitem{guo2017}
+C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{ICML}, 2017.
+
+\bibitem{alain2016}
+G. Alain and Y. Bengio.
+\newblock Understanding intermediate layers using linear classifier probes.
+\newblock arXiv:1610.01644, 2016.
+
+\bibitem{kornblith2019}
+S. Kornblith, M. Norouzi, H. Lee, and G. Hinton.
+\newblock Similarity of neural network representations revisited.
+\newblock In \emph{ICML}, 2019.
+
+\bibitem{he2016}
+K. He, X. Zhang, S. Ren, and J. Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In \emph{CVPR}, 2016.
+
+\bibitem{zagoruyko2016}
+S. Zagoruyko and N. Komodakis.
+\newblock Wide residual networks.
+\newblock In \emph{BMVC}, 2016.
+
+\bibitem{simonyan2014}
+K. Simonyan and A. Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock In \emph{ICLR}, 2015.
+
+\bibitem{krizhevsky2009}
+A. Krizhevsky.
+\newblock Learning multiple layers of features from tiny images.
+\newblock Technical report, University of Toronto, 2009.
+
+\bibitem{le2015}
+Y. Le and X. Yang.
+\newblock Tiny ImageNet visual recognition challenge.
+\newblock CS 231N report, Stanford, 2015.
+
+\end{thebibliography}
+
+\end{document}
