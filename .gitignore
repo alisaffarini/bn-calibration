@@ -24,3 +24,22 @@ experiment/data/
 
 # Local-only run logs (keep the JSON outputs, drop the .log noise)
 results/*.log
+experiment/*.log
+experiment/*.log.err
+
+# Workshop submission variants — kept locally for submission, not the public repo
+paper/workshops/
+
+# Other paper variants and submission artefacts — local only
+paper/SUBMISSION_CHECKLIST.md
+paper/abstract_for_openreview.txt
+paper/main_icml_workshop.*
+paper/main_tmlr.*
+paper/maxinfo.*
+paper/icml2026.*
+paper/neurips_*.sty
+paper/tmlr.sty
+paper/fancyhdr_tmlr.sty
+
+# Provenance / development history — local only
+provenance/

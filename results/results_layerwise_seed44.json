@@ -1,0 +1,818 @@
+{
+  "config": {
+    "seed": 44,
+    "epochs": 20,
+    "model": "SmallResNet",
+    "dataset": "CIFAR-10"
+  },
+  "global_acc": 0.9123,
+  "all_layer_same_class_acc": 0.0282,
+  "bn_layer_names": [
+    "bn1",
+    "layer1.0.bn1",
+    "layer1.0.bn2",
+    "layer1.1.bn1",
+    "layer1.1.bn2",
+    "layer2.0.bn1",
+    "layer2.0.bn2",
+    "layer2.0.shortcut.1",
+    "layer2.1.bn1",
+    "layer2.1.bn2",
+    "layer3.0.bn1",
+    "layer3.0.bn2",
+    "layer3.0.shortcut.1",
+    "layer3.1.bn1",
+    "layer3.1.bn2",
+    "layer4.0.bn1",
+    "layer4.0.bn2",
+    "layer4.0.shortcut.1",
+    "layer4.1.bn1",
+    "layer4.1.bn2"
+  ],
+  "single_layer": [
+    {
+      "index": 0,
+      "name": "bn1",
+      "acc": 0.8749,
+      "drop": 0.03739999999999999
+    },
+    {
+      "index": 1,
+      "name": "layer1.0.bn1",
+      "acc": 0.9063,
+      "drop": 0.006000000000000005
+    },
+    {
+      "index": 2,
+      "name": "layer1.0.bn2",
+      "acc": 0.8996,
+      "drop": 0.012700000000000045
+    },
+    {
+      "index": 3,
+      "name": "layer1.1.bn1",
+      "acc": 0.9065,
+      "drop": 0.005800000000000027
+    },
+    {
+      "index": 4,
+      "name": "layer1.1.bn2",
+      "acc": 0.9069,
+      "drop": 0.00539999999999996
+    },
+    {
+      "index": 5,
+      "name": "layer2.0.bn1",
+      "acc": 0.9051,
+      "drop": 0.007199999999999984
+    },
+    {
+      "index": 6,
+      "name": "layer2.0.bn2",
+      "acc": 0.9062,
+      "drop": 0.006099999999999994
+    },
+    {
+      "index": 7,
+      "name": "layer2.0.shortcut.1",
+      "acc": 0.9107,
+      "drop": 0.0016000000000000458
+    },
+    {
+      "index": 8,
+      "name": "layer2.1.bn1",
+      "acc": 0.9067,
+      "drop": 0.005600000000000049
+    },
+    {
+      "index": 9,
+      "name": "layer2.1.bn2",
+      "acc": 0.9055,
+      "drop": 0.006800000000000028
+    },
+    {
+      "index": 10,
+      "name": "layer3.0.bn1",
+      "acc": 0.8946,
+      "drop": 0.01770000000000005
+    },
+    {
+      "index": 11,
+      "name": "layer3.0.bn2",
+      "acc": 0.8938,
+      "drop": 0.01849999999999996
+    },
+    {
+      "index": 12,
+      "name": "layer3.0.shortcut.1",
+      "acc": 0.9093,
+      "drop": 0.0030000000000000027
+    },
+    {
+      "index": 13,
+      "name": "layer3.1.bn1",
+      "acc": 0.9015,
+      "drop": 0.010800000000000032
+    },
+    {
+      "index": 14,
+      "name": "layer3.1.bn2",
+      "acc": 0.8946,
+      "drop": 0.01770000000000005
+    },
+    {
+      "index": 15,
+      "name": "layer4.0.bn1",
+      "acc": 0.8847,
+      "drop": 0.027599999999999958
+    },
+    {
+      "index": 16,
+      "name": "layer4.0.bn2",
+      "acc": 0.8847,
+      "drop": 0.027599999999999958
+    },
+    {
+      "index": 17,
+      "name": "layer4.0.shortcut.1",
+      "acc": 0.9077,
+      "drop": 0.0046000000000000485
+    },
+    {
+      "index": 18,
+      "name": "layer4.1.bn1",
+      "acc": 0.8525,
+      "drop": 0.059799999999999964
+    },
+    {
+      "index": 19,
+      "name": "layer4.1.bn2",
+      "acc": 0.896,
+      "drop": 0.01629999999999998
+    }
+  ],
+  "cum_shallow_to_deep": [
+    {
+      "k": 1,
+      "layers": [
+        "bn1"
+      ],
+      "acc": 0.8749
+    },
+    {
+      "k": 2,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1"
+      ],
+      "acc": 0.8675
+    },
+    {
+      "k": 3,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2"
+      ],
+      "acc": 0.866
+    },
+    {
+      "k": 4,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1"
+      ],
+      "acc": 0.8497
+    },
+    {
+      "k": 5,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2"
+      ],
+      "acc": 0.8385
+    },
+    {
+      "k": 6,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1"
+      ],
+      "acc": 0.8268
+    },
+    {
+      "k": 7,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2"
+      ],
+      "acc": 0.8175
+    },
+    {
+      "k": 8,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1"
+      ],
+      "acc": 0.7993
+    },
+    {
+      "k": 9,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1"
+      ],
+      "acc": 0.7777
+    },
+    {
+      "k": 10,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2"
+      ],
+      "acc": 0.7572
+    },
+    {
+      "k": 11,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1"
+      ],
+      "acc": 0.7087
+    },
+    {
+      "k": 12,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2"
+      ],
+      "acc": 0.645
+    },
+    {
+      "k": 13,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1"
+      ],
+      "acc": 0.6119
+    },
+    {
+      "k": 14,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1"
+      ],
+      "acc": 0.5584
+    },
+    {
+      "k": 15,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2"
+      ],
+      "acc": 0.4739
+    },
+    {
+      "k": 16,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1"
+      ],
+      "acc": 0.3684
+    },
+    {
+      "k": 17,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2"
+      ],
+      "acc": 0.2481
+    },
+    {
+      "k": 18,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1"
+      ],
+      "acc": 0.181
+    },
+    {
+      "k": 19,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1"
+      ],
+      "acc": 0.044
+    },
+    {
+      "k": 20,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0282
+    }
+  ],
+  "cum_deep_to_shallow": [
+    {
+      "k": 1,
+      "layers": [
+        "layer4.1.bn2"
+      ],
+      "acc": 0.896
+    },
+    {
+      "k": 2,
+      "layers": [
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.8352
+    },
+    {
+      "k": 3,
+      "layers": [
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.818
+    },
+    {
+      "k": 4,
+      "layers": [
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.6622
+    },
+    {
+      "k": 5,
+      "layers": [
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.5329
+    },
+    {
+      "k": 6,
+      "layers": [
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.4228
+    },
+    {
+      "k": 7,
+      "layers": [
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.4028
+    },
+    {
+      "k": 8,
+      "layers": [
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.3703
+    },
+    {
+      "k": 9,
+      "layers": [
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.2656
+    },
+    {
+      "k": 10,
+      "layers": [
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.2141
+    },
+    {
+      "k": 11,
+      "layers": [
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.1945
+    },
+    {
+      "k": 12,
+      "layers": [
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.1838
+    },
+    {
+      "k": 13,
+      "layers": [
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.1627
+    },
+    {
+      "k": 14,
+      "layers": [
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.1347
+    },
+    {
+      "k": 15,
+      "layers": [
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.1149
+    },
+    {
+      "k": 16,
+      "layers": [
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0936
+    },
+    {
+      "k": 17,
+      "layers": [
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0597
+    },
+    {
+      "k": 18,
+      "layers": [
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0569
+    },
+    {
+      "k": 19,
+      "layers": [
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0379
+    },
+    {
+      "k": 20,
+      "layers": [
+        "bn1",
+        "layer1.0.bn1",
+        "layer1.0.bn2",
+        "layer1.1.bn1",
+        "layer1.1.bn2",
+        "layer2.0.bn1",
+        "layer2.0.bn2",
+        "layer2.0.shortcut.1",
+        "layer2.1.bn1",
+        "layer2.1.bn2",
+        "layer3.0.bn1",
+        "layer3.0.bn2",
+        "layer3.0.shortcut.1",
+        "layer3.1.bn1",
+        "layer3.1.bn2",
+        "layer4.0.bn1",
+        "layer4.0.bn2",
+        "layer4.0.shortcut.1",
+        "layer4.1.bn1",
+        "layer4.1.bn2"
+      ],
+      "acc": 0.0282
+    }
+  ]
+}

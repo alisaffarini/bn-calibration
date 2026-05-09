@@ -1,0 +1,12 @@
+{
+  "config": {
+    "seed": 42,
+    "epochs": 20,
+    "model": "SmallResNet",
+    "dataset": "CIFAR-10"
+  },
+  "global_acc": 0.9125,
+  "both_acc": 0.028,
+  "mu_only_acc": 0.7666,
+  "sigma_only_acc": 0.2718
+}
